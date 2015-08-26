@@ -130,27 +130,41 @@
                 <p class="lead"><strong>< code | train | grow ></strong></p>
                 </div>
             <br>
-                <div class="col-md-4">
+                <div>
+                <div class="col-xs-6 col-md-4" style="border: solid; padding: 1%">
                         <i style="font-size: 500%" class="fa fa-graduation-cap"></i>
                         <h3> I got skills, <br>I want to earn some $$ out of it!</h3>
                         <a href="#tf-mentor" class="page-scroll">
                             <button class="btn tf-btn btn-primary btn-lg" ><strong>I got skills</strong></button></a>
 
                 </div>
-                <div class="col-md-4">
-                            <i style="font-size: 500%" class="fa fa-child"></i>
-                            <h3> I am looking for skills!<br> Help me find them</h3>
-                     <a href="#tf-mentor" class="page-scroll">
-                         <button class="btn tf-btn btn-primary btn-lg" ><strong>I want skills</strong></button></a>
-                </div>
-                <div class="col-md-4">
+                <div class="col-xs-6 col-md-4" style="border: dashed gold; padding: 1%">
                         <i style="font-size: 500%" class="fa fa-star"></i>
                         <h3> I am looking for solutions!<br> Build me one</h3>
                         <a href="#tf-task" class="page-scroll">
-                            <button class="btn tf-btn btn-primary btn-lg" ><strong>Get Solutions</strong></button></a>
+                                <button class="btn tf-btn btn-primary btn-lg" ><strong>Get Solutions</strong></button></a>
                 </div>
-            </div>
+                <div class="col-xs-6 col-md-4" style="border: solid; padding: 1%">
+                     <i style="font-size: 500%" class="fa fa-child"></i>
+                     <h3> I am looking for skills!<br> Help me find them</h3>
+                     <a href="#tf-mentor" class="page-scroll">
+                     <button class="btn tf-btn btn-info btn-lg" ><strong>I want skills</strong></button></a>
+                </div>
+
+
+
+                <div style="position: absolute; bottom: 0; width: 100%; background-color: #d58512">
+                        <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right" >
+                                <p style="opacity: 1; font-size: xx-large; font-family: 'Lato', sans-serif">Have you checked out our portal yet ?</p>
+                        </div>
+                        <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
+                                <a href="portal.php"> <button class="btn tf-btn btn-primary btn-lg" ><strong>Visit Portal</strong></button></a>
+                        </div>
+                </div>
+
+                </div>
         </div>
+    </div>
 
 
 
