@@ -1,6 +1,5 @@
 <?php
     session_start();
-    error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,39 +116,43 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <?php
+                    <div class="container">
+                        <h3>Welcome to ThinkFOSS Portal</h3>
+                        <br>
+
+                        <h5>The page is being setup. Thank you for your co-operation</h5>
+
+                        <?php
                         session_start();
                         if ( $_SESSION['message'] ) {
-                            echo $_SESSION['message'];
+                            $message = $_SESSION['message'];
+                            echo "<p class='lead'> $message</p>";
                             unset( $_SESSION['message'] );
                         } else if ( $_SESSION['error'] ) {
-                            echo $_SESSION['error'];
+                            $errorMessage = $_SESSION['error'];
+                            echo "<p class='alert-warning'> $errorMessage </p>";
                             unset( $_SESSION['error'] );
-
                         }
 
-                    ?>
+                        ?>
 
-                    <div class="col-md-6">
-                        <h2>ALREADY A MEMBER ?</h2>
-                        <br>
-                        <form class="form-inline" style="text-align: right" action="php/signIn.php" method="post">
-                            <div class="form-group">
-
-                                <label class="sr-only" for="mentor_name">Email id</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">Email id</div>
-                                    <input type="text" size="20%"  class="form-control" id="mentor_name" name="mentor_name" placeholder="Email id">
-                                </div>
-                                <label class="sr-only" for="mentor_pass_once">Password</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">Password</div>
-                                    <input type="password"  size="20%" class="form-control" id="mentor_pass_once" name="mentor_pass_once" placeholder="Password">
-                                </div> <br><br>
-                                <button type="submit" id="member-login" class="btn btn-info">Sign In</button>
-
-                            </div>
-                        </form>
+                        <!--                        <form class="form-inline" style="text-align: right" action="php/signIn.php" method="post">-->
+<!--                            <div class="form-group">-->
+<!---->
+<!--                                <label class="sr-only" for="mentor_name">Email id</label>-->
+<!--                                <div class="input-group">-->
+<!--                                    <div class="input-group-addon">Email id</div>-->
+<!--                                    <input type="text" size="20%"  class="form-control" id="mentor_name" name="mentor_name" placeholder="Email id">-->
+<!--                                </div>-->
+<!--                                <label class="sr-only" for="mentor_pass_once">Password</label>-->
+<!--                                <div class="input-group">-->
+<!--                                    <div class="input-group-addon">Password</div>-->
+<!--                                    <input type="password"  size="20%" class="form-control" id="mentor_pass_once" name="mentor_pass_once" placeholder="Password">-->
+<!--                                </div> <br><br>-->
+<!--                                <button type="submit" id="member-login" class="btn btn-info">Sign In</button>-->
+<!---->
+<!--                            </div>-->
+<!--                        </form>-->
 
                                 <!--<label class="sr-only" for="mentor-name">Available Courses</label>-->
                                 <!--<div class="input-group">-->

@@ -8,8 +8,8 @@
 error_reporting(E_ALL);
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if (checkIfEmptyPost($_POST)) {
-		header('Location: ' . '../index.html');
+	if ( checkIfEmptyPost($_POST) ) {
+		header('Location: ' . '../index.php');
 		return;
 	}
 	include_once("connectToDb.php");
@@ -33,6 +33,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header( 'Location: '.'../portal.php');
 
 	} else {
+		$_SESSION['error'] = "Error: Invalid Username/Password entered. Please try again";
 		header( 'Location: '.'../portal.php');
 	}
 
