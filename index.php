@@ -1,3 +1,6 @@
+<?php
+        session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,7 +71,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Think<span class="color">FOSS</span></a>
+          <a class="navbar-brand" href="index.php">Think<span class="color">FOSS</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,24 +83,39 @@
             <li><a href="#tf-services" class="page-scroll">Services</a></li>
             <li><a href="#tf-partners" class="page-scroll">Partners</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
-            <li>
-             <form class="form-inline" action="php/signIn.php" method="post">
-              <div class="form-group">
+                  <li>
+                          <?php
+                          if ( isset( $_SESSION['loggedin_user'] ) ) {
+                                  $loggedinUser = $_SESSION['loggedin_user'];
+                                  echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
+                            <li>
+                                <form class='form-inline' action = 'php/signOut.php' method = 'post' >
+                                    <div class='form-group'>
+                                        <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
+                                    </div>
+                                </form>
+                            </li>";
+                          } else { echo "
+                        <form class='form-inline' action = 'php/signIn.php' method = 'post' >
+                        <div class='form-group'>
 
-                  <label class="sr-only" for="username">Email id</label>
-                  <div class="input-group">
-                      <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                      <input type="text"  class="form-control" id="username" name="username" placeholder="Email id">
-                  </div>
-                  <label class="sr-only" for="password">Password</label>
-                  <div class="input-group">
-                      <div class="input-group-addon"><i class="fa fa-eye"></i></div>
-                      <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
-                  </div>
-                  <button type="submit" id="member-login" class="btn btn-info"><i class="fa fa-arrow-right"></i></button>
-              </div>
-              </form>
-              </li>
+                            <label class='sr-only' for='username' > Email id </label >
+                            <div class='input-group' >
+                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
+                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = 'Email id'>
+                            </div>
+                            <label class='sr-only' for='password'> Password</label >
+                            <div class='input-group'>
+                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
+                            </div >
+                            <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
+                        </div >
+                    </form >
+                </li >
+                    ";
+                          }
+                          ?>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -471,7 +489,6 @@
 
                 <div class="col-md-6">
                     <div class="section-title">
-                        <h4>Got Skills?</h4>
                         <h2>Why you should <strong>Mentor</strong></h2>
                         <hr>
                         <div class="clearfix"></div>
@@ -498,24 +515,12 @@
                         will get transferred to your bank. </em>
                         </li>
 
-                    </ul> <br>
+                    </ul>
                     <h3>Already a member ?</h3>
-                    <form class="form-inline" style="padding: 1% 0% 1% 1%" action="php/signIn.php" method="post">
-                    <div class="form-group">
-
-                        <label class="sr-only" for="username">Email id</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                            <input type="text"  class="form-control" id="username" name="username" placeholder="Email id">
-                        </div>
-                        <label class="sr-only" for="password">Password</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-eye"></i></div>
-                            <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
-                        </div>
-                        <button type="submit" id="login-submit" class="btn btn-info">Sign In</button>
-                    </div>
-                </form>
+                        <ul class="mentor-list">
+                                <li><span class="fa fa-sign-in"></span>
+                                <strong>Sign in </strong> to your portal to manage your preferences
+                                </li>
 
 
                 </div>
@@ -526,91 +531,122 @@
                         <hr>
                         <div class="clearfix"></div>
                     </div>
-                    <br>
 
-                    <form class="form-inline" action="php/mentorEnroll.php" method="post">
-                        <div class="form-group">
+                        <?php
+                        if ( isset( $_SESSION['loggedin_user'] ) ) {
+                                echo "<p class='intro'> Looks like you are Logged In. Its time to visit your Portal! You can add in more course, change your
+                                personal settings and do a lot more once you are inside the portal. <br><br>
+                                 <h2>What to do now ?</h2>
+                                    <ul class='mentor-list'>
+                                        <li>
+                                            <span class='fa fa-sign-in'></span>
+                                            <strong>Get inside your portal</strong> - <em> The portal allows you to add/remove/edit your mentoring preferences. Keep an
+                                             eye out for it</em>
+                                        </li>
+                                        <li>
+                                            <span class='fa fa-plus'></span>
+                                            <strong>Add in new courses</strong> - <em> You can Add in more courses which you would like to take upon once you are inside the
+                                             portal.</em>
+                                        </li>
+                                        <li>
+                                            <span class='fa fa-phone'></span>
+                                            <strong>Contact one of us</strong> - <em> In case you find something difficult, use one of the contact options listed to get support</em>
+                                        </li>
+                                                  <li>
+                                            <span class='fa fa-bug'></span>
+                                            <strong>Found a bug ?</strong> - <em> Report immediately to one of the admins, or file it as a task in our <a href='http://phab.thinkfoss.com'
+                                             target='_blank'> Phabricator</a></em>
+                                        </li>
 
-                            <label class="sr-only" for="mentor_name">Your Name</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input required type="text"   class="form-control" id="mentor_name" name="mentor_name" placeholder="Your Name">
+                                    </ul><br>
+                                     <a href='portal.php' class='page-scroll'><button class='btn tf-btn btn-center' >Take me to my Portal</button></a>
+                                ";
+                        } else { echo "
+
+                    <form class='form-inline' action='php/mentorEnroll.php' method='post'>
+                        <div class='form-group'>
+
+                            <label class='sr-only' for='mentor_name'>Your Name</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-user'></i></div>
+                                <input required type='text'   class='form-control' id='mentor_name' name='mentor_name' placeholder='Your Name'>
                             </div>
 
-                            <label class="sr-only" for="mentor_email">Your Email</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                <input required type="email"  class="form-control" id="mentor_email"  name="mentor_email" placeholder="Your Email id">
+                            <label class='sr-only' for='mentor_email'>Your Email</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
+                                <input required type='email'  class='form-control' id='mentor_email'  name='mentor_email' placeholder='Your Email id'>
                             </div>
                             <br> <br>
-                            <label class="sr-only" for="mentor_pass_once">Password</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-eye"></i> </div>
-                                <input required type="password"  class="form-control" id="mentor_pass_once" name="mentor_pass_once" placeholder="Password">
+                            <label class='sr-only' for='mentor_pass_once'>Password</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-eye'></i> </div>
+                                <input required type='password'  class='form-control' id='mentor_pass_once' name='mentor_pass_once' placeholder='Password'>
                             </div>
-                            <label class="sr-only" for="mentor_pass_again">Again </label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-eye"></i></div>
-                                <input required type="password" class="form-control" id="mentor_pass_again" name="mentor_pass_again" placeholder="Password again">
+                            <label class='sr-only' for='mentor_pass_again'>Again </label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-eye'></i></div>
+                                <input required type='password' class='form-control' id='mentor_pass_again' name='mentor_pass_again' placeholder='Password again'>
                             </div>
                             <br> <br>
-                            <label class="sr-only" for="mentor_github">Github</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-github"></i></div>
-                                <input required type="text" class="form-control" id="mentor_github"  name="mentor_github" placeholder="Github profile">
+                            <label class='sr-only' for='mentor_github'>Github</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-github'></i></div>
+                                <input required type='text' class='form-control' id='mentor_github'  name='mentor_github' placeholder='Github profile'>
                             </div>
-                            <label class="sr-only" for="mentor_linkedin">LinkedIn</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-linkedin"></i></div>
-                                <input required type="text"  class="form-control" id="mentor_linkedin"  name="mentor_linkedin" placeholder="LinkedIn profile">
+                            <label class='sr-only' for='mentor_linkedin'>LinkedIn</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-linkedin'></i></div>
+                                <input required type='text'  class='form-control' id='mentor_linkedin'  name='mentor_linkedin' placeholder='LinkedIn profile'>
                             </div>
                             <br><br>
 
-                            <label class="sr-only" for="mentor_bio">Short Bio</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-book"></i></div>
-                                <textarea required rows="4" cols="100" class="form-control" id="mentor_bio"  name="mentor_bio" placeholder="I tried pushing 3 patchsets to a proprietary software in 3 minutes, and failed miserably"></textarea>
+                            <label class='sr-only' for='mentor_bio'>Short Bio</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-book'></i></div>
+                                <textarea required rows='4' cols='100' class='form-control' id='mentor_bio'  name='mentor_bio' placeholder='I tried pushing 3 patchsets to a proprietary software in 3 minutes, and failed miserably'></textarea>
                             </div>
 
                             <br><br>
-                            <label class="sr-only" for="mentor_skills-1">I will teach</label>
-                            <div class="input-group" id="mentor-skills-wrapper">
-                                <div class="input-group-addon">I will teach</div>
-                                <input required  type="text" size="100%" class="form-control" id="mentor_skills-1" name="mentor_skills-1" placeholder="Give a stylish name for your course">
+                            <label class='sr-only' for='mentor_skills-1'>I will teach</label>
+                            <div class='input-group' id='mentor-skills-wrapper'>
+                                <div class='input-group-addon'>I will teach</div>
+                                <input required  type='text' size='100%' class='form-control' id='mentor_skills-1' name='mentor_skills-1' placeholder='Give a stylish name for your course'>
                             </div>
                             <br>
                             <small><em>Want to add more ?You can add in more once you sign-up</em></small><br><br>
-                            <label class="sr-only" for="mentor_date_to">Date from</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><strong>From</strong></div>
-                                <input required type="date" class="form-control" id="mentor_date_from" name="mentor_date_from" placeholder="Available Date">
+                            <label class='sr-only' for='mentor_date_to'>Date from</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><strong>From</strong></div>
+                                <input required type='date' class='form-control' id='mentor_date_from' name='mentor_date_from' placeholder='Available Date'>
                             </div>
-                            <label class="sr-only" for="mentor_date_to">Time from</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
-                                <input required type="time" class="form-control" id="mentor_time_from" name="mentor_time_from" placeholder="Available Time">
+                            <label class='sr-only' for='mentor_date_to'>Time from</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-clock-o'></i></div>
+                                <input required type='time' class='form-control' id='mentor_time_from' name='mentor_time_from' placeholder='Available Time'>
                             </div>
 
                             <br><br>
 
-                            <label class="sr-only" for="mentor_date_to">Date To</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><strong>To &nbsp; &nbsp;&nbsp;</strong></div>
-                                <input required type="date" class="form-control" id="mentor_date_to" name="mentor_date_to" placeholder="Available Date">
+                            <label class='sr-only' for='mentor_date_to'>Date To</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><strong>To &nbsp; &nbsp;&nbsp;</strong></div>
+                                <input required type='date' class='form-control' id='mentor_date_to' name='mentor_date_to' placeholder='Available Date'>
                             </div>
-                            <label class="sr-only" for="mentor_time_to">Time to</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
-                                <input required type="time"  class="form-control" id="mentor_time_to" name="mentor_time_to" placeholder="Available Time">
+                            <label class='sr-only' for='mentor_time_to'>Time to</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-clock-o'></i></div>
+                                <input required type='time'  class='form-control' id='mentor_time_to' name='mentor_time_to' placeholder='Available Time'>
                             </div> <br><br>
-                            <label class="sr-only" for="mentor_amount">Amount</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-rupee"></i> </div>
-                                <input required type="number" class="form-control" id="mentor_amount"  name="mentor_amount" placeholder="Charge">
+                            <label class='sr-only' for='mentor_amount'>Amount</label>
+                            <div class='input-group'>
+                                <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
+                                <input required type='number' class='form-control' id='mentor_amount'  name='mentor_amount' placeholder='Charge'>
                             </div>
-                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                            <button type='submit' class='btn btn-primary'>Sign Up</button>
                         </div>
                     </form>
+                    "; } ?>
 
                 </div>
             </div>

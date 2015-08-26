@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,36 +62,51 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Think<span class="color">FOSS</span></a>
+            <a class="navbar-brand" href="index.php">Think<span class="color">FOSS</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html#tf-home" class="page-scroll">Home</a></li>
-                <li><a href="index.html#tf-about" class="page-scroll">About</a></li>
-                <li><a href="index.html#tf-team" class="page-scroll">Team</a></li>
-                <li><a href="index.html#tf-services" class="page-scroll">Services</a></li>
-                <li><a href="index.html#tf-partners" class="page-scroll">Partners</a></li>
-                <li><a href="index.html#tf-contact" class="page-scroll">Contact</a></li>
+                <li><a href="index.php#tf-home" class="page-scroll">Home</a></li>
+                <li><a href="index.php#tf-about" class="page-scroll">About</a></li>
+                <li><a href="index.php#tf-team" class="page-scroll">Team</a></li>
+                <li><a href="index.php#tf-services" class="page-scroll">Services</a></li>
+                <li><a href="index.php#tf-partners" class="page-scroll">Partners</a></li>
+                <li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
                 <li>
-                    <form class="form-inline" action="php/signIn.php" method="post">
-                        <div class="form-group">
+                    <?php
+                    if ( isset( $_SESSION['loggedin_user'] ) ) {
+                        $loggedinUser = $_SESSION['loggedin_user'];
+                        echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
+                            <li>
+                                <form class='form-inline' action = 'php/signOut.php' method = 'post' >
+                                <div class='form-group'>
+                                    <button type = 'submit' id = 'member-logout' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
+                                    </div>
+                                </form>
+                            </li>";
+                    } else { echo "
+                        <form class='form-inline' action = 'php/signIn.php' method = 'post' >
+                        <div class='form-group'>
 
-                            <label class="sr-only" for="username">Email id</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Email id">
+                            <label class='sr-only' for='username' > Email id </label >
+                            <div class='input-group' >
+                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
+                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = 'Email id'>
                             </div>
-                            <label class="sr-only" for="password">Password</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-eye"></i></div>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                            </div>
-                            <button type="submit" id="member-login" class="btn btn-info"><i class="fa fa-arrow-right"></i></button>
-                        </div>
-                    </form>
-                </li>
+                            <label class='sr-only' for='password'> Password</label >
+                            <div class='input-group'>
+                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
+                            </div >
+                            <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-arrow-right' ></i ></button >
+                        </div >
+                    </form >
+                </li >
+                    ";
+                    }
+                    ?>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
