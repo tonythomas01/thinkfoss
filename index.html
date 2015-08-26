@@ -81,18 +81,20 @@
             <li><a href="#tf-partners" class="page-scroll">Partners</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
             <li>
-             <form class="form-inline" style="padding: 1% 0% 1% 1%" action="php/signIn.php" method="post">
+             <form class="form-inline" action="php/signIn.php" method="post">
               <div class="form-group">
 
                   <label class="sr-only" for="username">Email id</label>
                   <div class="input-group">
-                      <input type="text" size="20%"  class="form-control" id="username" name="username" placeholder="Email id">
+                      <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                      <input type="text"  class="form-control" id="username" name="username" placeholder="Email id">
                   </div>
                   <label class="sr-only" for="password">Password</label>
                   <div class="input-group">
-                      <input type="password"  size="20%" class="form-control" id="password" name="password" placeholder="Password">
+                      <div class="input-group-addon"><i class="fa fa-eye"></i></div>
+                      <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
                   </div>
-                  <button type="submit" id="member-login" class="btn btn-info">Sign In</button>
+                  <button type="submit" id="member-login" class="btn btn-info"><i class="fa fa-arrow-right"></i></button>
               </div>
               </form>
               </li>
@@ -478,7 +480,6 @@
                     aims at providing the best mentoring available to the needy in a complete transparant transaction.
                     </p> <br>
                     <h2>How it Works ?</h2>
-
                     <ul class="mentor-list">
                         <li>
                             <span class="fa fa-hand-o-right"></span>
@@ -504,10 +505,12 @@
 
                         <label class="sr-only" for="username">Email id</label>
                         <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
                             <input type="text"  class="form-control" id="username" name="username" placeholder="Email id">
                         </div>
                         <label class="sr-only" for="password">Password</label>
                         <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-eye"></i></div>
                             <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
                         </div>
                         <button type="submit" id="login-submit" class="btn btn-info">Sign In</button>
@@ -530,42 +533,42 @@
 
                             <label class="sr-only" for="mentor_name">Your Name</label>
                             <div class="input-group">
-                                <div class="input-group-addon">Name</div>
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                 <input required type="text"   class="form-control" id="mentor_name" name="mentor_name" placeholder="Your Name">
                             </div>
 
                             <label class="sr-only" for="mentor_email">Your Email</label>
                             <div class="input-group">
-                                <div class="input-group-addon">E-mail</div>
-                                <input required type="email"  class="form-control" id="mentor_email"  name="mentor_email" placeholder="Your email id">
+                                <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                <input required type="email"  class="form-control" id="mentor_email"  name="mentor_email" placeholder="Your Email id">
                             </div>
                             <br> <br>
                             <label class="sr-only" for="mentor_pass_once">Password</label>
                             <div class="input-group">
-                                <div class="input-group-addon">Password</div>
+                                <div class="input-group-addon"><i class="fa fa-eye"></i> </div>
                                 <input required type="password"  class="form-control" id="mentor_pass_once" name="mentor_pass_once" placeholder="Password">
                             </div>
                             <label class="sr-only" for="mentor_pass_again">Again </label>
                             <div class="input-group">
-                                <div class="input-group-addon">Password</div>
+                                <div class="input-group-addon"><i class="fa fa-eye"></i></div>
                                 <input required type="password" class="form-control" id="mentor_pass_again" name="mentor_pass_again" placeholder="Password again">
                             </div>
                             <br> <br>
                             <label class="sr-only" for="mentor_github">Github</label>
                             <div class="input-group">
-                                <div class="input-group-addon">Github</div>
+                                <div class="input-group-addon"><i class="fa fa-github"></i></div>
                                 <input required type="text" class="form-control" id="mentor_github"  name="mentor_github" placeholder="Github profile">
                             </div>
                             <label class="sr-only" for="mentor_linkedin">LinkedIn</label>
                             <div class="input-group">
-                                <div class="input-group-addon">LinkedIn</div>
+                                <div class="input-group-addon"><i class="fa fa-linkedin"></i></div>
                                 <input required type="text"  class="form-control" id="mentor_linkedin"  name="mentor_linkedin" placeholder="LinkedIn profile">
                             </div>
                             <br><br>
 
                             <label class="sr-only" for="mentor_bio">Short Bio</label>
                             <div class="input-group">
-                                <div class="input-group-addon">Bio</div>
+                                <div class="input-group-addon"><i class="fa fa-book"></i></div>
                                 <textarea required rows="4" cols="100" class="form-control" id="mentor_bio"  name="mentor_bio" placeholder="I tried pushing 3 patchsets to a proprietary software in 3 minutes, and failed miserably"></textarea>
                             </div>
 
@@ -573,7 +576,7 @@
                             <label class="sr-only" for="mentor_skills-1">I will teach</label>
                             <div class="input-group" id="mentor-skills-wrapper">
                                 <div class="input-group-addon">I will teach</div>
-                                <input required  type="text" size="55%" class="form-control" id="mentor_skills-1" name="mentor_skills-1" placeholder="Give a stylish name for your course">
+                                <input required  type="text" size="100%" class="form-control" id="mentor_skills-1" name="mentor_skills-1" placeholder="Give a stylish name for your course">
                             </div>
                             <br>
                             <small><em>Want to add more ?You can add in more once you sign-up</em></small><br><br>
@@ -584,7 +587,7 @@
                             </div>
                             <label class="sr-only" for="mentor_date_to">Time from</label>
                             <div class="input-group">
-                                <div class="input-group-addon">Time</div>
+                                <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
                                 <input required type="time" class="form-control" id="mentor_time_from" name="mentor_time_from" placeholder="Available Time">
                             </div>
 
@@ -597,12 +600,12 @@
                             </div>
                             <label class="sr-only" for="mentor_time_to">Time to</label>
                             <div class="input-group">
-                                <div class="input-group-addon">Time</div>
+                                <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
                                 <input required type="time"  class="form-control" id="mentor_time_to" name="mentor_time_to" placeholder="Available Time">
                             </div> <br><br>
                             <label class="sr-only" for="mentor_amount">Amount</label>
                             <div class="input-group">
-                                <div class="input-group-addon">$</div>
+                                <div class="input-group-addon"><i class="fa fa-rupee"></i> </div>
                                 <input required type="number" class="form-control" id="mentor_amount"  name="mentor_amount" placeholder="Charge">
                             </div>
                             <button type="submit" class="btn btn-primary">Sign Up</button>

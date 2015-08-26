@@ -2882,6 +2882,7 @@ select[multiple].form-group-lg .form-control {
   .form-inline .form-group {
     display: inline-block;
     margin-bottom: 0;
+    padding-top: 1%;
     vertical-align: middle;
   }
   .form-inline .form-control {

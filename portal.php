@@ -71,18 +71,20 @@
                 <li><a href="index.html#tf-partners" class="page-scroll">Partners</a></li>
                 <li><a href="index.html#tf-contact" class="page-scroll">Contact</a></li>
                 <li>
-                    <form class="form-inline" style="padding: 1% 0% 1% 1%" action="php/signIn.php" method="post">
+                    <form class="form-inline" action="php/signIn.php" method="post">
                         <div class="form-group">
 
                             <label class="sr-only" for="username">Email id</label>
                             <div class="input-group">
-                                <input type="text" size="20%"  class="form-control" id="username" name="username" placeholder="Email id">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Email id">
                             </div>
                             <label class="sr-only" for="password">Password</label>
                             <div class="input-group">
-                                <input type="password"  size="20%" class="form-control" id="password" name="password" placeholder="Password">
+                                <div class="input-group-addon"><i class="fa fa-eye"></i></div>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                             </div>
-                            <button type="submit" id="member-login" class="btn btn-info">Sign In</button>
+                            <button type="submit" id="member-login" class="btn btn-info"><i class="fa fa-arrow-right"></i></button>
                         </div>
                     </form>
                 </li>
