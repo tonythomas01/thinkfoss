@@ -153,9 +153,9 @@
 
 
 
-                <div style="position: absolute; bottom: 0; width: 100%; background-color: #d58512">
+                <div style="position: absolute; bottom: 0; width: 100%; background-color: gold">
                         <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right" >
-                                <p style="opacity: 1; font-size: xx-large; font-family: 'Lato', sans-serif">Have you checked out our portal yet ?</p>
+                                <p style="opacity: 1; font-size: xx-large; font-family: 'Lato', sans-serif; color: black">Have you checked out our portal yet ?</p>
                         </div>
                         <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
                                 <a href="portal.php"> <button class="btn tf-btn btn-info btn-lg" ><strong>Visit Portal</strong></button></a>
