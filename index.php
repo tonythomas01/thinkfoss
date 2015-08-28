@@ -71,7 +71,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Think<span class="color">FOSS</span></a>
+          <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,14 +89,14 @@
                                   $loggedinUser = $_SESSION['loggedin_user'];
                                   echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
                             <li>
-                                <form class='form-inline' action = 'php/signOut.php' method = 'post' >
+                                <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
                                     <div class='form-group'>
                                         <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
                                     </div>
                                 </form>
                             </li>";
                           } else { echo "
-                        <form class='form-inline' action = 'php/signIn.php' method = 'post' >
+                        <form class='form-inline' action = 'php/doSignIn.php' method = 'post' >
                         <div class='form-group'>
 
                             <label class='sr-only' for='username' > Email id </label >
@@ -110,7 +110,7 @@
                                 <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
                             </div >
                             <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
-                        </div >
+                        </div>
                     </form >
                 </li >
                     ";
@@ -132,7 +132,7 @@
             <br>
                 <div>
                 <div class="col-xs-6 col-md-4" style="border: solid; padding: 1%">
-                        <i style="font-size: 500%" class="fa fa-graduation-cap"></i>
+                        <i style="font-size: 500%; color: seashell" class="fa fa-graduation-cap"></i>
                         <h3> I got skills, <br>I want to earn some <span style="color: gold">$$</span>  out of it!</h3>
                         <a href="#tf-mentor" class="page-scroll">
                             <button class="btn tf-btn btn-primary btn-lg" ><strong>I got skills</strong></button></a>
@@ -145,9 +145,9 @@
                                 <button class="btn tf-btn btn-primary btn-lg" style="background-color: gold" ><strong><span style="color: black";>Get Solutions</span></strong></button></a>
                 </div>
                 <div class="col-xs-6 col-md-4" style="border: solid; padding: 1%">
-                     <i style="font-size: 500%" class="fa fa-child"></i>
+                     <i style="font-size: 500%; color: seashell" class="fa fa-child"></i>
                      <h3> I am looking for skills!<br> Help me find them</h3>
-                     <a href="#tf-mentor" class="page-scroll">
+                     <a href="#student" class="page-scroll">
                      <button class="btn tf-btn btn-primary btn-lg" ><strong>I want skills</strong></button></a>
                 </div>
 
@@ -158,7 +158,13 @@
                                 <p style="opacity: 1; font-size: xx-large; font-family: 'Lato', sans-serif; color: black">Have you checked out our portal yet ?</p>
                         </div>
                         <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
-                                <a href="portal.php"> <button class="btn tf-btn btn-info btn-lg" ><strong>Visit Portal</strong></button></a>
+                                <?php
+                                        if( isset( $_SESSION['loggedin_user'] ) ) {
+                                                echo "<a href='portal.php'> <button class='btn tf-btn btn-primary btn-lg' ><strong>Portal</strong></button></a>";
+                                        } else {
+                                                echo "<a href='signup.php'> <button class='btn tf-btn btn-info btn-lg'><strong>Sign Up</strong></button></a>";
+                                        }
+                                ?>
                         </div>
                 </div>
 
@@ -539,7 +545,7 @@
 
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6" id="student">
                     <div class="section-title">
                         <h2>Be a <strong>Mentor</strong></h2>
                         <hr>
@@ -580,22 +586,22 @@
                     <form class='form-inline' action='php/mentorEnroll.php' method='post'>
                         <div class='form-group'>
 
-                            <label class='sr-only' for='mentor_name'>Your Name</label>
+                            <label class='sr-only' for='user_name'>Your Name</label>
                             <div class='input-group'>
                                 <div class='input-group-addon'><i class='fa fa-user'></i></div>
-                                <input required type='text'   class='form-control' id='mentor_name' name='mentor_name' placeholder='Your Name'>
+                                <input required type='text'   class='form-control' id='user_name' name='user_name' placeholder='Your Name'>
                             </div>
 
-                            <label class='sr-only' for='mentor_email'>Your Email</label>
+                            <label class='sr-only' for='user_email'>Your Email</label>
                             <div class='input-group'>
                                 <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
-                                <input required type='email'  class='form-control' id='mentor_email'  name='mentor_email' placeholder='Your Email id'>
+                                <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your Email id'>
                             </div>
                             <br> <br>
-                            <label class='sr-only' for='mentor_pass_once'>Password</label>
+                            <label class='sr-only' for='user_pass_once'>Password</label>
                             <div class='input-group'>
                                 <div class='input-group-addon'><i class='fa fa-eye'></i> </div>
-                                <input required type='password'  class='form-control' id='mentor_pass_once' name='mentor_pass_once' placeholder='Password'>
+                                <input required type='password'  class='form-control' id='user_pass_once' name='user_pass_once' placeholder='Password'>
                             </div>
                             <label class='sr-only' for='mentor_pass_again'>Again </label>
                             <div class='input-group'>

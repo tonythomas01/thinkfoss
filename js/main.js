@@ -115,7 +115,32 @@ function main() {
         singleItem:true
         });
 
-  	});
+        function showHide(d)
+        {
+            alert('clicked');
+            var onediv = document.getElementById(d);
+            var divs=['content1','content2','content3'];
+            for (var i=0;i<divs.length;i++)
+            {
+                if (onediv != document.getElementById(divs[i]))
+                {
+                    document.getElementById(divs[i]).style.display='none';
+                }
+            }
+            onediv.style.display = 'block';
+        }
+
+
+        $(function stay() {
+            $('ul.menu li a').click(function () {
+                $('ul.menu li a').removeClass('selected');
+                $(this).addClass('selected');
+
+            });
+        });
+
+
+    });
 
   	/*====================================
     Portfolio Isotope Filter

@@ -34,7 +34,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	} else {
 		$_SESSION['error'] = "Error: Invalid Username/Password entered. Please try again";
-		header( 'Location: '.'../portal.php');
+		header( 'Location: '.'../signup.php');
 	}
 
 }
@@ -50,22 +50,15 @@ function checkIsMember( $conn, $useremail, $password, $secret ) {
 
 function getUserDetails( $conn, $emailId ) {
 	$user = array();
-	$sql = "SELECT `mentor` FROM `authorization` WHERE `email_id` = '$emailId'";
-	$res = $conn->query( $sql );
+
+	$selectUser = "SELECT `user_name` FROM `user_details` WHERE `user_email` = '$emailId';";
+	$res = $conn->query( $selectUser );
+	$loggedinData = array();
 	foreach( $res as $row ) {
-		$isMentor = $row['mentor'];
+		$loggedinData = $row;
 	}
-	if ( $isMentor ) {
-		$selectMentorDetails = "SELECT `mentor_id`, `mentor_name`, `mentor_email`, `mentor_github`, `mentor_linkedin`, `mentor_bio` FROM `mentor_details` WHERE `mentor_email` = '$emailId';";
-		$res = $conn->query( $selectMentorDetails );
-		$loggedinData = array();
-		foreach( $res as $row ) {
-			$loggedinData = $row;
-		}
-		$user['mentor'] = 1;
-		$user['name'] = $loggedinData['mentor_name'];
-		$user['email'] = $loggedinData['mentor_email'];
-	}
+	$user['name'] = $loggedinData['user_name'];
+	$user['email'] = $loggedinData['user_email'];
 
 	return $user;
 

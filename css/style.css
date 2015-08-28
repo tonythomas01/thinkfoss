@@ -72,26 +72,15 @@ ul, ol{
 }
 /* Navigation */
 #tf-menu {
-	padding: 20px;
 	transition: all 0.8s;
 }
 #tf-menu.navbar-default {
-	background-color: rgba(248, 248, 248, 0);
 	border-color: rgba(231, 231, 231, 0);
 }
 #tf-menu a.navbar-brand {
-text-transform: uppercase;
-font-size: 22px;
-color: #fff;
-font-weight: 900;
+	font-weight: 900;
 }
 
-#tf-menu.navbar-default .navbar-nav > li > a {
-	text-transform: uppercase;
-	color: #FFF;
-	font-size: 12px;
-	letter-spacing: 1px;
-}
 .on {
 	background-color: #222222 !important;
 	padding: 0 !important;
@@ -133,14 +122,14 @@ font-weight: 900;
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-	height: 750px;
+	height: 100vh;
 	background-attachment: fixed;
 }
 #tf-home p.lead{
 	color: #e3e3e3;
 }
 #tf-portal{
-	background: url(../img/thinkfossbackground.jpg);
+	background: url(../img/anotherback.jpg);
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -156,7 +145,7 @@ font-weight: 900;
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-	height: 750px;
+	height: 100vh;
 	background-attachment: fixed;
 }
 #tf-portal p.lead{
@@ -167,6 +156,16 @@ font-weight: 900;
 	position: relative;
 	padding: 10% 0 0%;
 }
+.portal{
+	position: relative;
+	text-align: left;
+	padding: 10%;Iasdfasdf
+}
+.signup{
+	position: fixed;
+	padding: 1% 0 0%;
+}
+
 
 .color{
 	color: #fcac45;
@@ -248,6 +247,28 @@ ol.mentor-list li{
 	font-family: 'Open Sans', sans-serif;
 }
 ol.mentor-list li span{
+	margin-right: 10px;
+}
+
+ul.user-list{ margin: 30px 0 0 ;}
+ul.user-list li{
+	display: block;
+	font-size: 16px;
+	line-height: 30px;
+	font-family: 'Open Sans', sans-serif;
+}
+ul.user-list li span{
+	margin-right: 10px;
+}
+
+ol.user-list{ margin: 30px 0 0 ;}
+ol.user-list li{
+	display: block;
+	font-size: 16px;
+	line-height: 30px;
+	font-family: 'Open Sans', sans-serif;
+}
+ol.user-list li span{
 	margin-right: 10px;
 }
 /* Team Section */
