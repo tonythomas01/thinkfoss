@@ -509,7 +509,7 @@
 
                 <div class="col-md-6">
                     <div class="section-title">
-                        <h2>Why you should <strong>Mentor</strong></h2>
+                        <h2>Be a  <strong>Mentor</strong></h2>
                         <hr>
                         <div class="clearfix"></div>
                     </div>
@@ -520,9 +520,8 @@
                     <ul class="mentor-list">
                         <li>
                             <span class="fa fa-hand-o-right"></span>
-                            <strong>Register as a Mentor</strong> - <em>Register as a mentor using the form on the right.
-                            You can type in what you will be teaching in the
-                        'I will teach' text box. You can add more courses later. </em>
+                            <strong>Sign up at our portal</strong> - <em> Once you sign up, you will be able to add/remove courses, and
+                                start monetizing your skills.</em>
                         </li>
                         <li>
                             <span class="fa fa-clock-o"></span>
@@ -536,139 +535,50 @@
                         </li>
 
                     </ul>
-                    <h3>Already a member ?</h3>
-                        <ul class="mentor-list">
-                                <li><span class="fa fa-sign-in"></span>
-                                <strong>Sign in </strong> to your portal to manage your preferences
-                                </li>
-
-
+                        
                 </div>
 
                 <div class="col-md-6" id="student">
                     <div class="section-title">
-                        <h2>Be a <strong>Mentor</strong></h2>
+                        <h2>Be a <strong>Student</strong></h2>
                         <hr>
                         <div class="clearfix"></div>
                     </div>
+                        <p class="intro"> You are at the right place! ThinkFOSS helps in connection people with skills to people in need, and
+                                make sure you get the maximum out of it. Topics avialable to study ranges from 'Beginner' to 'Advanced' level.
+                        </p> <br>
+                        <h2>How it Works ?</h2>
+                        <ul class="mentor-list">
+                                <li>
+                                        <span class="fa fa-hand-o-right"></span>
+                                        <strong>Sign up at our portal</strong> - <em> Signing up is as simple as few button clicks, and later you
+                                                can find yourself in a portal where you can list down available courses. You can even be a mentor later,
+                                                so dont worry. </em>
+                                </li>
+                                <li>
+                                        <span class="fa fa-dollar"></span>
+                                        <strong>Start enrolling</strong> - <em> Enrolling can be done in few clicks, where you will be redirected to our
+                                        secure payment gateway.</em>
+                                </li>
+                                <li>
+                                        <span class="fa fa-check"></span>
+                                        <strong>Complete your course</strong> - <em> Your money get transferred to your mentor only after your feedback
+                                                about the course. Your money is safe until the feedback is given. </em>
+                                </li>
+                                <li>
+                                        <span class="fa fa-repeat"></span>
+                                        <strong>Repeat</strong>
+                                </li>
 
-                        <?php
-                        if ( isset( $_SESSION['loggedin_user'] ) ) {
-                                echo "<p class='intro'> Looks like you are Logged In. Its time to visit your Portal! You can add in more course, change your
-                                personal settings and do a lot more once you are inside the portal. <br><br>
-                                 <h2>What to do now ?</h2>
-                                    <ul class='mentor-list'>
-                                        <li>
-                                            <span class='fa fa-sign-in'></span>
-                                            <strong>Get inside your portal</strong> - <em> The portal allows you to add/remove/edit your mentoring preferences. Keep an
-                                             eye out for it</em>
-                                        </li>
-                                        <li>
-                                            <span class='fa fa-plus'></span>
-                                            <strong>Add in new courses</strong> - <em> You can Add in more courses which you would like to take upon once you are inside the
-                                             portal.</em>
-                                        </li>
-                                        <li>
-                                            <span class='fa fa-phone'></span>
-                                            <strong>Contact one of us</strong> - <em> In case you find something difficult, use one of the contact options listed to get support</em>
-                                        </li>
-                                                  <li>
-                                            <span class='fa fa-bug'></span>
-                                            <strong>Found a bug ?</strong> - <em> Report immediately to one of the admins, or file it as a task in our <a href='http://phab.thinkfoss.com'
-                                             target='_blank'> Phabricator</a></em>
-                                        </li>
+                        </ul>
 
-                                    </ul><br>
-                                     <a href='portal.php' class='page-scroll'><button class='btn tf-btn btn-center' >Take me to my Portal</button></a>
-                                ";
-                        } else { echo "
-
-                    <form class='form-inline' action='php/mentorEnroll.php' method='post'>
-                        <div class='form-group'>
-
-                            <label class='sr-only' for='user_name'>Your Name</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-user'></i></div>
-                                <input required type='text'   class='form-control' id='user_name' name='user_name' placeholder='Your Name'>
-                            </div>
-
-                            <label class='sr-only' for='user_email'>Your Email</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
-                                <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your Email id'>
-                            </div>
-                            <br> <br>
-                            <label class='sr-only' for='user_pass_once'>Password</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-eye'></i> </div>
-                                <input required type='password'  class='form-control' id='user_pass_once' name='user_pass_once' placeholder='Password'>
-                            </div>
-                            <label class='sr-only' for='mentor_pass_again'>Again </label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-eye'></i></div>
-                                <input required type='password' class='form-control' id='mentor_pass_again' name='mentor_pass_again' placeholder='Password again'>
-                            </div>
-                            <br> <br>
-                            <label class='sr-only' for='mentor_github'>Github</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-github'></i></div>
-                                <input required type='text' class='form-control' id='mentor_github'  name='mentor_github' placeholder='Github profile'>
-                            </div>
-                            <label class='sr-only' for='mentor_linkedin'>LinkedIn</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-linkedin'></i></div>
-                                <input required type='text'  class='form-control' id='mentor_linkedin'  name='mentor_linkedin' placeholder='LinkedIn profile'>
-                            </div>
-                            <br><br>
-
-                            <label class='sr-only' for='mentor_bio'>Short Bio</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-book'></i></div>
-                                <textarea required rows='4' cols='100' class='form-control' id='mentor_bio'  name='mentor_bio' placeholder='I tried pushing 3 patchsets to a proprietary software in 3 minutes, and failed miserably'></textarea>
-                            </div>
-
-                            <br><br>
-                            <label class='sr-only' for='mentor_skills-1'>I will teach</label>
-                            <div class='input-group' id='mentor-skills-wrapper'>
-                                <div class='input-group-addon'>I will teach</div>
-                                <input required  type='text' size='100%' class='form-control' id='mentor_skills-1' name='mentor_skills-1' placeholder='Give a stylish name for your course'>
-                            </div>
-                            <br>
-                            <small><em>Want to add more ?You can add in more once you sign-up</em></small><br><br>
-                            <label class='sr-only' for='mentor_date_to'>Date from</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><strong>From</strong></div>
-                                <input required type='date' class='form-control' id='mentor_date_from' name='mentor_date_from' placeholder='Available Date'>
-                            </div>
-                            <label class='sr-only' for='mentor_date_to'>Time from</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-clock-o'></i></div>
-                                <input required type='time' class='form-control' id='mentor_time_from' name='mentor_time_from' placeholder='Available Time'>
-                            </div>
-
-                            <br><br>
-
-                            <label class='sr-only' for='mentor_date_to'>Date To</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><strong>To &nbsp; &nbsp;&nbsp;</strong></div>
-                                <input required type='date' class='form-control' id='mentor_date_to' name='mentor_date_to' placeholder='Available Date'>
-                            </div>
-                            <label class='sr-only' for='mentor_time_to'>Time to</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-clock-o'></i></div>
-                                <input required type='time'  class='form-control' id='mentor_time_to' name='mentor_time_to' placeholder='Available Time'>
-                            </div> <br><br>
-                            <label class='sr-only' for='mentor_amount'>Amount</label>
-                            <div class='input-group'>
-                                <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
-                                <input required type='number' class='form-control' id='mentor_amount'  name='mentor_amount' placeholder='Charge'>
-                            </div>
-                            <button type='submit' class='btn btn-primary'>Sign Up</button>
-                        </div>
-                    </form>
-                    "; } ?>
 
                 </div>
+
+
+
+
+            </div>
             </div>
         </div>
     </div>
