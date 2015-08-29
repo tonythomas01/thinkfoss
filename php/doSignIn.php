@@ -28,9 +28,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	if ( checkIsMember( $conn, $useremail, $password, $secret ) ) {
 		$userDetails = getUserDetails( $conn, $useremail );
-
 		$_SESSION['loggedin_user'] = $userDetails['name'];
-		header( 'Location: '.'../portal.php');
+		$_SESSION['loggedin_user_email'] = $userDetails['email'];
+		$_SESSION['loggedin_user_id'] = $userDetails['user_id'];
+		header( 'Location: '.'../portal/portal.php');
 
 	} else {
 		$_SESSION['error'] = "Error: Invalid Username/Password entered. Please try again";
@@ -50,17 +51,19 @@ function checkIsMember( $conn, $useremail, $password, $secret ) {
 
 function getUserDetails( $conn, $emailId ) {
 	$user = array();
-
-	$selectUser = "SELECT `user_name` FROM `user_details` WHERE `user_email` = '$emailId';";
+	$selectUser = "SELECT `user_id`, `user_name`, `user_email` FROM `user_details` WHERE `user_email` = '$emailId';";
 	$res = $conn->query( $selectUser );
-	$loggedinData = array();
-	foreach( $res as $row ) {
-		$loggedinData = $row;
-	}
-	$user['name'] = $loggedinData['user_name'];
-	$user['email'] = $loggedinData['user_email'];
+	if( $res->num_rows > 0 ) {
+		$user = array();
+		while ( $loggedinData = $res->fetch_assoc() ) {
+			$user['name'] = $loggedinData['user_name'];
+			$user['email'] = $loggedinData['user_email'];
+			$user['user_id'] = $loggedinData['user_id'];
+		}
 
-	return $user;
+		return $user;
+	}
+	return false;
 
 }
 function checkIfEmptyPost( $input ) {

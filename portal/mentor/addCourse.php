@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
-		header( 'Location: signup.php');
+		header( 'Location: ../../signup.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -20,25 +20,25 @@
 
     <!-- Favicons
     ================================================== -->
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../../img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../img/apple-touch-icon-114x114.png">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css"  href="../css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css"  href="../../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../fonts/font-awesome/css/font-awesome.css">
 
 
     <!-- Stylesheet
     ================================================== -->
-    <link rel="stylesheet" type="text/css"  href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link rel="stylesheet" type="text/css"  href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 
     <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="../js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="../../js/modernizr.custom.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,77 +50,23 @@
 
 
     <!-- jQuery library -->
-    <script src="../js/jquery.1.11.1.js"></script>
+    <script src="../../js/jquery.1.11.1.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 
     <!--[endif]-->
 </head>
 <body background="black">
-<!-- Navigation
-==========================================-->
-<nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="../index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
-        </div>
+<?php include 'navigation.html' ?>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mentor <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Courses Created</a></li>
-                        <li><a href="#">Add a new Course</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Enrolled Courses</a></li>
-                        <li><a href="#">Available courses</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Preferences</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['loggedin_user'] ?> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Edit Profile</a></li>
-                        <li><a href="#">Recommend</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="php/doSignOut.php">Sign Out</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal">
 
             <div class='col-xs-6'>
                 <br>
-                <form class='form-inline' action='../php/doCreateCourse.php' method='post'>
+                <form class='form-inline' action='../../php/doCreateCourse.php' method='post'>
                     <div class='form-group'>
 
                         <label class='sr-only' for='course_name'>I will teach</label>

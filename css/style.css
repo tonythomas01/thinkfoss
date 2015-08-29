@@ -74,6 +74,8 @@ ul, ol{
 #tf-menu {
 	transition: all 0.8s;
 }
+
+
 #tf-menu.navbar-default {
 	border-color: rgba(231, 231, 231, 0);
 }
@@ -133,7 +135,7 @@ ul, ol{
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
 	color: #cfcfcf;
 }
 
@@ -159,7 +161,7 @@ ul, ol{
 .portal{
 	position: relative;
 	text-align: left;
-	padding: 10%;Iasdfasdf
+	padding: 10%;
 }
 .signup{
 	position: fixed;

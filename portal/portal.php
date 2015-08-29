@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
-		header( 'Location: signup.php');
+		header( 'Location: ../signup.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -20,29 +20,24 @@
 
     <!-- Favicons
     ================================================== -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
-
-    <!-- Slider
-    ================================================== -->
-    <link href="css/owl.carousel.css" rel="stylesheet" media="screen">
-    <link href="css/owl.theme.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css"  href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../fonts/font-awesome/css/font-awesome.css">
 
     <!-- Stylesheet
     ================================================== -->
-    <link rel="stylesheet" type="text/css"  href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css"  href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
 
     <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="../js/modernizr.custom.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,12 +49,12 @@
 
 
     <!-- jQuery library -->
-    <script src="js/jquery.1.11.1.js"></script>
+    <script src="../js/jquery.1.11.1.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
-    <![endif]-->
+    <!--[endif]-->
 </head>
 <body background="black">
 <!-- Navigation
@@ -74,7 +69,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
+            <a class="navbar-brand" href="../index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,14 +78,14 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mentor <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Courses Created</a></li>
-                        <li><a href="mentor/addCourse.php">Add a new Course</a></li>
+                        <li><a href="mentor/viewMyCourses.php">My courses</a></li>
+                        <li><a href="mentor/addCourse.php">Add new course</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Enrolled Courses</a></li>
+                        <li><a href="#">Enrolled courses</a></li>
                         <li><a href="#">Available courses</a></li>
                     </ul>
                 </li>
@@ -105,7 +100,7 @@
                         <li><a href="#">Edit Profile</a></li>
                         <li><a href="#">Recommend</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="php/doSignOut.php">Sign Out</a></li>
+                        <li><a href="../php/doSignOut.php">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>

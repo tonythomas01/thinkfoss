@@ -9,8 +9,6 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-
-	print_r( $_POST );
 	if ( checkIfEmptyPost( $_POST ) ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header( 'Location: '.'../portal.php' );
@@ -39,12 +37,12 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 			$pass = substr( hash_hmac( 'sha512', $user_pass_once, $secret ), 0, 31 );
 			if ( addMember( $conn, $user_email, $pass, $_POST ) ) {
 				$_SESSION['message'] = "The registration is successful. Please use the login feature to Sign-In";
-				header('Location: ' . '../portal.php');
+				header('Location: ' . '../portal/portal.php');
 			}
 		}
 	} else {
 		$_SESSION['error'] = "The user is already a member of this website. Please try logging in";
-		header( 'Location: '.'../portal.php');
+		header( 'Location: '.'../portal/portal.php');
 	}
 
 

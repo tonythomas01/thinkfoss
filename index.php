@@ -160,7 +160,7 @@
                         <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
                                 <?php
                                         if( isset( $_SESSION['loggedin_user'] ) ) {
-                                                echo "<a href='portal.php'> <button class='btn tf-btn btn-primary btn-lg' ><strong>Portal</strong></button></a>";
+                                                echo "<a href='portal/portal.php'> <button class='btn tf-btn btn-primary btn-lg' ><strong>Portal</strong></button></a>";
                                         } else {
                                                 echo "<a href='signup.php'> <button class='btn tf-btn btn-info btn-lg'><strong>Sign Up</strong></button></a>";
                                         }
@@ -535,7 +535,7 @@
                         </li>
 
                     </ul>
-                        
+
                 </div>
 
                 <div class="col-md-6" id="student">
