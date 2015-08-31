@@ -44,7 +44,7 @@ class Course {
 	}
 
 	public function addToMentorMap( $conn, $course_mentor ) {
-		$sqlAddtoMap = "INSERT INTO `course_mentor_map` (`course_id`, `mentor_id`) VALUES ( '$this->course_id','$course_mentor');";
+		$sqlAddtoMap = "INSERT INTO `course_mentor_map` (`course_id`, `mentor_id` ) VALUES ( '$this->course_id','$course_mentor' );";
 		if ( $conn->query( $sqlAddtoMap ) ) {
 			return true;
 		}
@@ -88,6 +88,27 @@ class Course {
 		return $course;
 	}
 
+	public function getCourseName() {
+		return $this->course_name;
+	}
+
+	public function enrollUser( $conn, $userId ) {
+		$insertStatement = "INSERT INTO `course_enrollment`(`course_id`, `user_id`,  `course_enrolled` ) VALUES ( '$this->course_id', '$userId', FALSE );";
+		if ( $conn->query( $insertStatement ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	public function checkoutCourse( $conn, $userId ) {
+		$checkoutStatement = "UPDATE `course_enrollment` SET `course_enrolled` = TRUE WHERE `course_id` = '$this->course_id'
+			AND `user_id` =  '$userId';";
+		if ( $conn->query( $checkoutStatement ) ) {
+			return true;
+		}
+		return false;
+	}
+
 	static function newFromId( $conn, $courseId ) {
 		$getCourseData = "SELECT `course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`,
 		`course_date_from`, `course_time_from`, `course_date_to`, `course_time_to`, `course_fees` FROM
@@ -108,6 +129,7 @@ class Course {
 
 			return $course;
 		}
+		return false;
 	}
 
 	static function getCourseMentor( $conn, $courseId ) {

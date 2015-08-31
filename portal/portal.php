@@ -85,15 +85,22 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Enrolled courses</a></li>
-                        <li><a href="#">Available courses</a></li>
+                        <li><a href="student/viewEnrolledCourses.php">My enrollments</a></li>
+                        <li><a href="student/viewAllCourses.php">Available courses</a></li>
                     </ul>
                 </li>
             </ul>
 
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Preferences</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cart/viewCart.php">View Cart</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="../../php/doSignOut.php">Empty Cart</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['loggedin_user'] ?> <span class="caret"></span></a>
                     <ul class="dropdown-menu">

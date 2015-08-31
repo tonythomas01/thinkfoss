@@ -60,7 +60,7 @@
 <body background="black">
 <!-- Navigation
 ==========================================-->
-<?php include 'navigationmentor.html' ?>
+<?php include 'navigationstudent.html' ?>
 
 <div id="tf-portal" class="text-center">
     <div class="overlay">
@@ -69,21 +69,21 @@
 	        session_start();
 	        if ( $_SESSION['message'] ) {
 		        $message = $_SESSION['message'];
-		        echo "<p class='alert-success'> $message</p>";
+		        echo "<p class='alert-success' style='text-align: center'> $message</p>";
 		        unset( $_SESSION['message'] );
 	        } else if ( $_SESSION['error'] ) {
 		        $errorMessage = $_SESSION['error'];
-		        echo "<p class='alert-warning'> $errorMessage </p>";
+		        echo "<p class='alert-warning' style='text-align: center'> $errorMessage </p>";
 		        unset( $_SESSION['error'] );
 	        }
 
 	        ?>
 
 	        <div>
-		        <h2 class="section-title"> My Courses</h2>
+		        <h2 class="section-title" style="color: white"> Available Courses</h2>
 	        </div>
 	        <br>
-                <table class="table table-hover table-bordered well" style="color:black">
+                <table class="table table-hover table-bordered well" style="color : black">
                     <thead>
                     <th>Course Name</th>
                     <th>Description</th>
@@ -93,7 +93,8 @@
                     <th>From Time</th>
                     <th>To Date</th>
                     <th>To Time</th>
-                    <th>Fees</th>
+                    <th><i class="fa fa-rupee"></i> </th>
+                    <th>Mentor</th>
                     <th>Action</th>
                     </thead>
 	                <tbody>
@@ -115,9 +116,10 @@
         }
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
-        $sqlSelect = "SELECT `course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`, `course_date_from`,
-		`course_time_from`, `course_date_to`, `course_time_to`, `course_fees` FROM `course_details` WHERE `course_id` IN
-		( SELECT `course_id` FROM `course_mentor_map` WHERE `mentor_id` = '$loggedInUser' );";
+        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`, course_details.`course_lang`, course_details.`course_difficulty`,
+          course_details.`course_date_from`,course_details.`course_time_from`,course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`, user_details.`user_name` FROM `course_details`
+          INNER JOIN `course_mentor_map`  ON course_details.course_id = course_mentor_map.course_id
+          INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id ";
         $result = $conn->query( $sqlSelect );
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
@@ -130,7 +132,8 @@
 		        <td> '. $row['course_date_to']. '</td>
 		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
-		        <td> <form action="../../php/doDeleteCourse.php" method="post"><button type="submit" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" >Delete</button></form></td>
+		        <td> '. $row['user_name']. '</td>
+		        <td> <form action="../../php/doEnrollCourse.php" method="post"><button type="submit" class="btn btn-success" name="course" value="course-'.$row['course_id'].'" > Add <i class="fa fa-shopping-cart"></i> </button></form></td>
 		        ';
 	        }
         }

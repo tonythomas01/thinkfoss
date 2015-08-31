@@ -131,9 +131,9 @@
                 </div>
             <br>
                 <div>
-                <div class="col-xs-6 col-md-4" style="border: solid; padding: 1%">
+                <div class="col-xs-6 col-md-4">
                         <i style="font-size: 500%; color: seashell" class="fa fa-graduation-cap"></i>
-                        <h3> I got skills, <br>I want to earn some <span style="color: gold">$$</span>  out of it!</h3>
+                        <h3> I got skills & want to earn<br> some <span style="color: gold"><i class="fa fa-rupee"></i> </span>  out of it!</h3>
                         <a href="#tf-mentor" class="page-scroll">
                             <button class="btn tf-btn btn-primary btn-lg" ><strong>I got skills</strong></button></a>
 
@@ -144,7 +144,7 @@
                         <a href="#tf-task" class="page-scroll">
                                 <button class="btn tf-btn btn-primary btn-lg" style="background-color: gold" ><strong><span style="color: black";>Get Solutions</span></strong></button></a>
                 </div>
-                <div class="col-xs-6 col-md-4" style="border: solid; padding: 1%">
+                <div class="col-xs-6 col-md-4" >
                      <i style="font-size: 500%; color: seashell" class="fa fa-child"></i>
                      <h3> I am looking for skills!<br> Help me find them</h3>
                      <a href="#student" class="page-scroll">
