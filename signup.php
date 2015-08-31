@@ -49,6 +49,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <![endif]-->
 </head>
 <body background="black">
@@ -208,6 +209,7 @@
                         <option>Other</option>
                     </select>
                     </div>
+                    <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
                     <button type='submit' class='btn btn-primary'>Sign Up</button>
                 </div>
             </form>
@@ -217,69 +219,6 @@
 
     </div>
 	</div>
-
-                        <!--                        <form class="form-inline" style="text-align: right" action="php/signIn.php" method="post">-->
-<!--                            <div class="form-group">-->
-<!---->
-<!--                                <label class="sr-only" for="user_name">Email id</label>-->
-<!--                                <div class="input-group">-->
-<!--                                    <div class="input-group-addon">Email id</div>-->
-<!--                                    <input type="text" size="20%"  class="form-control" id="user_name" name="user_name" placeholder="Email id">-->
-<!--                                </div>-->
-<!--                                <label class="sr-only" for="user_pass_once">Password</label>-->
-<!--                                <div class="input-group">-->
-<!--                                    <div class="input-group-addon">Password</div>-->
-<!--                                    <input type="password"  size="20%" class="form-control" id="user_pass_once" name="user_pass_once" placeholder="Password">-->
-<!--                                </div> <br><br>-->
-<!--                                <button type="submit" id="member-login" class="btn btn-info">Sign In</button>-->
-<!---->
-<!--                            </div>-->
-<!--                        </form>-->
-
-                                <!--<label class="sr-only" for="user-name">Available Courses</label>-->
-                                <!--<div class="input-group">-->
-                                    <!--<div class="input-group-addon">Course</div>-->
-                                    <!--<select id="student-avialabale-course" class="form-control">-->
-                                        <!--<option> Introduction to Git</option>-->
-                                        <!--<option> Basics of Programming </option>-->
-                                        <!--<option> Web development using Node JS </option>-->
-                                    <!--</select>-->
-                                <!--</div>-->
-                                <!--<button type="button" id="student-compare" class="btn btn-info">Compare</button>-->
-
-                                <!--<br><br>-->
-                                <!--<div class="table-responsive">-->
-
-                                    <!--<table class="table table-bordered">-->
-
-                                        <!--<thead>-->
-                                        <!--<tr>-->
-                                            <!--<td>Instructor</td>-->
-                                            <!--<td>Availability IST</td>-->
-                                            <!--<td>Price</td>-->
-                                            <!--<td>Rating</td>-->
-                                            <!--<td>Enroll</td>-->
-                                        <!--</tr>-->
-                                        <!--</thead>-->
-                                        <!--<tbody>-->
-                                        <!--<tr>-->
-                                            <!--<td> Max </td>-->
-                                            <!--<td> 07 - 09 </td>-->
-                                            <!--<td> 10 $ </td>-->
-                                            <!--<td> **** </td>-->
-                                            <!--<td><button type="button" id="student-enroll" class="btn btn-info">Enroll</button> </td>-->
-                                        <!--</tr>-->
-                                        <!--<tr>-->
-                                            <!--<td> Manu </td>-->
-                                            <!--<td> 07 - 09 </td>-->
-                                            <!--<td> 10 $ </td>-->
-                                            <!--<td> **** </td>-->
-                                            <!--<td><button type="button" id="student-enroll" class="btn btn-info">Enroll</button> </td>-->
-                                        <!--</tr>-->
-                                        <!--</tbody>-->
-                                    <!--</table>-->
-                                <!--</div>-->
-
 
 <?php include 'footer.html';?>
 </body>
