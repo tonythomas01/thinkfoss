@@ -1,7 +1,7 @@
 <?php
         session_start();
 	if( $_SESSION['loggedin_user'] ) {
-		header( 'Location: portal.php');
+		header( 'Location: portal/portal.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -117,20 +117,18 @@
     <div class="overlay">
         <div class="content">
             </div>
-
-
                         <?php
                         session_start();
                         if ( $_SESSION['message'] ) {
                             $message = $_SESSION['message'];
                             echo "<p class='alert-success'> $message</p>";
                             unset( $_SESSION['message'] );
-                        } else if ( $_SESSION['error'] ) {
+                        }
+                        if ( $_SESSION['error'] ) {
                             $errorMessage = $_SESSION['error'];
                             echo "<p class='alert-warning'> $errorMessage </p>";
                             unset( $_SESSION['error'] );
                         }
-
                         ?>
         <div class="col-xs-6" style="text-align: left;">
             <div class="section-title">

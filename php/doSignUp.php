@@ -35,14 +35,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$user_pass_again = mysqli_escape_string( $conn, $_POST['user_pass_again']);
 		if ( $user_pass_once === $user_pass_again ) {
 			$pass = substr( hash_hmac( 'sha512', $user_pass_once, $secret ), 0, 31 );
-			if ( addMember( $conn, $user_email, $pass, $_POST ) ) {
+			if ( addMember( $conn, $user_email, $pass ) ) {
 				$_SESSION['message'] = "The registration is successful. Please use the login feature to Sign-In";
-				header('Location: ' . '../portal/portal.php');
+				header('Location: ' . '../signup.php');
 			}
 		}
 	} else {
 		$_SESSION['error'] = "The user is already a member of this website. Please try logging in";
-		header( 'Location: '.'../portal/portal.php');
+		header( 'Location: '.'../signup.php');
 	}
 
 
@@ -66,7 +66,7 @@ function checkIfAlreadyMember( $conn, $user_email ) {
 	return false;
 }
 
-function addMember( $conn, $user_email, $pass, $postData ) {
+function addMember( $conn, $user_email, $pass ) {
 	$sql = "INSERT INTO `authorization`(`email_id`, `password_hash` ) VALUES ( '$user_email', '$pass' );";
 	if( $conn->query( $sql ) ) {
 		$user_name = mysqli_escape_string( $conn, $_POST['user_name'] );
@@ -80,8 +80,6 @@ function addMember( $conn, $user_email, $pass, $postData ) {
 		if ( $conn->query( $sqlInsertuserDetails ) ) {
 			return true;
 		}
-
-		$_SESSION['loggedin_user'] = $user_name;
 	} else {
 		return false;
 	}

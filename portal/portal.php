@@ -121,11 +121,12 @@
             session_start();
             if ( $_SESSION['message'] ) {
                 $message = $_SESSION['message'];
-                echo "<p class='alert-success'> $message</p>";
+                echo "<p class='alert-success' style='text-align: center'> $message</p>";
                 unset( $_SESSION['message'] );
-            } else if ( $_SESSION['error'] ) {
+            }
+            if ( $_SESSION['error'] ) {
                 $errorMessage = $_SESSION['error'];
-                echo "<p class='alert-warning'> $errorMessage </p>";
+                echo "<p class='alert-warning' style='text-align: center' > $errorMessage </p>";
                 unset( $_SESSION['error'] );
             }
 
