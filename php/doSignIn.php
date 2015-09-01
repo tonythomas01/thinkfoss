@@ -23,8 +23,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		die("Database selection error");
 	}
 
-	$useremail = mysqli_escape_string( $conn, $_POST['username']);
-	$password = mysqli_escape_string( $conn, $_POST['password']);
+	$preparedPost = prepare_statements( $_POST );
+
+	$useremail = mysqli_escape_string( $conn,  $preparedPost['username'] );
+	$password = mysqli_escape_string( $conn, $preparedPost['password'] );
 
 	if ( checkIsMember( $conn, $useremail, $password, $secret ) ) {
 		$userDetails = getUserDetails( $conn, $useremail );
@@ -73,4 +75,14 @@ function checkIfEmptyPost( $input ) {
 		}
 	}
 	return false;
+}
+
+function prepare_statements( $postInput ) {
+	foreach( $postInput as $key => $data ) {
+		$data = trim( $data );
+		$data = stripslashes( $data );
+		$data = htmlspecialchars( $data );
+		$postInput['key'] = $data;
+	}
+	return $postInput;
 }

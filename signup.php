@@ -173,16 +173,26 @@
             <form class='form-inline' action='php/doSignUp.php'  style="text-align: justify" method='post'>
                 <div class='form-group'>
 
-                    <label class='sr-only' for='user_name'>Your Name</label>
+                    <label class='sr-only' for='user_first_name'>Your first name</label>
                     <div class='input-group'>
                         <div class='input-group-addon'><i class='fa fa-user'></i></div>
-                        <input required type='text'class='form-control' id='user_name' name='user_name' placeholder='Your Name'>
+                        <input required type='text'class='form-control' id='user_first_name' name='user_first_name' placeholder='First Name'>
                     </div>
+                    <label class='sr-only' for='user_last_name'>Your last name</label>
+                    <div class='input-group'>
+                        <div class='input-group-addon'><i class='fa fa-user'></i></div>
+                        <input required type='text'class='form-control' id='user_last_name' name='user_last_name' placeholder='Last Name'>
+                    </div><br><br>
 
                     <label class='sr-only' for='user_email'>Your Email</label>
                     <div class='input-group'>
                         <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
                         <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your Email id'>
+                    </div>
+                    <label class='sr-only' for='user_dob'>BirthDay</label>
+                    <div class='input-group'>
+                        <div class='input-group-addon'><i class='fa fa-birthday-cake'></i></div>
+                        <input required type='date' class='form-control' id='user_dob'  name='user_dob' placeholder='Birthday'>
                     </div>
                     <br> <br>
                     <label class='sr-only' for='user_pass_once'>Password</label>
@@ -196,11 +206,7 @@
                         <input required type='password' class='form-control' id='user_pass_again' name='user_pass_again' placeholder='Password again'>
                     </div>
                     <br> <br>
-                    <label class='sr-only' for='user_dob'>BirthDay</label>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-birthday-cake'></i></div>
-                        <input required type='date' class='form-control' id='user_dob'  name='user_dob' placeholder='Birthday'>
-                    </div>
+
                     <div class='input-group'>
                     <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
                     <select name='user-gender' class="form-control">
@@ -209,8 +215,13 @@
                         <option>Other</option>
                     </select>
                     </div>
+                    <div class='input-group'>
+                        <input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions of ThinkFOSS</u>
+                    </div>
+
+                    <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div> <br>
                     <button type='submit' class='btn btn-primary'>Sign Up</button>
-                    <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+
                 </div>
             </form>
         </div>
