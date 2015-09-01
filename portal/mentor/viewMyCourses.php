@@ -58,15 +58,30 @@
     <!--[endif]-->
 </head>
 <body background="black">
+<?php
+    session_start();
+    include '../../php/connectToDb.php';
+    include '../../php/User.php';
+    $conn = new mysqli( $servername, $username, $password );
+
+    if ( $conn->connect_error ){
+        die( "Connection failed");
+    }
+
+    if ( !$conn->select_db( $dbname ) ) {
+        die( "Database selection error" );
+    }
+    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
 <!-- Navigation
 ==========================================-->
-<?php include 'navigationmentor.html' ?>
+<?php include 'navigationmentor.php' ?>
 
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal" >
 	        <?php
-	        session_start();
+
 	        if ( $_SESSION['message'] ) {
 		        $message = $_SESSION['message'];
 		        echo "<p class='alert-success'> $message</p>";
@@ -101,18 +116,6 @@
 
     <?php
         include '../../php/connectToDb.php';
-        $conn = new mysqli( $servername, $username, $password );
-
-        if ( $conn->connect_error ){
-            die( "Connection failed");
-        }
-        if ( !$conn->select_db( $dbname ) ) {
-	    die( "Database selection error" );
-        }
-
-        if( !isset( $_SESSION['loggedin_user_id'] ) ){
-	        header( 'Location: ../../signup.php');
-        }
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT `course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`, `course_date_from`,

@@ -58,7 +58,22 @@
     <!--[endif]-->
 </head>
 <body background="black">
-<?php include 'navigationmentor.html' ?>
+<?php
+    session_start();
+    include '../../php/connectToDb.php';
+    include '../../php/User.php';
+    $conn = new mysqli( $servername, $username, $password );
+
+    if ( $conn->connect_error ){
+        die( "Connection failed");
+    }
+
+    if ( !$conn->select_db( $dbname ) ) {
+        die( "Database selection error" );
+    }
+    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
+<?php include 'navigationmentor.php' ?>
 
 <div id="tf-portal" class="text-center">
     <div class="overlay">

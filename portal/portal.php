@@ -3,6 +3,7 @@
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: ../signup.php');
 	}
+error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +58,22 @@
     <!--[endif]-->
 </head>
 <body background="black">
+<?php
+    session_start();
+    include '../php/connectToDb.php';
+    include '../php/User.php';
+    $conn = new mysqli( $servername, $username, $password );
+
+    if ( $conn->connect_error ){
+        die( "Connection failed");
+    }
+
+    if ( !$conn->select_db( $dbname ) ) {
+        die( "Database selection error" );
+    }
+    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
+
 <!-- Navigation
 ==========================================-->
 <nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">
@@ -91,10 +108,9 @@
                 </li>
             </ul>
 
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> ( <?php echo $user->getEnrolledCourses( $conn ); ?> ) <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cart/viewCart.php">View Cart</a></li>
                         <li role="separator" class="divider"></li>

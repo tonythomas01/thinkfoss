@@ -58,9 +58,24 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 	<!--[endif]-->
 </head>
 <body background="black">
+<?php
+	session_start();
+	include '../../php/connectToDb.php';
+	include '../../php/User.php';
+	$conn = new mysqli( $servername, $username, $password );
+
+	if ( $conn->connect_error ){
+		die( "Connection failed");
+	}
+
+	if ( !$conn->select_db( $dbname ) ) {
+		die( "Database selection error" );
+	}
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
 <!-- Navigation
 ==========================================-->
-<?php include 'navigationcart.html' ?>
+<?php include 'navigationcart.php' ?>
 
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
@@ -98,24 +113,11 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 
 				<?php
-				include '../../php/connectToDb.php';
-				$conn = new mysqli( $servername, $username, $password );
-
-				if ( $conn->connect_error ){
-					die( "Connection failed");
-				}
-				if ( !$conn->select_db( $dbname ) ) {
-					die( "Database selection error" );
-				}
-
-				if( !isset( $_SESSION['loggedin_user_id'] ) ){
-					header( 'Location: ../../signup.php');
-				}
 				$loggedInUser = $_SESSION['loggedin_user_id'];
 
 				$sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`,
 					course_details.`course_bio`, course_details.`course_lang`, course_details.`course_difficulty`,
-					course_details.`course_fees`, user_details.`user_name` FROM `course_details`
+					course_details.`course_fees`, user_details.`user_first_name`, user_details.`user_last_name` FROM `course_details`
 					 INNER JOIN `course_mentor_map` ON course_details.course_id = course_mentor_map.course_id
 					 INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id
 					 AND course_details.`course_id` IN ( SELECT `course_id` FROM `course_enrollment`
@@ -130,7 +132,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 					        <td> '. $row['course_lang']. '</td>
 					        <td> '. $row['course_difficulty']. '</td>
 					        <td> '. $row['course_fees']. '</td>
-					        <td> '. $row['user_name']. '</td>
+					        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
 					        <td> <input type="checkbox" name="checkout-item[]" value="course-'.$row['course_id'].'" /> </td>
 		                                ';
 					}
@@ -146,10 +148,6 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 					<p class='alert-info' style="text-align: center">Looks like your cart is empty!</p>
 					<?php
 				} ?>
-
-
-
-
 		</div>
 	</div>
 </div>

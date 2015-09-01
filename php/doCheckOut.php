@@ -27,7 +27,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$preparedPost->sanitize();
 
 	include 'Course.php';
-	$courseList =  $preparedPost->getValue( 'checkout-item' );
+	$courseList =  $_POST[ 'checkout-item' ];
 	if ( is_array( $courseList ) ) {
 		foreach( $courseList as $course ) {
 			$courseRaw = mysqli_real_escape_string( $conn, $course );

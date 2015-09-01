@@ -19,15 +19,15 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mentor <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="viewMyCourses.php">My courses</a></li>
-                        <li><a href="addCourse.php">Add new course</a></li>
+                        <li><a href="../mentor/viewMyCourses.php">My courses</a></li>
+                        <li><a href="../mentor/addCourse.php">Add new course</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="../student/viewEnrolledCourses.php">Enrolled courses</a></li>
-                        <li><a href="../student/viewAllCourses.php">Available courses</a></li>
+                        <li><a href="viewEnrolledCourses.php">Enrolled Courses</a></li>
+                        <li><a href="viewAllCourses.php">Available courses</a></li>
                     </ul>
                 </li>
             </ul>
@@ -35,11 +35,11 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> ( <?php echo $user->getEnrolledCourses( $conn ); ?> ) <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="../cart/viewCart.php">View Cart</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="../../php/doSignOut.php">Empty Cart</a></li>
+                        <li><a href="#">Empty Cart</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

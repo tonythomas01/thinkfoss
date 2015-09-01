@@ -55,19 +55,36 @@
     <script src="../../js/jquery.1.11.1.js"></script>
 
     <!-- Latest compiled JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
 
     <!--[endif]-->
 </head>
 <body background="black">
+<?php
+        session_start();
+        include '../../php/connectToDb.php';
+        include '../../php/User.php';
+        $conn = new mysqli( $servername, $username, $password );
+
+        if ( $conn->connect_error ){
+            die( "Connection failed");
+        }
+
+        if ( !$conn->select_db( $dbname ) ) {
+            die( "Database selection error" );
+        }
+        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
 <!-- Navigation
 ==========================================-->
-<?php include 'navigationstudent.html' ?>
+<?php include 'navigationstudent.php' ?>
 
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal" >
 	        <?php
-	        session_start();
 	        if ( $_SESSION['message'] ) {
 		        $message = $_SESSION['message'];
 		        echo "<p class='alert-success' style='text-align: center'> $message</p>";
@@ -103,23 +120,12 @@
 
 
     <?php
-        include '../../php/connectToDb.php';
-        $conn = new mysqli( $servername, $username, $password );
-
-        if ( $conn->connect_error ){
-            die( "Connection failed");
-        }
-        if ( !$conn->select_db( $dbname ) ) {
-	    die( "Database selection error" );
-        }
-
-        if( !isset( $_SESSION['loggedin_user_id'] ) ){
-	        header( 'Location: ../../signup.php');
-        }
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
-        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`, course_details.`course_lang`, course_details.`course_difficulty`,
-          course_details.`course_date_from`,course_details.`course_time_from`,course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`, user_details.`user_name` FROM `course_details`
+        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
+          course_details.`course_lang`, course_details.`course_difficulty`, course_details.`course_date_from`,
+          course_details.`course_time_from`,course_details.`course_date_to`,course_details.`course_time_to`,
+          course_details.`course_fees`, user_details.`user_first_name`, user_details.`user_last_name` FROM `course_details`
           INNER JOIN `course_mentor_map`  ON course_details.course_id = course_mentor_map.course_id
           INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id
           AND course_details.`course_id` IN ( SELECT `course_id` FROM `course_enrollment`
@@ -137,7 +143,7 @@
 		        <td> '. $row['course_date_to']. '</td>
 		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
-		        <td> '. $row['user_name']. '</td>
+		        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
 		        <td> <form action="writeReview.php" method="post"><button type="submit" name="course-review" value="course-'.$row['course_id'].'" id="review" class="btn btn-success review"><i class="fa fa-pencil-square" > Write</i></button></form></td>
 		        ';
 	        }

@@ -58,15 +58,29 @@
     <!--[endif]-->
 </head>
 <body background="black">
+<?php
+    session_start();
+    include '../../php/connectToDb.php';
+    include '../../php/User.php';
+    $conn = new mysqli( $servername, $username, $password );
+
+    if ( $conn->connect_error ){
+        die( "Connection failed");
+    }
+
+    if ( !$conn->select_db( $dbname ) ) {
+        die( "Database selection error" );
+    }
+    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
 <!-- Navigation
 ==========================================-->
-<?php include 'navigationstudent.html' ?>
+<?php include 'navigationstudent.php' ?>
 
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal" >
 	        <?php
-	        session_start();
 	        if ( $_SESSION['message'] ) {
 		        $message = $_SESSION['message'];
 		        echo "<p class='alert-success' style='text-align: center'> $message</p>";
@@ -101,29 +115,21 @@
 
 
     <?php
-        include '../../php/connectToDb.php';
-        $conn = new mysqli( $servername, $username, $password );
-
-        if ( $conn->connect_error ){
-            die( "Connection failed");
-        }
-        if ( !$conn->select_db( $dbname ) ) {
-	    die( "Database selection error" );
-        }
-
-        if( !isset( $_SESSION['loggedin_user_id'] ) ){
-	        header( 'Location: ../../signup.php');
-        }
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
-        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`, course_details.`course_lang`, course_details.`course_difficulty`,
-          course_details.`course_date_from`,course_details.`course_time_from`,course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`, user_details.`user_name` FROM `course_details`
+        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
+          course_details.`course_lang`, course_details.`course_difficulty`,course_details.`course_date_from`,course_details.`course_time_from`,
+          course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`, user_details.`user_first_name`,
+          user_details.`user_last_name` FROM `course_details`
           INNER JOIN `course_mentor_map`  ON course_details.course_id = course_mentor_map.course_id
           INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id ";
+
         $result = $conn->query( $sqlSelect );
+        include '../../php/Course.php';
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
-		        echo '<tr> <td>'. $row['course_name']. '</td>
+		        echo '
+                        <tr> <td>'. $row['course_name']. '</td>
 		        <td> '. $row['course_bio']. '</td>
 		        <td> '. $row['course_lang']. '</td>
 		        <td> '. $row['course_difficulty']. '</td>
@@ -132,17 +138,21 @@
 		        <td> '. $row['course_date_to']. '</td>
 		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
-		        <td> '. $row['user_name']. '</td>
-		        <td> <form action="../../php/doEnrollCourse.php" method="post"><button type="submit" class="btn btn-success" name="course" value="course-'.$row['course_id'].'" > Add <i class="fa fa-shopping-cart"></i> </button></form></td>
-		        ';
-	        }
+		        <td> '. $row['user_first_name']. $row['user_last_name']. '</td> ';
+                            $course = Course::newFromId( $conn, $row['course_id'] );
+                            if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
+                                echo ' <td><button type="button" disabled class="btn btn-warning" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Enrolled </button></td>';
+                            } else if ( $course->needsCheckout( $loggedInUser, $conn ) ) {
+                                echo ' <td><a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Pay </button></a></td>';
+                            } else {
+                                echo ' <td> <form action="../../php/doEnrollCourse.php" method="post"><button type="submit" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-shopping-cart"></i> Add</button></form></td>';
+                            }
+                }
         }
 
     ?>
-	                </tbody>
+                </tbody>
                 </table>
-
-
         </div>
         </div>
 </div>

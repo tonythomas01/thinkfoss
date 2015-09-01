@@ -96,7 +96,22 @@
     <!--[endif]-->
 </head>
 <body background="black">
-<?php include 'navigationstudent.html' ?>
+<?php
+	session_start();
+	include '../../php/connectToDb.php';
+	include '../../php/User.php';
+	$conn = new mysqli( $servername, $username, $password );
+
+	if ( $conn->connect_error ){
+		die( "Connection failed");
+	}
+
+	if ( !$conn->select_db( $dbname ) ) {
+		die( "Database selection error" );
+	}
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+?>
+<?php include 'navigationstudent.php' ?>
 
 <div id="tf-portal" class="text-center">
     <div class="overlay">
@@ -160,7 +175,7 @@
 	                    </div>
 
 	                    <div class='input-group'>
-		                    <div class='input-group-addon' >I want to Join ThinkFOSS  <i class='fa fa-star'></i></div>
+		                    <div class='input-group-addon' >Join ThinkFOSS? <i class='fa fa-star'></i></div>
 		                    <select class="form-control" name="join_thinkfoss">
 			                    <option>Yes</option>
 			                    <option>No</option>

@@ -148,5 +148,23 @@ class Course {
 		return false;
 	}
 
+	public function isEnrolled( $userId, $conn ) {
+		$sql = "SELECT * FROM `course_enrollment` WHERE `user_id` = '$userId' AND `course_id` = '$this->course_id'
+			AND `course_enrolled` = 1;";
+		if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
+			return true;
+		}
+		return false;
+	}
+
+	public function needsCheckout( $userId, $conn ) {
+		$sql = "SELECT * FROM `course_enrollment` WHERE `user_id` = '$userId' AND `course_id` = '$this->course_id'
+			AND `course_enrolled` = false;";
+		if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
+			return true;
+		}
+		return false;
+	}
+
 }
 
