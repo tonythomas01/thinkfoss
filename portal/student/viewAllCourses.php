@@ -59,19 +59,19 @@
 </head>
 <body background="black">
 <?php
-    session_start();
-    include '../../php/connectToDb.php';
-    include '../../php/User.php';
-    $conn = new mysqli( $servername, $username, $password );
+        session_start();
+        include '../../php/connectToDb.php';
+        include '../../php/User.php';
+        $conn = new mysqli( $servername, $username, $password );
 
-    if ( $conn->connect_error ){
-        die( "Connection failed");
-    }
+        if ( $conn->connect_error ){
+            die( "Connection failed");
+        }
 
-    if ( !$conn->select_db( $dbname ) ) {
-        die( "Database selection error" );
-    }
-    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+        if ( !$conn->select_db( $dbname ) ) {
+            die( "Database selection error" );
+        }
+        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation
 ==========================================-->

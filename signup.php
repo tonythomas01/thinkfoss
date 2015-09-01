@@ -220,7 +220,7 @@
                     </div>
 
                     <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div> <br>
-                    <button type='submit' class='btn btn-primary'>Sign Up</button>
+                    <button style='submit' class='btn btn-primary btn-block'>Sign Up</button>
 
                 </div>
             </form>

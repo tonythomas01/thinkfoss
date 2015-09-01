@@ -10,7 +10,7 @@ session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include 'Statement.php';
 	$postInput = new Statement( $_POST );
-	if ( $postInput->checkIfEmptyPost($_POST) ) {
+	if ( $postInput->checkIfEmptyPost() ) {
 		header('Location: ' . '../index.php');
 		return;
 	}

@@ -8,7 +8,7 @@ class Statement{
 	public function sanitize() {
 		foreach( $this->input as $key => $data ) {
 			$this->input[$key]= htmlspecialchars(
-				stripslashes( trim( $data ) )
+				stripslashes( trim( $data ) ), ENT_QUOTES
 			);
 		}
 	}
@@ -23,6 +23,18 @@ class Statement{
 			if ( $value === '' ) {
 				return true;
 			}
+		}
+		return false;
+	}
+	function isValidName( $value ) {
+		if( preg_match("/^[a-zA-Z ]*$/", $value ) ) {
+			return true;
+		}
+		return false;
+	}
+	function isValidEmail( $value ) {
+		if( filter_var( $value, FILTER_VALIDATE_EMAIL) ) {
+			return true;
 		}
 		return false;
 	}

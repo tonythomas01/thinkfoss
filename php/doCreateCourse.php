@@ -5,7 +5,7 @@ session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include 'Statement.php';
 	$preparedPost = new Statement( $_POST );
-	if ( $preparedPost->getValue($_POST) ) {
+	if ( $preparedPost->getValue() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../portal.php');
 		return;

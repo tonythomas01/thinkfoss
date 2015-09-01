@@ -7,6 +7,11 @@ class User {
 	protected $user_email;
 	protected $user_dob;
 	protected $user_gender;
+	protected $user_github;
+	protected $user_linkedin;
+	protected $user_about;
+	protected $user_occupation;
+	protected $user_nation;
 
 	static function newFromUserId( $userId, $conn ) {
 		$selectUser = "SELECT `user_first_name`,`user_last_name`, `user_email`, `user_dob`, `user_gender` FROM `user_details`
@@ -23,8 +28,26 @@ class User {
 			$user->user_id = $userId;
 			return $user;
 		}
-
 		return false;
+	}
+	public function getExtra( $conn ) {
+		$sqlStatement = "SELECT `user_id`, `user_github`, `user_linkedin`, `user_about`, `user_occupation`, `user_nation`
+ 		FROM `user_extra` WHERE `user_id` = '$this->user_id';";
+		$res = $conn->query( $sqlStatement );
+		if( $res->num_rows > 0 ) {
+			$userExtra = $res->fetch_assoc();
+			$this->user_github = $userExtra['user_github'];
+			$this->user_linkedin= $userExtra['user_linkedin'];
+			$this->user_about = $userExtra['user_about'];
+			$this->user_occupation = $userExtra['user_occupation'];
+			$this->user_nation = $userExtra['user_nation'];
+		} else {
+			return false;
+		}
+	}
+
+	public function getValue( $key ) {
+		return $this->$key;
 	}
 
 	public function getEnrolledCourses( mysqli $conn ) {

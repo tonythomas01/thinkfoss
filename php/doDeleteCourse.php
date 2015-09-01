@@ -5,7 +5,7 @@ session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include 'Statement.php';
 	$postInputs = new Statement( $_POST );
-	if ( $postInputs->checkIfEmptyPost($_POST) ) {
+	if ( $postInputs->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../portal.php');
 		return;

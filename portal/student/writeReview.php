@@ -6,11 +6,16 @@
 
 
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-		if ( checkIfEmptyPost( $_POST ) ) {
+		include_once('../../php/Statement.php');
+		$preparedSatement = new Statement( $_POST );
+
+		if ( $preparedSatement->checkIfEmptyPost()) {
 			$_SESSION['error'] = "Please make sure you add in all required details";
 			header('Location: ' . '../portal.php');
 			return;
 		}
+		$preparedSatement->sanitize();
+
 		include_once("../../php/connectToDb.php");
 		$conn = new mysqli($servername, $username, $password);
 
@@ -29,17 +34,16 @@
 
 		if ( !$courseId ) {
 			header( 'Location: viewEnrolledCourses.php');
+			return false;
 		}
-	}
 
-        function checkIfEmptyPost( $input ) {
-                foreach( $input as $key => $value ) {
-	                if ( $value === '' ) {
-		                return true;
-	                }
-                }
-                return false;
-        }
+		include '../../php/User.php';
+		$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+
+	} else {
+		header( 'Location: viewEnrolledCourses.php');
+		return false;
+	}
 
 ?>
 <!DOCTYPE html>
@@ -96,23 +100,7 @@
     <!--[endif]-->
 </head>
 <body background="black">
-<?php
-	session_start();
-	include '../../php/connectToDb.php';
-	include '../../php/User.php';
-	$conn = new mysqli( $servername, $username, $password );
-
-	if ( $conn->connect_error ){
-		die( "Connection failed");
-	}
-
-	if ( !$conn->select_db( $dbname ) ) {
-		die( "Database selection error" );
-	}
-	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-?>
 <?php include 'navigationstudent.php' ?>
-
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal">
@@ -205,6 +193,6 @@
 
         </div>
 </div>
-<?php include '../footer.html' ?>
+<?php include '../../footer.html' ?>
 </body>
 </html>
