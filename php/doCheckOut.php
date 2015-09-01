@@ -3,7 +3,9 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if (checkIfEmptyPost($_POST)) {
+	include 'Statement.php';
+	$preparedPost = new Statement( $_POST );
+	if ( $preparedPost->checkIfEmptyPost($_POST) ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../portal/cart/viewCart.php');
 		return;
@@ -11,18 +13,21 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include_once("connectToDb.php");
 	$conn = new mysqli( $servername, $username, $password );
 
-	if ($conn->connect_error) {
-		die("Connection failed");
+	if ( $conn->connect_error ) {
+		$_SESSION['error'] = "Sorry. We had an error processing your request. Please contact one of the admins";
+		header('Location: ' . '../portal/cart/viewCart.php');
 	}
 
-	if (!$conn->select_db($dbname)) {
-		die("Database selection error");
+	if ( !$conn->select_db($dbname) ) {
+		$_SESSION['error'] = "Sorry. We had an error processing your request. Please contact one of the admins";
+		header('Location: ' . '../portal/cart/viewCart.php');
 	}
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
+	$preparedPost->sanitize();
 
 	include 'Course.php';
-	$courseList =  $_POST['checkout-item'];
+	$courseList =  $preparedPost->getValue( 'checkout-item' );
 	if ( is_array( $courseList ) ) {
 		foreach( $courseList as $course ) {
 			$courseRaw = mysqli_real_escape_string( $conn, $course );
@@ -40,13 +45,4 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../portal/cart/viewCart.php');
 	}
 
-}
-
-function checkIfEmptyPost( $input ) {
-	foreach( $input as $key => $value ) {
-		if ( $value === '' ) {
-			return true;
-		}
-	}
-	return false;
 }

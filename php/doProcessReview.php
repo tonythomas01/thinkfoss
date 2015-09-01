@@ -3,7 +3,9 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if (checkIfEmptyPost($_POST)) {
+	include 'Statement.php';
+	$preparedPost = new Statement( $_POST );
+	if ( $preparedPost->checkIfEmptyPost ($_POST ) ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../portal/portal.php');
 		return;
@@ -20,17 +22,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
+	$preparedPost->sanitize();
 
-	$preparedPost = prepare_statements( $_POST );
-
-	$cf_course_id = mysqli_escape_string( $conn, $preparedPost['course_id'] );
-	$cf_mentor_score = mysqli_escape_string( $conn, $preparedPost['mentor_score'] );
-	$cf_portal_score = mysqli_escape_string( $conn, $preparedPost['portal_score'] );
-	$cf_payment_score = mysqli_escape_string( $conn, $preparedPost['payment_score'] );
-	$cf_general_review = mysqli_escape_string( $conn, $preparedPost['general_review'] );
-	$cf_improve_review = mysqli_escape_string( $conn, $preparedPost['improve_review'] );
-	$cf_recommend = mysqli_escape_string( $conn, $preparedPost['recommend'] );
-	$cf_join_thinkfoss = mysqli_escape_string( $conn, $preparedPost['join_thinkfoss'] );
+	$cf_course_id = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_id' ) );
+	$cf_mentor_score = mysqli_escape_string( $conn, $preparedPost->getValue( 'mentor_score' ) );
+	$cf_portal_score = mysqli_escape_string( $conn, $preparedPost->getValue( 'portal_score' ) );
+	$cf_payment_score = mysqli_escape_string( $conn, $preparedPost->getValue( 'payment_score' ) );
+	$cf_general_review = mysqli_escape_string( $conn, $preparedPost->getValue( 'general_review' ) );
+	$cf_improve_review = mysqli_escape_string( $conn, $preparedPost->getValue( 'improve_review' ) );
+	$cf_recommend = mysqli_escape_string( $conn, $preparedPost->getValue( 'recommend' ) );
+	$cf_join_thinkfoss = mysqli_escape_string( $conn, $preparedPost->getValue( 'join_thinkfoss' ) );
 
 	$sqlInsert = "INSERT INTO `course_feedback`(`cf_user_id`, `cf_course_id`, `cf_mentor_score`, `cf_portal_score`,
 		 `cf_payment_score`, `cf_general_review`, `cf_improve_review`, `cf_recommend`, `cf_join_thinkfoss`) VALUES
@@ -46,23 +47,4 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 
 
-}
-
-function checkIfEmptyPost( $input ) {
-	foreach( $input as $key => $value ) {
-		if ( $value === '' ) {
-			return true;
-		}
-	}
-	return false;
-}
-
-function prepare_statements( $postInput ) {
-	foreach( $postInput as $key => $data ) {
-		$data = trim( $data );
-		$data = stripslashes( $data );
-		$data = htmlspecialchars( $data );
-		$postInput['key'] = $data;
-	}
-	return $postInput;
 }

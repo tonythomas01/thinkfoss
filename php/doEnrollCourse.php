@@ -3,7 +3,9 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if (checkIfEmptyPost($_POST)) {
+	include 'Statement.php';
+	$preparedStatement = new Statement( $_POST );
+	if ( $preparedStatement->checkIfEmptyPost( $_POST ) ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../portal.php');
 		return;
@@ -20,9 +22,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
-
 	include 'Course.php';
-	$courseName = mysqli_real_escape_string( $conn, $_POST['course'] );
+
+	$preparedStatement->sanitize();
+	$courseName = mysqli_real_escape_string( $conn, $preparedStatement->getValue('course' ) );
 	$courseRaw = explode( '-', $courseName );
 	$course = Course::newFromId( $conn, $courseRaw[1] );
 	if ( $course ) {
@@ -39,13 +42,4 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../portal/student/viewAllCourses.php');
 	}
 
-}
-
-function checkIfEmptyPost( $input ) {
-	foreach( $input as $key => $value ) {
-		if ( $value === '' ) {
-			return true;
-		}
-	}
-	return false;
 }

@@ -8,7 +8,9 @@
 error_reporting(E_ALL);
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if ( checkIfEmptyPost($_POST) ) {
+	include 'Statement.php';
+	$postInput = new Statement( $_POST );
+	if ( $postInput->checkIfEmptyPost($_POST) ) {
 		header('Location: ' . '../index.php');
 		return;
 	}
@@ -22,11 +24,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if (!$conn->select_db($dbname)) {
 		die("Database selection error");
 	}
+	$postInput->sanitize();
 
-	$preparedPost = prepare_statements( $_POST );
-
-	$useremail = mysqli_escape_string( $conn,  $preparedPost['username'] );
-	$password = mysqli_escape_string( $conn, $preparedPost['password'] );
+	$useremail = mysqli_escape_string( $conn,  $postInput->getValue( 'username' ) );
+	$password = mysqli_escape_string( $conn, $postInput->getValue( 'password' ) );
 
 	if ( checkIsMember( $conn, $useremail, $password, $secret ) ) {
 		$userDetails = getUserDetails( $conn, $useremail );
@@ -52,13 +53,12 @@ function checkIsMember( $conn, $useremail, $password, $secret ) {
 }
 
 function getUserDetails( $conn, $emailId ) {
-	$user = array();
-	$selectUser = "SELECT `user_id`, `user_name`, `user_email` FROM `user_details` WHERE `user_email` = '$emailId';";
+	$selectUser = "SELECT `user_id`, `user_first_name`,`user_last_name`, `user_email` FROM `user_details` WHERE `user_email` = '$emailId';";
 	$res = $conn->query( $selectUser );
 	if( $res->num_rows > 0 ) {
 		$user = array();
 		while ( $loggedinData = $res->fetch_assoc() ) {
-			$user['name'] = $loggedinData['user_name'];
+			$user['name'] = $loggedinData['user_first_name']. ''. $loggedinData['user_last_name'];
 			$user['email'] = $loggedinData['user_email'];
 			$user['user_id'] = $loggedinData['user_id'];
 		}
@@ -67,22 +67,4 @@ function getUserDetails( $conn, $emailId ) {
 	}
 	return false;
 
-}
-function checkIfEmptyPost( $input ) {
-	foreach( $input as $key => $value ) {
-		if ( $value === '' ) {
-			return true;
-		}
-	}
-	return false;
-}
-
-function prepare_statements( $postInput ) {
-	foreach( $postInput as $key => $data ) {
-		$data = trim( $data );
-		$data = stripslashes( $data );
-		$data = htmlspecialchars( $data );
-		$postInput['key'] = $data;
-	}
-	return $postInput;
 }

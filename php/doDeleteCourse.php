@@ -3,7 +3,9 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if (checkIfEmptyPost($_POST)) {
+	include 'Statement.php';
+	$postInputs = new Statement( $_POST );
+	if ( $postInputs->checkIfEmptyPost($_POST) ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../portal.php');
 		return;
@@ -18,11 +20,12 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if (!$conn->select_db($dbname)) {
 		die("Database selection error");
 	}
-
+	$postInputs->sanitize();
 	$loggedInUser = $_SESSION['loggedin_user_id'];
+
 	include 'Course.php';
-	$courseName = mysqli_real_escape_string( $conn, $_POST['course'] );
-	$course = explode('-', $courseName );
+	$courseName = mysqli_real_escape_string( $conn, $postInputs->getValue( 'course' ) );
+	$course = explode( '-', $courseName );
 	$delCourse = Course::newFromId( $conn, $course[1] );
 	if ( $delCourse->isOwner( $loggedInUser ) ) {
 		if ( $delCourse->deleteFromDb( $conn ) ) {
@@ -32,15 +35,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		}
 	}
 	header('Location: ' . '../portal/mentor/viewMyCourses.php');
-	$_SESSION['error'] = "We couldnt delete that course. Please contact one of the admins";
+	$_SESSION['error'] = "We couldn't delete that course. Please contact one of the admins";
 
-}
-
-function checkIfEmptyPost( $input ) {
-	foreach( $input as $key => $value ) {
-		if ( $value === '' ) {
-			return true;
-		}
-	}
-	return false;
 }

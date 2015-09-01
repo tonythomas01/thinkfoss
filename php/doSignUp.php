@@ -9,11 +9,15 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if ( checkIfEmptyPost( $_POST ) ) {
+	include "Statement.php";
+	$postInput = new Statement( $_POST );
+	if ( $postInput->checkIfEmptyPost( $_POST ) ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header( 'Location: '.'../portal.php' );
 		return;
 	}
+	$postInput->sanitize();
+
 	include_once( "connectToDb.php" );
 	$conn = new mysqli( $servername, $username, $password );
 
@@ -24,31 +28,31 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if ( !$conn->select_db( $dbname ) ) {
 		die( "Database selection error" );
 	}
-	$postInput = prepare_statements( $_POST );
 
-
-	$user_name = mysqli_escape_string( $conn, $postInput['user_name'] );
-	if ( preg_match( "/^[a-zA-Z\s-]+$/i", $postInput['user_first_name'] ) == 0 ) {
+	$user_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_name') );
+	if ( preg_match( "/^[a-zA-Z\s-]+$/i", $postInput->getValue( 'user_first_name' ) == 0  ) ) {
 		$_SESSION['error'] = "Error: The registration was not a success! Please enter first name";
 		header( 'Location: '.'../signup.php');
 		return false;
 	}
-	if( preg_match( "/^[a-zA-Z\s-]+$/i", $postInput['user_last_name'] ) == 0) {
+	if( preg_match( "/^[a-zA-Z\s-]+$/i", $postInput->getValue( 'user_last_name' ) == 0 ) ) {
 		$_SESSION['error'] = "Error: The registration was not a success! Please enter valid last name";
 		header( 'Location: '.'../signup.php');
 		return false;
 	}
-	$user_email = mysqli_escape_string( $conn, $postInput['user_email'] );
+	$user_email = mysqli_escape_string( $conn, $postInput->getValue( 'user_email' ) );
 	if ( !filter_var( $user_email, FILTER_VALIDATE_EMAIL ) ) {
 		$_SESSION['error'] = "Error: The registration was not a success! Please enter valid email id";
+		echo $postInput->getValue('user_dob');
 		header( 'Location: '.'../signup.php');
 		return false;
 	}
-	$user_pass_once = mysqli_escape_string( $conn, $postInput['user_pass_once'] );
+
+	$user_pass_once = mysqli_escape_string( $conn, $postInput->getValue( 'user_pass_once' ) );
 
 	if ( !checkIfAlreadyMember( $conn, $user_email ) ) {
 		//User do not exist. Create a password, store it and send it as an email
-		$user_pass_again = mysqli_escape_string( $conn, $postInput['user_pass_again'] );
+		$user_pass_again = mysqli_escape_string( $conn, $postInput->getValue( 'user_pass_again' ) );
 		if ( $user_pass_once === $user_pass_again ) {
 			$pass = substr( hash_hmac( 'sha512', $user_pass_once, $secret ), 0, 31 );
 			if ( addMember( $conn, $user_email, $pass, $postInput ) ) {
@@ -64,16 +68,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 }
 
-function checkIfEmptyPost( $input ) {
-	foreach( $input as $key => $value ) {
-		if ( $value === '' ) {
-			return true;
-		}
-	}
-	return false;
-}
-
-
 function checkIfAlreadyMember( $conn, $user_email ) {
 	$sql = "SELECT * FROM `authorization` WHERE `email_id` = '$user_email';";
 	if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
@@ -82,13 +76,13 @@ function checkIfAlreadyMember( $conn, $user_email ) {
 	return false;
 }
 
-function addMember( $conn, $user_email, $pass, $postInput ) {
+function addMember( $conn, $user_email, $pass, Statement $postInput ) {
 	$sql = "INSERT INTO `authorization`(`email_id`, `password_hash` ) VALUES ( '$user_email', '$pass' );";
 	if( $conn->query( $sql ) ) {
-		$user_first_name = mysqli_escape_string( $conn, $postInput['user_first_name'] );
-		$user_last_name = mysqli_escape_string( $conn, $postInput['user_last_name'] );
-		$user_dob = mysqli_escape_string( $conn,  $postInput['user_dob'] );
-		$user_gender= mysqli_escape_string( $conn, $postInput['user-gender'] );
+		$user_first_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_first_name' ) );
+		$user_last_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_last_name') );
+		$user_dob = mysqli_escape_string( $conn,  $postInput->getValue( 'user_dob' ) );
+		$user_gender= mysqli_escape_string( $conn, $postInput->getValue( 'user-gender' ) );
 
 		//User successfully inserted now enter data to user db
 		$sqlInsertuserDetails = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
@@ -105,14 +99,4 @@ function addMember( $conn, $user_email, $pass, $postInput ) {
 
 function sendEmail( $userEmail ) {
 	return true;
-}
-
-function prepare_statements( $postInput ) {
-	foreach( $postInput as $key => $data ) {
-		$data = trim( $data );
-		$data = stripslashes( $data );
-		$data = htmlspecialchars( $data );
-		$postInput['key'] = $data;
-	}
-	return $postInput;
 }
