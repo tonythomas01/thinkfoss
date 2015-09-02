@@ -13,7 +13,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$postInput = new Statement( $_POST );
 	if ( $postInput->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all require_onced details";
-		header( 'Location: '.'../portal.php' );
+		header( 'Location: '.'../portal/portal.php' );
 		return;
 	}
 	$postInput->sanitize();

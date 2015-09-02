@@ -7,7 +7,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$postInputs = new Statement( $_POST );
 	if ( $postInputs->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
-		header('Location: ' . '../portal.php');
+		header('Location: ' . '../portal/portal.php');
 		return;
 	}
 	require_once( 'Token.php' );

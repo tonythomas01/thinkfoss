@@ -5,7 +5,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$preparedStatement = new Statement( $_POST );
 	if ( $preparedStatement->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all require_onced details";
-		header('Location: ' . '../portal.php');
+		header('Location: ' . '../portal/portal.php');
 		return;
 	}
 	require_once( "Token.php" );
