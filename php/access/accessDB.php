@@ -14,11 +14,11 @@ $dbname = "thinkfoss";
 $conn = new mysqli( $servername, $username, $password );
 
 if ( $conn->connect_error ) {
-	$_SESSION['error'] = "Sorry. We had an error processing your request. Please contact one of the admins";
-	header('Location: ' . '../../portal/cart/viewCart.php');
+	$_SESSION['error'] = "Sorry. We had some issues with your request. Please contact one of the admins";
+	header('Location: ' . '../../portal/portal.php');
 }
 
 if ( !$conn->select_db($dbname) ) {
-	$_SESSION['error'] = "Sorry. We had an error processing your request. Please contact one of the admins";
-	header('Location: ' . '../../portal/cart/viewCart.php');
+	$_SESSION['error'] = "Sorry. We had some issues with your request. Please contact one of the admins";
+	header('Location: ' . '../../portal/portal.php');
 }
