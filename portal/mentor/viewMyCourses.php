@@ -63,8 +63,8 @@
     require_once( '../../php/access/accessDB.php' );
     require_once( '../../php/User.php');
     $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-    require_once( '../../php/Token.php' );
-    require_once( '../../php/access/accessTokens.php' );
+    include( '../../php/Token.php' );
+    include( '../../php/access/accessTokens.php' );
 ?>
 <!-- Navigation
 ==========================================-->

@@ -9,7 +9,7 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	require_once_once(  "Statement.php" );
+	require_once(  "Statement.php" );
 	$postInput = new Statement( $_POST );
 	if( $postInput->checkIfEmptyPost() ) {
 		header('Location: ' . '../index.php');
