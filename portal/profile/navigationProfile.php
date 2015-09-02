@@ -40,7 +40,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../portal.php"><i class="fa fa-laptop"></i> Portal</a> </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> ( <?php echo $user->getEnrolledCourses( $conn ); ?> ) <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: blue"><i class="fa fa-shopping-cart"></i> ( <?php echo $user->getEnrolledCourses( $conn ); ?> ) <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="../cart/viewCart.php">View Cart</a></li>
                         <li role="separator" class="divider"></li>
