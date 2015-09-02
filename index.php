@@ -515,7 +515,7 @@
         </div>
     </div>
 
-    <div id="tf-mentor">
+    <div id="tf-mentor" style="background-color:silver">
         <div class="container">
             <div class="row">
 
@@ -525,15 +525,16 @@
                         <hr>
                         <div class="clearfix"></div>
                     </div>
-                    <p class="intro"> Mentoring is one of the key process in Open Source Software developmenet, and ThinkFOSS
-                    aims at providing the best mentoring available to the needy in a complete transparant transaction.
+                    <p class="intro"> Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
+                    aims at providing the best mentoring available to the needy in a complete transparent transaction.
                     </p> <br>
                     <h2>How it Works ?</h2>
                     <ul class="mentor-list">
                         <li>
                             <span class="fa fa-hand-o-right"></span>
                             <strong>Sign up at our portal</strong> - <em> Once you sign up, you will be able to add/remove courses, and
-                                start monetizing your skills.</em>
+                                start monetizing your skills. Make sure you keep a neat profile so that the adminsitrative board approves your
+                                mentorship request instantly</em>
                         </li>
                         <li>
                             <span class="fa fa-clock-o"></span>
@@ -542,9 +543,15 @@
                         </li>
                         <li>
                             <span class="fa fa-dollar"></span>
-                            <strong>Collect your money</strong> - <em> Once we have a student enrolling to your course, the fee you proposed
-                        will get transferred to your bank. </em>
+                            <strong>Collect your money</strong> - <em> Once you complete your course, the <i class="fa fa-rupee"></i>
+                                gets transferred to your account respecting the feedback from your mentees. Dont worry, we will make sure
+                                you get the most out of it</em>
                         </li>
+                    <li>
+                            <span class="fa fa-repeat"></span>
+                            <strong>Repeat</strong>
+                    </li>
+                            <a href="signup.php"><button type="button" class="btn tf-btn btn-right">Join Us</button></a>
 
                     </ul>
 
@@ -581,6 +588,7 @@
                                         <span class="fa fa-repeat"></span>
                                         <strong>Repeat</strong>
                                 </li>
+                                <a href="signup.php"><button type="button" class="btn tf-btn btn-right">Join Us</button></a>
 
                         </ul>
 
