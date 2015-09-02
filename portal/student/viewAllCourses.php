@@ -57,11 +57,11 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
+<body >
 <?php
         session_start();
-        require( '../../php/access/accessDB.php' );
-        include '../../php/User.php';
+        require_once( '../../php/access/accessDB.php' );
+        require_once( '../../php/User.php' );
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation
@@ -104,26 +104,28 @@
                     </thead>
 	                <tbody>
 
-
     <?php
-        require( '../../php/Token.php' );
-        require( '../../php/access/accessTokens.php' );
+
+        require_once( '../../php/Token.php' );
+        require_once( '../../php/access/accessTokens.php');
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
           course_details.`course_lang`, course_details.`course_difficulty`,course_details.`course_date_from`,course_details.`course_time_from`,
           course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`, user_details.`user_first_name`,
           user_details.`user_last_name` FROM `course_details`
-          INNER JOIN `course_mentor_map`  ON course_details.course_id = course_mentor_map.course_id
+          INNER JOIN `course_mentor_map` ON course_details.course_id = course_mentor_map.course_id
           INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id ";
 
         $result = $conn->query( $sqlSelect );
+
         include '../../php/Course.php';
+
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
                         $csrfToken = new Token( $csrfSecret );
-		        echo '
-                        <tr> <td>'. $row['course_name']. '</td>
+		        echo '<tr>
+                        <td>'. $row['course_name']. '</td>
 		        <td> '. $row['course_bio']. '</td>
 		        <td> '. $row['course_lang']. '</td>
 		        <td> '. $row['course_difficulty']. '</td>

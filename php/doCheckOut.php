@@ -3,7 +3,7 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include 'Statement.php';
+	require_once( 'Statement.php' );
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
@@ -18,11 +18,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header( 'Location: '.'../portal/cart/viewCart.php');
 		return false;
 	}
-	require( "access/accessDB.php" );
+	require_once( "access/accessDB.php" );
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 	$preparedPost->sanitize();
 
-	include 'Course.php';
+	require_once( 'Course.php' );
 	$courseList =  $_POST[ 'checkout-item' ];
 	if ( is_array( $courseList ) ) {
 		foreach( $courseList as $course ) {

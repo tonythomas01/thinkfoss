@@ -1,10 +1,10 @@
 <?php
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include 'Statement.php';
+	require_once( 'Statement.php' );
 	$preparedStatement = new Statement( $_POST );
 	if ( $preparedStatement->checkIfEmptyPost() ) {
-		$_SESSION['error'] = "Please make sure you add in all required details";
+		$_SESSION['error'] = "Please make sure you add in all require_onced details";
 		header('Location: ' . '../portal.php');
 		return;
 	}
@@ -19,9 +19,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		return false;
 	}
 
-	require( "access/accessDB.php" );
+	require_once( "access/accessDB.php" );
 	$loggedInUser = $_SESSION['loggedin_user_id'];
-	include 'Course.php';
+	require_once( 'Course.php' );
 
 	$preparedStatement->sanitize();
 	$courseName = mysqli_real_escape_string( $conn, $preparedStatement->getValue('course' ) );

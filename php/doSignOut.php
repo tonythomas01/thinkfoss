@@ -9,16 +9,14 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-
-	print_r( $_POST );
-	include "Statement.php";
+	require_once_once(  "Statement.php" );
 	$postInput = new Statement( $_POST );
 	if( $postInput->checkIfEmptyPost() ) {
 		header('Location: ' . '../index.php');
 		return;
 	}
-	require( "Token.php" );
-	require( "access/accessTokens.php" );
+	require_once( "Token.php" );
+	require_once( "access/accessTokens.php" );
 
 	$csrfToken = new Token( $csrfSecret );
 	$postInput->sanitize();

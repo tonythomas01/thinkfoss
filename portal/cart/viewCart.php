@@ -60,8 +60,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 <body background="black">
 <?php
 	session_start();
-	require( '../../php/access/accessDB.php' );
-	include '../../php/User.php';
+	require_once( '../../php/access/accessDB.php' );
+	require_once( '../../php/User.php' );
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation

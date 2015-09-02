@@ -3,7 +3,7 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include 'Statement.php';
+	require_once( 'Statement.php' );
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
@@ -19,7 +19,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header( 'Location: '.'../portal/portal.php' );
 		return false;
 	}
-	require( "access/accessDB.php" );
+	require_once( "access/accessDB.php" );
 	$preparedPost->sanitize();
 
 	$course_name = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_name' ) );
@@ -33,7 +33,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$course_amount = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_amount' ) );
 	$course_mentor = $_SESSION['loggedin_user_id'] ? : false;
 
-	include 'Course.php';
+	require_once( 'Course.php' );
 	$newCourse = Course::newFromDetails( $course_name, $course_bio, $course_lang, $course_difficulty, $course_date_from,
 		$course_time_from, $course_date_to, $course_time_to, $course_amount, $course_mentor );
 

@@ -9,18 +9,18 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include "Statement.php";
+	require_once_once( "Statement.php" );
 	$postInput = new Statement( $_POST );
 	if ( $postInput->checkIfEmptyPost() ) {
-		$_SESSION['error'] = "Please make sure you add in all required details";
+		$_SESSION['error'] = "Please make sure you add in all require_onced details";
 		header( 'Location: '.'../portal.php' );
 		return;
 	}
 	$postInput->sanitize();
 
-	require( "access/accessDB.php" );
-	require( "access/accessTokens.php" );
-	require( "Token.php" );
+	require_once( "access/accessDB.php" );
+	require_once( "access/accessTokens.php" );
+	require_once( "Token.php" );
 
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $postInput->getValue('CSRFToken') ) ) {

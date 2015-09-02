@@ -2,16 +2,16 @@
 
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include 'Statement.php';
+	require_once( 'Statement.php' );
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
-		$_SESSION['error'] = "Please make sure you add in all required details";
+		$_SESSION['error'] = "Please make sure you add in all require_onced details";
 		header('Location: ' . '../portal/portal.php');
 		return;
 	}
-	require( "access/accessDB.php" );
-	require( "access/accessTokens.php" );
-	require( "Token.php" );
+	require_once( "access/accessDB.php" );
+	require_once( "access/accessTokens.php" );
+	require_once( "Token.php" );
 
 
 	$csrfToken = new Token( $csrfSecret );

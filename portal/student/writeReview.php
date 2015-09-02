@@ -38,7 +38,7 @@
 			return false;
 		}
 
-		include '../../php/User.php';
+		require_once( '../../php/User.php' );
 		$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 
 	} else {

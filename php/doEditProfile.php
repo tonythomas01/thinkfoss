@@ -2,16 +2,16 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include "Statement.php";
+	require_once( "Statement.php" );
 	$postInput = new Statement($_POST);
 	if ($postInput->checkIfEmptyPost()) {
-		$_SESSION['error'] = "Please make sure you add in all required details";
+		$_SESSION['error'] = "Please make sure you add in all require_onced details";
 		header('Location: ' . '../portal/portal.php');
 		return;
 	}
 	$postInput->sanitize();
 
-	require( "access/accessDB.php" );
+	require_once( "access/accessDB.php" );
 	$loggedInUserId = $_SESSION['loggedin_user_id'];
 
 	$user_github = mysqli_escape_string( $conn, $postInput->getValue( 'user_github' ) );

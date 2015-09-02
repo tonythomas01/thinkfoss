@@ -3,7 +3,7 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	include 'Statement.php';
+	require_once( 'Statement.php' );
 	$postInputs = new Statement( $_POST );
 	if ( $postInputs->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
@@ -25,7 +25,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 
-	include 'Course.php';
+	require_once( 'Course.php' );
 	$courseName = mysqli_real_escape_string( $conn, $postInputs->getValue( 'course' ) );
 	$course = explode( '-', $courseName );
 	$delCourse = Course::newFromId( $conn, $course[1] );
