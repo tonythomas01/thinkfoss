@@ -132,6 +132,10 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				?>
 				</tbody>
 				</table>
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class='input-group'>
+						<div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+					</div> <br>
 					<input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 					<button type="submit" class="btn btn-success"  > <i class="fa fa-check"></i> Checkout </button></form></td>
 				</form>

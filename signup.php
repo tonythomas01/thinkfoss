@@ -49,7 +49,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src='http://www.google.com/recaptcha/api.js'></script>
+
     <![endif]-->
 </head>
 <body background="black">
@@ -219,18 +219,25 @@
                         <option>Other</option>
                     </select>
                     </div>
+
                     <div class='input-group'>
-                        <input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions of ThinkFOSS</u>
+                        <input type="checkbox" required name="terms"> I accept the Terms and Conditions of ThinkFOSS
+                    </div> <br><br>
+                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <div class='input-group'>
+                        <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
                     </div>
                     <?php
                             $csrfToken = new Token( $csrfSecret );
                     ?>
                     <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                    <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div> <br>
-                    <button style='submit' class='btn btn-primary btn-block'>Sign Up</button>
+
+                    <button style='submit' class='btn btn-primary btn-lg'>Sign Up</button>
 
                 </div>
+
             </form>
+
         </div>
         </div>
 

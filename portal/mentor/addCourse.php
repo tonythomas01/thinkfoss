@@ -136,8 +136,12 @@
                             <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
                             <input required type='number' class='form-control' id='course_amount'  name='course_amount' placeholder='Charge'>
                         </div>
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <div class='input-group'>
+                            <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+                        </div> <br><br>
                         <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                        <button type='submit' class='btn btn-primary'>Create</button>
+                        <button type='submit' class='btn btn-primary  btn-block'>Create</button>
                     </div>
                 </form>
 

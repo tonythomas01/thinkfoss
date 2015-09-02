@@ -10,6 +10,12 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 	require_once( "Token.php" );
 	require_once( "access/accessTokens.php" );
+	require_once( "access/captchaTokens.php" );
+	if ( !$preparedStatement->validateCaptchaResponse( $preparedStatement->getValue('g-recaptcha-response' ), $captchaSecretKey ) ) {
+		$_SESSION['error'] = "Error: Invalid Captcha Entered. Please contact one of the admins, or try again";
+		header( 'Location: '.'../signup.php');
+		return false;
+	}
 
 	$csrfToken = new Token( $csrfSecret );
 	print_r( $csrfToken );

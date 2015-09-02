@@ -177,9 +177,13 @@
 	                        require_once( "../../php/access/accessTokens.php" );
 	                        $csrfToken = new Token( $csrfSecret );
 	                    ?>
+	                    <script src='https://www.google.com/recaptcha/api.js'></script>
+	                    <div class='input-group'>
+		                    <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+	                    </div>
 	                    <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 
-                        <button type='submit' class='btn btn-primary'>Submit</button>
+                        <button type='submit' class='btn btn-primary btn-lg'>Submit</button>
                     </div>
                 </form>
 
