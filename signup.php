@@ -75,7 +75,6 @@
                 <li><a href="index.php#tf-about" class="page-scroll">About</a></li>
                 <li><a href="index.php#tf-team" class="page-scroll">Team</a></li>
                 <li><a href="index.php#tf-services" class="page-scroll">Services</a></li>
-                <li><a href="index.php#tf-partners" class="page-scroll">Partners</a></li>
                 <li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
                 <li>
                     <?php
