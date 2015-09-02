@@ -97,7 +97,9 @@
                                             <div class='form-group'>
                                                 <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
                                                 <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
-                                            </div>
+                                                </div>
+                                                <a href='portal/portal.php'><button type = 'button' style='margin-top: 5%' id = 'member-portal' class='btn btn-primary' ><i class='fa fa-laptop' ></i > Portal</button ></a>
+
                                         </form>
                                 </li>";
                           } else {
@@ -117,11 +119,13 @@
                                         <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
                                     </div>
                                     <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo"'/>
-
                                     <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
+                                    <a href='signup.php'><button type = 'button' id = 'member-login' class='btn btn-success' ><i class='fa fa-heart' ></i > Join</button ></a>
                                 </div>
                                 </form >
-                            </li > ";
+
+                            </li >
+                            ";
                           }
                   ?>
           </ul>
@@ -170,7 +174,7 @@
                                         if( isset( $_SESSION['loggedin_user'] ) ) {
                                                 echo "<a href='portal/portal.php'> <button class='btn tf-btn btn-primary btn-lg' ><strong>Portal</strong></button></a>";
                                         } else {
-                                                echo "<a href='signup.php'> <button class='btn tf-btn btn-info btn-lg'><strong>Sign Up</strong></button></a>";
+                                                echo "<a href='signup.php'> <button class='btn tf-btn btn-success btn-lg'><strong>Sign Up</strong></button></a>";
                                         }
                                 ?>
                         </div>

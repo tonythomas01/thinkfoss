@@ -68,6 +68,7 @@
 ==========================================-->
 <?php include 'navigationstudent.php' ?>
 
+
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal" >
@@ -88,7 +89,7 @@
 		        <h2 class="section-title" style="color: white"> Available Courses</h2>
 	        </div>
 	        <br>
-                <table class="table table-hover table-bordered well" style="color : black">
+                <table class="table table-hover table-responsive table-bordered well"  style="color : black; table-layout: inherit; width: 100%; height: 100%" >
                     <thead>
                     <th>Course Name</th>
                     <th>Description</th>

@@ -134,9 +134,10 @@ ul, ol{
 	background: url(../img/anotherback.jpg);
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
-	background-repeat: repeat-y;
+	background-attachment: scroll;
+	background-repeat: inherit;
 	color: #cfcfcf;
+	height: 100%;
 }
 
 #tf-portal .overlay{
@@ -147,8 +148,9 @@ ul, ol{
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+	background-attachment: scroll;
+	overflow: auto;
 	height: 100vh;
-	background-attachment: fixed;
 }
 #tf-portal p.lead{
 	color: #e3e3e3;
@@ -161,7 +163,7 @@ ul, ol{
 .portal{
 	position: relative;
 	text-align: left;
-	padding: 10%;
+	padding: 8%;
 }
 .signup{
 	position: fixed;
