@@ -60,17 +60,8 @@
 <body background="black">
 <?php
 	session_start();
-	include '../../php/connectToDb.php';
+	require( '../../php/access/accessDB.php' );
 	include '../../php/User.php';
-	$conn = new mysqli( $servername, $username, $password );
-
-	if ( $conn->connect_error ){
-		die( "Connection failed");
-	}
-
-	if ( !$conn->select_db( $dbname ) ) {
-		die( "Database selection error" );
-	}
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 	$user->getExtra( $conn );
 ?>

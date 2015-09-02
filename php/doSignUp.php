@@ -18,15 +18,15 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 	$postInput->sanitize();
 
-	include_once( "connectToDb.php" );
-	$conn = new mysqli( $servername, $username, $password );
+	require( "access/accessDB.php" );
+	require( "access/accessTokens.php" );
+	require( "Token.php" );
 
-	if ( $conn->connect_error ){
-		die( "Connection failed");
-	}
-
-	if ( !$conn->select_db( $dbname ) ) {
-		die( "Database selection error" );
+	$csrfToken = new Token( $csrfSecret );
+	if( ! $csrfToken->validateCSRFToken( $postInput->getValue('CSRFToken') ) ) {
+		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try again";
+		header( 'Location: '.'../signup.php');
+		return false;
 	}
 
 	$user_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_name') );
@@ -54,7 +54,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		//User do not exist. Create a password, store it and send it as an email
 		$user_pass_again = mysqli_escape_string( $conn, $postInput->getValue( 'user_pass_again' ) );
 		if ( $user_pass_once === $user_pass_again ) {
-			$pass = substr( hash_hmac( 'sha512', $user_pass_once, $secret ), 0, 31 );
+			$pass = substr( hash_hmac( 'sha512', $user_pass_once, $passwordSecret ), 0, 31 );
 			if ( addMember( $conn, $user_email, $pass, $postInput ) ) {
 				$_SESSION['message'] = "The registration is successful. Please use the login feature to Sign-In";
 				header('Location: ' . '../signup.php');

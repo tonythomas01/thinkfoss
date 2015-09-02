@@ -60,18 +60,11 @@
 <body background="black">
 <?php
     session_start();
-    include '../../php/connectToDb.php';
+    require( '../../php/access/accessDB.php' );
     include '../../php/User.php';
-    $conn = new mysqli( $servername, $username, $password );
-
-    if ( $conn->connect_error ){
-        die( "Connection failed");
-    }
-
-    if ( !$conn->select_db( $dbname ) ) {
-        die( "Database selection error" );
-    }
     $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+    require_once( '../../php/Token.php' );
+    require_once( '../../php/access/accessTokens.php' );
 ?>
 <!-- Navigation
 ==========================================-->
@@ -84,7 +77,7 @@
 
 	        if ( $_SESSION['message'] ) {
 		        $message = $_SESSION['message'];
-		        echo "<p class='alert-success'> $message</p>";
+		        echo "<p class='alert-success' style='text-align: center'> $message</p>";
 		        unset( $_SESSION['message'] );
 	        } else if ( $_SESSION['error'] ) {
 		        $errorMessage = $_SESSION['error'];
@@ -103,7 +96,7 @@
                     <th>Course Name</th>
                     <th>Description</th>
                     <th>Language</th>
-                    <th>Difficutly</th>
+                    <th>Difficulty</th>
                     <th>From Date</th>
                     <th>From Time</th>
                     <th>To Date</th>
@@ -115,7 +108,6 @@
 
 
     <?php
-        include '../../php/connectToDb.php';
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT `course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`, `course_date_from`,
@@ -124,6 +116,7 @@
         $result = $conn->query( $sqlSelect );
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
+                        $csrfToken = new Token( $csrfSecret );
 		        echo '<tr> <td>'. $row['course_name']. '</td>
 		        <td> '. $row['course_bio']. '</td>
 		        <td> '. $row['course_lang']. '</td>
@@ -133,7 +126,9 @@
 		        <td> '. $row['course_date_to']. '</td>
 		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
-		        <td> <form action="../../php/doDeleteCourse.php" method="post"><button type="submit" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" >Delete</button></form></td>
+		        <td> <form action="../../php/doDeleteCourse.php" method="post">
+		            <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
+		            <button type="submit" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" >Delete</button></form></td>
 		        ';
 	        }
         }

@@ -1,3 +1,7 @@
+<?php
+	require_once( '../../php/Token.php' );
+	require_once( '../../php/access/accessTokens.php' );
+?>
 <!-- Navigation
 ==========================================-->
 <nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">
@@ -49,7 +53,16 @@
                         <li><a href="myProfile.php">Edit Profile</a></li>
                         <li><a href="#">Recommend</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="../../php/doSignOut.php">Sign Out</a></li>
+	                    <li>
+
+		                    <form action="../../php/doSignOut.php" method="post">
+			                    <?php
+			                    $csrfToken = new Token( $csrfSecret );
+			                    ?>
+			                    <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+			                    <button type="submit" class="btn btn-danger btn-block">Sign Out</button>
+		                    </form>
+	                    </li>
                     </ul>
                 </li>
             </ul>

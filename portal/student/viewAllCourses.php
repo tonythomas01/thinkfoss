@@ -60,17 +60,8 @@
 <body background="black">
 <?php
         session_start();
-        include '../../php/connectToDb.php';
+        require( '../../php/access/accessDB.php' );
         include '../../php/User.php';
-        $conn = new mysqli( $servername, $username, $password );
-
-        if ( $conn->connect_error ){
-            die( "Connection failed");
-        }
-
-        if ( !$conn->select_db( $dbname ) ) {
-            die( "Database selection error" );
-        }
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation
@@ -115,6 +106,8 @@
 
 
     <?php
+        require( '../../php/Token.php' );
+        require( '../../php/access/accessTokens.php' );
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
@@ -128,6 +121,7 @@
         include '../../php/Course.php';
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
+                        $csrfToken = new Token( $csrfSecret );
 		        echo '
                         <tr> <td>'. $row['course_name']. '</td>
 		        <td> '. $row['course_bio']. '</td>
@@ -145,7 +139,13 @@
                             } else if ( $course->needsCheckout( $loggedInUser, $conn ) ) {
                                 echo ' <td><a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Pay </button></a></td>';
                             } else {
-                                echo ' <td> <form action="../../php/doEnrollCourse.php" method="post"><button type="submit" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-shopping-cart"></i> Add</button></form></td>';
+                                echo ' <td>
+                                    <form action="../../php/doEnrollCourse.php" method="post">
+                                        <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
+                                        <button type="submit" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" >
+                                        <i class="fa fa-shopping-cart"></i> Add</button>
+                                    </form>
+                                </td>';
                             }
                 }
         }

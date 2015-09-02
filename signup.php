@@ -79,17 +79,24 @@
                 <li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
                 <li>
                     <?php
+                    require_once( 'php/Token.php' );
+                    require_once( 'php/access/accessTokens.php' );
+
                     if ( isset( $_SESSION['loggedin_user'] ) ) {
                         $loggedinUser = $_SESSION['loggedin_user'];
+                        $csrfToken = new Token( $csrfSecret );
                         echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
                             <li>
                                 <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
                                 <div class='form-group'>
+                                    <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
                                     <button type = 'submit' id = 'member-logout' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
                                     </div>
                                 </form>
                             </li>";
-                    } else { echo "
+                    } else {
+                        $csrfToken = new Token( $csrfSecret );
+                        echo "
                         <form class='form-inline' action = 'php/doSignIn.php' method = 'post' >
                         <div class='form-group'>
 
@@ -102,7 +109,8 @@
                             <div class='input-group'>
                                 <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
                                 <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
-                            </div >
+                            </div>
+                            <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
                             <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-arrow-right' ></i ></button >
                         </div >
                     </form >
@@ -158,11 +166,7 @@
                 </li>
                 </ul>
 
-
-
         </div>
-
-
 
         <div class="col-xs-6">
             <div class="section-title" style="text-align: left">
@@ -218,7 +222,10 @@
                     <div class='input-group'>
                         <input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions of ThinkFOSS</u>
                     </div>
-
+                    <?php
+                            $csrfToken = new Token( $csrfSecret );
+                    ?>
+                    <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
                     <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div> <br>
                     <button style='submit' class='btn btn-primary btn-block'>Sign Up</button>
 

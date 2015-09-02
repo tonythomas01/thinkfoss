@@ -84,38 +84,46 @@
             <li><a href="#tf-partners" class="page-scroll">Partners</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
                   <li>
-                          <?php
+                  <?php
+                        include( "php/access/accessTokens.php" );
+                        include( "php/Token.php" );
                           if ( isset( $_SESSION['loggedin_user'] ) ) {
                                   $loggedinUser = $_SESSION['loggedin_user'];
-                                  echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
-                            <li>
-                                <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
-                                    <div class='form-group'>
-                                        <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
-                                    </div>
-                                </form>
-                            </li>";
-                          } else { echo "
-                        <form class='form-inline' action = 'php/doSignIn.php' method = 'post' >
-                        <div class='form-group'>
+                                  $csrfToken = new Token( $csrfSecret );
+                                  echo "
+                                <li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
+                                <li>
+                                        <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
+                                            <div class='form-group'>
+                                                <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
+                                                <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
+                                            </div>
+                                        </form>
+                                </li>";
+                          } else {
+                                  $csrfToken = new Token( $csrfSecret );
+                                  echo "
+                                <form class='form-inline' action = 'php/doSignIn.php' method = 'post' >
+                                <div class='form-group'>
 
-                            <label class='sr-only' for='username' > Email id </label >
-                            <div class='input-group' >
-                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
-                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = 'Email id'>
-                            </div>
-                            <label class='sr-only' for='password'> Password</label >
-                            <div class='input-group'>
-                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
-                            </div >
-                            <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
-                        </div>
-                    </form >
-                </li >
-                    ";
+                                    <label class='sr-only' for='username' > Email id </label >
+                                    <div class='input-group' >
+                                        <div class='input-group-addon'><i class='fa fa-user'></i ></div >
+                                        <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = 'Email id'>
+                                    </div>
+                                    <label class='sr-only' for='password'> Password</label >
+                                    <div class='input-group'>
+                                        <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+                                        <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
+                                    </div>
+                                    <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo"'/>
+
+                                    <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
+                                </div>
+                                </form >
+                            </li > ";
                           }
-                          ?>
+                  ?>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

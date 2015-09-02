@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include 'Statement.php';
 	$preparedStatement = new Statement( $_POST );
@@ -10,17 +8,18 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../portal.php');
 		return;
 	}
-	include_once("connectToDb.php");
-	$conn = new mysqli( $servername, $username, $password );
+	require_once( "Token.php" );
+	require_once( "access/accessTokens.php" );
 
-	if ($conn->connect_error) {
-		die("Connection failed");
+	$csrfToken = new Token( $csrfSecret );
+	print_r( $csrfToken );
+	if( !$csrfToken->validateCSRFToken( $preparedStatement->getValue('CSRFToken') ) ) {
+		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
+		header( 'Location: '.'../signup.php');
+		return false;
 	}
 
-	if (!$conn->select_db($dbname)) {
-		die("Database selection error");
-	}
-
+	require( "access/accessDB.php" );
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 	include 'Course.php';
 

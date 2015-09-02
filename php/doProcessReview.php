@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include 'Statement.php';
 	$preparedPost = new Statement( $_POST );
@@ -10,15 +9,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../portal/portal.php');
 		return;
 	}
-	include_once("connectToDb.php");
-	$conn = new mysqli( $servername, $username, $password );
+	require( "access/accessDB.php" );
+	require( "access/accessTokens.php" );
+	require( "Token.php" );
 
-	if ($conn->connect_error) {
-		die("Connection failed");
-	}
 
-	if (!$conn->select_db($dbname)) {
-		die("Database selection error");
+	$csrfToken = new Token( $csrfSecret );
+	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue( 'CSRFToken' ) ) ) {
+		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try again";
+		header('Location: ' . '../portal/student/writeReview.php');
+		return false;
 	}
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];

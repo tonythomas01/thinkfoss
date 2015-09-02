@@ -60,17 +60,10 @@ error_reporting(E_ALL);
 <body background="black">
 <?php
     session_start();
-    include '../php/connectToDb.php';
+    require( '../php/access/accessDB.php' );
     include '../php/User.php';
-    $conn = new mysqli( $servername, $username, $password );
-
-    if ( $conn->connect_error ){
-        die( "Connection failed");
-    }
-
-    if ( !$conn->select_db( $dbname ) ) {
-        die( "Database selection error" );
-    }
+    require_once( '../php/Token.php' );
+    require_once( '../php/access/accessTokens.php' );
     $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 
@@ -115,7 +108,7 @@ error_reporting(E_ALL);
                     <ul class="dropdown-menu">
                         <li><a href="cart/viewCart.php">View Cart</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="../../php/doSignOut.php">Empty Cart</a></li>
+                        <li><a href="#">Empty Cart</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -124,7 +117,17 @@ error_reporting(E_ALL);
                         <li><a href="profile/myProfile.php">Edit Profile</a></li>
                         <li><a href="#">Recommend</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="../php/doSignOut.php">Sign Out</a></li>
+                        <li>
+
+                            <form action="../php/doSignOut.php" method="post">
+                                <?php
+                                    $csrfToken = new Token( $csrfSecret );
+                                ?>
+                                <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+                                <button type="submit" class="btn btn-danger btn-block">Sign Out</button>
+                            </form>
+                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -206,7 +209,7 @@ error_reporting(E_ALL);
                     <p style="opacity: 1; font-size: xx-large; font-family: 'Lato', sans-serif; color: black">Found a bug ? Report to our Phabricator</p>
                 </div>
                 <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
-                        echo "<a href='portal.php'> <button class='btn tf-btn btn-danger btn-lg' ><strong>Phabricator</strong></button></a>";
+                        <a href='portal.php'> <button class='btn tf-btn btn-danger btn-lg' ><strong>Phabricator</strong></button></a>
 
                 </div>
             </div>

@@ -24,8 +24,6 @@ class Course {
  		`course_date_from`, `course_time_from`, `course_date_to`, `course_time_to`, `course_fees`)
   		VALUES ('','$this->course_name','$this->course_bio','$this->course_lang','$this->course_difficulty','$this->course_date_from','$this->course_time_from','$this->course_date_to','$this->course_time_to', '$this->course_fees');";
 
-		echo $sql;
-
 		if ( $conn->query( $sql ) ) {
 			$sql = "SELECT `course_id` FROM `course_details` WHERE `course_name` = '$this->course_name';";
 			$res = $conn->query( $sql );

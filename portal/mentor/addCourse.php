@@ -59,19 +59,13 @@
 </head>
 <body background="black">
 <?php
-    session_start();
-    include '../../php/connectToDb.php';
-    include '../../php/User.php';
-    $conn = new mysqli( $servername, $username, $password );
-
-    if ( $conn->connect_error ){
-        die( "Connection failed");
-    }
-
-    if ( !$conn->select_db( $dbname ) ) {
-        die( "Database selection error" );
-    }
-    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+        session_start();
+        require( '../../php/access/accessDB.php' );
+        include '../../php/User.php';
+        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+        require_once( '../../php/access/accessTokens.php' );
+        require_once( '../../php/Token.php' );
+        $csrfToken = new Token( $csrfSecret );
 ?>
 <?php include 'navigationmentor.php' ?>
 
@@ -142,6 +136,7 @@
                             <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
                             <input required type='number' class='form-control' id='course_amount'  name='course_amount' placeholder='Charge'>
                         </div>
+                        <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
                         <button type='submit' class='btn btn-primary'>Create</button>
                     </div>
                 </form>
@@ -179,6 +174,6 @@
 
         </div>
 </div>
-<?php include '../footer.html' ?>
+<?php include '../../footer.html' ?>
 </body>
 </html>

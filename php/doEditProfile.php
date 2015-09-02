@@ -11,17 +11,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 	$postInput->sanitize();
 
-	include_once("connectToDb.php");
-	$conn = new mysqli($servername, $username, $password);
-
-	if ($conn->connect_error) {
-		die("Connection failed");
-	}
-
-	if (!$conn->select_db($dbname)) {
-		die("Database selection error");
-	}
-
+	require( "access/accessDB.php" );
 	$loggedInUserId = $_SESSION['loggedin_user_id'];
 
 	$user_github = mysqli_escape_string( $conn, $postInput->getValue( 'user_github' ) );
@@ -33,7 +23,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$sql = "REPLACE INTO `user_extra`(`user_id`, `user_github`, `user_linkedin`, `user_about`, `user_occupation`, `user_nation`)
 		VALUES ( '$loggedInUserId','$user_github','$user_linkedin','$user_about','$user_occupation','$user_nation')";
 	if ( $conn->query( $sql ) ) {
-		echo $sql;
 		$_SESSION['message'] = "You have updated your profile. Great!";
 		header('Location: ' . '../portal/portal.php');
 	} else {

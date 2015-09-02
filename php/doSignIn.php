@@ -14,22 +14,23 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../index.php');
 		return;
 	}
-	include_once("connectToDb.php");
-	$conn = new mysqli($servername, $username, $password);
+	require( "access/accessDB.php" );
+	require( "access/accessTokens.php" );
+	require( "Token.php" );
 
-	if ($conn->connect_error) {
-		die("Connection failed");
+	$csrfToken = new Token( $csrfSecret );
+	if( ! $csrfToken->validateCSRFToken( $postInput->getValue('CSRFToken') ) ) {
+		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try again";
+		header( 'Location: '.'../signup.php');
+		return false;
 	}
 
-	if (!$conn->select_db($dbname)) {
-		die("Database selection error");
-	}
 	$postInput->sanitize();
 
 	$useremail = mysqli_escape_string( $conn,  $postInput->getValue( 'username' ) );
 	$password = mysqli_escape_string( $conn, $postInput->getValue( 'password' ) );
 
-	if ( checkIsMember( $conn, $useremail, $password, $secret ) ) {
+	if ( checkIsMember( $conn, $useremail, $password, $passwordSecret ) ) {
 		$userDetails = getUserDetails( $conn, $useremail );
 		$_SESSION['loggedin_user'] = $userDetails['name'];
 		$_SESSION['loggedin_user_email'] = $userDetails['email'];
@@ -43,8 +44,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 }
 
-function checkIsMember( $conn, $useremail, $password, $secret ) {
-	$hashedPass = substr( hash_hmac( 'sha512', $password, $secret ), 0, 31 );
+function checkIsMember( $conn, $useremail, $password, $passwordSecret ) {
+	$hashedPass = substr( hash_hmac( 'sha512', $password, $passwordSecret ), 0, 31 );
 	$sql = "SELECT * FROM `authorization` WHERE `email_id` = '$useremail' AND `password_hash` = '$hashedPass';";
 	if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
 		return true;

@@ -64,17 +64,9 @@
 <body background="black">
 <?php
         session_start();
-        include '../../php/connectToDb.php';
+        require( '../../php/access/accessDB.php' );
         include '../../php/User.php';
-        $conn = new mysqli( $servername, $username, $password );
 
-        if ( $conn->connect_error ){
-            die( "Connection failed");
-        }
-
-        if ( !$conn->select_db( $dbname ) ) {
-            die( "Database selection error" );
-        }
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation
@@ -120,6 +112,9 @@
 
 
     <?php
+        require_once( "../../php/Token.php" );
+        require_once( "../../php/access/accessTokens.php" );
+
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
@@ -134,6 +129,7 @@
         $result = $conn->query( $sqlSelect );
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
+                        $csrfToken = new Token( $csrfSecret );
 		        echo '<tr> <td>'. $row['course_name']. '</td>
 		        <td> '. $row['course_bio']. '</td>
 		        <td> '. $row['course_lang']. '</td>
@@ -144,7 +140,11 @@
 		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
 		        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
-		        <td> <form action="writeReview.php" method="post"><button type="submit" name="course-review" value="course-'.$row['course_id'].'" id="review" class="btn btn-success review"><i class="fa fa-pencil-square" > Write</i></button></form></td>
+		        <td> <form action="writeReview.php" method="post">
+		                <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+                                <button type="submit" name="course-review" value="course-'.$row['course_id'].'"
+                                        id="review" class="btn btn-success review"><i class="fa fa-pencil-square" > Write</i></button>
+                            </form></td>
 		        ';
 	        }
         }

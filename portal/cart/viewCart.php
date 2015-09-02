@@ -60,17 +60,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 <body background="black">
 <?php
 	session_start();
-	include '../../php/connectToDb.php';
+	require( '../../php/access/accessDB.php' );
 	include '../../php/User.php';
-	$conn = new mysqli( $servername, $username, $password );
-
-	if ( $conn->connect_error ){
-		die( "Connection failed");
-	}
-
-	if ( !$conn->select_db( $dbname ) ) {
-		die( "Database selection error" );
-	}
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation
@@ -93,7 +84,6 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 			}
 
 			?>
-
 			<div>
 				<h2 class="section-title" style="color: white"> My Cart</h2>
 			</div>
@@ -113,6 +103,9 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 
 				<?php
+				require_once( "../../php/Token.php" );
+				require_once( "../../php/access/accessTokens.php" );
+				$csrfToken = new Token( $csrfSecret );
 				$loggedInUser = $_SESSION['loggedin_user_id'];
 
 				$sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`,
@@ -139,6 +132,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				?>
 				</tbody>
 				</table>
+					<input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 					<button type="submit" class="btn btn-success"  > <i class="fa fa-check"></i> Checkout </button></form></td>
 				</form>
 				<?php

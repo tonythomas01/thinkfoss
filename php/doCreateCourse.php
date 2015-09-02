@@ -5,23 +5,23 @@ session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	include 'Statement.php';
 	$preparedPost = new Statement( $_POST );
-	if ( $preparedPost->getValue() ) {
+	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
-		header('Location: ' . '../portal.php');
+		header('Location: ' . '../portal/portal.php');
 		return;
 	}
-	include_once("connectToDb.php");
-	$conn = new mysqli($servername, $username, $password);
+	require_once( 'Token.php' );
+	require_once( 'access/accessTokens.php' );
 
-	if ($conn->connect_error) {
-		die("Connection failed");
+	$csrfToken = new Token( $csrfSecret );
+	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue('CSRFToken') ) ) {
+		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try again";
+		header( 'Location: '.'../portal/portal.php' );
+		return false;
 	}
-
-	if (!$conn->select_db($dbname)) {
-		die("Database selection error");
-	}
-
+	require( "access/accessDB.php" );
 	$preparedPost->sanitize();
+
 	$course_name = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_name' ) );
 	$course_bio = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_bio' ) );
 	$course_lang = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_lang' ) );

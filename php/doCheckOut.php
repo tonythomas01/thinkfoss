@@ -10,19 +10,15 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../portal/cart/viewCart.php');
 		return;
 	}
-	include_once("connectToDb.php");
-	$conn = new mysqli( $servername, $username, $password );
-
-	if ( $conn->connect_error ) {
-		$_SESSION['error'] = "Sorry. We had an error processing your request. Please contact one of the admins";
-		header('Location: ' . '../portal/cart/viewCart.php');
+	require_once( 'Token.php' );
+	require_once( 'access/accessTokens.php' );
+	$csrfToken = new Token( $csrfSecret );
+	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue('CSRFToken') ) ) {
+		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
+		header( 'Location: '.'../portal/cart/viewCart.php');
+		return false;
 	}
-
-	if ( !$conn->select_db($dbname) ) {
-		$_SESSION['error'] = "Sorry. We had an error processing your request. Please contact one of the admins";
-		header('Location: ' . '../portal/cart/viewCart.php');
-	}
-
+	require( "access/accessDB.php" );
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 	$preparedPost->sanitize();
 

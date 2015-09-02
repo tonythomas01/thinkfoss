@@ -1,0 +1,6 @@
+<?php
+
+$passwordSecret = "5B720A509726C1242E812A7C1DF50F5915C8A6E7";
+$csrfSecret = "2d3172f2c66245be11d027787c06c4a1";
+
+

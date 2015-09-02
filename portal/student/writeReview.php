@@ -16,17 +16,18 @@
 		}
 		$preparedSatement->sanitize();
 
-		include_once("../../php/connectToDb.php");
-		$conn = new mysqli($servername, $username, $password);
+		require_once( '../../php/access/accessDB.php' );
+		require_once( '../../php/Course.php' );
+		require_once( "../../php/Token.php" );
+		require_once( "../../php/access/accessTokens.php" );
 
-		if ($conn->connect_error) {
-			die("Connection failed");
+		$csrfToken = new Token( $csrfSecret );
+		if( ! $csrfToken->validateCSRFToken( $preparedSatement->getValue('CSRFToken') ) ) {
+			$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
+			header( 'Location: '.'viewEnrolledCourses.php');
+			return false;
 		}
 
-		if (!$conn->select_db($dbname)) {
-			die("Database selection error");
-		}
-		include '../../php/Course.php';
 		$courseRaw = mysqli_real_escape_string($conn, $_POST['course-review']);
 		$courseName = explode('-', $courseRaw);
 		$course = Course::newFromId( $conn, $courseName[1] );
@@ -171,6 +172,12 @@
 	                    </div>
 	                    <br><br>
 	                    <input type="hidden" name="course_id" value="<?php echo $courseId ?>" />
+	                    <?php
+	                        require_once( "../../php/Token.php" );
+	                        require_once( "../../php/access/accessTokens.php" );
+	                        $csrfToken = new Token( $csrfSecret );
+	                    ?>
+	                    <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 
                         <button type='submit' class='btn btn-primary'>Submit</button>
                     </div>
