@@ -71,8 +71,8 @@
 <?php include 'navigationmentor.php' ?>
 
 <div id="tf-portal" class="text-center">
-    <div class="overlay" style="height: 100%">
-        <div class="portal" style="height: 100%" >
+    <div class="overlay" >
+        <div class="portal">
 	        <?php
 
 	        if ( $_SESSION['message'] ) {
