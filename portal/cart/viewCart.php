@@ -98,6 +98,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				<h2 class="section-title" style="color: white"> My Cart</h2>
 			</div>
 			<br>
+			<form action="../../php/doCheckOut.php" method="post">
 			<table class="table table-hover table-bordered well" style="color : black">
 				<thead>
 				<th>Course Name</th>
@@ -109,8 +110,6 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				<th>Action</th>
 				</thead>
 				<tbody>
-				<form action="../../php/doCheckOut.php" method="post">
-
 
 				<?php
 				require_once( "../../php/Token.php" );
@@ -147,8 +146,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 						<div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
 					</div> <br>
 					<input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-					<button type="submit" class="btn btn-success"  > <i class="fa fa-check"></i> Checkout </button></form></td>
-				</form>
+					<button type="submit" class="btn btn-success"  > <i class="fa fa-check"></i> Checkout </button>
+			</form>
 				<?php
 				} else { ?>
 					</tbody>
