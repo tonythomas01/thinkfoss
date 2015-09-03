@@ -1,6 +1,6 @@
 <?php
         session_start();
-	if( $_SESSION['loggedin_user'] && $_SESSION['loggedin_user_id'] ) {
+	if( isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: portal/portal.php');
 	}
         require_once('php/vendor/google-api-php-client-master/autoload.php');

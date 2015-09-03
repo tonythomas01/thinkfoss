@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if ( !isset( $_SESSION['loggedin_user'] )  ) {
-		header( 'Location: ../signup.php');
+		header( 'Location: ../signup.php' );
 	}
 ?>
 <!DOCTYPE html>
