@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if ( !isset( $_SESSION['loggedin_user'] ) || !isset( $_SESSION['loggedin_user_id'] ) ) {
+	if ( !isset( $_SESSION['loggedin_user'] )  ) {
 		header( 'Location: ../signup.php');
 	}
 ?>
