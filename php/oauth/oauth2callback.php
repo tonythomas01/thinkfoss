@@ -32,13 +32,13 @@ if (!isset($_GET['code'])) {
 		$newPassword = bin2hex( openssl_random_pseudo_bytes(4) );
 		$pass = substr( hash_hmac( 'sha512', $newPassword, $passwordSecret ), 0, 31 );
 		if ( !$user->setPassword( $conn, $pass ) ) {
-			$_SESSION['error'] = "Error: Unknown error occured. Please contact one of the admins";
+			$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
 			header( 'Location: '.'../../signup.php');
 			return false;
 		}
 
 		if ( !$user->addToDatabase( $conn ) ) {
-			$_SESSION['error'] = "Error: Unknown error occured. Please contact one of the admins";
+			$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
 			header( 'Location: '.'../../signup.php');
 			return false;
 		}

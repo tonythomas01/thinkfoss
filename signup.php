@@ -56,7 +56,7 @@
 
     <![endif]-->
 </head>
-<body background="black">
+<body>
 <!-- Navigation
 ==========================================-->
 <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
