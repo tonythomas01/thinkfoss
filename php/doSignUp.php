@@ -11,7 +11,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once( "Statement.php" );
 	$postInput = new Statement( $_POST );
 	if ( $postInput->checkIfEmptyPost() ) {
-		$_SESSION['error'] = "Please make sure you add in all require_onced details";
+		$_SESSION['error'] = "Please make sure you add in all require_once details";
 		header( 'Location: '.'../signup.php' );
 		return;
 	}
