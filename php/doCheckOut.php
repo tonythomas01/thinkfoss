@@ -15,7 +15,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once( "access/captchaTokens.php" );
 	if ( !$preparedPost->validateCaptchaResponse( $preparedPost->getValue('g-recaptcha-response' ), $captchaSecretKey ) ) {
 		$_SESSION['error'] = "Error: Invalid Captcha Entered. Please contact one of the admins, or try again";
-		header( 'Location: '.'../signup.php');
+		header( 'Location: '.'../portal/cart/viewCart.php');
 		return false;
 	}
 	$csrfToken = new Token( $csrfSecret );

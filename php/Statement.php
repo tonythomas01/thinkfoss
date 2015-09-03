@@ -39,7 +39,7 @@ class Statement{
 		return false;
 	}
 
-	function validateCaptchaResponse( $capthaResponse,$captchaSecretKey  ) {
+	function validateCaptchaResponse( $capthaResponse, $captchaSecretKey  ) {
 		$response =  file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$captchaSecretKey&response=".$capthaResponse."&remoteip=".$_SERVER['REMOTE_ADDR']);
 		if ( $response['success'] == false ) {
 			return false;
