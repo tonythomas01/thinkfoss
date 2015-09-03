@@ -5,7 +5,6 @@
  * Date: 26/8/15
  * Time: 1:11 AM
  */
-error_reporting(E_ALL);
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once( 'Statement.php' );
