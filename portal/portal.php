@@ -1,8 +1,13 @@
 <?php
 	session_start();
-
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: ../signup.php');
+	} else {
+		require_once( '../php/access/accessDB.php' );
+		require_once( '../php/User.php' );
+		require_once( '../php/Token.php' );
+		require_once( '../php/access/accessTokens.php' );
+		$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 	}
 ?>
 <!DOCTYPE html>
@@ -67,16 +72,7 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
-<?php
-    session_start();
-    require( '../php/access/accessDB.php' );
-    include '../php/User.php';
-    require_once( '../php/Token.php' );
-    require_once( '../php/access/accessTokens.php' );
-    $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-?>
-
+<body>
 <!-- Navigation
 ==========================================-->
 <nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">
@@ -149,16 +145,15 @@
         <div class="portal">
 
             <?php
-            session_start();
             if ( $_SESSION['message'] ) {
-                $message = $_SESSION['message'];
-                echo "<p class='alert-success' style='text-align: center'> $message</p>";
-                unset( $_SESSION['message'] );
+	                $message = $_SESSION['message'];
+	                echo "<p class='alert-success' style='text-align: center'> $message</p>";
+	                unset( $_SESSION['message'] );
             }
             if ( $_SESSION['error'] ) {
-                $errorMessage = $_SESSION['error'];
-                echo "<p class='alert-warning' style='text-align: center' > $errorMessage </p>";
-                unset( $_SESSION['error'] );
+	                $errorMessage = $_SESSION['error'];
+	                echo "<p class='alert-warning' style='text-align: center' > $errorMessage </p>";
+	                unset( $_SESSION['error'] );
             }
 
             ?>
@@ -227,6 +222,6 @@
             </div>
 
         </div>
-</div>
+
 </body>
 </html>
