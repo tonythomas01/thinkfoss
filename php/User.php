@@ -30,6 +30,16 @@ class User {
 		}
 		return false;
 	}
+
+	static function newFromGoogleOauth( $userLogin ) {
+		$oauthUser = new User();
+		$oauthUser->user_first_name = $userLogin['givenName'];
+		$oauthUser->user_last_name= $userLogin['familyName'];
+		$oauthUser->user_email = $userLogin['email'];
+		$oauthUser->user_gender =  $userLogin['gender'];
+		return $oauthUser;
+	}
+
 	public function getExtra( $conn ) {
 		$sqlStatement = "SELECT `user_id`, `user_github`, `user_linkedin`, `user_about`, `user_occupation`, `user_nation`
  		FROM `user_extra` WHERE `user_id` = '$this->user_id';";
@@ -58,6 +68,66 @@ class User {
 
 	public function getUserId() {
 		return $this->user_id;
+	}
+
+	public function getUserFreshId( $conn ) {
+		$sql = "SELECT `user_id` FROM `user_details` WHERE `user_email` = '$this->user_email';";
+		if ( $row = $conn->query( $sql ) ) {
+			while( $res = $row->fetch_assoc() ) {
+				return $res['user_id'];
+			}
+		}
+	}
+
+	public function isExistingMember( $conn ) {
+		$sql = "SELECT * FROM `authorization` WHERE `email_id` = '$this->user_email';";
+		if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
+			return true;
+		}
+		return false;
+	}
+
+	public function setPassword( $conn, $passwordHash ) {
+		$sql = "INSERT INTO `authorization`(`email_id`, `password_hash`) VALUES ( '$this->user_email','$passwordHash');";
+		if ( $conn->query( $sql ) ) {
+			return true;
+		}
+		return false;
+	}
+	public function addToDatabase( $conn ) {
+		$sql = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
+ 			`user_email`, `user_dob`, `user_gender`) VALUES
+		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '','$this->user_gender' );";
+		if ( $conn->query( $sql ) ) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	public function sendWelcomeEmail( $password ) {
+		echo "hi";
+		$emailBody = "Hello $this->user_first_name, \n
+			Welcome to your ThinkFOSS account. This email contains your password so that you can later login.Please note that you can either use the OAuth Login, or use your email-password combo. \n
+			\n Your ThinkFOSS Password is : $password \n
+			Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+			\n Pleased to serve you here.
+			\n With <3 to FOSS, \n The ThinkFOSS Team";
+
+
+		require_once( 'access/mailgunAPIKeys.php' );
+		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
+
+		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
+		$mg->sendMessage( $mailgunDomain, array(
+			'from'  => 'admin@thinkfoss.com',
+			'to'    => $this->user_email,
+			'subject' => 'Welcome to your ThinkFOSS account',
+			'text'  => $emailBody
+		) );
+
+		return true;
+
 	}
 
 }

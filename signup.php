@@ -1,8 +1,12 @@
 <?php
         session_start();
-	if( $_SESSION['loggedin_user'] ) {
+	if( $_SESSION['loggedin_user'] && $_SESSION['loggedin_user_id'] ) {
 		header( 'Location: portal/portal.php');
 	}
+        require_once('php/vendor/google-api-php-client-master/autoload.php');
+	$client = new Google_Client();
+	$client->setAuthConfigFile( 'php/access/client_secret.json' );
+	$client->addScope(Google_Service_Plus::USERINFO_EMAIL );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -163,7 +167,8 @@
                 <li><span class="fa fa-sign-in"></span>
                     <strong>Sign in </strong> to manage your preferences
                 </li>
-                </ul>
+                </ul> <br><br>
+	        <a href='php/oauth/oauth2callback.php'> <button style='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sign Up</i> </button></a>
 
         </div>
 

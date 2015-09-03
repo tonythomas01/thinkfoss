@@ -1,9 +1,8 @@
 <?php
 	session_start();
-	if ( !isset( $_SESSION['loggedin_user'] ) ) {
+	if ( !isset( $_SESSION['loggedin_user'] ) || !isset( $_SESSION['loggedin_user_id'] ) ) {
 		header( 'Location: ../signup.php');
 	}
-error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
