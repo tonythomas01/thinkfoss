@@ -2,11 +2,12 @@
         session_start();
 	if( isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: portal/portal.php');
+	} else {
+		require_once('php/vendor/google-api-php-client-master/autoload.php');
+		$client = new Google_Client();
+		$client->setAuthConfigFile('php/access/client_secret.json');
+		$client->addScope(Google_Service_Plus::USERINFO_EMAIL);
 	}
-        require_once('php/vendor/google-api-php-client-master/autoload.php');
-	$client = new Google_Client();
-	$client->setAuthConfigFile( 'php/access/client_secret.json' );
-	$client->addScope(Google_Service_Plus::USERINFO_EMAIL );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +131,6 @@
         <div class="content">
             </div>
                         <?php
-                        session_start();
                         if ( $_SESSION['message'] ) {
                             $message = $_SESSION['message'];
                             echo "<p class='alert-success'> $message</p>";
