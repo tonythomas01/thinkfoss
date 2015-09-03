@@ -106,7 +106,6 @@ class User {
 
 	}
 	public function sendWelcomeEmail( $password ) {
-		echo "hi";
 		$emailBody = "Hello $this->user_first_name, \n
 			Welcome to your ThinkFOSS account. This email contains your password so that you can later login.Please note that you can either use the OAuth Login, or use your email-password combo. \n
 			\n Your ThinkFOSS Password is : $password \n
