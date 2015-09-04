@@ -169,8 +169,8 @@
                     <strong>Sign in </strong> to manage your preferences
                 </li>
                 </ul> <br><br>
-            <h3>Sign up using :</h3>
-	        <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sing Up</i> </button></a>
+            <h3>Sign up using </h3>
+	        <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sign Up</i> </button></a>
 	        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-primary btn-lg'><i class="fa fa-github"> Sign Up</i> </button></a>
 
         </div>
@@ -226,9 +226,9 @@
                         <option>Other</option>
                     </select>
                     </div>
-
+                    <br><br>
                     <div class='input-group'>
-                        <input type="checkbox" required name="terms"> I accept the Terms and Conditions of ThinkFOSS
+                        <input type="checkbox" required name="terms"> I accept the terms and conditions of ThinkFOSS
                     </div> <br><br>
                     <script src='https://www.google.com/recaptcha/api.js'></script>
                     <div class='input-group'>
