@@ -48,6 +48,15 @@ class User {
 		$oauthUser->user_email = $userLogin->email;
 		return $oauthUser;
 	}
+	static function newFromFacebookOAuth( $userLogin ){
+		$oauthUser = new User();
+		$oauthUser->user_first_name = $userLogin['first_name'];
+		$oauthUser->user_last_name = $userLogin['last_name'];
+		$oauthUser->user_email = $userLogin['email'];
+		$oauthUser->user_gender = $userLogin['gender'];
+		$oauthUser->user_dob = '';
+		return $oauthUser;
+	}
 
 	public function getExtra( $conn ) {
 		$sqlStatement = "SELECT `user_id`, `user_github`, `user_linkedin`, `user_about`, `user_occupation`, `user_nation`
@@ -86,6 +95,7 @@ class User {
 				return $res['user_id'];
 			}
 		}
+		return false;
 	}
 
 	public function isExistingMember( $conn ) {
@@ -118,6 +128,12 @@ class User {
 		if( !$this->user_gender ) {
 			$this->user_gender = 'Other';
 		}
+		if ( !$this->user_last_name ) {
+			$this->user_last_name = '';
+		}
+		if ( !$this->user_first_name ) {
+			$this->user_last_name = '';
+		}
 		$sql = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
  			`user_email`, `user_dob`, `user_gender`) VALUES
 		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '$this->user_dob','$this->user_gender' );";
@@ -129,7 +145,7 @@ class User {
 
 	}
 	public function sendWelcomeEmail( $password, $mailgunAPIKey, $mailgunDomain ) {
-		$emailBody = "Hello $this->user_first_name, \n
+		$emailBody = "Hello There, \n
 			Welcome to your ThinkFOSS account. This email contains your password so that you can later login.Please note that you can either use the OAuth Login, or use your email-password combo. \n
 			\n Your ThinkFOSS Password is : $password \n
 			Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
