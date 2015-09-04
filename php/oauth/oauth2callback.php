@@ -45,7 +45,7 @@ if (!isset($_GET['code'])) {
 		require_once( '../access/mailgunAPIKeys.php' );
 		require_once( '../vendor/mailgun-php/vendor/autoload.php' );
 
-		$user->sendWelcomeEmail( $pass, $mailgunAPIKey, $mailgunDomain );
+		$user->sendWelcomeEmail( $newPassword, $mailgunAPIKey, $mailgunDomain );
 
 		$_SESSION['loggedin_user'] = $user->getValue( 'user_first_name' ) . ' ' . $user->getValue('user_last_name');
 		$_SESSION['loggedin_user_email'] = $user->getValue( 'user_email' );
