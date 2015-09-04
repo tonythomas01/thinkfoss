@@ -41,6 +41,14 @@ class User {
 		return $oauthUser;
 	}
 
+	static function newFromGithubAuth( $userLogin ) {
+		$oauthUser = new User();
+		$oauthUser->user_first_name = $userLogin->login;
+		$oauthUser->user_last_name= '';
+		$oauthUser->user_email = $userLogin->email;
+		return $oauthUser;
+	}
+
 	public function getExtra( $conn ) {
 		$sqlStatement = "SELECT `user_id`, `user_github`, `user_linkedin`, `user_about`, `user_occupation`, `user_nation`
  		FROM `user_extra` WHERE `user_id` = '$this->user_id';";
@@ -96,6 +104,12 @@ class User {
 		return false;
 	}
 	public function addToDatabase( $conn ) {
+		if ( !$this->user_dob ) {
+			$this->user_dob = '';
+		}
+		if( !$this->user_gender ) {
+			$this->user_gender = 'Other';
+		}
 		$sql = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
  			`user_email`, `user_dob`, `user_gender`) VALUES
 		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '$this->user_dob','$this->user_gender' );";
