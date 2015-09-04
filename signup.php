@@ -190,20 +190,6 @@
                         <div class='input-group-addon'><i class='fa fa-user'></i></div>
                         <input required type='text'class='form-control' id='user_last_name' name='user_last_name' placeholder='Last Name'>
                     </div><br><br>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
-                        <select name='user-gender' class="form-control">
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-
-                    <label class='sr-only' for='user_email'>Your Email</label>
-                    <div class='input-group' >
-                        <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
-                        <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your email id'>
-                    </div> <br><br>
                     <label class='sr-only' for='user_pass_once'>Password</label>
                     <div class='input-group'>
                         <div class='input-group-addon'><i class='fa fa-eye'></i> </div>
@@ -215,8 +201,22 @@
                         <input required type='password' class='form-control' id='user_pass_again' name='user_pass_again' placeholder='Password again'>
                     </div>
                     <br> <br>
+                    <label class='sr-only' for='user_email'>Your Email</label>
+                    <div class='input-group' >
+                        <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
+                        <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your email id'>
+                    </div>
 
+                    <div class='input-group'>
+                        <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
+                        <select name='user-gender' class="form-control">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
 
+                    <br><br>
                     <div class='input-group'>
                         <input type="checkbox" required name="terms"> I accept the terms and conditions of ThinkFOSS
                     </div> <br><br>
