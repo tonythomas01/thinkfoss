@@ -169,8 +169,9 @@
                     <strong>Sign in </strong> to manage your preferences
                 </li>
                 </ul> <br><br>
-	        <a href='php/oauth/oauth2callback.php'> <button style='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> </i> </button></a>
-	        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button style='submit' class='btn btn-primary btn-lg btn-primary '><i class="fa fa-github"></i> </button></a>
+            <h3>Sign up using :</h3>
+	        <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sing Up</i> </button></a>
+	        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-primary btn-lg'><i class="fa fa-github"> Sign Up</i> </button></a>
 
         </div>
 
