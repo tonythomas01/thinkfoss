@@ -170,8 +170,8 @@
                 </li>
                 </ul> <br><br>
             <h3>Sign up using </h3>
-	        <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sign Up</i> </button></a>
-	        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-primary btn-lg'><i class="fa fa-github"> Sign Up</i> </button></a>
+	        <a href='php/oauth/oauth2callback.php' target="_blank"> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sign Up</i> </button></a>
+	        <a href='php/oauth/oauth2callbackgithub.php?action=login' target="_blank"> <button type='submit' class='btn btn-primary btn-lg'><i class="fa fa-github"> Sign Up</i> </button></a>
 
         </div>
 
