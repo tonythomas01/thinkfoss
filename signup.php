@@ -169,10 +169,6 @@
                     <strong>Sign in </strong> to manage your preferences
                 </li>
                 </ul> <br><br>
-            <h3>Sign up using </h3>
-	        <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"> Sign Up</i> </button></a>
-	        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-primary btn-lg'><i class="fa fa-github"> Sign Up</i> </button></a>
-
         </div>
 
         <div class="col-xs-6">
@@ -194,18 +190,20 @@
                         <div class='input-group-addon'><i class='fa fa-user'></i></div>
                         <input required type='text'class='form-control' id='user_last_name' name='user_last_name' placeholder='Last Name'>
                     </div><br><br>
+                    <div class='input-group'>
+                        <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
+                        <select name='user-gender' class="form-control">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
 
                     <label class='sr-only' for='user_email'>Your Email</label>
-                    <div class='input-group'>
+                    <div class='input-group' >
                         <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
-                        <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your Email id'>
-                    </div>
-                    <label class='sr-only' for='user_dob'>BirthDay</label>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-birthday-cake'></i></div>
-                        <input required type='date' class='form-control' id='user_dob'  name='user_dob' placeholder='Birthday'>
-                    </div>
-                    <br> <br>
+                        <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your email id'>
+                    </div> <br><br>
                     <label class='sr-only' for='user_pass_once'>Password</label>
                     <div class='input-group'>
                         <div class='input-group-addon'><i class='fa fa-eye'></i> </div>
@@ -218,15 +216,7 @@
                     </div>
                     <br> <br>
 
-                    <div class='input-group'>
-                    <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
-                    <select name='user-gender' class="form-control">
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                    </select>
-                    </div>
-                    <br><br>
+
                     <div class='input-group'>
                         <input type="checkbox" required name="terms"> I accept the terms and conditions of ThinkFOSS
                     </div> <br><br>
@@ -244,8 +234,15 @@
                 </div>
 
             </form>
+                </div>
+            <div style="text-align: left">
 
-        </div>
+                    <h3>or login with </h3>
+                    <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"></i> </button></a>
+                    <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-warning btn-lg'><i style="color: black" class="fa fa-github"></i> </button></a>
+            </div>
+
+
         </div>
 
 

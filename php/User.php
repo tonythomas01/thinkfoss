@@ -23,7 +23,7 @@ class User {
 			$user->user_first_name = $userData['user_first_name'];
 			$user->user_last_name =  $userData['user_last_name'];
 			$user->user_email = $userData['user_email'];
-			$user->dob = $userData['user_dob'];
+			$user->user_dob = $userData['user_dob'];
 			$user->user_gender = $userData['user_gender'];
 			$user->user_id = $userId;
 			return $user;
@@ -98,6 +98,14 @@ class User {
 
 	public function setPassword( $conn, $passwordHash ) {
 		$sql = "INSERT INTO `authorization`(`email_id`, `password_hash`) VALUES ( '$this->user_email','$passwordHash');";
+		if ( $conn->query( $sql ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	public function setValue( $conn, $key, $value ) {
+		$sql = "INSERT INTO `user_details` ( '$key' ) VALUES( '$value') WHERE `user_id` = '$this->user_id';";
 		if ( $conn->query( $sql ) ) {
 			return true;
 		}

@@ -80,6 +80,13 @@
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal">
+	        <?php
+		        if ( $_SESSION['error'] ) {
+		        $errorMessage = $_SESSION['error'];
+		        echo "<p class='alert-warning' style='text-align: center'> $errorMessage </p>";
+		        unset( $_SESSION['error'] );
+	        }
+	        ?>
 
             <div class='col-xs-6'>
                 <br>
@@ -88,32 +95,55 @@
 			            <label class='sr-only' for='user_github'>Github profile</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-github'></i></div>
-				            <input required type='text'class='form-control' id='user_github' name='user_github' placeholder='Github profile' value="<?php echo $user->getValue('user_github')?>">
+				            <input  type='text'class='form-control' id='user_github' name='user_github' placeholder='Github profile' value="<?php echo $user->getValue('user_github')?>">
 			            </div>
 			            <label class='sr-only' for='user_linkedin'>Linkedin profile</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-linkedin'></i></div>
-				            <input required type='text'class='form-control' id='user_linkedin' name='user_linkedin' placeholder='Linkedin profile' value="<?php echo $user->getValue('user_linkedin')?>">
+				            <input  type='text'class='form-control' id='user_linkedin' name='user_linkedin' placeholder='Linkedin profile' value="<?php echo $user->getValue('user_linkedin')?>">
 			            </div> <br><br>
 
 			            <label class='sr-only' for='user_about'>About me</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-magic'></i></div>
-				            <textarea required rows='4' cols='100' class='form-control' id='user_about'  name='user_about' placeholder='Few words about your technical work with Open Source or general'
+				            <textarea  rows='4' cols='100' class='form-control' id='user_about'  name='user_about' placeholder='Few words about your technical work with Open Source or general'
 				                      ><?php echo $user->getValue('user_about'); ?></textarea>
 			            </div> <br><br>
 			            <label class='sr-only' for='user_occupation'>What I do</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-road'></i></div>
-				            <input required type='text'class='form-control' id='user_occupation' name='user_occupation' placeholder='What I do' value="<?php echo $user->getValue('user_occupation'); ?>" >
+				            <input  type='text'class='form-control' id='user_occupation' name='user_occupation' placeholder='What I do' value="<?php echo $user->getValue('user_occupation'); ?>" >
 			            </div>
 
 			            <label class='sr-only' for='user_nation'>Nation</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-map-marker'></i></div>
-				            <input required type='text'class='form-control' id='user_nation' name='user_nation' placeholder='Nationality' value="<?php echo $user->getValue('user_nation'); ?>">
+				            <input  type='text'class='form-control' id='user_nation' name='user_nation' placeholder='Nationality' value="<?php echo $user->getValue('user_nation'); ?>">
 			            </div>
 
+			            <br><br>
+			            <label class='sr-only' for='user_dob'>BirthDay</label>
+			            <div class='input-group'>
+				            <div class='input-group-addon'><i class='fa fa-birthday-cake'></i></div>
+				            <input  type='date' class='form-control' id='user_dob'  name='user_dob' value="<?php echo $user->getValue('user_dob'); ?>" placeholder='Birthday'>
+			            </div>
+
+			            <div class='input-group'>
+				            <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
+				            <select name='user_gender' class="form-control" >
+					            <option <?php if ( $user->getValue('user_gender') == 'Male' ) { echo 'selected'; }?>>Male</option>
+					            <option <?php if ( $user->getValue('user_gender') == 'Female' ) { echo 'selected'; }?> >Female</option>
+					            <option <?php if ( $user->getValue('user_gender') == 'Other' ) { echo 'selected'; }?>>Other</option>
+				            </select>
+			            </div>
+
+			            <br><br>
+
+			            <script src='https://www.google.com/recaptcha/api.js'></script>
+			            <div class='input-group'>
+				            <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+			            </div>
+			            <br>
 
 			            <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div> <br>
 			            <button type='submit' class='btn btn-block btn-primary'>Update</button>
