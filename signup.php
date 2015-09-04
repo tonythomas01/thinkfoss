@@ -7,6 +7,7 @@
 		$client = new Google_Client();
 		$client->setAuthConfigFile('php/access/client_secret.json');
 		$client->addScope(Google_Service_Plus::USERINFO_EMAIL);
+		$client->addScope(Google_Service_Plus::PLUS_ME);
 	}
 ?>
 <!DOCTYPE html>

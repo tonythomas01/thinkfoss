@@ -8,6 +8,7 @@ $client = new Google_Client();
 $client->setAuthConfigFile('../access/client_secret.json');
 $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/php/oauth/oauth2callback.php');
 $client->addScope( Google_Service_Plus::USERINFO_EMAIL );
+$client->addScope( Google_Service_Plus::PLUS_ME );
 
 if (!isset($_GET['code'])) {
 	$auth_url = $client->createAuthUrl();

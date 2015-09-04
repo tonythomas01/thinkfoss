@@ -37,6 +37,7 @@ class User {
 		$oauthUser->user_last_name= $userLogin['familyName'];
 		$oauthUser->user_email = $userLogin['email'];
 		$oauthUser->user_gender =  $userLogin['gender'];
+		$oauthUser->user_dob = $userLogin['birthday'];
 		return $oauthUser;
 	}
 
@@ -97,7 +98,7 @@ class User {
 	public function addToDatabase( $conn ) {
 		$sql = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
  			`user_email`, `user_dob`, `user_gender`) VALUES
-		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '','$this->user_gender' );";
+		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '$this->user_dob','$this->user_gender' );";
 		if ( $conn->query( $sql ) ) {
 			return true;
 		} else {
