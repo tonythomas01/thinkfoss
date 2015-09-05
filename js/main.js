@@ -44,14 +44,11 @@ function main() {
     })
 
   	$(document).ready(function() {
-        var n = 2;
-        $('.form-inline #add_more_skills').click(function(){
-            var box_html = $('<br><br><div class="input-group" id="mentor-skills-wrapper"> <div class="input-group-addon">I can teach</div> <input type="text" class="form-control" id="mentor-skills-' + n +'" name="mentor-skills-' + n +'" placeholder="Skills"> </div>');
-            box_html.hide();
-            $('.form-inline #add_more_skills:last').after(box_html);
-            box_html.fadeIn('slow');
-            n++;
-            return false;
+        $(".course_remove").click( function() {
+            $.post( "http://localhost/thinkfoss/php/doRemoveCoursefromCart.php" , {
+                course_id : this.value
+            });
+            this.closest('tr').remove();
         });
 
   	  $("#team").owlCarousel({

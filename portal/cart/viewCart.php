@@ -54,6 +54,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 	<!-- Latest compiled JavaScript -->
 	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/main.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -67,7 +68,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 	<!--[endif]-->
 </head>
-<body background="black">
+<body>
 <?php
 	session_start();
 	require_once( '../../php/access/accessDB.php' );
@@ -78,6 +79,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 ==========================================-->
 <?php include 'navigationcart.php' ?>
 
+
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
 		<div class="portal" >
@@ -87,7 +89,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				$message = $_SESSION['message'];
 				echo "<p class='alert-success' style='text-align: center'> $message</p>";
 				unset( $_SESSION['message'] );
-			} else if ( $_SESSION['error'] ) {
+			}
+			if ( $_SESSION['error'] ) {
 				$errorMessage = $_SESSION['error'];
 				echo "<p class='alert-warning' style='text-align: center'> $errorMessage </p>";
 				unset( $_SESSION['error'] );
@@ -135,7 +138,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 					        <td> '. $row['course_difficulty']. '</td>
 					        <td> '. $row['course_fees']. '</td>
 					        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
-					        <td> <input type="checkbox" name="checkout-item[]" value="course-'.$row['course_id'].'" /> </td>
+					        <td> <input type="checkbox"  name="checkout-item[]" value="course-'.$row['course_id'].'" /> &nbsp &nbsp
+					        <button type="button" class="btn btn-danger course_remove" id="cart-remove" name="remove-item[]" value="course-'.$row['course_id'].'" ><i class="fa fa-times"></i></button></td>
 		                                ';
 					}
 				?>

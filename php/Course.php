@@ -273,5 +273,13 @@ class Course {
 		return true;
 	}
 
+	public function removeFromCart( $conn, $userId ) {
+		$sql = "DELETE FROM `course_enrollment` WHERE `course_id` = '$this->course_id' AND `user_id` = '$userId';";
+		if( $conn->query( $sql ) ) {
+			return true;
+		}
+		return false;
+	}
+
 }
 

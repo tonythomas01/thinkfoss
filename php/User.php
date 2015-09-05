@@ -176,5 +176,6 @@ class User {
 		return false;
 	}
 
+
 }
 ?>
