@@ -108,6 +108,11 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <?php
+                    if ( $user->checkIfPrivelaged( $conn ) ) {
+                        echo '<li><a href="admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
+                    }
+                ?>
                 <li><a href="portal.php"><i class="fa fa-laptop"></i> Portal</a> </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: blue"><i class="fa fa-shopping-cart"> ( <?php echo $user->getEnrolledCourses( $conn ); ?> )</i> <span class="caret"></span></a>

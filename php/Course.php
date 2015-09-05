@@ -21,8 +21,9 @@ class Course {
 
 	public function addToDatabase( $conn ) {
 		$sql = "INSERT INTO `course_details`(`course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`,
- 		`course_date_from`, `course_time_from`, `course_date_to`, `course_time_to`, `course_fees`)
-  		VALUES ('','$this->course_name','$this->course_bio','$this->course_lang','$this->course_difficulty','$this->course_date_from','$this->course_time_from','$this->course_date_to','$this->course_time_to', '$this->course_fees');";
+ 		`course_date_from`, `course_time_from`, `course_date_to`, `course_time_to`, `course_fees`, `course_approved` )
+  		VALUES ('','$this->course_name','$this->course_bio','$this->course_lang','$this->course_difficulty',
+  		'$this->course_date_from','$this->course_time_from','$this->course_date_to','$this->course_time_to', '$this->course_fees', 0 );";
 
 		if ( $conn->query( $sql ) ) {
 			$sql = "SELECT `course_id` FROM `course_details` WHERE `course_name` = '$this->course_name';";
@@ -50,11 +51,33 @@ class Course {
 	}
 
 	public function deleteFromDb( $conn ) {
-		$sqlRemove = "DELETE FROM `course_mentor_map` WHERE `course_id` = '$this->course_id'";
-		if ( $conn->query( $sqlRemove ) ) {
+		$sql = "DELETE FROM `course_details` WHERE `course_id` = '$this->course_id'";
+		if ( $conn->query( $sql ) ) {
+			$sqlRemove = "DELETE FROM `course_mentor_map` WHERE `course_id` = '$this->course_id'";
+			if ( $conn->query( $sqlRemove ) ) {
+				return true;
+			}
+		}
+	}
+
+	public function removeCourseByAdmin( $conn, $adminId ) {
+		$this->deleteFromDb( $conn );
+		$sql = "INSERT INTO `course_administration_log`(`course_id`, `admin_id`, `course_approval` )
+			VALUES ( '$this->course_id', '$adminId', 0 )";
+		if ( $conn->query( $sql ) ) {
 			return true;
 		}
-		return false;
+	}
+
+	public function approveCourseByAdmin( $conn, $adminId ) {
+		$sqlApprove = "UPDATE `course_details` SET `course_approved`= 1 WHERE `course_id` = '$this->course_id';";
+		if ( $conn->query( $sqlApprove ) ) {
+			$sql = "INSERT INTO `course_administration_log`(`course_id`, `admin_id`, `course_approval` )
+			VALUES ( '$this->course_id', '$adminId', 1 )";
+			if ( $conn->query( $sql ) ) {
+				return true;
+			}
+ 		}
 	}
 
 	static function newFromDetails( $course_name, $course_bio, $course_lang, $course_difficulty, $course_date_from, $course_time_from, $course_date_to, $course_time_to, $course_fees, $course_mentor ) {
@@ -162,6 +185,60 @@ class Course {
 			return true;
 		}
 		return false;
+	}
+
+	public function sendCourseCreatedEmail( $conn, $userId, $mailgunAPIKey, $mailgunDomain ) {
+		require_once( 'User.php' );
+		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
+		$user = User::newFromUserId( $userId, $conn );
+		$userEmailId = $user->getValue( 'user_email' );
+		$emailBody = "Hello There, \n
+			Greetings from ThinkFOSS. Thank you for adding in your course $this->course_name. We will be reviewing
+			the course details for its quality, and will accept/reject in a short time. The admins have been notified
+			about the same, and if you dont hear from us in 24 hours - please respond to this email with your concern.\n
+			Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+			\n Pleased to serve you here.
+			\n With <3 to FOSS, \n The ThinkFOSS Team";
+
+		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
+		$mg->sendMessage( $mailgunDomain, array(
+			'from'  => 'admin@thinkfoss.com',
+			'cc' => 'admin@thinkfoss.com',
+			'to'    => $userEmailId,
+			'subject' => 'ThinkFOSS: You have just added a new course',
+			'text'  => $emailBody
+		) );
+
+		return true;
+	}
+
+	public function sendCourseApprovedEmail( $conn, $mailgunAPIKey, $mailgunDomain ) {
+		require_once( 'User.php' );
+		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
+		$courseMentorId = self::getCourseMentor( $conn, $this->course_id );
+		$user = User::newFromUserId( $courseMentorId, $conn );
+		$userEmailId = $user->getValue( 'user_email' );
+		$emailBody = "Hello There, \n
+			Greetings from ThinkFOSS. We are happy to inform you that your course titled $this->course_name has been
+			reviewed and accepted by the ThinkFOSS admin team. We might contact you for further details in this regard.
+
+			You can either share your course link with interested people - or wait until some students register for the same.
+
+			\n In case of trouble, please contact one of the admins or reply to this email.
+			Meanwhile, pelase do add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+			\n Pleased to serve you here.
+			\n With <3 to FOSS, \n The ThinkFOSS Team";
+
+		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
+		$mg->sendMessage( $mailgunDomain, array(
+			'from'  => 'admin@thinkfoss.com',
+			'cc' => 'admin@thinkfoss.com',
+			'to'    => $userEmailId,
+			'subject' => 'ThinkFOSS: Your course has been accepted',
+			'text'  => $emailBody
+		) );
+
+		return true;
 	}
 
 }

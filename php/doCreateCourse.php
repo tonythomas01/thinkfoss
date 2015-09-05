@@ -39,12 +39,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$course_amount = mysqli_escape_string( $conn, $preparedPost->getValue( 'course_amount' ) );
 	$course_mentor = $_SESSION['loggedin_user_id'] ? : false;
 
+	$current_user_id = $_SESSION['loggedin_user_id'];
+
 	require_once( 'Course.php' );
 	$newCourse = Course::newFromDetails( $course_name, $course_bio, $course_lang, $course_difficulty, $course_date_from,
 		$course_time_from, $course_date_to, $course_time_to, $course_amount, $course_mentor );
 
 	if ( $newCourse->addToDatabase( $conn ) ) {
 		$newCourse->addToMentorMap( $conn, $course_mentor );
+		require_once( 'access/mailgunAPIKeys.php' );
+		$newCourse->sendCourseCreatedEmail(  $conn, $current_user_id, $mailgunAPIKey, $mailgunDomain  );
 		$_SESSION['message'] = "Success! New course added. Please wait for confirmation from admin";
 		header( 'Location: '.'../portal/portal.php' );
 

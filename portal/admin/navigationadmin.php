@@ -30,8 +30,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="viewEnrolledCourses.php">Enrolled Courses</a></li>
-                        <li><a href="viewAllCourses.php">Available courses</a></li>
+                        <li><a href="../student/viewEnrolledCourses.php">Enrolled courses</a></li>
+                        <li><a href="../student/viewAllCourses.php">Available courses</a></li>
                     </ul>
                 </li>
             </ul>
@@ -40,7 +40,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 if ( $user->checkIfPrivelaged( $conn ) ) {
-                    echo '<li><a href="../admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
+                    echo '<li><a href="adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
                 }
                 ?>
                 <li><a href="../portal.php"><i class="fa fa-laptop"></i> Portal</a> </li>

@@ -96,8 +96,8 @@ function addMember( $conn, $user_email, $pass, Statement $postInput ) {
 
 		//User successfully inserted now enter data to user db
 		$sqlInsertuserDetails = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
- 			`user_email`, `user_dob`, `user_gender`) VALUES
-		('','$user_first_name', '$user_last_name', '$user_email', '','$user_gender' );";
+ 			`user_email`, `user_dob`, `user_gender`, `user_privelaged` ) VALUES
+		('','$user_first_name', '$user_last_name', '$user_email', '','$user_gender', 0 );";
 
 		if ( $conn->query( $sqlInsertuserDetails ) ) {
 			return true;

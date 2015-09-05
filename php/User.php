@@ -135,8 +135,8 @@ class User {
 			$this->user_last_name = '';
 		}
 		$sql = "INSERT INTO `user_details`(`user_id`, `user_first_name`, `user_last_name`,
- 			`user_email`, `user_dob`, `user_gender`) VALUES
-		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '$this->user_dob','$this->user_gender' );";
+ 			`user_email`, `user_dob`, `user_gender`, `user_privelaged` ) VALUES
+		('','$this->user_first_name', '$this->user_last_name', '$this->user_email', '$this->user_dob','$this->user_gender', 0 );";
 		if ( $conn->query( $sql ) ) {
 			return true;
 		} else {
@@ -162,6 +162,18 @@ class User {
 
 		return true;
 
+	}
+
+	public function checkIfPrivelaged( $conn ) {
+		$sql = "SELECT `user_privelaged` FROM `user_details` WHERE `user_id` = '$this->user_id';";
+		if ( $row = $conn->query( $sql ) ) {
+			while( $res = $row->fetch_assoc() ) {
+				if(  $res['user_privelaged'] == '1' ) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }

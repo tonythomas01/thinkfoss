@@ -113,10 +113,11 @@
 
         $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
           course_details.`course_lang`, course_details.`course_difficulty`,course_details.`course_date_from`,course_details.`course_time_from`,
-          course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`, user_details.`user_first_name`,
+          course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`,
+          course_details.`course_approved`, user_details.`user_first_name`,
           user_details.`user_last_name` FROM `course_details`
           INNER JOIN `course_mentor_map` ON course_details.course_id = course_mentor_map.course_id
-          INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id ";
+          INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id AND course_details.course_approved = 1";
 
         $result = $conn->query( $sqlSelect );
 
