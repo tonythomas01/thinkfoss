@@ -65,6 +65,11 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 	include( '../../php/Token.php' );
 	include( '../../php/access/accessTokens.php' );
+
+        if ( $user->checkIfPrivelaged( $conn ) ) {
+	        header( 'Location: ../../portal/portal.php');
+        }
+
 ?>
 <!-- Navigation
 ==========================================-->
