@@ -45,6 +45,12 @@ if( session('access_token') ) {
 
 	$user = apiRequest( $apiURLBase . 'user' );
 
+	if ( !$user->email ) {
+		$_SESSION['error'] = "Error: Looks like you dont have a public email id. Please use other signup options";
+		header( 'Location: '.'../../signup.php');
+		return false;
+	}
+
 	$oauthUser = User::newFromGithubAuth( $user );
 	if ( $oauthUser->isExistingMember( $conn ) ) {
 		$_SESSION['loggedin_user'] = $user->name;
