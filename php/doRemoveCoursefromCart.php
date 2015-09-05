@@ -10,6 +10,13 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: ' . '../portal/portal.php');
 		return;
 	}
+	require_once( "access/accessTokens.php" );
+	require_once( "Token.php" );
+
+	$csrfToken = new Token( $csrfSecret );
+	if( ! $csrfToken->validateCSRFToken( $postInputs->getValue( 'csrf_token' ) ) ) {
+		return false;
+	}
 
 	require_once( 'access/accessDB.php' );
 	$postInputs->sanitize();

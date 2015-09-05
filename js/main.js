@@ -45,8 +45,9 @@ function main() {
 
   	$(document).ready(function() {
         $(".course_remove").click( function() {
-            $.post( '/php/doRemoveCoursefromCart.php' , {
-                course_id : this.value
+            $.post( '/thinkfoss/php/doRemoveCoursefromCart.php' , {
+                course_id : this.value,
+                csrf_token : this.name
             });
             this.closest('tr').remove();
         });

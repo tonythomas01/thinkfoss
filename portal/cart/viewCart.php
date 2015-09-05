@@ -139,7 +139,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 					        <td> '. $row['course_fees']. '</td>
 					        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
 					        <td> <input type="checkbox"  name="checkout-item[]" value="course-'.$row['course_id'].'" /> &nbsp &nbsp
-					        <button type="button" class="btn btn-danger course_remove" id="cart-remove" name="remove-item[]" value="course-'.$row['course_id'].'" ><i class="fa fa-times"></i></button></td>
+					        <button type="button" class="btn btn-danger course_remove" id="cart-remove" name='; echo $csrfToken->getCSRFToken(); echo ' value="course-'.$row['course_id'].'" ><i class="fa fa-times"></i></button></td>
 		                                ';
 					}
 				?>
