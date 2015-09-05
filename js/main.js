@@ -45,7 +45,7 @@ function main() {
 
   	$(document).ready(function() {
         $(".course_remove").click( function() {
-            $.post( window.location.hostname + '/php/doRemoveCoursefromCart.php' , {
+            $.post( '/php/doRemoveCoursefromCart.php' , {
                 course_id : this.value
             });
             this.closest('tr').remove();
