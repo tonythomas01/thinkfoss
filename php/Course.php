@@ -194,8 +194,7 @@ class Course {
 		$userEmailId = $user->getValue( 'user_email' );
 		$emailBody = "Hello There,
 		\n Greetings from ThinkFOSS. Thank you for adding in your course $this->course_name. We will be reviewing the course details for its quality, and will accept/reject in a short time.
-		\n The admins have been notified about the same, and if you dont hear from us in 24 hours - please respond to this email with your concern.
-		\n Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+		\n The admins have been notified about the same, and if you dont hear from us in 24 hours - please respond to this email with your concern. Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
 		\n Pleased to serve you here.
 		\n With <3 to FOSS, \n The ThinkFOSS Team";
 
@@ -220,8 +219,7 @@ class Course {
 		$emailBody = "Hello There,
 		\n Greetings from ThinkFOSS. We are happy to inform you that your course titled $this->course_name has been reviewed and accepted by the ThinkFOSS admin team. We might contact you for further details in this regard.
 		\n You can either share your course link with interested people - or wait until some students register for the same.
-		\n In case of trouble, please contact one of the admins or reply to this email.
-		\n Meanwhile, please do add in more courses, or enroll to courses out there so that we can spread the light of FOSS.
+		\n In case of trouble, please contact one of the admins or reply to this email. Meanwhile, please do add in more courses, or enroll to courses out there so that we can spread the light of FOSS.
 
 		\n Pleased to serve you here.
 		\n With <3 to FOSS, \n The ThinkFOSS Team";
@@ -245,11 +243,11 @@ class Course {
 		$user = User::newFromUserId( $courseMentorId, $conn );
 		$userEmailId = $user->getValue( 'user_email' );
 
-		$emailBody = "Hello There, \n\n Greetings from ThinkFOSS. We are happy to inform you that a user has enrolled to your course titled '$this->course_name '. \n You can see details of the user who have enrolled from your ThinkFOSS portal. We might contact you for further details in this regard. \n You can start communication with your mentee from now.
+		$emailBody = "Hello There, \n\n Greetings from ThinkFOSS. We are happy to inform you that a user has enrolled to your course titled '$this->course_name '. \n You can see details of the user who have enrolled from your ThinkFOSS portal. We might contact you for further details in this regard. You can start communication with your mentee from now.
 
-		You should schedule a preferred time for your course to take place with your mentee, and make sure that you complete in time. You are invited to use our phabricator at http://phab.thinkfoss.com to schedule and track your course.\n In case of trouble, please contact one of the admins or reply to this email.
+		\n You should schedule a preferred time for your course to take place with your mentee, and make sure that you complete in time. You are invited to use our phabricator at http://phab.thinkfoss.com to schedule and track your course. In case of trouble, please contact one of the admins or reply to this email.
 
-		Meanwhile, please do add in more courses, or enroll to courses out there so that we can spread the light of FOSS.
+		\n Meanwhile, please do add in more courses, or enroll to courses out there so that we can spread the light of FOSS.
 
 		\n Pleased to serve you here.
 		\n With <3 to FOSS, \n The ThinkFOSS Team";
