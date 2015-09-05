@@ -7,23 +7,17 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
-		header('Location: ' . '../portal/cart/viewCart.php');
+		header('Location: ' . '../portal/admin/adminPanel.php');
 		return;
 	}
 	require_once( 'Token.php' );
 	require_once( 'access/accessTokens.php' );
 	require_once( "access/captchaTokens.php" );
 
-	print_r( $_POST );
-	if ( !$preparedPost->validateCaptchaResponse( $preparedPost->getValue('g-recaptcha-response' ), $captchaSecretKey ) ) {
-		$_SESSION['error'] = "Error: Invalid Captcha Entered. Please contact one of the admins, or try again";
-		header( 'Location: '.'../portal/cart/viewCart.php');
-		return false;
-	}
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
-		header( 'Location: '.'../portal/cart/viewCart.php');
+		header( 'Location: '.'../portal/admin/adminPanel.php');
 		return false;
 	}
 	require_once( "access/accessDB.php" );
