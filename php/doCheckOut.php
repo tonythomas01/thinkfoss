@@ -29,6 +29,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$preparedPost->sanitize();
 
 	require_once( 'Course.php' );
+	require_once( 'access/mailgunAPIKeys.php' );
 	$courseList =  $_POST[ 'checkout-item' ];
 	if ( is_array( $courseList ) ) {
 		foreach( $courseList as $course ) {
@@ -37,7 +38,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 			$course = Course::newFromId( $conn, $courseName[1] );
 			if ( $course ) {
 				if ( $course->checkoutCourse( $conn, $loggedInUser ) ) {
-					$_SESSION['message'] = "Congratulations! The checkout was successfull!";
+					$course->notifyMentor(  $conn, $mailgunAPIKey, $mailgunDomain );
+					$_SESSION['message'] = "Congratulations! The checkout was successful!";
 					header('Location: ' . '../portal/student/viewAllCourses.php');
 				}
 			}
