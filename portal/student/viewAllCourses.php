@@ -59,7 +59,6 @@
 </head>
 <body >
 <?php
-        session_start();
         require_once( '../../php/access/accessDB.php' );
         require_once( '../../php/User.php' );
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
