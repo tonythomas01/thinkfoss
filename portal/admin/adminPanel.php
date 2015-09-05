@@ -66,7 +66,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 	include( '../../php/Token.php' );
 	include( '../../php/access/accessTokens.php' );
 
-        if ( $user->checkIfPrivelaged( $conn ) ) {
+        if ( !$user->checkIfPrivelaged( $conn ) ) {
 	        header( 'Location: ../../portal/portal.php');
         }
 
