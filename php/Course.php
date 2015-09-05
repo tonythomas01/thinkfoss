@@ -247,15 +247,10 @@ class Course {
 		$user = User::newFromUserId( $courseMentorId, $conn );
 		$userEmailId = $user->getValue( 'user_email' );
 
-		$emailBody = "Hello There, \n
-		Greetings from ThinkFOSS. We are happy to inform you that a user has enrolled to your course titled ' $this->course_name '.
-		You can see details of the user who have enrolled from your ThinkFOSS portal. We might contact you for further details in this regard.
-
-		You can start communication with your mentee from now. You should schedule a preferred time for your
+		$emailBody = "Hello There, \n Greetings from ThinkFOSS. We are happy to inform you that a user has enrolled to your course titled ' $this->course_name '.
+		You can see details of the user who have enrolled from your ThinkFOSS portal. We might contact you for further details in this regard. \n You can start communication with your mentee from now. You should schedule a preferred time for your
 		course to take place with your mentee, and make sure that you complete in time. You are invited to use our phabricator at
-		http://phab.thinkfoss.com to schedule and track your course.\n
-
-		In case of trouble, please contact one of the admins or reply to this email.
+		http://phab.thinkfoss.com to schedule and track your course.\n In case of trouble, please contact one of the admins or reply to this email.
 		Meanwhile, pelase do add in more courses, or enroll to courses out there so that we can spread the light of FOSS.
 
 		\n Pleased to serve you here.
