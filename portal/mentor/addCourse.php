@@ -76,7 +76,7 @@
             <div class='col-xs-6'>
                 <br>
                 <form class='form-inline' action='../../php/doCreateCourse.php' method='post'>
-                    <div class='form-group'>
+                    <div class='form-group well'>
 
                         <label class='sr-only' for='course_name'>I will teach</label>
                         <div class='input-group' >
