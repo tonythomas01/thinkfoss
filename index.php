@@ -165,7 +165,7 @@
                 <nav style="padding-top: 10px; " class="navbar navbar-default navbar-fixed-bottom">
                         <div class="container">
                                 <div class="pull-left fnav">
-                                        <p>NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabrciator</a>.
+                                        <p>NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a>
                                 </div>
                                 <div class="pull-right fnav">
                                         <ul class="footer-social">

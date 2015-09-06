@@ -212,21 +212,7 @@
         </div>
         </div>
     </div>
-    <nav style="padding: 10px 0 10px 0;" class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="pull-left fnav">
-                <p style="color: black">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabrciator</a>.
-            </div>
-            <div class="pull-right fnav">
-                <ul class="footer-social">
-                    <li><a href="http://beta.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
-                    <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="https://plus.google.com/102089872995784319229/about"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="https://twitter.com/thinkfoss"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php include '../footer.html' ?>
 
 </body>
 </html>
