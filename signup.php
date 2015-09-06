@@ -236,8 +236,8 @@
             <div style="text-align: left">
 
                     <h3>or login with </h3>
-                    <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-primary btn-lg btn-danger'><i class="fa fa-google-plus"></i> </button></a>
-                    <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-warning btn-lg'><i style="color: black" class="fa fa-github"></i> </button></a>
+                    <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
+                    <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
             </div>
 
 
