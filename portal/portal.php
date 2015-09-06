@@ -215,7 +215,7 @@
     <nav style="padding: 10px 0 10px 0;" class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="pull-left fnav">
-                <p style="color: black">ALL RIGHTS RESERVED. COPYRIGHT © 2015. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabrciator</a>.
+                <p style="color: black">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabrciator</a>.
             </div>
             <div class="pull-right fnav">
                 <ul class="footer-social">
