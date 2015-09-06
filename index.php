@@ -151,7 +151,7 @@
                         <i style="font-size: 500%; color: gold" class="fa fa-star"></i>
                         <h3> I am looking for solutions!<br> Build me one</h3>
                         <a href="#tf-task" class="page-scroll">
-                                <button class="btn tf-btn btn-primary btn-lg" style="background-color: gold" ><strong><span style="color: black";>Get Solutions</span></strong></button></a>
+                                <button class="btn tf-btn btn-primary btn-lg" style="background-color: gold" ><strong><span style="color: black";>Solutions</span></strong></button></a>
                 </div>
                 <div class="col-xs-6 col-md-4" >
                      <i style="font-size: 500%; color: seashell" class="fa fa-child"></i>
