@@ -2,6 +2,7 @@
 	require_once( '../../php/Token.php' );
 	require_once( '../../php/access/accessTokens.php' );
 ?>
+<link href="../../css/material/material-wfont.min.css" rel="stylesheet">
 <!-- Navigation
 ==========================================-->
 <nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">

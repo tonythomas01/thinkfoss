@@ -35,9 +35,6 @@
     <link rel="stylesheet" type="text/css"  href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
-
     <script type="text/javascript" src="../../js/modernizr.custom.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -54,6 +51,10 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="../../js/bootstrap.min.js"></script>
+
+	<link href="../../css/material/ripples.min.css" rel="stylesheet">
+
+	<link href="../../css/material/flipper.css" rel="stylesheet">
 
     <!--[endif]-->
 </head>
@@ -100,7 +101,7 @@
                     <th>To Time</th>
                     <th><i class="fa fa-rupee"></i> </th>
                     <th>Mentor</th>
-                    <th>Action</th>
+                    <th style="width: 150px">Action</th>
                     </thead>
 	                <tbody>
 
@@ -140,7 +141,7 @@
                             if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
                                 echo ' <td><button type="button" disabled class="btn btn-warning" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Enrolled </button></td>';
                             } else if ( $course->needsCheckout( $loggedInUser, $conn ) ) {
-                                echo ' <td><a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Pay </button></a></td>';
+                                echo ' <td><a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Checkout </button></a></td>';
                             } else {
                                 echo ' <td>
                                     <form action="../../php/doEnrollCourse.php" method="post">
@@ -159,6 +160,11 @@
         </div>
         </div>
 </div>
+
+<script src="../../js/material/ripples.min.js"></script>
+<script src="../../js/material/material.min.js"></script>
+
+<script src="../../js/flipper.js"></script>
 <?php include '../../footer.html' ?>
 </body>
 </html>

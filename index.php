@@ -36,9 +36,6 @@
     <link rel="stylesheet" type="text/css"  href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
-
     <script type="text/javascript" src="js/modernizr.custom.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -57,6 +54,7 @@
           ga('send', 'pageview');
 
       </script>
+          <link href="css/material/material-wfont.min.css" rel="stylesheet">
   </head>
   <body>
     <!-- Navigation
@@ -90,14 +88,14 @@
                                   $loggedinUser = $_SESSION['loggedin_user'];
                                   $csrfToken = new Token( $csrfSecret );
                                   echo "
-                                <li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
+                                <li> <a>Hi <span style=' font-weight: bold'>$loggedinUser</span></a></li>
                                 <li>
                                         <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
                                             <div class='form-group'>
                                                 <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
                                                 <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
                                                 </div>
-                                                <a href='portal/portal.php'><button type = 'button' style='margin-top: 5%' id = 'member-portal' class='btn btn-primary' ><i class='fa fa-laptop' ></i > Portal</button ></a>
+                                                <a href='portal/portal.php'><button type = 'button'  id = 'member-portal' class='btn btn-primary btn-success' ><i class='fa fa-laptop' ></i > Portal</button ></a>
 
                                         </form>
                                 </li>";
@@ -165,16 +163,16 @@
 
 
                 <div style="position: absolute; bottom: 0; width: 100%; background-color: gold">
-                        <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right" >
-                                <p style="opacity: 1; font-size: xx-large; font-family: 'Lato', sans-serif; color: black">Have you checked out our portal yet ?</p>
+                        <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right;" >
+                                <h1 class="section-title" style="color:black">Sign up to learn/teach</h1>
                         </div>
-                        <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
+                        <div class="col-xs-6 col-lg-4" style="text-align: left;">
                                 <?php
-                                        if( isset( $_SESSION['loggedin_user'] ) ) {
-                                                echo "<a href='portal/portal.php'> <button class='btn tf-btn btn-primary btn-lg' ><i class='fa fa-laptop'></i> <strong>Portal</strong></button></a>";
-                                        } else {
-                                                echo "<a href='signup.php'> <button class='btn tf-btn btn-success btn-lg'><strong>Sign Up</strong></button></a>";
-                                        }
+                                if( isset( $_SESSION['loggedin_user'] ) ) {
+                                        echo "<a href='portal/portal.php'> <button style='margin-top: 4%' class='btn btn-success btn-lg' ><i class='fa fa-laptop'></i> <strong>Portal</strong></button></a>";
+                                } else {
+                                        echo "<a href='signup.php'> <button  style='margin-top: 4%' class='btn  btn-success btn-lg'><strong>Sign Up</strong></button></a>";
+                                }
                                 ?>
                         </div>
                 </div>
