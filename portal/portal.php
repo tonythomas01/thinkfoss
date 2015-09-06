@@ -210,22 +210,19 @@
                 </ul><br>
             </div>
         </div>
-
-
-            <div style="position: absolute; bottom: 0; width: 100%; background-color: gold">
-                <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right" >
-                    <h1 class="section-title" style="color:black">Bug ? Report to our Phabricator</h1>
-                </div>
-                <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 5px">
-                    <a href='http://phab.thinkfoss.com' target="_blank"> <button class='btn tf-btn btn-danger btn-lg' ><strong><i class="fa fa-bug"></i> Phabricator</strong></button></a>
-                    <a href='http://web-thinkfoss.rhcloud.com/index.php#tf-contact'> <button class='btn tf-btn btn-success btn-lg' ><strong><i class="fa fa-phone"></i> Help</strong></button></a>
-
-                </div>
+        <div style="position: fixed; bottom: 0; width: 100%; background-color: gold">
+            <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right" >
+                <h1 class="section-title" style="color:black">Bug ? Report to our Phabricator</h1>
             </div>
-
+            <div class="col-xs-6 col-lg-4" style="text-align: left; padding-top: 8px">
+                <a href='http://phab.thinkfoss.com' target="_blank"> <button class='btn tf-btn btn-danger btn-lg' ><strong><i class="fa fa-bug"></i> Phabricator</strong></button></a>
+                <a href='http://beta.thinkfoss.com/index.php#tf-contact'> <button class='btn tf-btn btn-success btn-lg' ><strong><i class="fa fa-phone"></i> Help</strong></button></a>
             </div>
-
         </div>
+                </div>
+
+
+            </div>
 
 </body>
 </html>
