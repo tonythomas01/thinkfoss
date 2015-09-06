@@ -162,20 +162,21 @@
 
 
 
-                <div style="position: absolute; bottom: 0; width: 100%; background-color: gold">
-                        <div class="col-xs-12 col-sm-6 col-lg-8" style="text-align: right;" >
-                                <h1 class="section-title" style="color:black">Sign up to learn/teach</h1>
+                <nav style="padding-top: 10px; " class="navbar navbar-default navbar-fixed-bottom">
+                        <div class="container">
+                                <div class="pull-left fnav">
+                                        <p>ALL RIGHTS RESERVED. COPYRIGHT © 2015. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabrciator</a>.
+                                </div>
+                                <div class="pull-right fnav">
+                                        <ul class="footer-social">
+                                                <li><a href="http://beta.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                                                <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://plus.google.com/102089872995784319229/about"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="https://twitter.com/thinkfoss"><i class="fa fa-twitter"></i></a></li>
+                                        </ul>
+                                </div>
                         </div>
-                        <div class="col-xs-6 col-lg-4" style="text-align: left;">
-                                <?php
-                                if( isset( $_SESSION['loggedin_user'] ) ) {
-                                        echo "<a href='portal/portal.php'> <button style='margin-top: 4%' class='btn btn-success btn-lg' ><i class='fa fa-laptop'></i> <strong>Portal</strong></button></a>";
-                                } else {
-                                        echo "<a href='signup.php'> <button  style='margin-top: 4%' class='btn  btn-success btn-lg'><strong>Sign Up</strong></button></a>";
-                                }
-                                ?>
-                        </div>
-                </div>
+                </nav>
 
                 </div>
         </div>
@@ -644,23 +645,6 @@
 
         </div>
     </div>
-
-    <nav id="footer">
-        <div class="container">
-            <div class="pull-left fnav">
-                <p>ALL RIGHTS RESERVED. COPYRIGHT © 2015. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>
-            </div>
-            <div class="pull-right fnav">
-                <ul class="footer-social">
-                    <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="https://twitter.com/thinkfoss"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
