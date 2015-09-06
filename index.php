@@ -116,8 +116,8 @@
                                         <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
                                     </div>
                                     <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo"'/>
-                                    <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
-                                    <a href='signup.php'><button type = 'button' id = 'member-login' class='btn btn-material-lightgreen' ><i class='fa fa-heart' ></i >Join</button ></a>
+                                    <button type = 'submit' id = 'member-login' class='btn btn-material-orange' ><i class='fa fa-sign-in' ></i ></button >
+                                    <a href='signup.php'><button type = 'button' id = 'member-login' class='btn btn-material-lightgreen'><i class='fa fa-heart' ></i >Join</button ></a>
                                 </div>
                                 </form >
 
