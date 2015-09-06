@@ -162,7 +162,7 @@
 
 
 
-                <nav style="padding-top: 10px; " class="navbar navbar-default navbar-fixed-bottom">
+                <nav style="padding-top: 15px; " class="navbar navbar-fixed-bottom" >
                         <div class="container">
                                 <div class="pull-left fnav">
                                         <p>NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a>
@@ -171,8 +171,8 @@
                                         <ul class="footer-social">
                                                 <li><a href="http://beta.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
                                                 <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://plus.google.com/102089872995784319229/about"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="https://twitter.com/thinkfoss"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="https://plus.google.com/102089872995784319229/about" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="https://twitter.com/thinkfoss" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                         </ul>
                                 </div>
                         </div>
@@ -513,11 +513,11 @@
         </div>
     </div>
 
-    <div id="tf-mentor" style="background-color:gold">
+    <div id="tf-mentor" >
         <div class="container">
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-md-6" style="background-color:gold">
                     <div class="section-title">
                         <h2>Be a  <strong>Mentor</strong></h2>
                         <hr>
@@ -549,13 +549,13 @@
                             <span class="fa fa-repeat"></span>
                             <strong>Repeat</strong>
                     </li>
-                            <a href="signup.php"><button type="button" class="btn tf-btn btn-right">Join Us</button></a>
+                            <a href="signup.php"><button type="button" class="btn btn-right btn-danger">MENTOR</button></a>
 
                     </ul>
 
                 </div>
 
-                <div class="col-md-6" id="student">
+                <div class="col-md-6" id="student" style="background-color: silver">
                     <div class="section-title">
                         <h2>Be a <strong>Student</strong></h2>
                         <hr>
@@ -586,7 +586,7 @@
                                         <span class="fa fa-repeat"></span>
                                         <strong>Repeat</strong>
                                 </li>
-                                <a href="signup.php"><button type="button" class="btn tf-btn btn-right">Join Us</button></a>
+                                <a href="signup.php"><button type="button" class="btn btn-success">LEARN</button></a>
 
                         </ul>
 
