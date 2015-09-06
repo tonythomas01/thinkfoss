@@ -60,17 +60,17 @@
     <!-- Navigation
     ==========================================-->
     <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
-        </div>
+      <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
+      </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -117,7 +117,7 @@
                                     </div>
                                     <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo"'/>
                                     <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-sign-in' ></i ></button >
-                                    <a href='signup.php'><button type = 'button' id = 'member-login' class='btn btn-success' ><i class='fa fa-heart' ></i > Join</button ></a>
+                                    <a href='signup.php'><button type = 'button' id = 'member-login' class='btn btn-material-lightgreen' ><i class='fa fa-heart' ></i >Join</button ></a>
                                 </div>
                                 </form >
 
@@ -617,28 +617,31 @@
                         <small><em>Please drop in a mail to hire us for your need</em></small>
                     </div>
 
-                    <form action="http://formspree.io/tony@thinkfoss.com" method="POST">
-                        <div class="row">
-                            <div class="col-md-6">
+                        <form action="http://formspree.io/tony@thinkfoss.com" method="POST" >
+                        <form class="form-inline">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="_replyto">
+                                        <label class="sr-only" for="exampleInputAmount">Your Name</label>
+                                        <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i> </div>
+                                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Your Name" name="name">
+                                        </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Your Name</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Your Name" name="name">
+                                        <label class="sr-only"  for="exampleInputEmail1">Email id</label>
+                                        <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-envelope"></i> </div>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="_replyto">
+                                        </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Message</label>
-                            <textarea class="form-control" rows="3" name="message" id="message"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn tf-btn btn-right">Submit</button>
-                    </form>
+                                <div class="form-group">
+                                        <label class="sr-only" for="exampleInputEmail1">Message</label>
+                                        <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-book"></i> </div>
+                                                <textarea class="form-control" rows="3" name="message" id="message" placeholder="Your message" ></textarea>
+                                        </div>
+                                </div>
+                                <button type="submit" class="btn tf-btn btn-right">Submit</button>
+                        </form>
 
                 </div>
             </div>
