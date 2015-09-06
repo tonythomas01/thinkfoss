@@ -108,16 +108,16 @@
                                     <label class='sr-only' for='username' > Email id </label >
                                     <div class='input-group' >
                                         <div class='input-group-addon'><i class='fa fa-user'></i ></div >
-                                        <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = 'Email id'>
+                                        <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
                                     </div>
                                     <label class='sr-only' for='password'> Password</label >
                                     <div class='input-group'>
                                         <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-                                        <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
+                                        <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
                                     </div>
                                     <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo"'/>
                                     <button type = 'submit' id = 'member-login' class='btn btn-material-orange' ><i class='fa fa-sign-in' ></i ></button >
-                                    <a href='signup.php'><button type = 'button' id = 'member-login' class='btn btn-material-lightgreen'><i class='fa fa-heart' ></i >Join</button ></a>
+                                    <a href='signup.php'><button style='margin-right: 10px' type = 'button' id = 'member-login' class='btn btn-material-lightgreen'><i class='fa fa-heart' ></i >Join</button ></a>
                                 </div>
                                 </form >
 

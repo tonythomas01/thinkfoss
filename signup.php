@@ -106,15 +106,15 @@
                             <label class='sr-only' for='username' > Email id </label >
                             <div class='input-group' >
                                 <div class='input-group-addon'><i class='fa fa-user'></i ></div >
-                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = 'Email id'>
+                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
                             </div>
                             <label class='sr-only' for='password'> Password</label >
                             <div class='input-group'>
                                 <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = 'Password'>
+                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
                             </div>
                             <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
-                            <button type = 'submit' id = 'member-login' class='btn btn-info' ><i class='fa fa-arrow-right' ></i ></button >
+                            <button style='margin-right: 10px' type = 'submit' id = 'member-login' class='btn btn-material-orange' ><i class='fa fa-arrow-right' ></i ></button >
                         </div >
                     </form >
                 </li >
