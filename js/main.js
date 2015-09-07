@@ -44,6 +44,26 @@ function main() {
     })
 
   	$(document).ready(function() {
+
+
+        $(document).mouseup(function (e)
+        {
+            $( "#member-login-button").click( function() {
+                $('#login-form').show();
+                $('#login-form').css({
+                    'top' : $(this).offset().top + $(this).height() + 5
+                });
+            });
+
+
+            var container = $("#login-form");
+
+            if ( !container.is(e.target) && container.has(e.target).length === 0 ) // ... nor a descendant of the container
+            {
+                container.hide();
+            }
+        });
+
         $(".course_remove").click( function() {
             $.post( '/thinkfoss/php/doRemoveCoursefromCart.php' , {
                 course_id : this.value,
