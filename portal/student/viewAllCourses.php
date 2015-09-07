@@ -92,7 +92,7 @@
 	        <br>
                 <table class="table table-hover table-responsive table-bordered well" >
                     <thead>
-                    <th>Course Name</th>
+                    <th style="width: 20%"> Course Name</th>
                     <th>Description</th>
                     <th style="width: 10%" >Language</th>
                     <th style="width: 10%">Difficutly</th>
