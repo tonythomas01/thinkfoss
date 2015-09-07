@@ -127,10 +127,10 @@
                                 <form action="viewMoreInfoCourses.php" method="post">
                         <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
                         <button type="submit" class="btn btn-primary" name="course" value="course-' . $row['course_id'] . '" >
-                        '. substr( $row['course_name'], 0, 50 ).'</button>
+                        '. substr( $row['course_name'], 0, 30 ).'</button>
                         </form>
                         ' . '</td>
-                        <td> '. substr( $row['course_bio'], 0, 50 ).'</td>
+                        <td> '. substr( $row['course_bio'], 0, 50 ). '... '. '</td>
 		        <td> '. $row['course_lang']. '</td>
 		        <td> '. $row['course_difficulty']. '</td>
 		        <td> '. $row['course_fees']. '</td>
