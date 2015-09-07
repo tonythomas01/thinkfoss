@@ -56,6 +56,7 @@
 
 	<link href="../../css/material/flipper.css" rel="stylesheet">
 
+
     <!--[endif]-->
 </head>
 <body >
@@ -72,7 +73,7 @@
 <div id="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal" >
-	        <?php
+            <?php
 	        if ( $_SESSION['message'] ) {
 		        $message = $_SESSION['message'];
 		        echo "<p class='alert-success' style='text-align: center'> $message</p>";
@@ -93,15 +94,11 @@
                     <thead>
                     <th>Course Name</th>
                     <th>Description</th>
-                    <th>Language</th>
-                    <th>Difficutly</th>
-                    <th>From Date</th>
-                    <th>From Time</th>
-                    <th>To Date</th>
-                    <th>To Time</th>
-                    <th><i class="fa fa-rupee"></i> </th>
+                    <th style="width: 10%" >Language</th>
+                    <th style="width: 10%">Difficutly</th>
+                    <th style="width: 5%"> <i class="fa fa-rupee"></i> </th>
                     <th>Mentor</th>
-                    <th style="width: 150px">Action</th>
+                    <th >Quick Buy</th>
                     </thead>
 	                <tbody>
 
@@ -112,8 +109,7 @@
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
-          course_details.`course_lang`, course_details.`course_difficulty`,course_details.`course_date_from`,course_details.`course_time_from`,
-          course_details.`course_date_to`,course_details.`course_time_to`, course_details.`course_fees`,
+          course_details.`course_lang`, course_details.`course_difficulty`, course_details.`course_fees`,
           course_details.`course_approved`, user_details.`user_first_name`,
           user_details.`user_last_name` FROM `course_details`
           INNER JOIN `course_mentor_map` ON course_details.course_id = course_mentor_map.course_id
@@ -126,22 +122,26 @@
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
                         $csrfToken = new Token( $csrfSecret );
-		        echo '<tr>
-                        <td>'. $row['course_name']. '</td>
-		        <td> '. $row['course_bio']. '</td>
+		        echo '<tr>  <button type="submit" class="btn btn-default">
+                        <td>
+                                <form action="viewMoreInfoCourses.php" method="post">
+                        <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
+                        <button type="submit" class="btn btn-primary" name="course" value="course-' . $row['course_id'] . '" >
+                        '. substr( $row['course_name'], 0, 50 ).'</button>
+                        </form>
+                        ' . '</td>
+                        <td> '. substr( $row['course_bio'], 0, 50 ).'</td>
 		        <td> '. $row['course_lang']. '</td>
 		        <td> '. $row['course_difficulty']. '</td>
-		        <td> '. $row['course_date_from']. '</td>
-		        <td> '. $row['course_time_from']. '</td>
-		        <td> '. $row['course_date_to']. '</td>
-		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
-		        <td> '. $row['user_first_name']. $row['user_last_name']. '</td> ';
+		        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>';
+
+
                             $course = Course::newFromId( $conn, $row['course_id'] );
                             if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
-                                echo ' <td><button type="button" disabled class="btn btn-warning" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Enrolled </button></td>';
+                                echo ' <td><button type="button" disabled class="btn btn-warning" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-check" style="color:gold" ></i> Enrolled</button></td>';
                             } else if ( $course->needsCheckout( $loggedInUser, $conn ) ) {
-                                echo ' <td><a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Checkout </button></a></td>';
+                                echo ' <td><a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> cart </button></a></td>';
                             } else {
                                 echo ' <td>
                                     <form action="../../php/doEnrollCourse.php" method="post">
@@ -149,7 +149,7 @@
                                         <button type="submit" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" >
                                         <i class="fa fa-shopping-cart"></i> Add</button>
                                     </form>
-                                </td>';
+                                </button></td>';
                             }
                 }
         }

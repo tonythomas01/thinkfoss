@@ -31,7 +31,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		foreach( $courseList as $course ) {
 			$courseRaw = mysqli_real_escape_string( $conn, $course );
 			$courseName = explode( '-', $courseRaw );
-			print_r( $courseName );
 			$course = Course::newFromId( $conn, $courseName[2] );
 			if ( $course && $courseName[1] == "approve" ) {
 				$course->approveCourseByAdmin( $conn, $loggedInUser );

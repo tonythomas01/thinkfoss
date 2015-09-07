@@ -39,7 +39,7 @@ class Course {
 	}
 
 	public function getCourseId() {
-		return $this->courseId;
+		return $this->course_id;
 	}
 
 	public function addToMentorMap( $conn, $course_mentor ) {
@@ -130,6 +130,10 @@ class Course {
 		return false;
 	}
 
+	public function getValue( $key ) {
+		return $this->$key;
+	}
+
 	static function newFromId( $conn, $courseId ) {
 		$getCourseData = "SELECT `course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`,
 		`course_date_from`, `course_time_from`, `course_date_to`, `course_time_to`, `course_fees` FROM
@@ -143,6 +147,7 @@ class Course {
 			$course->course_lang = $res['course_lang'];
 			$course->course_difficulty = $res['course_difficulty'];
 			$course->course_date_from = $res['course_date_from'];
+			$course->course_date_to = $res['course_date_to'];
 			$course->course_time_from = $res['course_time_from'];
 			$course->course_time_to = $res['course_time_to'];
 			$course->course_fees = $res['course_fees'];
@@ -160,6 +165,22 @@ class Course {
 				return $res['mentor_id'];
 			}
 		}
+	}
+
+	public function getReviews( $conn ) {
+		$sql = "SELECT `cf_course_id`,`cf_user_id`,`cf_general_review`,`cf_recommend` FROM `course_feedback`
+		WHERE `cf_course_id`= '$this->course_id';";
+		$review = array();
+		if ( $row = $conn->query( $sql ) ) {
+			while( $res = $row->fetch_assoc() ) {
+				$review[$this->course_id]['user_id'] = $res['cf_user_id'];
+				$review[$this->course_id]['general_review']= $res['cf_general_review'];
+				$review[$this->course_id]['recommend'] = $res['cf_recommend'];
+			}
+			return $review;
+		}
+		return false;
+
 	}
 
 	public function isOwner( $userId ) {

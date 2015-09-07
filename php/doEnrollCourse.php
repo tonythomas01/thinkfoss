@@ -5,7 +5,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$preparedStatement = new Statement( $_POST );
 	if ( $preparedStatement->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all require_onced details";
-		header('Location: ' . '../portal/portal.php');
+		header('Location: ' . '../portal/student/viewAllCourses.php');
 		return;
 	}
 	require_once( "Token.php" );
@@ -15,7 +15,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	print_r( $csrfToken );
 	if( !$csrfToken->validateCSRFToken( $preparedStatement->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
-		header( 'Location: '.'../signup.php');
+		header( 'Location: '.'../portal/student/viewAllCourses.php');
 		return false;
 	}
 
