@@ -136,7 +136,7 @@ include 'navigationstudent.php'
 					echo '
                         				</div>
                                         			<div class="caption">
-				                                        <h1>' . $row['course_name'] . '</h1>
+				                                        <h1>' . substr( $row['course_name'], 0, 23 ) . '...</h1>
 			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
 				                                        <p><strong>Bio</strong> : ' . substr($row['course_bio'], 0, 70) . '... ' . '</p>
