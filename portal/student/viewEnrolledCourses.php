@@ -145,6 +145,8 @@
                             </form></td>
 		        ';
 	        }
+        } else {
+                echo "<p style='color: red; text-align: center'>Nothing here :( Please add in some course</p>";
         }
 
     ?>

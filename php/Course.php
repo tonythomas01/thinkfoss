@@ -38,6 +38,19 @@ class Course {
 		return false;
 	}
 
+	public function UpdateDatabase( $conn, $course_name, $course_bio, $course_lang, $course_difficulty, $course_date_from,
+	                                $course_time_from,$course_date_to, $course_time_to,$course_amount ) {
+		$sql = "UPDATE `course_details` SET `course_name` = '$course_name', `course_bio` = '$course_bio',
+			`course_lang` = '$course_lang', `course_difficulty` = '$course_difficulty',
+ 		`course_date_from` = '$course_date_from', `course_time_from` ='$course_time_from', `course_date_to` ='$course_date_to',
+ 		 `course_time_to` ='$course_time_to', `course_fees`='$course_amount' WHERE `course_id` = '$this->course_id' ";
+
+		if ( $conn->query( $sql ) ) {
+			return true;
+		}
+		return false;
+	}
+
 	public function getCourseId() {
 		return $this->course_id;
 	}
@@ -205,6 +218,17 @@ class Course {
 		if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
 			return true;
 		}
+		return false;
+	}
+
+	public function getNumberofStudentsEnrolled( $conn ) {
+		$sql = "SELECT count( `user_id`) AS enrolledusers FROM `course_enrollment` WHERE `course_id` = '$this->course_id' AND `course_enrolled` = 1";
+		if ( $row = $conn->query( $sql ) ) {
+			while ( $res = $row->fetch_assoc() ) {
+				return $res['enrolledusers'];
+			}
+		}
+
 		return false;
 	}
 

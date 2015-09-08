@@ -57,14 +57,14 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
+<body>
 <?php
-    session_start();
     require_once( '../../php/access/accessDB.php' );
     require_once( '../../php/User.php');
     $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-    include( '../../php/Token.php' );
-    include( '../../php/access/accessTokens.php' );
+    require_once( '../../php/Token.php' );
+    require_once( '../../php/access/accessTokens.php' );
+    require_once( '../../php/Course.php' );
 ?>
 <!-- Navigation
 ==========================================-->
@@ -75,11 +75,12 @@
         <div class="portal">
 	        <?php
 
-	        if ( $_SESSION['message'] ) {
+	        if ( isset( $_SESSION['message'] ) ) {
 		        $message = $_SESSION['message'];
 		        echo "<p class='alert-success' style='text-align: center'> $message</p>";
 		        unset( $_SESSION['message'] );
-	        } else if ( $_SESSION['error'] ) {
+	        }
+                if ( isset( $_SESSION['error'] ) ) {
 		        $errorMessage = $_SESSION['error'];
 		        echo "<p class='alert-warning'> $errorMessage </p>";
 		        unset( $_SESSION['error'] );
@@ -91,23 +92,8 @@
 		        <h2 class="section-title"> My Courses</h2>
 	        </div>
 	        <br>
-                <table class="table table-hover table-bordered well" style="color:black">
-                    <thead>
-                    <th>Course Name</th>
-                    <th>Description</th>
-                    <th>Language</th>
-                    <th>Difficulty</th>
-                    <th>From Date</th>
-                    <th>From Time</th>
-                    <th>To Date</th>
-                    <th>To Time</th>
-                    <th>Fees</th>
-                    <th>Action</th>
-                    </thead>
-	                <tbody>
-
-
-    <?php
+                <div class="row" >
+            <?php
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
         $sqlSelect = "SELECT `course_id`, `course_name`, `course_bio`, `course_lang`, `course_difficulty`, `course_date_from`,
@@ -116,26 +102,35 @@
         $result = $conn->query( $sqlSelect );
         if( $result->num_rows > 0 ) {
 	        while( $row = $result->fetch_assoc() ) {
+                        $course = Course::newFromId( $conn, $row['course_id'] );
+
                         $csrfToken = new Token( $csrfSecret );
-		        echo '<tr> <td>'. $row['course_name']. '</td>
-		        <td> '. $row['course_bio']. '</td>
-		        <td> '. $row['course_lang']. '</td>
-		        <td> '. $row['course_difficulty']. '</td>
-		        <td> '. $row['course_date_from']. '</td>
-		        <td> '. $row['course_time_from']. '</td>
-		        <td> '. $row['course_date_to']. '</td>
-		        <td> '. $row['course_time_to']. '</td>
-		        <td> '. $row['course_fees']. '</td>
-		        <td> <form action="../../php/doDeleteCourse.php" method="post">
+
+		        echo '<div class="col-sm-6 col-md-4">
+                                <div class="thumbnail" style="height: 280px">
+                                   <div class="caption">
+                                   <h1>' . $row['course_name'] . '</h1>
+                                   <p><strong>Rate </strong>: '.  $row['course_fees'] . '  <span style ="float: right"><strong>Students enrolled </strong> : '.  $course->getNumberofStudentsEnrolled( $conn ) .'</span></p>
+                                   <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
+                                   <p><strong>Bio</strong> : ' . substr($row['course_bio'], 0, 70) . '... ' . '</p>
+                                   <form action="editMyCourse.php" method="post">
+                                                    <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+                                        <button style="position: absolute; left:20px; bottom:20px;" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" ><i class = "fa fa-pencil"></i> Edit</button>
+                                        </form>
+
+
+		      <form action="../../php/doDeleteCourse.php" method="post">
 		            <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
-		            <button type="submit" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" >Delete</button></form></td>
+		            <button type="submit" style="position: absolute; right:20px; bottom:20px;" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" >Delete</button></form></td>
+
+		                                </div>
+                            </div>
+                             </div>
 		        ';
 	        }
         }
 
     ?>
-	                </tbody>
-                </table>
 
         </div>
         </div>

@@ -1,6 +1,8 @@
 <?php
 	require_once( '../../php/Token.php' );
 	require_once( '../../php/access/accessTokens.php' );
+	require_once( '../../php/User.php' );
+
 ?>
 <link href="../../css/material/material-wfont.min.css" rel="stylesheet">
 <!-- Navigation
