@@ -49,9 +49,9 @@ function main() {
         $(document).mouseup(function (e)
         {
             $( "#member-login-button").click( function() {
-                $('#login-form').show();
+                $('#login-form').toggle().insertAfter('.container-fluid');
                 $('#login-form').css({
-                    'top' : $(this).offset().top + $(this).height() + 5
+                    'position' : 'fixed'
                 });
             });
 

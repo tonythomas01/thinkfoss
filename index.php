@@ -82,7 +82,7 @@ $csrfToken = new Token( $csrfSecret );
                                 <li><a href="#tf-about" class="page-scroll">About</a></li>
                                 <li><a href="#tf-team" class="page-scroll">Team</a></li>
                                 <li><a href="#tf-services" class="page-scroll">Services</a></li>
-                                <li><a href="#tf-mentor" class="page-scroll">Involved</a></li>
+                                <li><a href="#tf-mentor" class="page-scroll">Involve</a></li>
                                 <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
                                 <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">BLOG</a></li>
                                 <li>
@@ -103,7 +103,7 @@ $csrfToken = new Token( $csrfSecret );
                                 </li>";
                                         } else {
                                                 echo "
-                                    <div style='padding-right: 5%'>
+                                    <div style='padding-right: 8%'>
                                     <button type = 'submit' id = 'member-login-button' class='btn btn-material-orange' ><i class='fa fa-sign-in' > LOGIN</i ></button >
                                     </div>
                             </li >
@@ -115,7 +115,7 @@ $csrfToken = new Token( $csrfSecret );
         </div><!-- /.container-fluid -->
 </nav>
 
-<div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:350px; z-index: 10; background-color:#add8e6; display: none; float: right; position: absolute; right: 0px; padding-top: 40px">
+<div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:320px; z-index: 10; background-color:#add8e6; display: none; float: right; padding-top: 10px; right: 0px;">
         <div class="section-title" style="text-align: center">
                 <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
         <p style="text-align: center"> code | train | grow</p>
@@ -138,9 +138,10 @@ $csrfToken = new Token( $csrfSecret );
                 </div>
         </form >
         <div style="text-align: center">
-                <p> or login using </p>
+                <p>or login using </p>
                 <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
                 <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
+                <a href="signup.php"><button type = 'button' id = 'member-login-indiv' class='btn btn-material-lightgreen btn-center' > Sign Up</button ></a>
         </div>
 </div>
 
