@@ -116,7 +116,7 @@ $csrfToken = new Token( $csrfSecret );
 </nav>
 
 <div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:320px; z-index: 10; background-color:#add8e6; display: none; float: right; padding-top: 10px; right: 0px;">
-        <button type="button" class="btn btn-link" id="close-button">x</button>
+        <button type="button" class="btn btn-link" id="close-button" style="line-height: 12px; width: 18px; font-size: 8pt; font-family: tahoma; margin-top: 1px; margin-right:2px; position:absolute; top:0; right:0;">x</button>
         <div class="section-title" style="text-align: center">
                 <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
         <p style="text-align: center"> code | train | grow</p>
