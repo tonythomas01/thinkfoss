@@ -44,18 +44,17 @@ function main() {
     })
 
   	$(document).ready(function() {
+        $( "#member-login-button").click( function() {
+            $('#login-form').toggle().insertAfter('.container-fluid');
+            $('#login-form').css({
+                'position' : 'fixed'
+            });
+        });
 
 
         $(document).mouseup(function (e)
         {
-            $( "#member-login-button").click( function() {
-                $('#login-form').toggle().insertAfter('.container-fluid');
-                $('#login-form').css({
-                    'position' : 'fixed'
-                });
-            });
-
-
+            
             var container = $("#login-form");
 
             if ( !container.is(e.target) && container.has(e.target).length === 0 ) // ... nor a descendant of the container
