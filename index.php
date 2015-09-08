@@ -103,7 +103,7 @@ $csrfToken = new Token( $csrfSecret );
                                 </li>";
                                         } else {
                                                 echo "
-                                    <div style='padding-right: 8%'>
+                                    <div style='padding-right: 8%' >
                                     <button type = 'submit' id = 'member-login-button' class='btn btn-material-orange' ><i class='fa fa-sign-in' > LOGIN</i ></button >
                                     </div>
                             </li >
@@ -116,6 +116,7 @@ $csrfToken = new Token( $csrfSecret );
 </nav>
 
 <div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:320px; z-index: 10; background-color:#add8e6; display: none; float: right; padding-top: 10px; right: 0px;">
+        <button type="button" class="btn btn-link" id="close-button">x</button>
         <div class="section-title" style="text-align: center">
                 <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
         <p style="text-align: center"> code | train | grow</p>
