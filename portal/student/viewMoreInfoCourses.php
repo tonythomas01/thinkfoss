@@ -15,8 +15,6 @@
 
 	require_once( '../../php/Statement.php' );
 	$preparedPost = new Statement( $_POST );
-
-	print_r( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../student/viewAllCourses.php');
