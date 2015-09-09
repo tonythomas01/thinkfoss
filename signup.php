@@ -1,94 +1,99 @@
 <?php
-        session_start();
-	if( isset( $_SESSION['loggedin_user'] ) ) {
-		header( 'Location: portal/portal.php');
-	} else {
-		require_once('php/vendor/google-api-php-client-master/autoload.php');
-		$client = new Google_Client();
-		$client->setAuthConfigFile('php/access/client_secret.json');
-		$client->addScope(Google_Service_Plus::USERINFO_EMAIL);
-		$client->addScope(Google_Service_Plus::PLUS_ME);
-	}
+session_start();
+if( isset( $_SESSION['loggedin_user'] ) ) {
+	header( 'Location: portal/portal.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Page Needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ThinkFOSS - code | train | grow</title>
-    <meta name="msvalidate.01" content="AACA4869B9C746F7F151D39BF5D19CB2" />
-    <meta name="description" content=" ThinkFOSS aims at providing Open Source training and solutions to Individuals, Schools, Universities and Industries in need. ThinkFOSS is a collection of Open Source enthusiasts and entrepreneurs who are ready to spend their time spreading FOSS technologies">
-    <meta name="keywords" content="thinkfoss, fossatamrita, training, open source, open source solutions">
-    <meta name="author" content="thinkfoss.com">
+	<!-- Basic Page Needs
+	================================================== -->
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ThinkFOSS - code | train | grow</title>
+	<meta name="msvalidate.01" content="AACA4869B9C746F7F151D39BF5D19CB2" />
+	<meta name="description" content=" ThinkFOSS aims at providing Open Source training and solutions to Individuals, Schools, Universities and Industries in need. ThinkFOSS is a collection of Open Source enthusiasts and entrepreneurs who are ready to spend their time spreading FOSS technologies">
+	<meta name="keywords" content="thinkfoss, fossatamrita, training, open source, open source solutions">
+	<meta name="author" content="thinkfoss.com">
 
-    <!-- Favicons
-    ================================================== -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
 
-    <!-- Slider
-    ================================================== -->
-    <link href="css/owl.carousel.css" rel="stylesheet" media="screen">
-    <link href="css/owl.theme.css" rel="stylesheet" media="screen">
+	<!-- Slider
+	================================================== -->
+	<link href="css/owl.carousel.css" rel="stylesheet" media="screen">
+	<link href="css/owl.theme.css" rel="stylesheet" media="screen">
 
-    <!-- Stylesheet
-    ================================================== -->
-    <link rel="stylesheet" type="text/css"  href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
-    <link href="css/material/material-wfont.min.css" rel="stylesheet">
+	<!-- Stylesheet
+	================================================== -->
+	<link rel="stylesheet" type="text/css"  href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link href="css/material/material-wfont.min.css" rel="stylesheet">
 
-    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="js/modernizr.custom.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
-    <![endif]-->
+
+	<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$('[data-toggle="popover"]').popover();
+		});
+
+	</script>
+
 </head>
 <body>
 <!-- Navigation
 ==========================================-->
 <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
-        </div>
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
+		</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.php#tf-home" class="page-scroll">Home</a></li>
-                <li><a href="index.php#tf-about" class="page-scroll">About</a></li>
-                <li><a href="index.php#tf-team" class="page-scroll">Team</a></li>
-                <li><a href="index.php#tf-services" class="page-scroll">Services</a></li>
-                <li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
-                <li>
-                    <?php
-                    require_once( 'php/Token.php' );
-                    require_once( 'php/access/accessTokens.php' );
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="index.php#tf-home" class="page-scroll">Home</a></li>
+				<li><a href="index.php#tf-about" class="page-scroll">About</a></li>
+				<li><a href="index.php#tf-team" class="page-scroll">Team</a></li>
+				<li><a href="index.php#tf-services" class="page-scroll">Services</a></li>
+				<li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
+				<li>
+					<?php
+					require_once( 'php/Token.php' );
+					require_once( 'php/access/accessTokens.php' );
 
-                    if ( isset( $_SESSION['loggedin_user'] ) ) {
-                        $loggedinUser = $_SESSION['loggedin_user'];
-                        $csrfToken = new Token( $csrfSecret );
-                        echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
+					if ( isset( $_SESSION['loggedin_user'] ) ) {
+						$loggedinUser = $_SESSION['loggedin_user'];
+						$csrfToken = new Token( $csrfSecret );
+						echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
                             <li>
                                 <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
                                 <div class='form-group'>
@@ -97,9 +102,9 @@
                                     </div>
                                 </form>
                             </li>";
-                    } else {
-                        $csrfToken = new Token( $csrfSecret );
-                        echo "
+					} else {
+						$csrfToken = new Token( $csrfSecret );
+						echo "
                         <form class='form-inline' action = 'php/doSignIn.php' method = 'post' >
                         <div class='form-group'>
 
@@ -119,133 +124,138 @@
                     </form >
                 </li >
                     ";
-                    }
-                    ?>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+					}
+					?>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
 </nav>
 <div id="tf-portal" class="text-center">
-    <div class="overlay">
-        <div class="content">
-            </div>
-                        <?php
-                        if ( $_SESSION['message'] ) {
-                            $message = $_SESSION['message'];
-                            echo "<p class='alert-success'> $message</p>";
-                            unset( $_SESSION['message'] );
-                        }
-                        if ( $_SESSION['error'] ) {
-                            $errorMessage = $_SESSION['error'];
-                            echo "<p class='alert-warning'> $errorMessage </p>";
-                            unset( $_SESSION['error'] );
-                        }
-                        ?>
-        <div class="col-xs-6" style="text-align: left;">
-            <div class="section-title">
-                <h2>Why Sign <strong>UP ?</strong></h2>
-                <div class="clearfix"></div>
-            </div>
-            <ul class="user-list">
-                <li>
-                    <span class="fa fa-check"></span>
-                    <strong>Enroll for courses</strong> - <em>Only registered users can eroll for courses </em>
-                </li>
-                <li>
-                    <span class="fa fa-check"></span>
-                    <strong>Offer courses</strong> - <em> Once registered, adding a new course is a piece of cake </em>
-                </li>
-                <li>
-                    <span class="fa fa-check"></span>
-                    <strong>Manage your payments</strong> - <em> The portal makes sure your money is safe</em>
-                </li>
+	<div class="overlay">
+		<div class="content">
+		</div>
+		<?php
+		if ( $_SESSION['message'] ) {
+			$message = $_SESSION['message'];
+			echo "<p class='alert-success'> $message</p>";
+			unset( $_SESSION['message'] );
+		}
+		if ( $_SESSION['error'] ) {
+			$errorMessage = $_SESSION['error'];
+			echo "<p class='alert-warning'> $errorMessage </p>";
+			unset( $_SESSION['error'] );
+		}
+		?>
+		<div class="col-xs-6" style="text-align: left;">
+			<div class="section-title">
+				<h2>Why Sign <strong>UP ?</strong></h2>
+				<div class="clearfix"></div>
+			</div>
+			<ul class="user-list">
+				<li>
+					<span class="fa fa-check"></span>
+					<strong>Enroll for courses</strong> - <em>Only registered users can eroll for courses </em>
+				</li>
+				<li>
+					<span class="fa fa-check"></span>
+					<strong>Offer courses</strong> - <em> Once registered, adding a new course is a piece of cake </em>
+				</li>
+				<li>
+					<span class="fa fa-check"></span>
+					<strong>Manage your payments</strong> - <em> The portal makes sure your money is safe</em>
+				</li>
 
-            </ul>
-            <h3>Already a member ?</h3>
-            <ul class="user-list">
-                <li><span class="fa fa-sign-in"></span>
-                    <strong>Sign in </strong> to manage your preferences
-                </li>
-                </ul> <br><br>
-        </div>
+			</ul>
+			<h3>Already a member ?</h3>
+			<ul class="user-list">
+				<li><span class="fa fa-sign-in"></span>
+					<strong>Sign in </strong> to manage your preferences
+				</li>
+			</ul> <br><br>
+		</div>
 
-        <div class="col-xs-6">
-            <div class="section-title" style="text-align: left">
-                <h2>Sign <strong>Up</strong></h2>
-                <div class="clearfix"></div>
-            </div> <br>
-	        <div>
-            <form class='form-inline ' action='php/doSignUp.php'  style="text-align: justify" method='post'>
-                <div class='form-group well' >
+		<div class="col-xs-6">
+			<div class="section-title" style="text-align: left">
+				<h2>Sign <strong>Up</strong></h2>
+				<div class="clearfix"></div>
+			</div> <br>
+			<div>
+				<form class='form-inline ' action='php/doSignUp.php'  style="text-align: justify" method='post'>
+					<div class='form-group well' >
 
-                    <label class='sr-only' for='user_first_name'>Your first name</label>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-user'></i></div>
-                        <input required type='text'class='form-control' id='user_first_name' name='user_first_name' placeholder='First Name'>
-                    </div>
-                    <label class='sr-only' for='user_last_name'>Your last name</label>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-user'></i></div>
-                        <input required type='text'class='form-control' id='user_last_name' name='user_last_name' placeholder='Last Name'>
-                    </div><br><br>
-                    <label class='sr-only' for='user_pass_once'>Password</label>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-eye'></i> </div>
-                        <input required type='password'  class='form-control' id='user_pass_once' name='user_pass_once' placeholder='Password'>
-                    </div>
-                    <label class='sr-only' for='user_pass_again'>Again </label>
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-eye'></i></div>
-                        <input required type='password' class='form-control' id='user_pass_again' name='user_pass_again' placeholder='Password again'>
-                    </div>
-                    <br> <br>
-                    <label class='sr-only' for='user_email'>Your Email</label>
-                    <div class='input-group' >
-                        <div class='input-group-addon'><i class='fa fa-envelope'></i></div>
-                        <input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your email id'>
-                    </div>
+						<label class='sr-only' for='user_first_name'>Your first name</label>
+						<div class='input-group'>
+							<div class='input-group-addon'><i class='fa fa-user'></i></div>
+							<input required type='text'class='form-control' id='user_first_name' name='user_first_name' placeholder='First Name'>
+						</div>
+						<label class='sr-only' for='user_last_name'>Your last name</label>
+						<div class='input-group'>
+							<div class='input-group-addon'><i class='fa fa-user'></i></div>
+							<input required type='text'class='form-control' id='user_last_name' name='user_last_name' placeholder='Last Name'>
+						</div><br><br>
+						<label class='sr-only' for='user_pass_once'>Password</label>
+						<div class='input-group'>
+							<div class='input-group-addon'><i class='fa fa-eye'></i> </div>
+							<input required type='password'  class='form-control' id='user_pass_once' name='user_pass_once' placeholder='Password'>
+						</div>
+						<label class='sr-only' for='user_pass_again'>Again </label>
+						<div class='input-group'>
+							<div class='input-group-addon'><i class='fa fa-eye'></i></div>
+							<input required type='password' class='form-control' id='user_pass_again' name='user_pass_again' placeholder='Password again'>
+						</div>
+						<br> <br>
+						<label class='sr-only' for='user_email'>Your Email</label>
+						<div class='input-group' >
+							<div class='input-group-addon'><i class='fa fa-envelope'></i></div>
+							<input required type='email'  class='form-control' id='user_email'  name='user_email' placeholder='Your email id'>
+						</div>
 
-                    <div class='input-group'>
-                        <div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
-                        <select name='user-gender' class="form-control">
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
+						<div class='input-group'>
+							<div class='input-group-addon'><i class='fa fa-venus-mars'></i></div>
+							<select name='user-gender' class="form-control">
+								<option>Male</option>
+								<option>Female</option>
+								<option>Other</option>
+							</select>
+						</div>
 
-                    <br><br>
-                    <div class='input-group'>
-                        <input type="checkbox" required name="terms"> I accept the terms and conditions of ThinkFOSS
-                    </div> <br><br>
-                    <script src='https://www.google.com/recaptcha/api.js'></script>
-                    <div class='input-group'>
-                        <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
-                    </div>
-                    <?php
-                            $csrfToken = new Token( $csrfSecret );
-                    ?>
-                    <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+						<br><br>
+						<div class='input-group'>
+							<input type="checkbox" required name="terms"> I accept the  <a href="#"  data-container="body" data-toggle="popover"  data-placement="right" data-content="ThinkFOSS will
+                        share your first name, last name and other public information with internal users for communication.
+                        I agree to behold the friendly space policy. ">
+								terms and conditions of ThinkFOSS </a>
+						</div>
 
-                    <button style='submit' class='btn btn-primary btn-lg'>Sign Up</button>
+						<br><br>
+						<script src='https://www.google.com/recaptcha/api.js'></script>
+						<div class='input-group'>
+							<div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+						</div>
+						<?php
+						$csrfToken = new Token( $csrfSecret );
+						?>
+						<input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 
-                </div>
+						<button style='submit' class='btn btn-primary btn-lg'>Sign Up</button>
 
-            </form>
-                </div>
-            <div style="text-align: left">
+					</div>
 
-                    <h3>or login with </h3>
-                    <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
-                    <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
-            </div>
+				</form>
+			</div>
+			<div style="text-align: left">
+
+				<h3>or login with </h3>
+				<a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
+				<a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
+			</div>
 
 
-        </div>
+		</div>
 
 
-    </div>
 	</div>
+</div>
 
 <?php include 'footer.html';?>
 </body>

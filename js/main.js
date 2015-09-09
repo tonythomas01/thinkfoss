@@ -41,9 +41,12 @@ function main() {
     $('body').scrollspy({ 
         target: '.navbar-default',
         offset: 80
-    })
+    });
 
   	$(document).ready(function() {
+
+        $('[data-toggle="popover"]').popover();
+
         $( "#member-login-button").click( function() {
             $('#login-form').toggle().insertAfter('.container-fluid');
             $('#login-form').css({
