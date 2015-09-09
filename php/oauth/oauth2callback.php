@@ -24,7 +24,8 @@ if (!isset($_GET['code'])) {
 	$user = User::newFromGoogleOauth( $oauthUser->userinfo->get() );
 
 	if ( $user->isExistingMember( $conn ) ) {
-		$_SESSION['loggedin_user'] = $user->getValue( 'user_first_name' ) . ' ' . $user->getValue('user_last_name');
+		$userName = $user->getDetailsFromDB( $conn, 'user_first_name' ) . ' ' . $user->getDetailsFromDB( $conn, 'user_last_name' );
+		$_SESSION['loggedin_user'] = $userName;
 		$_SESSION['loggedin_user_email'] = $user->getValue( 'user_email' );
 		$_SESSION['loggedin_user_id'] = $user->getUserFreshId( $conn );
 		header( 'Location: '.'../../portal/portal.php');
