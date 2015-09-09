@@ -446,27 +446,27 @@ $csrfToken = new Token( $csrfSecret );
         <div class="container">
                 <div class="row">
                         <div class="col-md-6">
-                                <a href="http://phab.thinkfoss.com"><img src="img/newphab.jpg" class="img-responsive"></a>
+                                <a href="portal/portal.php"><img src="img/getsolutions.png" class="img-responsive"></a>
                         </div>
                         <div class="col-md-6">
                                 <div class="about-text">
                                         <div class="section-title">
                                                 <h4>Submit your task</h4>
-                                                <h2>How to get <strong>Serviced</strong></h2>
+                                                <h2>Get your <strong>Solution</strong></h2>
                                                 <hr>
                                                 <div class="clearfix"></div>
                                         </div>
-                                        <p class="intro">ThinkFOSS is happy to use <a href="http://phabricator.org/" target="_blank">Phabricator</a> for
-                                                its client satisfaction. To get started with our services, you will have to create an account in our Phabricator instance
-                                                at <a href="http://phab.thinkfoss.com" target="_blank">phab.thinkfoss.com</a>. You can find basic help with Phabricator<a href="https://www.mediawiki.org/wiki/Phabricator/Help" target="_blank"> here.</a> </p>
+                                        <p class="intro"> ThinkFOSS uses its <a href="portal/portal.php">portal</a> to handle solution requests, and you are welcome to use it.
+                                                ThinkFOSS currently can handle web and mobile application requests, and one of our admins will reach to you back in <24 hours to
+                                                get more details and start working.
                                         <ol class="task-list">
                                                 <li>
                                                         <span class="fa fa-flask"></span>
-                                                        <strong>Register</strong> - <em>Register with your E-mail id at phab.thinkfoss.com</em>
+                                                        <strong>Register</strong> - <em>Use one of the options avialbale to log-in</em>
                                                 </li>
                                                 <li>
                                                         <span class="fa fa-pencil-square-o"></span>
-                                                        <strong>Create a task</strong> - <em>Create a task with your requirements, and play around as far as
+                                                        <strong>Create a new solution request</strong> - <em>Create a task with your requirements, and play around as far as
                                                                 you want</em>
                                                 </li>
                                                 <li>
@@ -475,7 +475,7 @@ $csrfToken = new Token( $csrfSecret );
                                                 </li>
 
                                         </ol> <br>
-                                        <a href="http://phab.thinkfoss.com" target="_blank"  class="page-scroll"><button class="btn tf-btn btn-center" >Take me to Phab</button></a>
+                                        <a href="portal/portal.php" class="page-scroll"><button class="btn tf-btn btn-center" >Create Request</button></a>
                                         <br>
                                 </div>
                         </div>
