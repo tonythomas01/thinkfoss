@@ -223,7 +223,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 						<div class='input-group'>
 							<input type="checkbox" required name="terms"> I accept the  <a href="#"  data-container="body" data-toggle="popover"  data-placement="right" data-content="ThinkFOSS will
                         share your first name, last name and other public information with internal users for communication.
-                        I agree to behold the friendly space policy. ">
+                        By signing up, you agree to behold our friendly space policy. ">
 								terms and conditions of ThinkFOSS </a>
 						</div>
 
