@@ -64,9 +64,8 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
+<body>
 <?php
-	session_start();
 	require_once( '../../php/access/accessDB.php' );
 	require_once( '../../php/User.php' );
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
@@ -78,7 +77,7 @@
     <div class="overlay">
         <div class="portal">
 	        <?php
-		        if ( $_SESSION['error'] ) {
+		        if ( isset( $_SESSION['error'] ) ) {
 		        $errorMessage = $_SESSION['error'];
 		        echo "<p class='alert-warning' style='text-align: center'> $errorMessage </p>";
 		        unset( $_SESSION['error'] );
@@ -89,6 +88,19 @@
                 <br>
 	            <form class='form-inline' action='../../php/doEditProfile.php'  style="text-align: justify" method='post'>
 		            <div class='form-group well'>
+			            <label class='sr-only' for='user_first_name'>First Name</label>
+			            <div class='input-group'>
+				            <div class='input-group-addon'><i class='fa fa-user'></i></div>
+				            <input  type='text'class='form-control' id='user_first_name' name='user_first_name' placeholder='First Name' value="<?php echo $user->getValue('user_first_name')?>">
+			            </div>
+
+			            <label class='sr-only' for='user_last_name'>Last Name</label>
+			            <div class='input-group'>
+				            <div class='input-group-addon'><i class='fa fa-user'></i></div>
+				            <input  type='text'class='form-control' id='user_last_name' name='user_last_name' placeholder='Last Name' value="<?php echo $user->getValue('user_last_name')?>">
+			            </div>
+			            <br><br>
+
 			            <label class='sr-only' for='user_github'>Github profile</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-github'></i></div>
@@ -103,8 +115,8 @@
 			            <label class='sr-only' for='user_about'>About me</label>
 			            <div class='input-group'>
 				            <div class='input-group-addon'><i class='fa fa-magic'></i></div>
-				            <textarea  rows='4' cols='100' class='form-control' id='user_about'  name='user_about' placeholder='Few words about your technical work with Open Source or general'
-				                      ><?php echo $user->getValue('user_about'); ?></textarea>
+				            <textarea  rows='4' cols='100' class='form-control' id='user_about'  name='user_about' placeholder='Few words about your technical work with Open Source or general'> <?php echo $user->getValue('user_about'); ?> </textarea>
+
 			            </div> <br><br>
 			            <label class='sr-only' for='user_occupation'>What I do</label>
 			            <div class='input-group'>

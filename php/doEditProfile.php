@@ -21,6 +21,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once( "access/accessDB.php" );
 	$loggedInUserId = $_SESSION['loggedin_user_id'];
 
+	$user_first_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_first_name' ) );
+	$user_last_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_last_name' ) );
 	$user_github = mysqli_escape_string( $conn, $postInput->getValue( 'user_github' ) );
 	$user_linkedin = mysqli_escape_string( $conn, $postInput->getValue( 'user_linkedin' ) );
 	$user_about = mysqli_escape_string( $conn, $postInput->getValue( 'user_about' ) );
@@ -32,6 +34,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$sql = "REPLACE INTO `user_extra`(`user_id`, `user_github`, `user_linkedin`, `user_about`, `user_occupation`, `user_nation`)
 		VALUES ( '$loggedInUserId','$user_github','$user_linkedin','$user_about','$user_occupation','$user_nation')";
 	if ( $conn->query( $sql ) ) {
+		$sqlUpdateUserName = "UPDATE `user_details` SET `user_first_name` = '$user_first_name', `user_last_name` = '$user_last_name'
+  			WHERE `user_id` = '$loggedInUserId';";
+
+		$_SESSION['loggedin_user'] = $user_first_name . ' '.  $user_last_name;
+		$conn->query ( $sqlUpdateUserName );
 		if ( $user_dob ) {
 			$sql = "UPDATE `user_details` SET `user_dob` = '$user_dob', `user_gender` = '$user_gender' WHERE `user_id` = '$loggedInUserId';";
 			$conn->query( $sql );
@@ -39,6 +46,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 			$user->setValue( $conn, 'user_dob', $user_dob );
 			$user->setValue( $conn, 'user_gender', $user_gender );
 		}
+
+
 		$_SESSION['message'] = "You have updated your profile. Great!";
 		header('Location: ' . '../portal/portal.php');
 	} else {
