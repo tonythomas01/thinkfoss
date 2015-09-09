@@ -112,7 +112,7 @@ class Solution {
 			'from'  => 'admin@thinkfoss.com',
 			'cc' => 'admin@thinkfoss.com',
 			'to'    => $userEmailId,
-			'subject' => 'ThinkFOSS: You have just added a new course',
+			'subject' => 'ThinkFOSS: You have just added a new solution request',
 			'text'  => $emailBody
 		) );
 
