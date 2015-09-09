@@ -32,7 +32,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if ( $delCourse->isOwner( $loggedInUser ) ) {
 		if ( $delCourse->deleteFromDb( $conn ) ) {
 			header('Location: ' . '../portal/mentor/viewMyCourses.php');
-			$_SESSION['message'] = "The course has been deleted succesfully!";
+			$_SESSION['message'] = "The course has been deleted successfully!";
 			return;
 		}
 	}

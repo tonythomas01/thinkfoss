@@ -103,6 +103,13 @@
                         <li><a href="student/viewAllCourses.php">Available courses</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="solutions/newSolutionRequest.php">New Request</a></li>
+                        <li><a href="student/viewAllCourses.php">My Requests</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -165,22 +172,26 @@
                 <h1 class="section-title"> Want to Mentor ?</h1>
                 <p class='intro'> Great! ThinkFOSS is happy to welcome mentors like you.You can add in more course, change your
                     personal settings and do a lot more from here. <br><br>
-                <h2>What to do now ?</h2>
-                <ul class='mentor-list'>
-                    <li>
-                        <span class='fa fa-scissors'></span>
-                        <strong>Edit your profile</strong>
-                    </li>
-                    <li>
-                        <span class='fa fa-plus'></span>
-                        <strong>Add in new courses</strong>
-                    </li>
-                    <li>
-                        <span class='fa fa-phone'></span>
-                        <strong>Stuck ? Contact one of us</strong>
-                    </li>
-
-                </ul><br>
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <a href="mentor/addCourse.php" class="thumbnail" style="text-align: center; color: blue">
+                            <i class="fa fa-plus fa-5x"> </i>
+                            <div class="caption"><h2>Add</h2>course</div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a href="mentor/viewMyCourses.php" class="thumbnail" style="text-align: center; color: red">
+                            <i class="fa fa-pencil fa-5x"> </i>
+                            <div class="caption"><h2>Edit</h2> your course</div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a href="../index.php#tf-contact" class="thumbnail" style="text-align: center; color: green">
+                            <i class="fa fa-phone fa-5x"> </i>
+                            <div class="caption"><h2>Help</h2>call</div>
+                        </a>
+                    </div>
+                </div>
 
             </div>
 
@@ -188,29 +199,50 @@
                 <h1 class="section-title"> Want to learn ?</h1>
                 <p class='intro'> Awesome! Looks like you are at the right place. Please use the menu items over here to enroll to a course you like. If you
                     feel like, you can even mentor a course.<br><br>
-                <h2>TODO</h2>
-                <ul class='mentor-list'>
-                    <li>
-                        <span class='fa fa-scissors'></span>
-                        <strong>Edit your profile</strong>
-                    </li>
-                    <li>
-                        <span class='fa fa-list'></span>
-                        <strong>List courses available</strong>
-                    </li>
-                    <li>
-                        <span class='fa fa-check'></span>
-                        <strong>Enroll to our courses</strong>
-                    </li>
-                    <li>
-                        <span class='fa fa-phone'></span>
-                        <strong>Stuck ? Contact one of us</strong>
-                    </li>
-
-                </ul><br>
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:#9c27b0">
+                            <i class="fa fa-eye fa-5x"> </i>
+                            <div class="caption"><h2>View</h2>courses</div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:blue">
+                            <i class="fa fa-thumbs-up fa-5x"> </i>
+                            <div class="caption"><h2>Enroll</h2>course</div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a href="student/viewEnrolledCourses.php" class="thumbnail" style="text-align: center; color:red">
+                            <i class="fa fa-heart fa-5x"> </i>
+                            <div class="caption"><h2>Review</h2>course</div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a href="../index.php#tf-contact" class="thumbnail" style="text-align: center; color: green">
+                            <i class="fa fa-phone fa-5x"> </i>
+                            <div class="caption"><h2>Help</h2>call</div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+
+            <div>
+                <h1 style="color: white">Solutions ?</h1>
+                <div class="row">
+                    <div class="col-md-2 col-lg-offset-5">
+                        <a href="solutions/newSolutionRequest.php" class="thumbnail" style="text-align: center; color: limegreen">
+                            <i class="fa fa-gears fa-5x"> </i>
+                                <div class="caption"><h2>Solutions</h2>request</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
     </div>
 <?php include '../footer.html' ?>
 

@@ -43,9 +43,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	require_once( 'Course.php' );
 	$updateCourse = Course::newFromId( $conn, $course_id );
-
-	print_r( $updateCourse );
-
 	if ( $updateCourse->UpdateDatabase( $conn, $course_name, $course_bio, $course_lang, $course_difficulty, $course_date_from,
 		$course_time_from,$course_date_to, $course_time_to, $course_amount  ) ) {
 		$_SESSION['message'] = "Updated course successfully!";
