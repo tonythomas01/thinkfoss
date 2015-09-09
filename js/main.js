@@ -68,7 +68,7 @@ function main() {
         });
 
         $(".course_remove").click( function() {
-            $.post( '/thinkfoss/php/doRemoveCoursefromCart.php' , {
+            $.post( '/php/doRemoveCoursefromCart.php' , {
                 course_id : this.value,
                 csrf_token : this.name
             });
