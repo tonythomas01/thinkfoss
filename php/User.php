@@ -98,16 +98,6 @@ class User {
 		return false;
 	}
 
-	public function getDetailsFromDB( $conn, $key ) {
-		$sql = "SELECT '$key' FROM `user_details` WHERE `user_email` = '$this->user_email';";
-		if ( $row = $conn->query( $sql ) ) {
-			while( $res = $row->fetch_assoc() ) {
-				return $res[$key];
-			}
-		}
-		return false;
-	}
-
 	public function isExistingMember( $conn ) {
 		$sql = "SELECT * FROM `authorization` WHERE `email_id` = '$this->user_email';";
 		if( mysqli_num_rows( $conn->query( $sql ) ) >= 1 ) {
