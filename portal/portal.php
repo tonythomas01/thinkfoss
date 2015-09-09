@@ -1,14 +1,15 @@
 <?php
 	session_start();
-	if ( !isset( $_SESSION['loggedin_user'] ) ) {
+	if ( !isset( $_SESSION['loggedin_user_id'] ) ) {
 		header( 'Location: ../signup.php');
-	} else {
-		require_once( '../php/access/accessDB.php' );
-		require_once( '../php/User.php' );
-		require_once( '../php/Token.php' );
-		require_once( '../php/access/accessTokens.php' );
-		$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 	}
+
+        require_once( '../php/access/accessDB.php' );
+        require_once( '../php/User.php' );
+        require_once( '../php/Token.php' );
+        require_once( '../php/access/accessTokens.php' );
+        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

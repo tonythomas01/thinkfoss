@@ -163,7 +163,6 @@ include 'navigationstudent.php'
 		<script src="../../js/material/ripples.min.js"></script>
 		<script src="../../js/material/material.min.js"></script>
 
-		<script src="../../js/flipper.js"></script>
 		<?php include '../../footer.html' ?>
 </body>
 </html>
