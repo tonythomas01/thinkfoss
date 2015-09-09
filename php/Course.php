@@ -245,7 +245,7 @@ class Course {
 
 		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
 		$mg->sendMessage( $mailgunDomain, array(
-			'from'  => 'admin@thinkfoss.com',
+			'from'  => 'ThinkFOSS<admin@thinkfoss.com>',
 			'cc' => 'admin@thinkfoss.com',
 			'to'    => $userEmailId,
 			'subject' => 'ThinkFOSS: You have just added a new course',
@@ -271,7 +271,7 @@ class Course {
 
 		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
 		$mg->sendMessage( $mailgunDomain, array(
-			'from'  => 'admin@thinkfoss.com',
+			'from'  => 'ThinkFOSS<admin@thinkfoss.com>',
 			'cc' => 'admin@thinkfoss.com',
 			'to'    => $userEmailId,
 			'subject' => 'ThinkFOSS: Your course has been accepted',
@@ -299,7 +299,7 @@ class Course {
 
 		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
 		$mg->sendMessage( $mailgunDomain, array(
-			'from'  => 'admin@thinkfoss.com',
+			'from'  => 'ThinkFOSS<admin@thinkfoss.com>',
 			'cc' => 'admin@thinkfoss.com',
 			'to'    => $userEmailId,
 			'subject' => 'ThinkFOSS: A new user has enrolled to your course',

@@ -154,7 +154,7 @@ class User {
 
 		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
 		$mg->sendMessage( $mailgunDomain, array(
-			'from'  => 'admin@thinkfoss.com',
+			'from'  => 'ThinkFOSS<admin@thinkfoss.com>',
 			'to'    => $this->user_email,
 			'subject' => 'Welcome to your ThinkFOSS account',
 			'text'  => $emailBody
