@@ -11,6 +11,7 @@ class Solution {
 	protected $solution_amount;
 	protected $solution_bio;
 	protected $solution_request_user_id;
+	protected $solution_accepted;
 
 	public function getValue( $key ) {
 		return $this->$key;
@@ -55,9 +56,9 @@ class Solution {
 
 	public function addToDatabase( $conn ) {
 		$sqlInsert = "INSERT INTO `solution_details`(`solution_id`, `solution_name`, `solution_platform`,`solution_framework`, `solution_contact`,
-				`solution_deadline_estimated`, `solution_amount`, `solution_bio`, `solution_request_user_id`)
+				`solution_deadline_estimated`, `solution_amount`, `solution_bio`, `solution_request_user_id`, `solution_accepted` )
 				VALUES ('','$this->solution_name','$this->solution_platform','$this->solution_framework', '$this->solution_contact',
-				'$this->solution_deadline_estimated','$this->solution_amount', '$this->solution_bio', '$this->solution_request_user_id')";
+				'$this->solution_deadline_estimated','$this->solution_amount', '$this->solution_bio', '$this->solution_request_user_id', 0 )";
 
 		if ( $conn->query( $sqlInsert ) ) {
 			return true;

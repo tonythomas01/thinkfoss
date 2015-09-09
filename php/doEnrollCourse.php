@@ -12,7 +12,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once( "access/accessTokens.php" );
 
 	$csrfToken = new Token( $csrfSecret );
-	print_r( $csrfToken );
 	if( !$csrfToken->validateCSRFToken( $preparedStatement->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
 		header( 'Location: '.'../portal/student/viewAllCourses.php');
