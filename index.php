@@ -261,6 +261,11 @@ $csrfToken = new Token( $csrfSecret );
                                                         <h3>Tony Thomas</h3>
                                                         <p>CTO</p>
                                                         <p>Random Open Source guy and Wikimedian who thinks<br> FOSS is the best</p>
+                                                        <p>
+                                                        <a href="https://in.linkedin.com/in/tonythomas01" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+                                                        <a href="https://github.com/tonythomas01" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+                                                        <a href="http://blog.tttwrites.in" target="_blank"> <i class="fa fa-rss"></i></a>
+                                                        </p>
                                                 </div>
                                         </div>
                                 </div>
@@ -286,6 +291,16 @@ $csrfToken = new Token( $csrfSecret );
                                                 </div>
                                         </div>
                                 </div>
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/tinaj.jpg" alt="Tina Johnson" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Tina Johnson</h3>
+                                                        <p>Systems Programmer</p>
+                                                        <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
+                                                </div>
+                                        </div>
+                                </div>
 
                                 <div class="item">
                                         <div class="thumbnail">
@@ -298,16 +313,7 @@ $csrfToken = new Token( $csrfSecret );
                                         </div>
                                 </div>
 
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/tinaj.jpg" alt="Tina Johnson" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Tina Johnson</h3>
-                                                        <p>Systems Programmer</p>
-                                                        <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
-                                                </div>
-                                        </div>
-                                </div>
+
 
                         </div>
 
