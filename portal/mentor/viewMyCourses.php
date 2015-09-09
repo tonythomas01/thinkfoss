@@ -105,6 +105,13 @@
 
 		        echo '<div class="col-sm-6 col-md-4">
                                 <div class="thumbnail" style="height: 280px">
+                                <span style="text-aligin: right; float: right; color: black;">STATUS : ';
+                                if ( $course->isCourseApproved( $conn ) ) {
+                                        echo '<span style="color:green"><strong>Approved</strong></span>';
+                                } else {
+                                        echo '<span style="color:red">Pending</span>';
+                                }
+                        echo '</span>
                                    <div class="caption">
                                    <h1>' . $row['course_name'] . '</h1>
                                    <p><strong>Rate </strong>: '.  $row['course_fees'] . '  <span style ="float: right"><strong>Students enrolled </strong> : '.  $course->getNumberofStudentsEnrolled( $conn ) .'</span></p>

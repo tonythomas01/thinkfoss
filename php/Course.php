@@ -55,6 +55,15 @@ class Course {
 		return $this->course_id;
 	}
 
+	public function isCourseApproved( $conn ) {
+		$sql = "SELECT `course_approved` FROM `course_details` WHERE `course_id` = '$this->course_id';";
+		if ( $row = $conn->query( $sql ) ) {
+			while ( $res = $row->fetch_assoc() ) {
+				return $res['course_approved'];
+			}
+		}
+	}
+
 	public function addToMentorMap( $conn, $course_mentor ) {
 		$sqlAddtoMap = "INSERT INTO `course_mentor_map` (`course_id`, `mentor_id` ) VALUES ( '$this->course_id','$course_mentor' );";
 		if ( $conn->query( $sqlAddtoMap ) ) {
