@@ -311,6 +311,12 @@ $csrfToken = new Token( $csrfSecret );
                                                         <h3>Sakshi Bansal</h3>
                                                         <p>Systems and Operations</p>
                                                         <p><a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a> student, currently spending her time working with various upstream projects</p>
+	                                                <p>
+		                                                <a href="https://in.linkedin.com/in/sakshi-bansal" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+		                                                <a href="https://github.com/sakshi-bansal" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+		                                                <a href="http://sakshiii.wordpress.com/" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+		                                                <a href="https://twitter.com/sakshibansall" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
+	                                                </p>
                                                 </div>
                                         </div>
                                 </div>
