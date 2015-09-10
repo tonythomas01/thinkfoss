@@ -648,14 +648,14 @@ $csrfToken = new Token( $csrfSecret );
                                                         <label class="sr-only" for="exampleInputAmount">Your Name</label>
                                                         <div class="input-group">
                                                                 <div class="input-group-addon"><i class="fa fa-user"></i> </div>
-                                                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Your Name" name="name">
+                                                                <input type="text" class="form-control" id="contact-name" placeholder="Your Name" name="name">
                                                         </div>
                                                 </div>
                                                 <div class="form-group">
                                                         <label class="sr-only"  for="exampleInputEmail1">Email id</label>
                                                         <div class="input-group">
                                                                 <div class="input-group-addon"><i class="fa fa-envelope"></i> </div>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="_replyto">
+                                                                <input type="email" class="form-control" id="contact-email" placeholder="Enter email" name="_replyto">
                                                         </div>
                                                 </div>
                                                 <div class="form-group">

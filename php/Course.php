@@ -143,6 +143,15 @@ class Course {
 		return false;
 	}
 
+	public function getEnrollmentTime( $conn, $userId ) {
+		$sqlSelect = "SELECT  `course_enrollment_timestamp` FROM `course_enrollment` WHERE `course_id` = '$this->course_id' AND `user_id` = '$userId'";
+		if ( $row = $conn->query( $sqlSelect ) ) {
+			while ( $res = $row->fetch_assoc() ) {
+				return $res['course_enrollment_timestamp'];
+			}
+		}
+	}
+
 	public function checkoutCourse( $conn, $userId ) {
 		$checkoutStatement = "UPDATE `course_enrollment` SET `course_enrolled` = TRUE WHERE `course_id` = '$this->course_id'
 			AND `user_id` =  '$userId';";

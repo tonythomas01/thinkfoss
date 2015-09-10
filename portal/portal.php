@@ -69,6 +69,7 @@
 
     </script>
 
+
     <!--[endif]-->
 </head>
 <body>
@@ -187,10 +188,10 @@
                         </a>
                     </div>
                     <div class="col-xs-6 col-md-3">
-                        <a href="../index.php#tf-contact" class="thumbnail" style="text-align: center; color: green">
-                            <i class="fa fa-phone fa-5x"> </i>
-                            <div class="caption"><h2>Help</h2>call</div>
-                        </a>
+                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
+                                <i class="fa fa-phone fa-5x"> </i>
+                                <div class="caption" ><h2>Help</h2>call</div>
+                        </div></a>
                     </div>
                 </div>
 
@@ -220,10 +221,10 @@
                         </a>
                     </div>
                     <div class="col-xs-6 col-md-3">
-                        <a href="../index.php#tf-contact" class="thumbnail" style="text-align: center; color: green">
+                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
                             <i class="fa fa-phone fa-5x"> </i>
-                            <div class="caption"><h2>Help</h2>call</div>
-                        </a>
+                            <div class="caption" ><h2>Help</h2>call</div>
+                        </div></a>
                     </div>
                 </div>
             </div>
@@ -240,6 +241,45 @@
                     </div>
                 </div>
             </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel" style="color: black">Contact Us</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="http://formspree.io/tony@thinkfoss.com" method="POST" >
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Your name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="contact-name" disabled placeholder="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" name="name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="contact-email" placeholder="<?php echo $user->getValue('user_email'); ?>" name="_replyto">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Message</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" name="message" id="message" placeholder="Your message" ></textarea>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
         </div>
