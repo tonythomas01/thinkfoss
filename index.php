@@ -264,7 +264,9 @@ $csrfToken = new Token( $csrfSecret );
                                                         <p>
                                                         <a href="https://in.linkedin.com/in/tonythomas01" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
                                                         <a href="https://github.com/tonythomas01" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
-                                                        <a href="http://blog.tttwrites.in" target="_blank"> <i class="fa fa-rss"></i></a>
+                                                        <a href="http://blog.tttwrites.in" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+                                                        <a href="https://twitter.com/01tonythomas" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
+                                                        <a href="https://www.facebook.com/01tonythomas" target="_blank"> <i class="fa fa-facebook"></i></a>
                                                         </p>
                                                 </div>
                                         </div>
