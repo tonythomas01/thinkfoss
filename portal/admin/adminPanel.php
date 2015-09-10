@@ -59,6 +59,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 <?php
 	require_once( '../../php/access/accessDB.php' );
 	require_once( '../../php/User.php');
+	require_once( '../../php/Course.php');
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 	include( '../../php/Token.php' );
 	include( '../../php/access/accessTokens.php' );
@@ -104,7 +105,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				<th>From Time</th>
 				<th>To Date</th>
 				<th>To Time</th>
-				<th>Fees</th>
+				<th style="width: 50px">Fees</th>
+				<th>Mentor</th>
 				<th>Approve</th>
 				</thead>
 				<tbody>
@@ -118,6 +120,9 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				$result = $conn->query( $sqlSelect );
 				if( $result->num_rows > 0 ) {
 					while( $row = $result->fetch_assoc() ) {
+						$mentordId = Course::getCourseMentor( $conn, $row['course_id'] );
+						$mentor = User::newFromUserId( $mentordId, $conn );
+
 						$csrfToken = new Token( $csrfSecret );
 						echo '<tr> <td>'. $row['course_name']. '</td>
 		        <td> '. $row['course_bio']. '</td>
@@ -128,6 +133,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		        <td> '. $row['course_date_to']. '</td>
 		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
+		        <td> '. $mentor->getValue('user_first_name' ). $mentor->getValue('user_last_name') .'</td>
 		        <td> <input type="radio" name="course-future[]" value="course-approve-'.$row['course_id'].'" /> Yes
 		        <input type="radio" name="course-future[]" value="course-remove-'.$row['course_id'].'" />No</td>
 		        ';
