@@ -122,14 +122,17 @@ require_once( '../../php/Course.php' );
                                    </span></p>
                                    <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
                                    <p><strong>Bio</strong> : ' . substr($row['course_bio'], 0, 70) . '... ' . '</p>
+                                   ';
+
+                                        $csrfTokenForEdits = new Token( $csrfSecret );
+                                echo '
+
                                    <form action="editMyCourse.php" method="post">
-                                                    <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+                                                    <input type="hidden" name="CSRFToken" value="'; echo $csrfTokenForEdits->getCSRFToken(); echo '"/>
                                         <button style="position: absolute; left:20px; bottom:20px;" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" ><i class = "fa fa-pencil"></i> Edit</button>
                                         </form>
-                              <form action="../../php/doDeleteCourse.php" method="post">
-		            <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
 		            <form action="../../php/doDeleteCourse.php" method="post">
-		            <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
+		            <input type="hidden" name="CSRFToken" value="';echo $csrfTokenForEdits->getCSRFToken(); echo '"/>
 		            <button type="submit" style="position: absolute; right:20px; bottom:20px;" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" >Delete</button></form>
 
 		                                </div>
