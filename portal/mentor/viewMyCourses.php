@@ -104,9 +104,8 @@ require_once( '../../php/Course.php' );
 
                                                 $course = Course::newFromId( $conn, $courseId );
 
-                                                $csrfToken = new Token( $csrfSecret );
+                                                $csrfToken = new Token( $courseId . $csrfSecret );
 	                                        $csrftoken = $csrfToken->getCSRFToken();
-
                                                 echo '<div class="col-sm-6 col-md-4">
                                 <div class="thumbnail" style="height: 280px">
                                 <span style="text-aligin: right; float: right; color: black;">STATUS : ';

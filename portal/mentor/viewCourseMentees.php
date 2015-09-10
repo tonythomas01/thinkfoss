@@ -22,11 +22,13 @@
 
 	require_once( '../../php/Token.php' );
 	require_once( '../../php/access/accessTokens.php' );
-	$csrfToken = new Token( $csrfSecret );
+
 
 	$postInputRow = $preparedPost->getValue( 'courseid_token' );
 	$postRaw = explode( '_', $postInputRow );
 	$courseId = base64_decode( $postRaw[0] );
+	$csrfToken = new Token( $courseId.$csrfSecret );
+
 	if( ! $csrfToken->validateCSRFToken( $postRaw[1] ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
 		header( 'Location: '.'viewMyCourses.php');
