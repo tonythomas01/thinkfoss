@@ -47,28 +47,6 @@ function main() {
 
         $('[data-toggle="popover"]').popover();
 
-        $( "#member-login-button").click( function() {
-            $('#login-form').toggle().insertAfter('.container-fluid');
-            $('#login-form').css({
-                'position' : 'fixed'
-            });
-        });
-
-
-        $('#close-button').click( function() {
-            $('#login-form').hide();
-        });
-
-
-        $(document).mouseup(function (e)
-        {
-            var container = $("#login-form");
-            var button = $("#member-login-button");
-
-            if ( !container.is(e.target) && container.has(e.target).length === 0 )  {
-                container.hide();
-            }
-        });
 
         $(".course_remove").click( function() {
             $.post( '/php/doRemoveCoursefromCart.php' , {

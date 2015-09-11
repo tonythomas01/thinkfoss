@@ -103,26 +103,11 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
                                 </form>
                             </li>";
 					} else {
-						$csrfToken = new Token( $csrfSecret );
-						echo "
-                        <form class='form-inline' action = 'php/doSignIn.php' method = 'post' >
-                        <div class='form-group'>
-
-                            <label class='sr-only' for='username' > Email id </label >
-                            <div class='input-group' >
-                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
-                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
-                            </div>
-                            <label class='sr-only' for='password'> Password</label >
-                            <div class='input-group'>
-                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
-                            </div>
-                            <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
-                            <button style='margin-right: 10px' type = 'submit' id = 'member-login' class='btn btn-material-orange' ><i class='fa fa-arrow-right' ></i ></button >
-                        </div >
-                    </form >
-                </li >
+						echo " <li style='padding-right: 10px'>
+				<button type='button' class='btn btn-success btn-lg' data-toggle='modal' data-target='#login-modal'>
+				  Login
+						</button>
+						</li>
                     ";
 					}
 					?>
@@ -130,6 +115,53 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
+
+<?php
+	$csrfToken = new Token( $csrfSecret );
+?>
+<!-- Modal -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+	<div class="modal-dialog" role="document"  style="width: 400px">
+		<div class="modal-content" style="border-radius: 5px; ">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="section-title" style="text-align: center">
+					<h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
+				<p style="text-align: center"> code | train | grow</p>
+
+			</div>
+			<div class="modal-body" >
+				<form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
+					<div class='form-group'>
+						<label class='sr-only' for='username' > Email id </label >
+						<div class='input-group' >
+							<div class='input-group-addon'><i class='fa fa-user'></i ></div >
+							<input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
+						</div> <br>
+						<label class='sr-only' for='password'> Password</label >
+						<div class='input-group'>
+							<div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+							<input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
+						</div>
+						<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+						<button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
+					</div>
+
+			</div>
+			<p style="text-align: center;">Or login using</p>
+			<div class="modal-footer" style="text-align: center">
+
+				<a href='php/oauth/oauth2callback.php'> <button type='button' style="text-align: center;" class='btn btn-material-deeporange btn-lg btn-raised'><i class="fa fa-google-plus"></i> </button></a>
+				<a href='php/oauth/oauth2callbackgithub.php?action=login'> <button style="text-align: left; " type='button' class='btn btn-material-bluegrey btn-lg btn-raised'><i class="fa fa-github"></i> </button></a>
+
+				</form>
+			</div>
+			<p style="text-align: center; padding-bottom: 1px"> Dont have an account yet ? <a href="signup.php">Sign Up</a> </p>
+		</div>
+	</div>
+</div>
+
+
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
 		<div class="content">

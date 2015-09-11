@@ -108,12 +108,11 @@ $csrfToken = new Token( $csrfSecret );
                                         </form>
                                 </li>";
                                         } else {
-                                                echo "
-                                    <div style='padding-right: 8%' >
-                                    <button type = 'submit' id = 'member-login-button' class='btn btn-material-lightyellow' style='color: black' ><i class='fa fa-sign-in' >
-                                        <span style='font-weight: bold'>LOGIN</span></i ></button >
-                                    </div>
-                            </li >
+	                                        echo " <li style='padding-right: 10px'>
+				<button type='button' class='btn btn-material-lightyellow btn-lg' data-toggle='modal' data-target='#login-modal' style='color: black'>
+				  Login
+						</button>
+						</li>
                             ";
                                         }
                                         ?>
@@ -122,36 +121,48 @@ $csrfToken = new Token( $csrfSecret );
         </div><!-- /.container-fluid -->
 </nav>
 
-<div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:320px; z-index: 10; background-color:#a6e1ec; display: none; float: right; padding-top: 10px; right: 0px;">
-        <button type="button" class="btn btn-link" id="close-button" style="line-height: 12px; width: 18px; font-size: 8pt; font-family: tahoma; margin-top: 1px; margin-right:2px; position:absolute; top:0; right:0;">x</button>
-        <div class="section-title" style="text-align: center">
-                <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
-        <p style="text-align: center"> code | train | grow</p>
-        <form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
-                <div class='form-group'>
-                        <label class='sr-only' for='username' > Email id </label >
-                        <div class='input-group' >
-                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
-                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
-                        </div> <br>
-                        <label class='sr-only' for='password'> Password</label >
-                        <div class='input-group'>
-                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
-                        </div>
-                        <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                        <div style="text-align: center" >
-                                <button type = 'submit' id = 'member-login-indiv' class='btn btn-material-lightyellow btn-center' style='color: black;' ><i class='fa fa-sign-in' > <span style="font-weight: bold">Sign In</span></i ></button >
-                        </div>
-                </div>
-        </form >
-        <div style="text-align: center">
-                <p>or login using </p>
-                <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
-                <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
-                <a href="signup.php"><button type = 'button' id = 'member-login-indiv' class='btn btn-success btn-lg btn-center' > Sign Up</button ></a>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+	<div class="modal-dialog" role="document"  style="width: 400px">
+		<div class="modal-content" style="border-radius: 5px; ">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="section-title" style="text-align: center">
+					<h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
+				<p style="text-align: center"> code | train | grow</p>
+
+			</div>
+			<div class="modal-body" >
+				<form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
+					<div class='form-group'>
+						<label class='sr-only' for='username' > Email id </label >
+						<div class='input-group' >
+							<div class='input-group-addon'><i class='fa fa-user'></i ></div >
+							<input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
+						</div> <br>
+						<label class='sr-only' for='password'> Password</label >
+						<div class='input-group'>
+							<div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+							<input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
+						</div>
+						<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+						<button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
+					</div>
+
+			</div>
+			<p style="text-align: center;">Or login using</p>
+			<div class="modal-footer" style="text-align: center">
+
+				<a href='php/oauth/oauth2callback.php'> <button type='button' style="text-align: center;" class='btn btn-material-deeporange btn-lg    btn-raised'><i class="fa fa-google-plus"></i> </button></a>
+				<a href='php/oauth/oauth2callbackgithub.php?action=login'> <button style="text-align: left; " type='button' class='btn btn-material-bluegrey btn-lg btn-raised'><i class="fa fa-github"></i> </button></a>
+
+				</form>
+			</div>
+			<p style="text-align: center; padding-bottom: 1px"> Dont have an account yet ? <a href="signup.php">Sign Up</a> </p>
+		</div>
+	</div>
 </div>
+
 
 
 <!-- Home Page
