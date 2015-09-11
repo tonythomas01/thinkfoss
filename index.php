@@ -59,6 +59,12 @@ $csrfToken = new Token( $csrfSecret );
         </script>
         <link href="css/material/material-wfont.min.css" rel="stylesheet">
 </head>
+
+<style>
+        li {
+                font-weight: bold;
+        }
+</style>
 <body>
 <!-- Navigation
 ==========================================-->
