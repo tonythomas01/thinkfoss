@@ -494,7 +494,7 @@ $csrfToken = new Token( $csrfSecret );
                                         <ol class="task-list">
                                                 <li>
                                                         <span class="fa fa-flask"></span>
-                                                        <strong>Register</strong> - <em>Use one of the options avialbale to log-in</em>
+                                                        <strong>Register</strong> - <em>Use one of the options available to log-in</em>
                                                 </li>
                                                 <li>
                                                         <span class="fa fa-pencil-square-o"></span>
