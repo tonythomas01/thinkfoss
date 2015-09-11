@@ -141,6 +141,9 @@ require_once( '../../php/Course.php' );
 
 		        ';
                                         }
+                                } else {
+                                        echo '<p class="alert-warning">Looks like you have not added anything here yet. Please add in courses.</p>';
+
                                 }
 
                                 ?>

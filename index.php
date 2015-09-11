@@ -592,8 +592,8 @@ $csrfToken = new Token( $csrfSecret );
                                         <hr>
                                         <div class="clearfix"></div>
                                 </div>
-                                <p class="intro"> You are at the right place! ThinkFOSS helps in connection people with skills to people in need, and
-                                        make sure you get the maximum out of it. Topics avialable to study ranges from 'Beginner' to 'Advanced' level.
+                                <p class="intro"> You are at the right place! ThinkFOSS helps in connecting people with skills to people in need, and
+                                        makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.
                                 </p> <br>
                                 <h2>How it Works ?</h2>
                                 <ul class="mentor-list">
