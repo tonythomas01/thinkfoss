@@ -120,15 +120,9 @@
                         echo '<li><a href="admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
                     }
                 ?>
+
+                <li><a href="cart/viewCart.php"><i class="fa fa-shopping-cart"><span class="badge"><?php echo $user->getEnrolledCourses( $conn ); ?> </span></i></a> </li>
                 <li><a href="portal.php"><i class="fa fa-laptop"></i> Portal</a> </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fa fa-shopping-cart"><span class="badge"><?php echo $user->getEnrolledCourses( $conn ); ?> </span></i> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cart/viewCart.php">View Cart</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Empty Cart</a></li>
-                    </ul>
-                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['loggedin_user'] ?> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
