@@ -58,7 +58,7 @@ function getUserDetails( $conn, $emailId ) {
 	if( $res->num_rows > 0 ) {
 		$user = array();
 		while ( $loggedinData = $res->fetch_assoc() ) {
-			$user['name'] = $loggedinData['user_first_name']. ''. $loggedinData['user_last_name'];
+			$user['name'] = $loggedinData['user_first_name']. ' '. $loggedinData['user_last_name'];
 			$user['email'] = $loggedinData['user_email'];
 			$user['user_id'] = $loggedinData['user_id'];
 		}
