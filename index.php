@@ -59,6 +59,12 @@ $csrfToken = new Token( $csrfSecret );
         </script>
         <link href="css/material/material-wfont.min.css" rel="stylesheet">
 </head>
+
+<style>
+        li {
+                font-weight: bold;
+        }
+</style>
 <body>
 <!-- Navigation
 ==========================================-->
@@ -104,7 +110,8 @@ $csrfToken = new Token( $csrfSecret );
                                         } else {
                                                 echo "
                                     <div style='padding-right: 8%' >
-                                    <button type = 'submit' id = 'member-login-button' class='btn btn-material-orange' ><i class='fa fa-sign-in' > LOGIN</i ></button >
+                                    <button type = 'submit' id = 'member-login-button' class='btn btn-material-lightyellow' style='color: black' ><i class='fa fa-sign-in' >
+                                        <span style='font-weight: bold'>LOGIN</span></i ></button >
                                     </div>
                             </li >
                             ";
@@ -115,13 +122,13 @@ $csrfToken = new Token( $csrfSecret );
         </div><!-- /.container-fluid -->
 </nav>
 
-<div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:320px; z-index: 10; background-color:#add8e6; display: none; float: right; padding-top: 10px; right: 0px;">
+<div id ='login-form' class='login-form' style="transition: opacity 5s; border-radius:  5px; width: 300px; height:320px; z-index: 10; background-color:#a6e1ec; display: none; float: right; padding-top: 10px; right: 0px;">
         <button type="button" class="btn btn-link" id="close-button" style="line-height: 12px; width: 18px; font-size: 8pt; font-family: tahoma; margin-top: 1px; margin-right:2px; position:absolute; top:0; right:0;">x</button>
         <div class="section-title" style="text-align: center">
                 <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
         <p style="text-align: center"> code | train | grow</p>
         <form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
-                <div class='form-group' >
+                <div class='form-group'>
                         <label class='sr-only' for='username' > Email id </label >
                         <div class='input-group' >
                                 <div class='input-group-addon'><i class='fa fa-user'></i ></div >
@@ -134,7 +141,7 @@ $csrfToken = new Token( $csrfSecret );
                         </div>
                         <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
                         <div style="text-align: center" >
-                                <button type = 'submit' id = 'member-login-indiv' class='btn btn-material-orange btn-center' ><i class='fa fa-sign-in' > Sign In</i ></button >
+                                <button type = 'submit' id = 'member-login-indiv' class='btn btn-material-lightyellow btn-center' style='color: black;' ><i class='fa fa-sign-in' > <span style="font-weight: bold">Sign In</span></i ></button >
                         </div>
                 </div>
         </form >
@@ -142,7 +149,7 @@ $csrfToken = new Token( $csrfSecret );
                 <p>or login using </p>
                 <a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
                 <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
-                <a href="signup.php"><button type = 'button' id = 'member-login-indiv' class='btn btn-material-lightgreen btn-center' > Sign Up</button ></a>
+                <a href="signup.php"><button type = 'button' id = 'member-login-indiv' class='btn btn-success btn-lg btn-center' > Sign Up</button ></a>
         </div>
 </div>
 
