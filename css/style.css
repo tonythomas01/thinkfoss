@@ -679,3 +679,7 @@ nav#footer p{
 	border-color: #FCAC45;
 	color: #ffffff;
 }
+
+#bs-example-navbar-collapse-1 li {
+	font-weight: bold;
+}
