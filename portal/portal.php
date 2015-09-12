@@ -249,13 +249,13 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Your name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="contact-name" disabled placeholder="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" name="name">
+                                    <input type="text" class="form-control" id="contact-name" disabled value="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" placeholder="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" name="name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" disabled id="contact-email" placeholder="<?php echo $user->getValue('user_email'); ?>" name="_replyto">
+                                    <input type="email" class="form-control" disabled id="_replyto" value ="<?php echo $user->getValue('user_email'); ?>" placeholder="<?php echo $user->getValue('user_email'); ?>" name="_replyto">
                                 </div>
                             </div>
                             <div class="form-group">
