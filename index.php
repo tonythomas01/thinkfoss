@@ -574,7 +574,7 @@ $csrfToken = new Token( $csrfSecret );
         <div class="container">
                 <div class="row">
 
-                        <div class="col-md-6" style="background-color:gold">
+                        <div class="col-md-6" style="background-color:gold; padding-top: 10px">
                                 <div class="section-title">
                                         <h2>Be a  <strong>Mentor</strong></h2>
                                         <hr>
@@ -611,7 +611,7 @@ $csrfToken = new Token( $csrfSecret );
 
                         </div>
 
-                        <div class="col-md-6" id="student" style="background-color: silver">
+                        <div class="col-md-6" id="student" style="background-color: silver;  padding-top: 10px">
                                 <div class="section-title">
                                         <h2>Be a <strong>Student</strong></h2>
                                         <hr>
