@@ -588,8 +588,7 @@ $csrfToken = new Token( $csrfSecret );
                                         <li>
                                                 <span class="fa fa-hand-o-right"></span>
                                                 <strong>Sign up at our portal</strong> - <em> Once you sign up, you will be able to add/remove courses, and
-                                                        start monetizing your skills. Make sure you keep a neat profile so that the adminsitrative board approves your
-                                                        mentorship request instantly</em>
+                                                        start monetizing your skills. Do keep your profile updated to get accepted instantly</em>
                                         </li>
                                         <li>
                                                 <span class="fa fa-clock-o"></span>
@@ -645,6 +644,7 @@ $csrfToken = new Token( $csrfSecret );
                                         </li>
                                         <a href="signup.php"><button type="button" class="btn btn-success">LEARN</button></a>
 
+
                                 </ul>
 
 
@@ -655,7 +655,6 @@ $csrfToken = new Token( $csrfSecret );
 
                 </div>
         </div>
-</div>
 </div>
 
 <!-- Contact Section
