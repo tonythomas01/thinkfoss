@@ -320,6 +320,12 @@ $csrfToken = new Token( $csrfSecret );
                                                         <h3>Tina Johnson</h3>
                                                         <p>Systems Programmer</p>
                                                         <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
+                                                        <p>
+                                                        <a href="https://in.linkedin.com/pub/tina-johnson/70/22b/14b" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+                                                        <a href="https://github.com/tinajohnson" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+                                                        <a href="http://tinaj1234.wordpress.com" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+                                                        <a href="https://twitter.com/tinajohnson1234" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
+                                                        </p>
                                                 </div>
                                         </div>
                                 </div>
