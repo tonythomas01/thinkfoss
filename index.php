@@ -147,7 +147,9 @@ $csrfToken = new Token( $csrfSecret );
 						</div>
 						<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 						<button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
+
 					</div>
+                                </form>
 
 			</div>
 			<p style="text-align: center;">Or login using</p>
@@ -156,7 +158,7 @@ $csrfToken = new Token( $csrfSecret );
 				<a href='php/oauth/oauth2callback.php'> <button type='button' style="text-align: center;" class='btn btn-material-deeporange btn-lg    btn-raised'><i class="fa fa-google-plus"></i> </button></a>
 				<a href='php/oauth/oauth2callbackgithub.php?action=login'> <button style="text-align: left; " type='button' class='btn btn-material-bluegrey btn-lg btn-raised'><i class="fa fa-github"></i> </button></a>
 
-				</form>
+
 			</div>
 			<p style="text-align: center; padding-bottom: 1px"> Dont have an account yet ? <a href="signup.php">Sign Up</a> </p>
 		</div>
