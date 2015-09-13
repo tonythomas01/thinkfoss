@@ -59,12 +59,6 @@ $csrfToken = new Token( $csrfSecret );
         </script>
         <link href="css/material/material-wfont.min.css" rel="stylesheet">
 </head>
-
-<style>
-        li {
-                font-weight: bold;
-        }
-</style>
 <body>
 <!-- Navigation
 ==========================================-->
@@ -583,31 +577,44 @@ $csrfToken = new Token( $csrfSecret );
                                 <p class="intro"> Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
                                         aims at providing the best mentoring available to the needy in a complete transparent transaction.
                                 </p> <br>
-                                <h2>How it Works ?</h2>
-                                <ul class="mentor-list">
-                                        <li>
-                                                <span class="fa fa-hand-o-right"></span>
-                                                <strong>Sign up at our portal</strong> - <em> Once you sign up, you will be able to add/remove courses, and
-                                                        start monetizing your skills. Do keep your profile updated to get accepted instantly</em>
-                                        </li>
-                                        <li>
-                                                <span class="fa fa-clock-o"></span>
-                                                <strong>Wait for verification</strong> - <em> Wait till we verify your profile, and show up your contribution
-                                                        among the 'Available courses' </em>
-                                        </li>
-                                        <li>
-                                                <span class="fa fa-dollar"></span>
-                                                <strong>Collect your money</strong> - <em> Once you complete your course, the <i class="fa fa-rupee"></i>
-                                                        gets transferred to your account respecting the feedback from your mentees. Dont worry, we will make sure
-                                                        you get the most out of it</em>
-                                        </li>
-                                        <li>
-                                                <span class="fa fa-repeat"></span>
-                                                <strong>Repeat</strong>
-                                        </li>
-                                        <a href="signup.php"><button type="button" class="btn btn-right btn-danger">MENTOR</button></a>
+                                <h2>How it Works ?</h2> <br>
 
-                                </ul>
+                                <div class="row">
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
+                                                        <i class="fa fa-hand-o-right fa-5x"> </i>
+                                                        <div class="caption"><h2>Sign</h2>Up</div>
+                                                </a>
+                                        </div>
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: red">
+                                                        <i class="fa fa-plus fa-5x"> </i>
+                                                        <div class="caption"><h2>Add</h2>course</div>
+                                                </a>
+                                        </div>
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: green">
+                                                                <i class="fa fa-clock-o fa-5x"> </i>
+                                                                <div class="caption" ><h2>Wait</h2>confirmation</div>
+                                                </a>
+                                        </div>
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
+                                                                <i class="fa fa-mortar-board fa-5x"> </i>
+                                                                <div class="caption" ><h2>Teach</h2>course</div>
+                                                </a>
+                                        </div>
+                                        <br>
+
+                                        <div class="col-xs-6 col-md-3 col-md-offset-4 ">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: gold">
+                                                                <i class="fa fa-dollar fa-5x"> </i>
+                                                                <div class="caption" ><h2>Earn</h2>instantly</div>
+                                                </a>
+                                        </div>
+
+                                </div>
+                                <a href="signup.php"><button type="button" class="btn btn-success">MENTOR</button></a>
 
                         </div>
 
@@ -617,35 +624,47 @@ $csrfToken = new Token( $csrfSecret );
                                         <hr>
                                         <div class="clearfix"></div>
                                 </div>
-                                <p class="intro"> You are at the right place! ThinkFOSS helps in connecting people with skills to people in need, and
+                                <p class="intro"> ThinkFOSS helps in connecting people with skills to people in need, and
                                         makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.
                                 </p> <br>
-                                <h2>How it Works ?</h2>
-                                <ul class="mentor-list">
-                                        <li>
-                                                <span class="fa fa-hand-o-right"></span>
-                                                <strong>Sign up at our portal</strong> - <em> Signing up is as simple as few button clicks, and later you
-                                                        can find yourself in a portal where you can list down available courses. You can even be a mentor later,
-                                                        so dont worry. </em>
-                                        </li>
-                                        <li>
-                                                <span class="fa fa-dollar"></span>
-                                                <strong>Start enrolling</strong> - <em> Enrolling can be done in few clicks, where you will be redirected to our
-                                                        secure payment gateway.</em>
-                                        </li>
-                                        <li>
-                                                <span class="fa fa-check"></span>
-                                                <strong>Complete your course</strong> - <em> Your money get transferred to your mentor only after your feedback
-                                                        about the course. Your money is safe until the feedback is given. </em>
-                                        </li>
-                                        <li>
-                                                <span class="fa fa-repeat"></span>
-                                                <strong>Repeat</strong>
-                                        </li>
-                                        <a href="signup.php"><button type="button" class="btn btn-success">LEARN</button></a>
+                                <h2>How it Works ?</h2> <br>
 
+                                <div class="row">
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
+                                                        <i class="fa fa-sign-in fa-5x"> </i>
+                                                        <div class="caption"><h2>Sign</h2>Up</div>
+                                                </a>
+                                        </div>
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: red">
+                                                        <i class="fa fa-search fa-5x"> </i>
+                                                        <div class="caption"><h2>View</h2>course</div>
+                                                </a>
+                                        </div>
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#"  class="thumbnail" style="text-align: center; color: green">
+                                                        <i class="fa fa-cutlery fa-5x"> </i>
+                                                        <div class="caption" ><h2>Enroll</h2>course</div></a>
+                                        </div>
 
-                                </ul>
+                                        <div class="col-xs-6 col-md-3">
+                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
+                                                                <i class="fa fa-street-view fa-5x"> </i>
+                                                                <div class="caption" ><h2>Learn</h2>course</div>
+                                               </a>
+                                        </div>
+                                        <br>
+
+                                        <div class="col-xs-6 col-md-3 col-md-offset-4 ">
+	                                        <a href="#"class="thumbnail" style="text-align: center; color: gold">
+                                                                <i class="fa fa-trophy fa-5x"> </i>
+                                                                <div class="caption" ><h2>Win</h2>skills</div>
+                                                       </a>
+                                        </div>
+
+                                </div>
+                                <a href="signup.php"><button type="button" class="btn btn-success">LEARN</button></a>
 
 
                         </div>
