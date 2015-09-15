@@ -27,13 +27,13 @@
 	if($order_status==="Success")
 	{
 		$_SESSION['success'] = "Congrats, that transaction:  $order_id was a success.";
-		header('Location: ' . '../../portal/cart/viewCart.php');
-		
+		header('Location: ' . '../../../portal/cart/viewCart.php');
+
 	}
 	else if($order_status==="Aborted")
 	{
 		$_SESSION['error'] = "Couldn't checkout that course. Please try again";
-		header('Location: ' . '../../portal/cart/viewCart.php');
+		header('Location: ' . '../../../portal/cart/viewCart.php');
 	
 	}
 	else if($order_status==="Failure")
