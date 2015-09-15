@@ -1,5 +1,6 @@
 <?php include('Crypto.php')?>
 <?php
+	session_start();
 
 	error_reporting(0);
 	require_once( '../../access/ccavenueKeys.php');
@@ -12,20 +13,27 @@
 	$dataSize=sizeof($decryptValues);
 	echo "<center>";
 
+	$order_id = 0;
+
 	for($i = 0; $i < $dataSize; $i++) 
 	{
 		$information=explode('=',$decryptValues[$i]);
+		if( $i == 0 ) {
+			$order_id = $information[1];
+		}
 		if($i==3)	$order_status=$information[1];
 	}
 
 	if($order_status==="Success")
 	{
-		echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
+		$_SESSION['success'] = "Congrats, that transaction:  $order_id was a success.";
+		header('Location: ' . '../../portal/cart/viewCart.php');
 		
 	}
 	else if($order_status==="Aborted")
 	{
-		echo "<br>Thank you for shopping with us.We will keep you posted regarding the status of your order through e-mail";
+		$_SESSION['error'] = "Couldn't checkout that course. Please try again";
+		header('Location: ' . '../../portal/cart/viewCart.php');
 	
 	}
 	else if($order_status==="Failure")
