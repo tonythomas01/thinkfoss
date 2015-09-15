@@ -31,7 +31,7 @@
 		$order = Order::newOrderFromId( $conn, $order_id );
 		$order->checkoutOrder( $conn );
 
-		$courseId = $order->getValue( 'course_id' );
+		$courseId = $order->getValue( 'courseId' );
 		$course = Course::newFromId( $conn, $courseId );
 
 		$course->notifyMentor($conn, $mailgunAPIKey, $mailgunDomain);
