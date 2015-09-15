@@ -29,19 +29,57 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$preparedPost->sanitize();
 
 	require_once( 'Course.php' );
+	require_once( 'User.php' );
+
+	$checkingOutUser = User::newFromUserId( $loggedInUser, $conn );
+
 	require_once( 'access/mailgunAPIKeys.php' );
 	$courseList =  $_POST[ 'checkout-item' ];
+
+
+
 	if ( is_array( $courseList ) ) {
 		foreach( $courseList as $course ) {
 			$courseRaw = mysqli_real_escape_string( $conn, $course );
 			$courseName = explode( '-', $courseRaw );
 			$course = Course::newFromId( $conn, $courseName[1] );
 			if ( $course ) {
-				if ( $course->checkoutCourse( $conn, $loggedInUser ) ) {
-					$course->notifyMentor(  $conn, $mailgunAPIKey, $mailgunDomain );
-					$_SESSION['message'] = "Congratulations! The checkout was successful!";
-					header('Location: ' . '../portal/student/viewAllCourses.php');
+				require_once( 'access/ccavenueKeys.php');
+				include('vendor/cc_avenue_kit/Crypto.php');
+
+				$merchentData = array(
+						'merchant_id' => $merchant_id,
+						'order_id' => rand(),
+						'currency' => 'INR',
+						'amount' => $course->getValue( 'course_fees' ),
+						'language' => 'en',
+						'redirect_url' => 'http://beta.thinkfoss.com/portal/cart/viewCart.php',
+						'cancel_url' => 'http://beta.thinkfoss.com/portal/cart/viewCart.php'
+				);
+
+
+				$merchant_data = '';
+
+				foreach ( $merchentData as $key => $value){
+					$merchant_data.=$key.'='.$value.'&';
 				}
+
+				$encrypted_data=encrypt($merchant_data,$working_key); // Method for encrypting the data.
+
+				echo '
+				<form method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">';
+				echo "<input type=hidden name=encRequest value=$encrypted_data>";
+				echo "<input type=hidden name=access_code value=$access_code>";
+
+				echo '<script language="javascript">document.redirect.submit();</script>';
+
+
+//					if ($course->checkoutCourse($conn, $loggedInUser)) {
+//						$course->notifyMentor($conn, $mailgunAPIKey, $mailgunDomain);
+//						$_SESSION['message'] = "Congratulations! The checkout was successful!";
+//						header('Location: ' . '../portal/student/viewAllCourses.php');
+//					}
+
 			}
 		}
 	} else {
