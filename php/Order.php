@@ -10,8 +10,7 @@ class Order {
 	public static function newOrderFromId( $conn, $orderId ) {
 		$order = new Order;
 		$order->orderId = $orderId;
-
-		$sqlSelect = "SELECT `course_id`, `user_id`, `course_enrolled`, `course_enrollment_timestamp`, FROM
+		$sqlSelect = "SELECT `course_id`, `user_id`, `course_enrolled`, `course_enrollment_timestamp` FROM
 		`course_enrollment` WHERE `checkout_order_id` = '$orderId' ";
 		if ( $row = $conn->query( $sqlSelect ) ) {
 			while ( $res = $row->fetch_assoc() ) {
