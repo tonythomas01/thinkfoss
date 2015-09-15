@@ -1,13 +1,13 @@
 <?php
 
 class Order {
-	protected $orderId;
-	protected $userId;
-	protected $courseId;
-	protected $checkoutTimestamp;
-	protected $checkedOut;
+	public $orderId;
+	public $userId;
+	public $courseId;
+	public $checkoutTimestamp;
+	public $checkedOut;
 
-	public static  function newOrderFromId( $conn, $orderId ) {
+	public static function newOrderFromId( $conn, $orderId ) {
 		$order = new Order;
 		$order->orderId = $orderId;
 
