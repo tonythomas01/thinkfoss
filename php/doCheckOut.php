@@ -53,8 +53,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 						'currency' => 'INR',
 						'amount' => $course->getValue( 'course_fees' ),
 						'language' => 'en',
-						'redirect_url' => 'http://beta.thinkfoss.com/portal/cart/viewCart.php',
-						'cancel_url' => 'http://beta.thinkfoss.com/portal/cart/viewCart.php'
+						'redirect_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php',
+						'cancel_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php'
 				);
 
 
