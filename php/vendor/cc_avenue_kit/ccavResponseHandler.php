@@ -25,6 +25,7 @@
 	if($order_status==="Success")
 	{
 		require_once( '../../Order.php' );
+		require_once( '../../Course.php' );
 		require_once( '../../access/accessDB.php' );
 		require_once( '../../access/mailgunAPIKeys.php' );
 
@@ -34,7 +35,7 @@
 		$courseId = $order->getValue( 'courseId' );
 		$course = Course::newFromId( $conn, $courseId );
 
-		$course->notifyMentor($conn, $mailgunAPIKey, $mailgunDomain);
+		$course->notifyMentor( $conn, $mailgunAPIKey, $mailgunDomain);
 
 		$_SESSION['success'] = "Congrats, that transaction:  $order_id was a success.";
 		header('Location: ' . '../../../portal/mentor/viewMyCourses.php');
