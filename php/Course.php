@@ -152,10 +152,10 @@ class Course {
 		}
 	}
 
-	public function checkoutCourse( $conn, $userId ) {
-		$checkoutStatement = "UPDATE `course_enrollment` SET `course_enrolled` = TRUE WHERE `course_id` = '$this->course_id'
+	public function startCheckout( $conn, $orderId, $userId ) {
+		$startCheckout = "UPDATE `course_enrollment` SET `checkout_order_id` = '$orderId' WHERE `course_id` = '$this->course_id'
 			AND `user_id` =  '$userId';";
-		if ( $conn->query( $checkoutStatement ) ) {
+		if ( $conn->query( $startCheckout ) ) {
 			return true;
 		}
 		return false;

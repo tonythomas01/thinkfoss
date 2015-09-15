@@ -33,10 +33,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	$checkingOutUser = User::newFromUserId( $loggedInUser, $conn );
 
-	require_once( 'access/mailgunAPIKeys.php' );
 	$courseList =  $_POST[ 'checkout-item' ];
-
-
 
 	if ( is_array( $courseList ) ) {
 		foreach( $courseList as $course ) {
@@ -47,16 +44,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 				require_once( 'access/ccavenueKeys.php');
 				include('vendor/cc_avenue_kit/Crypto.php');
 
+				$orderId = rand();
+
+				$course->startCheckout( $conn, $orderId, $loggedInUser );
+
 				$merchentData = array(
 						'merchant_id' => $merchant_id,
-						'order_id' => rand(),
+						'order_id' => $orderId,
 						'currency' => 'INR',
 						'amount' => $course->getValue( 'course_fees' ),
 						'redirect_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php',
 						'cancel_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php',
 						'language' => 'en'
 				);
-
 
 				$merchant_data = '';
 
@@ -72,14 +72,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 				echo "<input type=hidden name=access_code value=$access_code>";
 
 				echo '<script language="javascript">document.redirect.submit();</script>';
-
-
-//					if ($course->checkoutCourse($conn, $loggedInUser)) {
-//						$course->notifyMentor($conn, $mailgunAPIKey, $mailgunDomain);
-//						$_SESSION['message'] = "Congratulations! The checkout was successful!";
-//				                header('Location: ' . '../portal/student/viewAllCourses.php');
-//					}
-
 			}
 		}
 	} else {

@@ -4,14 +4,12 @@
 
 	error_reporting(0);
 	require_once( '../../access/ccavenueKeys.php');
-	
-	$workingKey= $working_key;		//Working Key should be provided here.
+
 	$encResponse=$_POST["encResp"];			//This is the response sent by the CCAvenue Server
-	$rcvdString=decrypt($encResponse,$workingKey);		//Crypto Decryption used as per the specified working key.
+	$rcvdString=decrypt( $encResponse,$working_key );		//Crypto Decryption used as per the specified working key.
 	$order_status="";
 	$decryptValues=explode('&', $rcvdString);
 	$dataSize=sizeof($decryptValues);
-	echo "<center>";
 
 	$order_id = 0;
 
@@ -26,8 +24,20 @@
 
 	if($order_status==="Success")
 	{
+		require_once( '../../Order.php' );
+		require_once( '../../access/accessDB.php' );
+		require_once( '../../access/mailgunAPIKeys.php' );
+
+		$order = Order::newOrderFromId( $conn, $order_id );
+		$order->checkoutOrder( $conn );
+
+		$courseId = $order->getValue( 'course_id' );
+		$course = Course::newFromId( $conn, $courseId );
+
+		$course->notifyMentor($conn, $mailgunAPIKey, $mailgunDomain);
+
 		$_SESSION['success'] = "Congrats, that transaction:  $order_id was a success.";
-		header('Location: ' . '../../../portal/cart/viewCart.php');
+		header('Location: ' . '../../../portal/mentor/viewMyCourses.php');
 
 	}
 	else if($order_status==="Aborted")
@@ -38,23 +48,13 @@
 	}
 	else if($order_status==="Failure")
 	{
-		echo "<br>Thank you for shopping with us.However,the transaction has been declined.";
+		$_SESSION['error'] = "Couldn't checkout that course: $order_id. Please try again";
+		header('Location: ' . '../../../portal/cart/viewCart.php');
 	}
 	else
 	{
-		echo "<br>Security Error. Illegal access detected";
+		$_SESSION['error'] = "Security error detected. Please contact one of the admins";
+		header('Location: ' . '../../../portal/cart/viewCart.php');
 	
 	}
-
-	echo "<br><br>";
-
-	echo "<table cellspacing=4 cellpadding=4>";
-	for($i = 0; $i < $dataSize; $i++) 
-	{
-		$information=explode('=',$decryptValues[$i]);
-	    	echo '<tr><td>'.$information[0].'</td><td>'.$information[1].'</td></tr>';
-	}
-
-	echo "</table><br>";
-	echo "</center>";
 ?>
