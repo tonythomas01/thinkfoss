@@ -52,9 +52,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 						'order_id' => rand(),
 						'currency' => 'INR',
 						'amount' => $course->getValue( 'course_fees' ),
-						'language' => 'en',
 						'redirect_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php',
-						'cancel_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php'
+						'cancel_url' => 'http://beta.thinkfoss.com/php/vendor/cc_avenue_kit/ccavResponseHandler.php',
+						'language' => 'en'
 				);
 
 
@@ -77,7 +77,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 //					if ($course->checkoutCourse($conn, $loggedInUser)) {
 //						$course->notifyMentor($conn, $mailgunAPIKey, $mailgunDomain);
 //						$_SESSION['message'] = "Congratulations! The checkout was successful!";
-//						header('Location: ' . '../portal/student/viewAllCourses.php');
+//				                header('Location: ' . '../portal/student/viewAllCourses.php');
 //					}
 
 			}
