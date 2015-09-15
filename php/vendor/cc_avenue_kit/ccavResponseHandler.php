@@ -38,7 +38,7 @@
 		$course->notifyMentor( $conn, $mailgunAPIKey, $mailgunDomain);
 
 		$_SESSION['success'] = "Congrats, that transaction:  $order_id was a success.";
-		header('Location: ' . '../../../portal/mentor/viewMyCourses.php');
+		header('Location: ' . '../../../portal/student/viewEnrolledCourses.php');
 
 	}
 	else if($order_status==="Aborted")
