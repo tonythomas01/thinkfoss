@@ -32,7 +32,7 @@
 	}
 	else if($order_status==="Aborted")
 	{
-		$_SESSION['error'] = "Couldn't checkout that course. Please try again";
+		$_SESSION['error'] = "Couldn't checkout that course: $order_id. Please try again";
 		header('Location: ' . '../../../portal/cart/viewCart.php');
 	
 	}
