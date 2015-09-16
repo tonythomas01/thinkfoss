@@ -53,14 +53,14 @@
 				$sql = "SELECT `user_id`,`course_enrollment_timestamp` FROM `course_enrollment` WHERE `course_id` = '$courseId' AND `course_enrolled` = 1";
 				$res = $conn->query( $sql );
 				if ( $res->num_rows > 0 ) {
-					$row = $res->fetch_assoc();
-					$userId = $row['user_id'];
-					$user = User::newFromUserId( $userId, $conn );
-					echo
-						'<td style="text-align: left"> '. $user->getValue('user_first_name') . ' ' . $user->getValue( 'user_last_name' ) . '</td>
-						 <td style="text-align: left"> <a href="mailto:' . $user->getValue('user_email') . '">'. $user->getValue('user_email' ) . '</a></td>
-						 <td style="text-align: left"> '. $course->getEnrollmentTime( $conn, $userId ) . '</td>';
-
+					while ( $row = $res->fetch_assoc() ) {
+						$userId = $row['user_id'];
+						$user = User::newFromUserId($userId, $conn);
+						echo
+							'<td style="text-align: left"> ' . $user->getValue('user_first_name') . ' ' . $user->getValue('user_last_name') . '</td>
+							 <td style="text-align: left"> <a href="mailto:' . $user->getValue('user_email') . '">' . $user->getValue('user_email') . '</a></td>
+							 <td style="text-align: left"> ' . $course->getEnrollmentTime($conn, $userId) . '</td>';
+					}
 				} else {echo '</tbody>';
 					echo "<p style='color: red'>Nobody in that list</p>";
 				}
