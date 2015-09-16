@@ -57,9 +57,9 @@
 						$userId = $row['user_id'];
 						$user = User::newFromUserId($userId, $conn);
 						echo
-							'<td style="text-align: left"> ' . $user->getValue('user_first_name') . ' ' . $user->getValue('user_last_name') . '</td>
+							'<tr><td style="text-align: left"> ' . $user->getValue('user_first_name') . ' ' . $user->getValue('user_last_name') . '</td>
 							 <td style="text-align: left"> <a href="mailto:' . $user->getValue('user_email') . '">' . $user->getValue('user_email') . '</a></td>
-							 <td style="text-align: left"> ' . $course->getEnrollmentTime($conn, $userId) . '</td>';
+							 <td style="text-align: left"> ' . $course->getEnrollmentTime($conn, $userId) . '</td></tr>';
 					}
 				} else {echo '</tbody>';
 					echo "<p style='color: red'>Nobody in that list</p>";
