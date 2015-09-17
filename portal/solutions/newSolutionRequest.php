@@ -66,11 +66,12 @@
 ?>
 <?php include 'navigationSolutions.php' ?>
 
-<div id="tf-portal" class="text-center">
+<div id="tf-portal">
     <div class="overlay">
-        <div class="portal">
+            <div class="container" style="padding-top: 7%; text-align: left; padding-bottom: 5%">
+            <div class="row">
 
-            <div class='col-xs-6'>
+            <div class='col-md-6'>
                 <form class='form-inline' action='../../php/actions/doCreateSolution.php' method='post'>
                     <div class='form-group well'>
 
@@ -137,7 +138,7 @@
 
             </div>
 
-            <div class='col-xs-6'>
+            <div class='col-md-6'>
                 <h1 class="section-title"> Add a solution</h1>
                 <p class='intro'> Great! Add in the details of your new solution, and we will contact you in the latest with a quote. If
                     some fields looks greek to you, just leave it and submit<br><br>
@@ -158,12 +159,15 @@
 
                 </ul><br>
             </div>
-        </div>
+
 
             </div>
 
+
         </div>
-</div>
+        </div>
+
+            </div>
 <?php include '../../footer.html' ?>
 </body>
 </html>

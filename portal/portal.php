@@ -148,7 +148,7 @@
 </nav>
 <div id="tf-portal" class="text-center">
     <div class="overlay">
-        <div class="portal">
+
 
             <?php
             if ( $_SESSION['message'] ) {
@@ -164,77 +164,80 @@
 
             ?>
 
-            <div class='col-xs-6'>
-                <h1 class="section-title"> Want to Mentor ?</h1>
-                <p class='intro'> Great! ThinkFOSS is happy to welcome mentors like you.You can add in more course, change your
-                    personal settings and do a lot more from here. <br><br>
-                <div class="row">
-                    <div class="col-xs-6 col-md-3">
-                        <a href="mentor/addCourse.php" class="thumbnail" style="text-align: center; color: blue">
-                            <i class="fa fa-plus fa-5x"> </i>
-                            <div class="caption"><h2>Add</h2>course</div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <a href="mentor/viewMyCourses.php" class="thumbnail" style="text-align: center; color: red">
-                            <i class="fa fa-pencil fa-5x"> </i>
-                            <div class="caption"><h2>Edit</h2> your course</div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
-                                <i class="fa fa-phone fa-5x"> </i>
-                                <div class="caption" ><h2>Help</h2>call</div>
-                        </div></a>
-                    </div>
-                </div>
 
-            </div>
+	        <div class="container" style="padding-top: 8%; text-align: left">
+		        <div class="row">
+		            <div class='col-md-6'>
+			            <h1 class="section-title"> Want to Mentor ?</h1>
 
-            <div class='col-xs-6'>
-                <h1 class="section-title"> Want to learn ?</h1>
-                <p class='intro'> Awesome! Looks like you are at the right place. Please use the menu items over here to enroll to a course you like. If you
-                    feel like, you can even mentor a course.<br><br>
-                <div class="row">
-                    <div class="col-xs-6 col-md-3">
-                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:#9c27b0">
-                            <i class="fa fa-eye fa-5x"> </i>
-                            <div class="caption"><h2>View</h2>courses</div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:blue">
-                            <i class="fa fa-thumbs-up fa-5x"> </i>
-                            <div class="caption"><h2>Enroll</h2>course</div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <a href="student/viewEnrolledCourses.php" class="thumbnail" style="text-align: center; color:red">
-                            <i class="fa fa-heart fa-5x"> </i>
-                            <div class="caption"><h2>Review</h2>course</div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
-                            <i class="fa fa-phone fa-5x"> </i>
-                            <div class="caption" ><h2>Help</h2>call</div>
-                        </div></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+		                <p class='intro'> Great! ThinkFOSS is happy to welcome mentors like you. You can add in more course, change your
+		                    personal settings and do a lot more from here. Feel free to use the help button incase you feel stuck <br><br>
+		                <div class="row">
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="mentor/addCourse.php" class="thumbnail" style="text-align: center; color: blue">
+		                            <i class="fa fa-plus fa-5x"> </i>
+		                            <div class="caption"><h2>Add</h2>course</div>
+		                        </a>
+		                    </div>
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="mentor/viewMyCourses.php" class="thumbnail" style="text-align: center; color: red">
+		                            <i class="fa fa-pencil fa-5x"> </i>
+		                            <div class="caption"><h2>Edit</h2> your course</div>
+		                        </a>
+		                    </div>
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
+		                                <i class="fa fa-phone fa-5x"> </i>
+		                                <div class="caption" ><h2>Help</h2>call</div>
+		                        </div></a>
+		                    </div>
+		                </div>
 
-            <div>
-                <h1 style="color: white">Solutions ?</h1>
-                <div class="row">
+		            </div>
+
+		            <div class='col-md-6'>
+		                <h1 class="section-title"> Want to learn ?</h1>
+		                <p class='intro'> Awesome! Looks like you are at the right place. Please use the menu items over here to enroll to a course you like. If you
+		                    feel like, you can even mentor a course.<br><br>
+		                <div class="row">
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:#9c27b0">
+		                            <i class="fa fa-eye fa-5x"> </i>
+		                            <div class="caption"><h2>View</h2>courses</div>
+		                        </a>
+		                    </div>
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:blue">
+		                            <i class="fa fa-thumbs-up fa-5x"> </i>
+		                            <div class="caption"><h2>Enroll</h2>course</div>
+		                        </a>
+		                    </div>
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="student/viewEnrolledCourses.php" class="thumbnail" style="text-align: center; color:red">
+		                            <i class="fa fa-heart fa-5x"> </i>
+		                            <div class="caption"><h2>Review</h2>course</div>
+		                        </a>
+		                    </div>
+		                    <div class="col-xs-6 col-md-3">
+		                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
+		                            <i class="fa fa-phone fa-5x"> </i>
+		                            <div class="caption" ><h2>Help</h2>call</div>
+		                        </div></a>
+		                    </div>
+		                </div>
+		            </div>
+
+
+
+                <h1 style="color: white; text-align: center">Solutions ?</h1>
                     <div class="col-md-2 col-lg-offset-5">
                         <a href="solutions/newSolutionRequest.php" class="thumbnail" style="text-align: center; color: limegreen">
                             <i class="fa fa-gears fa-5x"> </i>
                                 <div class="caption"><h2>Solutions</h2>request</div>
                         </a>
                     </div>
-                </div>
-            </div>
+	        </div>
+	        </div>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
