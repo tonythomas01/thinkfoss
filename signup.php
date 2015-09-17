@@ -164,8 +164,8 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
-		<div class="content">
-		</div>
+		<div class="container content">
+			<div class="row">
 		<?php
 		if ( $_SESSION['message'] ) {
 			$message = $_SESSION['message'];
@@ -178,7 +178,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 			unset( $_SESSION['error'] );
 		}
 		?>
-		<div class="col-xs-6" style="text-align: left;">
+		<div class="col-md-6" style="text-align: left;">
 			<div class="section-title">
 				<h2>Why Sign <strong>UP ?</strong></h2>
 				<div class="clearfix"></div>
@@ -206,7 +206,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 			</ul> <br><br>
 		</div>
 
-		<div class="col-xs-6">
+		<div class="col-md-6">
 			<div class="section-title" style="text-align: left">
 				<h2>Sign <strong>Up</strong></h2>
 				<div class="clearfix"></div>
@@ -284,6 +284,8 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 
 
 		</div>
+		</div>
+	</div>
 
 
 	</div>
