@@ -41,6 +41,20 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 			$courseName = explode( '-', $courseRaw );
 			$course = Course::newFromId( $conn, $courseName[1] );
 			if ( $course ) {
+				$orderId = rand();
+				if ( $course->getValue('course_fees') <= 0 ) {
+					if ( $course->checkoutCourse( $conn, $orderId, $loggedInUser ) ) {
+						require_once( 'access/mailgunAPIKeys.php' );
+						$course->notifyMentor(  $conn, $mailgunAPIKey, $mailgunDomain );
+						$_SESSION['message'] = "Congratulations! The checkout was successful!";
+						header('Location: ' . '../portal/student/viewAllCourses.php');
+						return;
+					} else {
+						$_SESSION['error'] = "Couldn't checkout that course. Please try again";
+						header('Location: ' . '../portal/cart/viewCart.php');
+					}
+				}
+
 				require_once( 'access/ccavenueKeys.php');
 				include('vendor/cc_avenue_kit/Crypto.php');
 

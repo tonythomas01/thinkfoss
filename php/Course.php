@@ -161,6 +161,20 @@ class Course {
 		return false;
 	}
 
+	public function checkoutCourse( $conn, $orderId, $userId ) {
+		$startCheckout = "UPDATE `course_enrollment` SET `checkout_order_id` = '$orderId'  WHERE `course_id` = '$this->course_id'
+			AND `user_id` =  '$userId';";
+		if ( $conn->query( $startCheckout ) ) {
+			$checkoutStatement = "UPDATE `course_enrollment` SET `course_enrolled` = TRUE WHERE `course_id` = '$this->course_id'
+				AND `user_id` =  '$userId';";
+			if ( $conn->query( $checkoutStatement ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public function getValue( $key ) {
 		return $this->$key;
 	}
@@ -238,6 +252,8 @@ class Course {
 		}
 		return false;
 	}
+
+
 
 	public function getNumberofStudentsEnrolled( $conn ) {
 		$sql = "SELECT count( `user_id`) AS enrolledusers FROM `course_enrollment` WHERE `course_id` = '$this->course_id' AND `course_enrolled` = 1";
