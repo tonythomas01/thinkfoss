@@ -132,7 +132,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 					        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
 					        <td> '. $row['course_fees']. '</td>
 					        <td> <input type="checkbox"  name="checkout-item[]" value="course-'.$row['course_id'].'" /> &nbsp &nbsp
-					        <button type="button" class="btn btn-danger course_remove" id="cart-remove" name='; echo $csrfToken->getCSRFToken(); echo ' value="course-'.$row['course_id'].'" ><i class="fa fa-times"></i></button></td>
+					        <button type="button" class="btn btn-danger course_remove" id="cart-remove" name='; echo $csrfToken->getCSRFToken(); echo ' value="course-'.$row['course_id'].'" ><i class="fa fa-trash"></i></button></td>
 		                                ';
 					}
 				?>
@@ -152,6 +152,9 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 					<p class='alert-info' style="text-align: center">Looks like your cart is empty!</p>
 					<?php
 				} ?>
+			<div style="text-align: right;">
+			<img src="../../img/ccavenue-payment-partner.png" width="120px"/>
+			</div>
 		</div>
 	</div>
 </div>
