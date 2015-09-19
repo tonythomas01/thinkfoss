@@ -112,7 +112,7 @@ include 'navigationstudent.php'
 				while ($row = $result->fetch_assoc()) {
 					$csrfToken = new Token($csrfSecret);
 					echo '
-        				<div class="col-sm-6 col-md-4">
+        				<div class="col-md-4">
                 				<div class="thumbnail" style="height: 280px">
                         				<div style="float: right">';
 
@@ -136,22 +136,46 @@ include 'navigationstudent.php'
 
 					echo '
                         				</div>
+
                                         			<div class="caption">
-				                                        <h1>'; echo strlen( $courseName ) > 20 ? substr( $courseName, 0, 20 ) . '..'  : $courseName; echo '</h1>
+				                                        <h1>'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h1>
 			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
-				                                        <p><strong>Bio</strong> : ' . substr($row['course_bio'], 0, 70) . '... ' . '</p>
-						                        <form action="viewMoreInfoCourses.php" method="post">
-						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken();echo '"/>
-						                        <button style="position: absolute; left:20px; bottom:20px;" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" >Know More</button>
+				                                        <figcaption class="mask">
+				                                        <p>' . substr($row['course_bio'], 0, 120) . '... ' . '</p>
+				                                        <hr><br>
+				                                        <form action="viewMoreInfoCourses.php" method="post">
+						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+				                                                <button style="position: absolute; left:20px; bottom:10px;" type="submit" class="btn btn-primary" name="course"  value="course-' . $row['course_id'] . '" >More</button>
+				                                        </form>
+				                                        </figcaption>
+
 						                        <h3><span style ="position: absolute; bottom : 30px; right: 20px;" class="label label-primary">Students Enrolled :
 						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo'
 						                        </span></h3>
-						                        </form>
+
+				                                <ul class="external">
+
+								<li>
+								<form action="viewMoreInfoCourses.php" method="post">
+						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+								<button type="submit" class="btn btn-lg" title="Know More" style="background-color: forestgreen; border-radius: 5px" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-unlock" style="color: white"></i></button>
+								</form>
+								</li>
+
+
+							</ul>
+
+
 
                         					</div>
+
+
                        					</div>
+
+
                                         </div>
+
 	                        ';
 				}
 			}else {

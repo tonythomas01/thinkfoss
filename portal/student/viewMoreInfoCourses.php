@@ -156,11 +156,12 @@
  				<hr>
 			</div>
 
-			<div class="row ">
-				<div class="col-xs-6">
+			<div class="row">
+				<div class="col-xs-6 well well">
 					<h2>Course</h2> <br>
 					<h5>Language </h5><?php echo $course->getValue('course_lang') ?>
 					<h5>Difficulty </h5><?php echo $course->getValue('course_difficulty') ?>
+					<h5>Fee </h5><?php echo $course->getValue('course_fees') ?>
 					<h5>Description </h5><?php echo $course->getValue('course_bio') ?>
 					<h5>From: <?php echo $course->getValue('course_date_from') . ' : ' . $course->getValue('course_time_from'); ?></h5>
 					<h5>To: <?php echo $course->getValue('course_date_to' ) . ' : ' . $course->getValue('course_time_to'); ?></h5>
