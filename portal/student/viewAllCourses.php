@@ -144,7 +144,7 @@ include 'navigationstudent.php'
 						                        <form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken();echo '"/>
 						                        <button style="position: absolute; left:20px; bottom:20px;" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" >Know More</button>
-						                        <h3><span style ="text-align: right; float:right" class="label label-primary">Students Enrolled :
+						                        <h3><span style ="position: absolute; bottom : 30px; right: 20px;" class="label label-primary">Students Enrolled :
 						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo'
 						                        </span></h3>
 						                        </form>
