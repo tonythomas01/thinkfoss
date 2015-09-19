@@ -102,11 +102,9 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 			<table class="table table-hover table-bordered well" style="color : black">
 				<thead>
 				<th>Course Name</th>
-				<th>Description</th>
-				<th>Language</th>
 				<th>Difficutly</th>
-				<th><i class="fa fa-rupee"></i> </th>
 				<th>Mentor</th>
+				<th><i class="fa fa-rupee"></i> </th>
 				<th>Action</th>
 				</thead>
 				<tbody>
@@ -118,7 +116,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				$loggedInUser = $_SESSION['loggedin_user_id'];
 
 				$sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`,
-					course_details.`course_bio`, course_details.`course_lang`, course_details.`course_difficulty`,
+					course_details.`course_difficulty`,
 					course_details.`course_fees`, user_details.`user_first_name`, user_details.`user_last_name` FROM `course_details`
 					 INNER JOIN `course_mentor_map` ON course_details.course_id = course_mentor_map.course_id
 					 INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id
@@ -129,12 +127,10 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				if( $result->num_rows > 0 ) {
 					while( $row = $result->fetch_assoc() ) {
 						echo '
-						<tr> <td>'. $row['course_name']. '</td>
-					        <td> '. $row['course_bio']. '</td>
-					        <td> '. $row['course_lang']. '</td>
+						<tr class="cart-row"> <td>'. $row['course_name']. '</td>
 					        <td> '. $row['course_difficulty']. '</td>
-					        <td> '. $row['course_fees']. '</td>
 					        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
+					        <td> '. $row['course_fees']. '</td>
 					        <td> <input type="checkbox"  name="checkout-item[]" value="course-'.$row['course_id'].'" /> &nbsp &nbsp
 					        <button type="button" class="btn btn-danger course_remove" id="cart-remove" name='; echo $csrfToken->getCSRFToken(); echo ' value="course-'.$row['course_id'].'" ><i class="fa fa-times"></i></button></td>
 		                                ';

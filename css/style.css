@@ -689,12 +689,12 @@ figcaption.mask {
     bottom: 0px;
 	color: #fff;
     opacity: 0;
+    margin-top: 5%;
     top: 20px;
 	padding: 25px;
 	position: absolute;
 	text-align: left;
     width: 85%;
-    height: 80%;
     border-radius: 5px;
 	-webkit-transition: all 0.4s ease 0s;
 	-moz-transition: all 0.4s ease 0s;
@@ -728,12 +728,25 @@ ul.external {
     -o-transition: all 0.4s ease 0s;
     transition: all 0.4s ease 0s;
 }
+ul.external-right {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 5px;
+    top: -20px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
 
-ul.external li {
+ul.external li, ul.external-right li {
     display: inline-block;
 }
 
-ul.external li button {
+ul.external li button, ul.external-right li button {
     background-color: rgba(255, 255, 255, 0.9);
     color: #818181;
     display: block;
@@ -744,5 +757,12 @@ ul.external li button {
     -ms-transition: all 0.5s ease 0s;
     -o-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
+}
+
+.cart-row button {
+    opacity: 0;
+}
+.cart-row:hover button{
+    opacity: 1;
 }
 

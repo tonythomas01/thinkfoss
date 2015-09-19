@@ -95,13 +95,9 @@
                 <table class="table table-hover table-bordered well" style="color : black">
                     <thead>
                     <th>Course Name</th>
-                    <th>Description</th>
-                    <th>Language</th>
                     <th>Difficutly</th>
                     <th>From Date</th>
-                    <th>From Time</th>
                     <th>To Date</th>
-                    <th>To Time</th>
                     <th><i class="fa fa-rupee"></i> </th>
                     <th>Mentor</th>
                     <th style="width: 150px">Review</th>
@@ -115,9 +111,8 @@
 
         $loggedInUser = $_SESSION['loggedin_user_id'];
 
-        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
-          course_details.`course_lang`, course_details.`course_difficulty`, course_details.`course_date_from`,
-          course_details.`course_time_from`,course_details.`course_date_to`,course_details.`course_time_to`,
+        $sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`,  course_details.`course_difficulty`,
+          course_details.`course_date_from`,course_details.`course_date_to`,
           course_details.`course_fees`, user_details.`user_first_name`, user_details.`user_last_name` FROM `course_details`
           INNER JOIN `course_mentor_map`  ON course_details.course_id = course_mentor_map.course_id
           INNER JOIN `user_details` ON course_mentor_map.mentor_id = user_details.user_id
@@ -129,13 +124,9 @@
 	        while( $row = $result->fetch_assoc() ) {
                         $csrfToken = new Token( $csrfSecret );
 		        echo '<tr> <td>'. $row['course_name']. '</td>
-		        <td> '. $row['course_bio']. '</td>
-		        <td> '. $row['course_lang']. '</td>
 		        <td> '. $row['course_difficulty']. '</td>
 		        <td> '. $row['course_date_from']. '</td>
-		        <td> '. $row['course_time_from']. '</td>
 		        <td> '. $row['course_date_to']. '</td>
-		        <td> '. $row['course_time_to']. '</td>
 		        <td> '. $row['course_fees']. '</td>
 		        <td> '. $row['user_first_name']. $row['user_last_name']. '</td>
 		        <td> <form action="writeReview.php" method="post">

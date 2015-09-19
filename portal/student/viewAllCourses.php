@@ -118,19 +118,33 @@ include 'navigationstudent.php'
 
 					$course = Course::newFromId($conn, $row['course_id']);
 					if ($course->isEnrolled($loggedInUser, $conn)) {
-						echo '<button type="button" disabled class="btn btn-warning" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-check" style="color:gold" ></i> Enrolled</button>';
+						echo '
+						<ul class ="external-right">
+						<li>
+							<button type="button" disabled title="Enrolled" class="btn btn-warning btn-lg" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-check" style="color:gold" ></i></button>
+						</li>
+						</ul>
+						';
+
 					} else if ($course->needsCheckout($loggedInUser, $conn)) {
-						echo '<a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> cart </button></a>';
+						echo '
+						 <ul class="external-right">
+						 <li>
+						<a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info btn-lg" title="In Cart" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-cart-arrow-down" style="color:gold" ></i> </button></a>
+						</li></ul>
+						';
 					} else {
 						echo '
+						 <ul class="external-right">
+						 <li>
 						<form action="../../php/doEnrollCourse.php" method="post">
 						<input type="hidden" name="CSRFToken" value="';
 						echo $csrfToken->getCSRFToken();
 						echo '"/>
-						<button type="submit" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" >
-						<i class="fa fa-shopping-cart"></i> Add</button>
+						<button type="submit" class="btn btn-success btn-lg" name="course" title="Add to Cart" value="course-' . $row['course_id'] . '" >
+						<i class="fa fa-shopping-cart" style="color:white"></i></button>
 						</form>
-						</button>';
+						</li></ul>';
 					}
 					$courseName = $row['course_name'];
 
@@ -143,31 +157,26 @@ include 'navigationstudent.php'
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
 				                                        <figcaption class="mask" style="text-align:center; ">
 				                                        <p>' . substr($row['course_bio'], 0, 200 ) . '... ' . '</p>
-				                                        <hr>
 				                                        <form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-				                                                <button style="position: relative; float:center;" type="submit" class="btn btn-primary" name="course"  value="course-' . $row['course_id'] . '" >More</button>
+				                                                <button style="position: relative; float:center;" type="submit" class="btn btn-primary" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-list"></i> More</button>
 				                                        </form>
 				                                        </figcaption>
 
-						                        <h3><span style ="position: absolute; bottom : 30px; right: 20px;" class="label label-primary">Students Enrolled :
+						                        <h3><span style ="position: absolute; bottom : 30px; right: 20px;" class="label label-primary"><i class="fa fa-user"> </i> Enrolled :
 						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo'
 						                        </span></h3>
 
 				                                <ul class="external">
-
 								<li>
 								<form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-								<button type="submit" class="btn btn-lg" title="Know More" style="background-color: forestgreen; border-radius: 5px" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-unlock" style="color: white"></i></button>
+								<button type="submit" class="btn btn-success btn-lg" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-folder-open" style="color:white"></i></button>
 								</form>
 								</li>
 
 
 							</ul>
-
-
-
                         					</div>
 
 
