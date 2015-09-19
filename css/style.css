@@ -689,10 +689,11 @@ figcaption.mask {
     bottom: 0px;
 	color: #fff;
     opacity: 0;
+    top: 20px;
 	padding: 25px;
-	position: relative;
+	position: absolute;
 	text-align: left;
-    width: 100%;
+    width: 85%;
     border-radius: 5px;
 	-webkit-transition: all 0.4s ease 0s;
 	-moz-transition: all 0.4s ease 0s;

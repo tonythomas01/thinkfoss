@@ -141,12 +141,12 @@ include 'navigationstudent.php'
 				                                        <h1>'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h1>
 			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
-				                                        <figcaption class="mask">
+				                                        <figcaption class="mask" style="text-align:center; ">
 				                                        <p>' . substr($row['course_bio'], 0, 120) . '... ' . '</p>
 				                                        <hr><br>
 				                                        <form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-				                                                <button style="position: absolute; left:20px; bottom:10px;" type="submit" class="btn btn-primary" name="course"  value="course-' . $row['course_id'] . '" >More</button>
+				                                                <button style="position: relative; float:center; bottom:10px;" type="submit" class="btn btn-primary btn-lg" name="course"  value="course-' . $row['course_id'] . '" >More</button>
 				                                        </form>
 				                                        </figcaption>
 
