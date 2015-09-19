@@ -694,6 +694,7 @@ figcaption.mask {
 	position: absolute;
 	text-align: left;
     width: 85%;
+    height: 80%;
     border-radius: 5px;
 	-webkit-transition: all 0.4s ease 0s;
 	-moz-transition: all 0.4s ease 0s;
