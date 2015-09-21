@@ -196,6 +196,10 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 					<span class="fa fa-check"></span>
 					<strong>Manage your payments</strong> - <em> The portal makes sure your money is safe</em>
 				</li>
+				<li>
+					<span class="fa fa-check"></span>
+					<strong>Request for solutions</strong> - <em> Your next solution is one login away </em>
+				</li>
 
 			</ul>
 			<h3>Already a member ?</h3>
