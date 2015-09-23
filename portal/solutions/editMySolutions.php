@@ -37,15 +37,15 @@
 	$solutionRaw = explode( '-', $solutionName );
 	$solution = Solution::newFromId( $conn, $solutionRaw[1] );
 	$request_user =  $solution->getValue( 'solution_request_user_id' );
-	$requestingUser = User::newFromUserId( $request_user, $conn );
+	$user = User::newFromUserId( $loggedInUser, $conn );
 
-	if ( $request_user !== $loggedInUser && !$requestingUser->checkIfPrivelaged( $conn ) ) {
+	if ( $request_user !== $loggedInUser && !$user->checkIfPrivelaged( $conn ) ) {
 		$_SESSION['error'] = "You are not supposed to edit in that page";
 		header('Location: ' . 'mySolutionRequests.php');
 		return;
 	}
 
-	$user = User::newFromUserId( $loggedInUser, $conn );
+
 
 ?>
 <!DOCTYPE html>
