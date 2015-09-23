@@ -248,6 +248,10 @@ $csrfToken = new Token( $csrfSecret );
                                                         <span class="fa fa-dot-circle-o"></span>
                                                         <strong>Clients</strong> - <em>Anybody thinking of taking a step into Open Source Development</em>
                                                 </li>
+	                                        <li>
+		                                        <span class="fa fa-dot-circle-o"></span>
+		                                        <strong>Vision</strong> - <em>Make India Open Source</em>
+	                                        </li>
                                         </ul>
                                 </div>
                         </div>

@@ -29,6 +29,7 @@ if (!isset($_SESSION['loggedin_user'])) {
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../../fonts/font-awesome/css/font-awesome.css">
 
 
@@ -141,7 +142,7 @@ include 'navigationstudent.php'
 						<input type="hidden" name="CSRFToken" value="';
 						echo $csrfToken->getCSRFToken();
 						echo '"/>
-						<button type="submit" class="btn btn-success btn-lg" name="course" title="Add to Cart" value="course-' . $row['course_id'] . '" >
+						<button type="submit" class="btn btn-primary btn-lg" name="course" title="Add to Cart" value="course-' . $row['course_id'] . '" >
 						<i class="fa fa-shopping-cart" style="color:white"></i></button>
 						</form>
 						</li></ul>';
@@ -151,19 +152,23 @@ include 'navigationstudent.php'
 					echo '
                         				</div>
 
-                                        			<div class="caption">
-				                                        <h1>'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h1>
+                                                        <div class="caption">
+                                                        <div class="panel panel-default" style="background-color: #add8e6">
+						 	 <div class="panel-body" style="height: 160px">
+
+
+				                                        <h1>'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h1> </div><div class="panel-footer">
 			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
 				                                        <figcaption class="mask" style="text-align:center; ">
-				                                        <p>' . substr($row['course_bio'], 0, 200 ) . '... ' . '</p>
+				                                        <p>' . substr($row['course_bio'], 0, 180 ) . '... ' . '</p>
 				                                        <form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
 				                                                <button style="position: relative; float:center;" type="submit" class="btn btn-primary" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-list"></i> More</button>
 				                                        </form>
 				                                        </figcaption>
 
-						                        <h3><span style ="position: absolute; bottom : 30px; right: 20px;" class="label label-primary"><i class="fa fa-user"> </i> Enrolled :
+						                        <h3><span style ="position: absolute; bottom : 40px; right: 40px;" class="label label-primary"><i class="fa fa-user"> </i> Enrolled :
 						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo'
 						                        </span></h3>
 
@@ -176,8 +181,11 @@ include 'navigationstudent.php'
 								</li>
 
 
-							</ul>
-                        					</div>
+								</ul>
+							</div>
+
+							</div>
+                                                        </div>
 
 
                        					</div>
