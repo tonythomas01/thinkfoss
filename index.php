@@ -273,7 +273,7 @@ $csrfToken = new Token( $csrfSecret );
                                                 <img src="img/team/Tony_Thomas.jpg" alt="Tony Thomas" class="img-circle team-img">
                                                 <div class="caption">
                                                         <h3>Tony Thomas</h3>
-                                                        <p>CTO</p>
+                                                        <p>CTO & Co-Founder</p>
                                                         <p>Random Open Source guy and Wikimedian who thinks<br> FOSS is the best</p>
                                                         <p>
                                                         <a href="https://in.linkedin.com/in/tonythomas01" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
@@ -281,6 +281,23 @@ $csrfToken = new Token( $csrfSecret );
                                                         <a href="http://blog.tttwrites.in" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
                                                         <a href="https://twitter.com/01tonythomas" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
                                                         <a href="https://www.facebook.com/01tonythomas" target="_blank"> <i class="fa fa-facebook"></i></a>
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/tinaj.jpg" alt="Tina Johnson" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Tina Johnson</h3>
+                                                        <p>Co-Founder</p>
+                                                        <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
+                                                        <p>
+                                                                <a href="https://in.linkedin.com/pub/tina-johnson/70/22b/14b" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+                                                                <a href="https://github.com/tinajohnson" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+                                                                <a href="http://tinaj1234.wordpress.com" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+                                                                <a href="https://twitter.com/tinajohnson1234" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
                                                         </p>
                                                 </div>
                                         </div>
@@ -304,22 +321,6 @@ $csrfToken = new Token( $csrfSecret );
                                                         <h3>Vipin Pavithran</h3>
                                                         <p>Chief Mentor, <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a></p>
                                                         <p>Assistant professor at Amrita Cyber Security with 10+ years experience in Software Industry</p>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/tinaj.jpg" alt="Tina Johnson" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Tina Johnson</h3>
-                                                        <p>Systems Programmer</p>
-                                                        <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
-                                                        <p>
-                                                        <a href="https://in.linkedin.com/pub/tina-johnson/70/22b/14b" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
-                                                        <a href="https://github.com/tinajohnson" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
-                                                        <a href="http://tinaj1234.wordpress.com" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
-                                                        <a href="https://twitter.com/tinajohnson1234" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
-                                                        </p>
                                                 </div>
                                         </div>
                                 </div>
