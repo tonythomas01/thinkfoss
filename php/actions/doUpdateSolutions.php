@@ -26,15 +26,18 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		return false;
 	}
 	require_once("../access/accessDB.php");
+	require_once( "../User.php" );
 	$preparedPost->sanitize();
 	$loggedinUserId = $_SESSION['loggedin_user_id'];
+
+	$updatingUser = User::newFromUserId( $loggedinUserId, $conn );
 
 	$solutionId  = mysqli_escape_string( $conn, base64_decode( $preparedPost->getValue('solution_id') ) );
 
 	require_once("../Solution.php");
 	$solution = Solution::newFromId( $conn, $solutionId );
 
-	if ( !$solution->isOwner( $loggedinUserId ) ){
+	if ( !$solution->isOwner( $loggedinUserId ) && !$updatingUser->checkIfPrivelaged( $conn ) ){
 		$_SESSION['error'] = "Error : You are not supposed to edit that one.";
 		header( 'Location: '.'../../portal/solutions/mySolutionRequests.php' );
 		return false;

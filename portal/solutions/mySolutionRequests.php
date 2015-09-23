@@ -126,6 +126,10 @@ require_once( '../../php/access/accessTokens.php' );
 					}
 				}
 
+				else {
+					echo "<p style='color: red; text-align: center '>Nothing here yet :( Do add in your next project :) </p>";
+				}
+
 				?>
 
 			</div>

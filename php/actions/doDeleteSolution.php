@@ -21,16 +21,18 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 
 	require_once( '../access/accessDB.php' );
+	require_once( '../User.php' );
 	$postInputs->sanitize();
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
+	$deletingUser = User::newFromUserId( $loggedInUser, $conn );
 
 	require_once( '../Solution.php' );
 	$solutionName = mysqli_real_escape_string( $conn, $postInputs->getValue( 'solution' ) );
 	$solution = explode( '-', $solutionName );
 	$delSolution = Solution::newFromId( $conn, $solution[1] );
 
-	if ( $delSolution->isOwner( $loggedInUser ) ) {
+	if ( $delSolution->isOwner( $loggedInUser ) || $deletingUser->checkIfPrivelaged( $conn )  ) {
 		if ( $delSolution->deleteFromDb( $conn ) ) {
 			header('Location: ' . '../../portal/solutions/mySolutionRequests.php');
 			$_SESSION['message'] = "The solution request has been deleted successfully!";

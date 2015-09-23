@@ -147,6 +147,50 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 			<button type="submit" class="btn btn-success"  > <i class="fa fa-check"></i> OK </button>
 
 			</form>
+			<hr>
+			<h2> Solution Administration </h2> <br>
+			<?php
+
+
+
+			$sqlSelect = "SELECT `solution_id`, `solution_name`, `solution_platform`, `solution_framework`,
+			`solution_deadline_estimated`, `solution_amount`, `solution_bio`, `solution_request_user_id`
+			FROM `solution_details`";
+			$result = $conn->query( $sqlSelect );
+			if( $result->num_rows > 0 ) {
+			while( $row = $result->fetch_assoc() ) {
+			require_once( '../../php/User.php' );
+			$requestUser = User::newFromUserId( $row['solution_request_user_id'], $conn );
+			$csrfToken = new Token( $csrfSecret );
+
+			echo '
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail" style="height: 280px">
+					<div class="caption">
+						<h1>' . $row['solution_name'] . '</h1>
+						<p><strong>Platform </strong>: '.  $row['solution_platform'] . '  <span style ="float: right"><strong>Expected Amount </strong> : '.  $row['solution_amount'].'</span></p>
+						<p><strong>Deadline</strong>: '.$row['solution_deadline_estimated'] . '  <span style ="float: right"><strong>Framework</strong> : '.  $row['solution_framework'] .'</span></p>
+						<p><strong>Desc</strong> : ' . substr($row['solution_bio'], 0, 70) . '... ' . '<span style="float:right"><strong>User</strong> : '. $requestUser->getValue('user_first_name') . ' ' .  $requestUser->getValue('user_last_name')  .'</span></p>
+						<form action="../solutions/editMySolutions.php" method="post">
+							<input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+							<button style="position: absolute; left:20px; bottom:20px;" type="submit" class="btn btn-success" name="solution"  value="solution-' . $row['solution_id'] . '" ><i class = "fa fa-pencil"></i> Edit</button>
+						</form>
+
+
+						<form action="../../php/actions/doDeleteSolution.php" method="post">
+							<input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
+							<button type="submit" style="position: absolute; right:20px; bottom:20px;" class="btn btn-danger" name="solution" value="solution-'.$row['solution_id'].'" >Delete</button></form></td>
+
+					</div>
+				</div>
+			</div>
+			';
+			}
+			}
+
+			?>
+
+		</div>
 
 		</div>
 	</div>
