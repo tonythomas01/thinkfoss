@@ -685,15 +685,13 @@ nav#footer p{
 }
 
 figcaption.mask {
-	background-color: rgba(54, 55, 50, 0.79);
-    bottom: 0px;
 	color: #fff;
     opacity: 0;
     margin-top: 5%;
-    top: 20px;
-	padding: 25px;
+	height: 140px;
+	top: 10px;
+	padding: 20px;
 	position: absolute;
-	text-align: left;
     width: 77%;
     border-radius: 5px;
 	-webkit-transition: all 0.4s ease 0s;
@@ -708,12 +706,6 @@ figcaption.mask {
     opacity: 1;
     bottom: 50px;
 }
-
-figcaption.mask h3 {
-    margin: 0;
-    color: #fff;
-}
-
 ul.external {
     list-style: outside none none;
     margin: 0;
@@ -763,5 +755,32 @@ ul.external li button, ul.external-right li button {
 }
 .cart-row:hover button{
     opacity: 1;
+}
+
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
 }
 

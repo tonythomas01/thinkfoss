@@ -72,7 +72,7 @@ $csrfToken = new Token( $csrfSecret );
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="../index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
+                        <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -103,7 +103,7 @@ $csrfToken = new Token( $csrfSecret );
                                 </li>";
                                         } else {
 	                                        echo " <li style='padding-right: 10px'>
-				<button type='button' class='btn btn-material-lightyellow btn-lg' data-toggle='modal' data-target='#login-modal' style='color: black'>
+				<button type='button' class='btn btn-raised' data-toggle='modal' data-target='#login-modal' style='background-color: gold; color: black'>
 				  Login
 						</button>
 						</li>

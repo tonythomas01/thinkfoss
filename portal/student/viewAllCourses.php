@@ -153,7 +153,7 @@ include 'navigationstudent.php'
                         				</div>
 
                                                         <div class="caption">
-                                                        <div class="panel panel-default" style="background-color: #add8e6">
+                                                        <div class="panel panel-default" style="background-color: transparent">
 						 	 <div class="panel-body" style="height: 160px">
 
 
@@ -161,10 +161,9 @@ include 'navigationstudent.php'
 			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
 				                                        <figcaption class="mask" style="text-align:center; ">
-				                                        <p>' . substr($row['course_bio'], 0, 180 ) . '... ' . '</p>
 				                                        <form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-				                                                <button style="position: relative; float:center;" type="submit" class="btn btn-primary" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-list"></i> More</button>
+				                                                <button style="position: relative; top: 20px; float:center; width: 100px; height: 100px; border-radius: 50px; opacity: 0.8; padding: 10px 16px; font-size: 24px;" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-list"></i></button>
 				                                        </form>
 				                                        </figcaption>
 
