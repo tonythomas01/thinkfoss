@@ -85,31 +85,32 @@ $csrfToken = new Token( $csrfSecret );
                                 <li><a href="#tf-mentor" class="page-scroll">Involve</a></li>
                                 <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
                                 <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">BLOG</a></li>
-                                <li>
-                                        <?php
-                                        if ( isset( $_SESSION['loggedin_user'] ) ) {
-                                                $loggedinUser = $_SESSION['loggedin_user'];
-                                                echo "
-                                <li> <a>Hi <span style=' font-weight: bold'>$loggedinUser</span></a></li>
-                                <li>
-                                        <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
+                                <?php
+                                if ( isset( $_SESSION['loggedin_user'] ) ) {
+                                        $loggedinUser = $_SESSION['loggedin_user'];
+                                        echo "
+                                            <li><a> Hi <span style=' font-weight: bold'>$loggedinUser</span></a></li>
+                                            <li>
+                                            <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
                                             <div class='form-group'>
+                                                <a href='portal/portal.php'><button style='padding: 10px 10px 10px 10px;' type = 'button'  id = 'member-portal' class='btn btn-primary btn-success' ><i class='fa fa-laptop' ></i > Portal</button ></a>
                                                 <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
-                                                <button type = 'submit' id = 'member-logout' style='margin-top: 10%' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
-                                                </div>
-                                                <a href='portal/portal.php'><button style='margin-right: 10px' type = 'button'  id = 'member-portal' class='btn btn-primary btn-success' ><i class='fa fa-laptop' ></i > Portal</button ></a>
-
+                                                <button type = 'submit' id = 'member-logout' style='padding: 10px 10px 10px 10px; margin-right: 10px' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
+                                            </div>
                                         </form>
                                 </li>";
                                         } else {
-	                                        echo " <li style='padding-right: 10px'>
-				<button type='button' class='btn btn-raised' data-toggle='modal' data-target='#login-modal' style='background-color: gold; color: black'>
-				  Login
-						</button>
-						</li>
+	                                        echo "<li>
+
+                                                <div>
+                                                <button type='button' class='btn btn-raised' data-toggle='modal' data-target='#login-modal' style='background-color: gold; color: black; padding-right: 10px; padding-left: 10px'>Login</button>
+                                                <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
+                                                </div>
+
+                                                </li>
                             ";
-                                        }
-                                        ?>
+                                }
+                                ?>
                         </ul>
                 </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -118,45 +119,48 @@ $csrfToken = new Token( $csrfSecret );
 <!-- Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
 	<div class="modal-dialog" role="document"  style="width: 400px">
-		<div class="modal-content" style="border-radius: 5px; ">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<div class="section-title" style="text-align: center">
-					<h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
-				<p style="text-align: center"> code | train | grow</p>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <div class="section-title" style="text-align: center">
+                                                <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
+                                        <p style="text-align: center"> code | train | grow</p>
 
-			</div>
-			<div class="modal-body" >
-				<form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
-					<div class='form-group'>
-						<label class='sr-only' for='username' > Email id </label >
-						<div class='input-group' >
-							<div class='input-group-addon'><i class='fa fa-user'></i ></div >
-							<input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
-						</div> <br>
-						<label class='sr-only' for='password'> Password</label >
-						<div class='input-group'>
-							<div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-							<input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
-						</div>
-						<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-						<button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
+                                </div>
+                                        <div class="panel-body">
+                                        <form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
+                                                <div class='form-group'>
+                                                        <label class='sr-only' for='username' > Email id </label >
+                                                        <div class='input-group' >
+                                                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
+                                                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
+                                                        </div> <br>
+                                                        <label class='sr-only' for='password'> Password</label >
+                                                        <div class='input-group'>
+                                                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+                                                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
+                                                        </div>
+                                                        <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+                                                        <button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
 
-					</div>
-                                </form>
+                                                </div>
+                                        </form>
+                                        </div>
+                                        <div class="panel-footer">
+                                <p style="text-align: center;">
+                                        <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
+                                        or login using
 
-			</div>
-			<p style="text-align: center;">Or login using</p>
-			<div class="modal-footer" style="text-align: center">
+                                        <a href='php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
+                                        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
 
-				<a href='php/oauth/oauth2callback.php'> <button type='button' style="text-align: center;" class='btn btn-material-deeporange btn-lg    btn-raised'><i class="fa fa-google-plus"></i> </button></a>
-				<a href='php/oauth/oauth2callbackgithub.php?action=login'> <button style="text-align: left; " type='button' class='btn btn-material-bluegrey btn-lg btn-raised'><i class="fa fa-github"></i> </button></a>
+                                                </p>
+                                </div>
 
+                                </div>
 
-			</div>
-			<p style="text-align: center; padding-bottom: 1px"> Dont have an account yet ? <a href="signup.php">Sign Up</a> </p>
-		</div>
-	</div>
+	                </div>
+
 </div>
 
 
