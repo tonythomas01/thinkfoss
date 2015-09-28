@@ -157,7 +157,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-6 well well">
+				<div class="col-md-6 well well">
 					<h2>Course</h2> <br>
 					<h5>Language </h5><?php echo $course->getValue('course_lang') ?>
 					<h5>Difficulty </h5><?php echo $course->getValue('course_difficulty') ?>
@@ -183,7 +183,7 @@
 					?>
 
 				</div>
-				<div class="col-xs-6">
+				<div class="col-md-6">
 					<h2>Mentor</h2> <br>
 					<h5>Name </h5><?php echo $mentor->getValue('user_first_name') . ' ' . $mentor->getValue('user_last_name'); ?>
 					<h5>Github </h5> <i class="fa fa-github"></i> <?php echo $mentor->getValue( 'user_github'); ?>

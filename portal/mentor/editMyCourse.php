@@ -135,8 +135,8 @@
  				<hr>
 			</div>
 
-			<div class="row ">
-				<div>
+			<div class="row">
+				<div class="col-md-6">
 					<form class='form-inline' action='../../php/doUpdateCourse.php' method='post'>
 						<div class='form-group well'>
 							<label class='sr-only' for='course_name'>Course Name</label>
