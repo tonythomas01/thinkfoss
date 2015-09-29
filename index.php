@@ -173,22 +173,21 @@ $csrfToken = new Token( $csrfSecret );
                         <h1>Welcome to <strong>Think<span class="color">FOSS</span></strong></h1>
                         <p class="lead"><strong>< code | train | grow ></strong></p>
                 </div>
-                <br>
-                <div>
-                        <div class="col-xs-6 col-md-4">
+                <div class="row">
+                        <div class="col-md-4">
                                 <i style="font-size: 500%; color: seashell" class="fa fa-graduation-cap"></i>
                                 <h3> I got skills & want to earn<br> some <span style="color: gold"><i class="fa fa-rupee"></i> </span>  out of it!</h3>
                                 <a href="#tf-mentor" class="page-scroll">
                                         <button class="btn tf-btn btn-primary btn-lg" ><strong>I got skills</strong></button></a>
 
                         </div>
-                        <div class="col-xs-6 col-md-4" style="border: dashed gold; padding: 1%">
+                        <div class="col-md-4" style="border: dashed gold; padding: 1%">
                                 <i style="font-size: 500%; color: gold" class="fa fa-star"></i>
                                 <h3> I am looking for solutions!<br> Build me one</h3>
                                 <a href="#tf-task" class="page-scroll">
                                         <button class="btn tf-btn btn-primary btn-lg" style="background-color: gold" ><strong><span style="color: black";>Solutions</span></strong></button></a>
                         </div>
-                        <div class="col-xs-6 col-md-4" >
+                        <div class="col-md-4" >
                                 <i style="font-size: 500%; color: seashell" class="fa fa-child"></i>
                                 <h3> I am looking for skills!<br> Help me find them</h3>
                                 <a href="#student" class="page-scroll">
