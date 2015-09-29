@@ -163,7 +163,7 @@ include 'navigationstudent.php'
 				                                        <figcaption class="mask" style="text-align:center; ">
 				                                        <form action="viewMoreInfoCourses.php" method="post">
 						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-				                                                <button style="position: relative; top: 20px; float:center; width: 100px; height: 100px; border-radius: 50px; opacity: 0.8; padding: 10px 16px; font-size: 24px;" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-list"></i></button>
+				                                                <button style="position: relative; top: 20px; float:center; width: 100px; height: 100px; border-radius: 50px; opacity: 0.8; padding: 10px 16px; font-size: 24px;" type="submit" class="btn btn-info" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-search-plus"></i></button>
 				                                        </form>
 				                                        </figcaption>
 
