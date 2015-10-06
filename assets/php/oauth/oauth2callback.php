@@ -27,20 +27,20 @@ if (!isset($_GET['code'])) {
 		$_SESSION['loggedin_user'] = $user->getValue( 'user_first_name' ) . ' ' . $user->getValue('user_last_name');
 		$_SESSION['loggedin_user_email'] = $user->getValue( 'user_email' );
 		$_SESSION['loggedin_user_id'] = $user->getUserFreshId( $conn );
-		header( 'Location: '.'../../portal/portal.php');
+		header( 'Location: '.'../../../portal/portal.php');
 	} else {
 		//Add to authorization and user table
 		$newPassword = bin2hex( openssl_random_pseudo_bytes(4) );
 		$pass = substr( hash_hmac( 'sha512', $newPassword, $passwordSecret ), 0, 31 );
 		if ( !$user->setPassword( $conn, $pass ) ) {
 			$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
-			header( 'Location: '.'../../signup.php');
+			header( 'Location: '.'../../../signup.php');
 			return false;
 		}
 
 		if ( !$user->addToDatabase( $conn ) ) {
 			$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
-			header( 'Location: '.'../../signup.php');
+			header( 'Location: '.'../../../signup.php');
 			return false;
 		}
 		require_once( '../access/mailgunAPIKeys.php' );
@@ -52,7 +52,7 @@ if (!isset($_GET['code'])) {
 		$_SESSION['loggedin_user_email'] = $user->getValue( 'user_email' );
 		$_SESSION['loggedin_user_id'] = $user->getUserFreshId( $conn );
 
-		header( 'Location: '.'../../portal/portal.php');
+		header( 'Location: '.'../../../portal/portal.php');
 	}
 }
 

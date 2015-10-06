@@ -7,7 +7,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$postInputs = new Statement( $_POST );
 	if ( $postInputs->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
-		header('Location: ' . '../../portal/portal.php');
+		header('Location: ' . '../../../portal/portal.php');
 		return;
 	}
 	require_once('../Token.php');
@@ -16,7 +16,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $postInputs->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
-		header( 'Location: '.'../../signup.php');
+		header( 'Location: '.'../../../signup.php');
 		return false;
 	}
 
@@ -34,12 +34,12 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	if ( $delSolution->isOwner( $loggedInUser ) || $deletingUser->checkIfPrivelaged( $conn )  ) {
 		if ( $delSolution->deleteFromDb( $conn ) ) {
-			header('Location: ' . '../../portal/solutions/mySolutionRequests.php');
+			header('Location: ' . '../../../portal/solutions/mySolutionRequests.php');
 			$_SESSION['message'] = "The solution request has been deleted successfully!";
 			return;
 		}
 	}
-		header('Location: ' . '../../portal/solutions/mySolutionRequests.php');
+		header('Location: ' . '../../../portal/solutions/mySolutionRequests.php');
 	$_SESSION['error'] = "We couldn't delete that course. Please contact one of the admins";
 
 }

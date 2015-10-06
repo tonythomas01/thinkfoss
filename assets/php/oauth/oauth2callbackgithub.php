@@ -47,7 +47,7 @@ if( session('access_token') ) {
 
 	if ( !$user->email ) {
 		$_SESSION['error'] = "Error: Looks like you dont have a public email id. Please use other signup options";
-		header( 'Location: '.'../../signup.php');
+		header( 'Location: '.'../../../signup.php');
 		return false;
 	}
 
@@ -56,7 +56,7 @@ if( session('access_token') ) {
 		$_SESSION['loggedin_user'] = $user->name;
 		$_SESSION['loggedin_user_email'] = $oauthUser->getValue( 'user_email' );
 		$_SESSION['loggedin_user_id'] = $oauthUser->getUserFreshId( $conn );
-		header( 'Location: '.'../../portal/portal.php');
+		header( 'Location: '.'../../../portal/portal.php');
 
 	} else {
 		//Add to authorization and user table
@@ -64,13 +64,13 @@ if( session('access_token') ) {
 		$pass = substr( hash_hmac( 'sha512', $newPassword, $passwordSecret ), 0, 31 );
 		if ( !$oauthUser->setPassword( $conn, $pass ) ) {
 			$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
-			header( 'Location: '.'../../signup.php');
+			header( 'Location: '.'../../../signup.php');
 			return false;
 		}
 
 		if ( !$oauthUser->addToDatabase( $conn ) ) {
 			$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
-			header( 'Location: '.'../../signup.php');
+			header( 'Location: '.'../../../signup.php');
 			return false;
 		}
 		require_once( '../access/mailgunAPIKeys.php' );
@@ -81,12 +81,12 @@ if( session('access_token') ) {
 		$_SESSION['loggedin_user'] = $user->name;
 		$_SESSION['loggedin_user_email'] = $oauthUser->getValue( 'user_email' );
 		$_SESSION['loggedin_user_id'] = $oauthUser->getUserFreshId( $conn );
-		header( 'Location: '.'../../portal/portal.php');
+		header( 'Location: '.'../../../portal/portal.php');
 	}
 
 } else {
 	$_SESSION['error'] = "Error: Unknown error occurred. Please contact one of the admins";
-	header( 'Location: '.'../../signup.php');
+	header( 'Location: '.'../../../signup.php');
 }
 
 function apiRequest( $url, $post=FALSE, $headers=array() ) {
