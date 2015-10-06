@@ -57,12 +57,12 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 <body>
 
 <?php
-	require_once( '../../php/access/accessDB.php' );
-	require_once( '../../php/User.php');
-	require_once( '../../php/Course.php');
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	require_once('../../assets/php/Course.php');
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-	include( '../../php/Token.php' );
-	include( '../../php/access/accessTokens.php' );
+	include('../../assets/php/Token.php');
+	include('../../assets/php/access/accessTokens.php');
 
         if ( !$user->checkIfPrivelaged( $conn ) ) {
 	        header( 'Location: ../../portal/portal.php');
@@ -94,7 +94,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				<h2 class="section-title">Course Administration</h2>
 			</div>
 			<br>
-			<form action="../../php/doAdminControl.php" method="post">
+			<form action="../../assets/php/doAdminControl.php" method="post">
 			<table class="table table-hover table-bordered well" style="color:black">
 				<thead>
 				<th>Course Name</th>
@@ -159,7 +159,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 			$result = $conn->query( $sqlSelect );
 			if( $result->num_rows > 0 ) {
 			while( $row = $result->fetch_assoc() ) {
-			require_once( '../../php/User.php' );
+			require_once('../../assets/php/User.php');
 			$requestUser = User::newFromUserId( $row['solution_request_user_id'], $conn );
 			$csrfToken = new Token( $csrfSecret );
 
@@ -177,7 +177,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 						</form>
 
 
-						<form action="../../php/actions/doDeleteSolution.php" method="post">
+						<form action="../../assets/php/actions/doDeleteSolution.php" method="post">
 							<input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
 							<button type="submit" style="position: absolute; right:20px; bottom:20px;" class="btn btn-danger" name="solution" value="solution-'.$row['solution_id'].'" >Delete</button></form></td>
 

@@ -66,8 +66,8 @@
 </head>
 <body>
 <?php
-	require_once( '../../php/access/accessDB.php' );
-	require_once( '../../php/User.php' );
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 	$user->getExtra( $conn );
 ?>
@@ -86,7 +86,7 @@
 
             <div class='col-xs-6'>
                 <br>
-	            <form class='form-inline' action='../../php/doEditProfile.php'  style="text-align: justify" method='post'>
+	            <form class='form-inline' action='../../assets/php/doEditProfile.php'  style="text-align: justify" method='post'>
 		            <div class='form-group well'>
 			            <label class='sr-only' for='user_first_name'>First Name</label>
 			            <div class='input-group'>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once( 'php/Token.php' );
-require_once( 'php/access/accessTokens.php' );
+require_once('assets/php/Token.php');
+require_once('assets/php/access/accessTokens.php');
 $csrfToken = new Token( $csrfSecret );
 ?>
 <!DOCTYPE html>
@@ -91,7 +91,7 @@ $csrfToken = new Token( $csrfSecret );
                                         echo "
                                             <li><a> Hi <span style=' font-weight: bold'>$loggedinUser</span></a></li>
                                             <li>
-                                            <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
+                                            <form class='form-inline' action = 'assets/php/doSignOut.php' method = 'post' >
                                             <div class='form-group'>
                                                 <a href='portal/portal.php'><button style='padding: 10px 10px 10px 10px;' type = 'button'  id = 'member-portal' class='btn btn-primary btn-success' ><i class='fa fa-laptop' ></i > Portal</button ></a>
                                                 <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
@@ -128,7 +128,7 @@ $csrfToken = new Token( $csrfSecret );
 
                                 </div>
                                         <div class="panel-body">
-                                        <form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
+                                        <form  action = 'assets/php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
                                                 <div class='form-group'>
                                                         <label class='sr-only' for='username' > Email id </label >
                                                         <div class='input-group' >
@@ -151,8 +151,8 @@ $csrfToken = new Token( $csrfSecret );
                                         <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
                                         or login using
 
-                                        <a href='php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-                                        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
 
                                                 </p>
                                 </div>

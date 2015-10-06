@@ -39,7 +39,7 @@ if( get('code') ) {
 }
 
 if( session('access_token') ) {
-	require_once( '../User.php' );
+	require_once('../User.php');
 	require_once('../access/accessDB.php');
 	require_once('../access/accessTokens.php');
 

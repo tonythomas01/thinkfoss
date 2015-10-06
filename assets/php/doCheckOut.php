@@ -3,33 +3,33 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	require_once( 'Statement.php' );
+	require_once('Statement.php');
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
-		header('Location: ' . '../portal/cart/viewCart.php');
+		header('Location: ' . '../../portal/cart/viewCart.php');
 		return;
 	}
-	require_once( 'Token.php' );
-	require_once( 'access/accessTokens.php' );
-	require_once( "access/captchaTokens.php" );
+	require_once('Token.php');
+	require_once('access/accessTokens.php');
+	require_once("access/captchaTokens.php");
 	if ( !$preparedPost->validateCaptchaResponse( $preparedPost->getValue('g-recaptcha-response' ), $captchaSecretKey ) ) {
 		$_SESSION['error'] = "Error: Invalid Captcha Entered. Please contact one of the admins, or try again";
-		header( 'Location: '.'../portal/cart/viewCart.php');
+		header( 'Location: '.'../../portal/cart/viewCart.php');
 		return false;
 	}
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
-		header( 'Location: '.'../portal/cart/viewCart.php');
+		header( 'Location: '.'../../portal/cart/viewCart.php');
 		return false;
 	}
-	require_once( "access/accessDB.php" );
+	require_once("access/accessDB.php");
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 	$preparedPost->sanitize();
 
-	require_once( 'Course.php' );
-	require_once( 'User.php' );
+	require_once('Course.php');
+	require_once('User.php');
 
 	$checkingOutUser = User::newFromUserId( $loggedInUser, $conn );
 
@@ -47,11 +47,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 						require_once( 'access/mailgunAPIKeys.php' );
 						$course->notifyMentor(  $conn, $mailgunAPIKey, $mailgunDomain );
 						$_SESSION['message'] = "Congratulations! The checkout was successful!";
-						header('Location: ' . '../portal/student/viewAllCourses.php');
+						header('Location: ' . '../../portal/student/viewAllCourses.php');
 						return;
 					} else {
 						$_SESSION['error'] = "Couldn't checkout that course. Please try again";
-						header('Location: ' . '../portal/cart/viewCart.php');
+						header('Location: ' . '../../portal/cart/viewCart.php');
 					}
 				}
 
@@ -90,7 +90,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		}
 	} else {
 		$_SESSION['error'] = "Couldn't checkout that course. Please try again";
-		header('Location: ' . '../portal/cart/viewCart.php');
+		header('Location: ' . '../../portal/cart/viewCart.php');
 	}
 
 }

@@ -64,8 +64,8 @@ if (!isset($_SESSION['loggedin_user'])) {
 </head>
 <body>
 <?php
-require_once('../../php/access/accessDB.php');
-require_once('../../php/User.php');
+require_once('../../assets/php/access/accessDB.php');
+require_once('../../assets/php/User.php');
 $user = User::newFromUserId($_SESSION['loggedin_user_id'], $conn);
 include 'navigationstudent.php'
 ?>
@@ -94,8 +94,8 @@ include 'navigationstudent.php'
 			<div class="row" >
 
 				<?php
-				require_once('../../php/Token.php');
-				require_once('../../php/access/accessTokens.php');
+				require_once('../../assets/php/Token.php');
+				require_once('../../assets/php/access/accessTokens.php');
 				$loggedInUser = $_SESSION['loggedin_user_id'];
 
 				$sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
@@ -107,7 +107,7 @@ include 'navigationstudent.php'
 
 				$result = $conn->query($sqlSelect);
 
-				include '../../php/Course.php';
+				include '../../assets/php/Course.php';
 
 			if ($result->num_rows > 0) {
 				while ($row = $result->fetch_assoc()) {
@@ -138,7 +138,7 @@ include 'navigationstudent.php'
 						echo '
 						 <ul class="external-right">
 						 <li>
-						<form action="../../php/doEnrollCourse.php" method="post">
+						<form action="../../assets/php/doEnrollCourse.php" method="post">
 						<input type="hidden" name="CSRFToken" value="';
 						echo $csrfToken->getCSRFToken();
 						echo '"/>

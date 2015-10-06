@@ -1,6 +1,6 @@
 <?php
-	require_once( '../../php/Token.php' );
-	require_once( '../../php/access/accessTokens.php' );
+	require_once('../../assets/php/Token.php');
+	require_once('../../assets/php/access/accessTokens.php');
 ?>
 <link href="../../css/material/material-wfont.min.css" rel="stylesheet">
 <!-- Navigation
@@ -62,7 +62,7 @@
                         <li role="separator" class="divider"></li>
 	                    <li>
 
-		                    <form action="../../php/doSignOut.php" method="post">
+		                    <form action="../../assets/php/doSignOut.php" method="post">
 			                    <?php
 			                    $csrfToken = new Token( $csrfSecret );
 			                    ?>

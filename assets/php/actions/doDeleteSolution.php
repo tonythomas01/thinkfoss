@@ -3,15 +3,15 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	require_once( '../Statement.php' );
+	require_once('../Statement.php');
 	$postInputs = new Statement( $_POST );
 	if ( $postInputs->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../../portal/portal.php');
 		return;
 	}
-	require_once( '../Token.php' );
-	require_once( '../access/accessTokens.php' );
+	require_once('../Token.php');
+	require_once('../access/accessTokens.php');
 
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $postInputs->getValue('CSRFToken') ) ) {
@@ -20,14 +20,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		return false;
 	}
 
-	require_once( '../access/accessDB.php' );
-	require_once( '../User.php' );
+	require_once('../access/accessDB.php');
+	require_once('../User.php');
 	$postInputs->sanitize();
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 	$deletingUser = User::newFromUserId( $loggedInUser, $conn );
 
-	require_once( '../Solution.php' );
+	require_once('../Solution.php');
 	$solutionName = mysqli_real_escape_string( $conn, $postInputs->getValue( 'solution' ) );
 	$solution = explode( '-', $solutionName );
 	$delSolution = Solution::newFromId( $conn, $solution[1] );

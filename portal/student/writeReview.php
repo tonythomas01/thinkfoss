@@ -6,7 +6,7 @@
 
 
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-		include_once('../../php/Statement.php');
+		include_once('../../assets/php/Statement.php');
 		$preparedSatement = new Statement( $_POST );
 
 		if ( $preparedSatement->checkIfEmptyPost()) {
@@ -16,10 +16,10 @@
 		}
 		$preparedSatement->sanitize();
 
-		require_once( '../../php/access/accessDB.php' );
-		require_once( '../../php/Course.php' );
-		require_once( "../../php/Token.php" );
-		require_once( "../../php/access/accessTokens.php" );
+		require_once('../../assets/php/access/accessDB.php');
+		require_once('../../assets/php/Course.php');
+		require_once("../../assets/php/Token.php");
+		require_once("../../assets/php/access/accessTokens.php");
 
 		$csrfToken = new Token( $csrfSecret );
 		if( ! $csrfToken->validateCSRFToken( $preparedSatement->getValue('CSRFToken') ) ) {
@@ -38,7 +38,7 @@
 			return false;
 		}
 
-		require_once( '../../php/User.php' );
+		require_once('../../assets/php/User.php');
 		$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 
 	} else {
@@ -115,7 +115,7 @@
 
             <div class='col-xs-6'>
                 <br>
-                <form class='form-inline' action='../../php/doProcessReview.php' method='post'>
+                <form class='form-inline' action='../../assets/php/doProcessReview.php' method='post'>
                     <div class='form-group well'>
 	                    <div class='input-group'>
 		                    <div class='input-group-addon' >Mentor <i class='fa fa-star'></i></div>
@@ -180,8 +180,8 @@
 	                    <br><br>
 	                    <input type="hidden" name="course_id" value="<?php echo $courseId ?>" />
 	                    <?php
-	                        require_once( "../../php/Token.php" );
-	                        require_once( "../../php/access/accessTokens.php" );
+	                        require_once("../../assets/php/Token.php");
+	                        require_once("../../assets/php/access/accessTokens.php");
 	                        $csrfToken = new Token( $csrfSecret );
 	                    ?>
 	                    <script src='https://www.google.com/recaptcha/api.js'></script>

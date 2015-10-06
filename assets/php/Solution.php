@@ -95,7 +95,7 @@ class Solution {
 	}
 
 	public function sendSolutionCreatedEmail( $conn, $userId, $mailgunAPIKey, $mailgunDomain ) {
-		require_once( 'User.php' );
+		require_once('User.php');
 		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
 
 		$user = User::newFromUserId( $userId, $conn );

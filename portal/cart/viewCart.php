@@ -68,8 +68,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 <body>
 <?php
 	session_start();
-	require_once( '../../php/access/accessDB.php' );
-	require_once( '../../php/User.php' );
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
 	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!-- Navigation
@@ -98,7 +98,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				<h2 class="section-title" style="color: white"> My Cart</h2>
 			</div>
 			<br>
-			<form action="../../php/doCheckOut.php" method="post">
+			<form action="../../assets/php/doCheckOut.php" method="post">
 			<table class="table table-hover table-bordered well" style="color : black">
 				<thead>
 				<th>Course Name</th>
@@ -110,8 +110,8 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 				<tbody>
 
 				<?php
-				require_once( "../../php/Token.php" );
-				require_once( "../../php/access/accessTokens.php" );
+				require_once("../../assets/php/Token.php");
+				require_once("../../assets/php/access/accessTokens.php");
 				$csrfToken = new Token( $csrfSecret );
 				$loggedInUser = $_SESSION['loggedin_user_id'];
 

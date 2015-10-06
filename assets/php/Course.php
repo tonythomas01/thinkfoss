@@ -267,7 +267,7 @@ class Course {
 	}
 
 	public function sendCourseCreatedEmail( $conn, $userId, $mailgunAPIKey, $mailgunDomain ) {
-		require_once( 'User.php' );
+		require_once('User.php');
 		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
 		$user = User::newFromUserId( $userId, $conn );
 		$userEmailId = $user->getValue( 'user_email' );
@@ -290,7 +290,7 @@ class Course {
 	}
 
 	public function sendCourseApprovedEmail( $conn, $mailgunAPIKey, $mailgunDomain ) {
-		require_once( 'User.php' );
+		require_once('User.php');
 		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
 		$courseMentorId = self::getCourseMentor( $conn, $this->course_id );
 		$user = User::newFromUserId( $courseMentorId, $conn );
@@ -316,7 +316,7 @@ class Course {
 	}
 
 	public function notifyMentor( $conn, $mailgunAPIKey, $mailgunDomain ) {
-		require_once( 'User.php' );
+		require_once('User.php');
 		require_once( 'vendor/mailgun-php/vendor/autoload.php' );
 		$courseMentorId = self::getCourseMentor( $conn, $this->course_id );
 		$user = User::newFromUserId( $courseMentorId, $conn );

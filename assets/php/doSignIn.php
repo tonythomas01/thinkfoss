@@ -7,20 +7,20 @@
  */
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	require_once( 'Statement.php' );
+	require_once('Statement.php');
 	$postInput = new Statement( $_POST );
 	if ( $postInput->checkIfEmptyPost() ) {
-		header('Location: ' . '../index.php');
+		header('Location: ' . '../../index.php');
 		return;
 	}
-	require_once( "access/accessDB.php" );
-	require_once( "access/accessTokens.php" );
-	require_once( "Token.php" );
+	require_once("access/accessDB.php");
+	require_once("access/accessTokens.php");
+	require_once("Token.php");
 
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $postInput->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try again";
-		header( 'Location: '.'../signup.php');
+		header( 'Location: '.'../../signup.php');
 		return false;
 	}
 
@@ -34,11 +34,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$_SESSION['loggedin_user'] = $userDetails['name'];
 		$_SESSION['loggedin_user_email'] = $userDetails['email'];
 		$_SESSION['loggedin_user_id'] = $userDetails['user_id'];
-		header( 'Location: '.'../portal/portal.php');
+		header( 'Location: '.'../../portal/portal.php');
 
 	} else {
 		$_SESSION['error'] = "Error: Invalid Username/Password entered. Please try again";
-		header( 'Location: '.'../signup.php');
+		header( 'Location: '.'../../signup.php');
 	}
 
 }

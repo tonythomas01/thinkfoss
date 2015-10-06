@@ -61,9 +61,8 @@
 </head>
 <body background="black">
 <?php
-        session_start();
-        require_once( '../../php/access/accessDB.php' );
-        require_once( '../../php/User.php' );
+        require_once('../../assets/php/access/accessDB.php');
+        require_once('../../assets/php/User.php');
 
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
@@ -106,8 +105,8 @@
 
 
     <?php
-        require_once( "../../php/Token.php" );
-        require_once( "../../php/access/accessTokens.php" );
+        require_once("../../assets/php/Token.php");
+        require_once("../../assets/php/access/accessTokens.php");
 
         $loggedInUser = $_SESSION['loggedin_user_id'];
 

@@ -56,12 +56,12 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 </head>
 <body>
 <?php
-require_once( '../../php/access/accessDB.php' );
-require_once( '../../php/User.php');
+require_once('../../assets/php/access/accessDB.php');
+require_once('../../assets/php/User.php');
 $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-require_once( '../../php/Token.php' );
-require_once( '../../php/access/accessTokens.php' );
-require_once( '../../php/Course.php' );
+require_once('../../assets/php/Token.php');
+require_once('../../assets/php/access/accessTokens.php');
+require_once('../../assets/php/Course.php');
 ?>
 <!-- Navigation
 ==========================================-->
@@ -134,7 +134,7 @@ require_once( '../../php/Course.php' );
                                                     <input type="hidden" name="CSRFToken" value="'; echo $csrfTokenForEdits->getCSRFToken(); echo '"/>
                                                     <button style="position: absolute; left:20px; bottom:15px; padding: 10px" type="submit" class="btn btn-success" name="course"  value="course-' . $row['course_id'] . '" ><i class = "fa fa-pencil"></i></button>
                                         </form>
-		                        <form action="../../php/doDeleteCourse.php" method="post">
+		                        <form action="../../assets/php/doDeleteCourse.php" method="post">
 		                                <input type="hidden" name="CSRFToken" value="';echo $csrfTokenForEdits->getCSRFToken(); echo '"/>
 		                                <button type="submit" style="position: absolute; right:20px; bottom: 15px; padding: 10px" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" ><i class="fa fa-trash"></i></button>
                                         </form>

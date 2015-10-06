@@ -56,11 +56,11 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 </head>
 <body>
 <?php
-require_once( '../../php/access/accessDB.php' );
-require_once( '../../php/User.php');
+require_once('../../assets/php/access/accessDB.php');
+require_once('../../assets/php/User.php');
 $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-require_once( '../../php/Token.php' );
-require_once( '../../php/access/accessTokens.php' );
+require_once('../../assets/php/Token.php');
+require_once('../../assets/php/access/accessTokens.php');
 ?>
 <!-- Navigation
 ==========================================-->
@@ -115,7 +115,7 @@ require_once( '../../php/access/accessTokens.php' );
                                         </form>
 
 
-		      <form action="../../php/actions/doDeleteSolution.php" method="post">
+		      <form action="../../assets/php/actions/doDeleteSolution.php" method="post">
 		            <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
 		            <button type="submit" style="position: absolute; right:20px; bottom:20px;" class="btn btn-danger" name="solution" value="solution-'.$row['solution_id'].'" >Delete</button></form></td>
 

@@ -2,22 +2,22 @@
 
 session_start();
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	require_once( 'Statement.php' );
+	require_once('Statement.php');
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all require_onced details";
-		header('Location: ' . '../portal/portal.php');
+		header('Location: ' . '../../portal/portal.php');
 		return;
 	}
-	require_once( "access/accessDB.php" );
-	require_once( "access/accessTokens.php" );
-	require_once( "Token.php" );
+	require_once("access/accessDB.php");
+	require_once("access/accessTokens.php");
+	require_once("Token.php");
 
 
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue( 'CSRFToken' ) ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try again";
-		header('Location: ' . '../portal/student/writeReview.php');
+		header('Location: ' . '../../portal/student/writeReview.php');
 		return false;
 	}
 
@@ -40,10 +40,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	if ( $conn->query( $sqlInsert ) ) {
 		$_SESSION['message'] = "Thank You! You have successfully submitted your review. We are grateful for it!";
-		header('Location: ' . '../portal/student/viewEnrolledCourses.php');
+		header('Location: ' . '../../portal/student/viewEnrolledCourses.php');
 	} else {
 		$_SESSION['error'] = "There was a problem mangaing your review. Please contact one of the admins";
-		header('Location: ' . '../portal/student/viewEnrolledCourses.php');
+		header('Location: ' . '../../portal/student/viewEnrolledCourses.php');
 	}
 
 

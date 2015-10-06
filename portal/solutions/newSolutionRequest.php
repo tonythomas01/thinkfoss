@@ -57,11 +57,11 @@
 <body>
 <?php
         session_start();
-        require_once( '../../php/access/accessDB.php' );
-        require_once( '../../php/User.php' );
+        require_once('../../php/access/accessDB.php');
+        require_once('../../php/User.php');
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-        require_once( '../../php/access/accessTokens.php' );
-        require_once( '../../php/Token.php' );
+        require_once('../../php/access/accessTokens.php');
+        require_once('../../php/Token.php');
         $csrfToken = new Token( $csrfSecret );
 ?>
 <?php include 'navigationSolutions.php' ?>
@@ -72,7 +72,7 @@
             <div class="row">
 
             <div class='col-md-6'>
-                <form class='form-inline' action='../../php/actions/doCreateSolution.php' method='post'>
+                <form class='form-inline' action='../../assets/php/actions/doCreateSolution.php' method='post'>
                     <div class='form-group well'>
 
                         <label class='sr-only' for='course_name'>I want</label>

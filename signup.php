@@ -87,15 +87,15 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 				<li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
 				<li>
 					<?php
-					require_once( 'php/Token.php' );
-					require_once( 'php/access/accessTokens.php' );
+					require_once('assets/php/Token.php');
+					require_once('assets/php/access/accessTokens.php');
 
 					if ( isset( $_SESSION['loggedin_user'] ) ) {
 						$loggedinUser = $_SESSION['loggedin_user'];
 						$csrfToken = new Token( $csrfSecret );
 						echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
                             <li>
-                                <form class='form-inline' action = 'php/doSignOut.php' method = 'post' >
+                                <form class='form-inline' action = 'assets/php/doSignOut.php' method = 'post' >
                                 <div class='form-group'>
                                     <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
                                     <button type = 'submit' id = 'member-logout' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
@@ -131,7 +131,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 
                                 </div>
                                         <div class="panel-body">
-                                        <form  action = 'php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
+                                        <form  action = 'assets/php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
                                                 <div class='form-group'>
                                                         <label class='sr-only' for='username' > Email id </label >
                                                         <div class='input-group' >
@@ -154,8 +154,8 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
                                         <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
                                         or login using
 
-                                        <a href='php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-                                        <a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
 
                                                 </p>
                                 </div>
@@ -221,7 +221,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 				<div class="clearfix"></div>
 			</div> <br>
 			<div>
-				<form class='form-inline ' action='php/doSignUp.php'  style="text-align: justify" method='post'>
+				<form class='form-inline ' action='assets/php/doSignUp.php'  style="text-align: justify" method='post'>
 					<div class='form-group well' >
 
 						<label class='sr-only' for='user_first_name'>Your first name</label>
@@ -287,8 +287,8 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 			<div style="text-align: left">
 
 				<h3>or login with </h3>
-				<a href='php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
-				<a href='php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
+				<a href='assets/php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
+				<a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
 			</div>
 
 

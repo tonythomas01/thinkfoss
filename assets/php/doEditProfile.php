@@ -2,23 +2,23 @@
 session_start();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	require_once( "Statement.php" );
+	require_once("Statement.php");
 	$postInput = new Statement($_POST);
 
-	require_once( "Token.php" );
-	require_once( "access/accessTokens.php" );
-	require_once( "access/captchaTokens.php" );
-	require_once( "User.php" );
+	require_once("Token.php");
+	require_once("access/accessTokens.php");
+	require_once("access/captchaTokens.php");
+	require_once("User.php");
 
 	if ( !$postInput->validateCaptchaResponse( $postInput->getValue('g-recaptcha-response' ), $captchaSecretKey ) ) {
 		$_SESSION['error'] = "Error: Invalid Captcha Entered. Please contact one of the admins, or try again";
-		header( 'Location: '.'../portal/profile/myProfile.php');
+		header( 'Location: '.'../../portal/profile/myProfile.php');
 		return false;
 	}
 
 	$postInput->sanitize();
 
-	require_once( "access/accessDB.php" );
+	require_once("access/accessDB.php");
 	$loggedInUserId = $_SESSION['loggedin_user_id'];
 
 	$user_first_name = mysqli_escape_string( $conn, $postInput->getValue( 'user_first_name' ) );
@@ -49,10 +49,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 
 		$_SESSION['message'] = "You have updated your profile. Great!";
-		header('Location: ' . '../portal/portal.php');
+		header('Location: ' . '../../portal/portal.php');
 	} else {
 		$_SESSION['error'] = "Looks like there was some error with your inputs. Please contact the administrator";
-		header( 'Location: ' . 'portal/profile/myProfile.php' );
+		header( 'Location: ' . '../../portal/profile/myProfile.php' );
 	}
 
 }

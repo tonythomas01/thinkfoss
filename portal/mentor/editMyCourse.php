@@ -9,20 +9,20 @@
 		return false;
 	}
 
-	require_once( '../../php/access/accessDB.php' );
-	require_once( '../../php/User.php' );
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 
 
-	require_once( '../../php/Statement.php' );
+	require_once('../../assets/php/Statement.php');
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . 'viewMyCourses.php');
 		return;
 	}
-	require_once( '../../php/Token.php' );
-	require_once( '../../php/access/accessTokens.php' );
+	require_once('../../assets/php/Token.php');
+	require_once('../../assets/php/access/accessTokens.php');
 	$csrfToken = new Token( $csrfSecret );
 	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue('CSRFToken') ) ) {
 		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
@@ -31,8 +31,8 @@
 	}
 
 
-	require_once( '../../php/Course.php' );
-	require_once( '../../php/User.php' );
+	require_once('../../assets/php/Course.php');
+	require_once('../../assets/php/User.php');
 	$preparedPost->sanitize();
 
 	$courseName = mysqli_real_escape_string( $conn, $preparedPost->getValue( 'course' ) );
@@ -137,7 +137,7 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<form class='form-inline' action='../../php/doUpdateCourse.php' method='post'>
+					<form class='form-inline' action='../../assets/php/doUpdateCourse.php' method='post'>
 						<div class='form-group well'>
 							<label class='sr-only' for='course_name'>Course Name</label>
 							<div class='input-group' >

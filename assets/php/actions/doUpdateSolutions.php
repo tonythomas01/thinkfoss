@@ -26,7 +26,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		return false;
 	}
 	require_once("../access/accessDB.php");
-	require_once( "../User.php" );
+	require_once("../User.php");
 	$preparedPost->sanitize();
 	$loggedinUserId = $_SESSION['loggedin_user_id'];
 
