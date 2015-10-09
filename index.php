@@ -568,7 +568,8 @@ $csrfToken = new Token( $csrfSecret );
                                         <h1 style="text-align: center">Be a mentor! </h1><br>
                                         <p>Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
                                                 aims at providing the best mentoring available to the needy in a complete transparent transaction.</p>
-                                        <p> <br>
+                                        <br>
+                                        <div style="text-align: center" class="row">
                                         <div class="col-xs-6 col-md-3" id="icon-container">
                                         <i class="fa fa-sign-in fa-5x" style="color: #67b168"> </i> <br>
                                         Join
@@ -595,12 +596,13 @@ $csrfToken = new Token( $csrfSecret );
                                         </div>
 
 
-                                        </p> <br> <br> <br><br>
+                                        </div>
 
                                         <div style="bottom: 0; padding-top: 50px">
                                                 <button class="btn btn-primary btn-lg" href="#" role="button">Be a Mentor</button>
                                         </div>
                                 </div>
+
 
                         </div>
 
@@ -609,7 +611,8 @@ $csrfToken = new Token( $csrfSecret );
                                                 <h1 style="text-align: center">Be a student! </h1><br>
                                                 <p> ThinkFOSS helps in connecting people with skills to people in need, and
                                                         makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.</p>
-                                                <p> <br>
+                                                <br>
+                                                <div class="row" style="text-align: center">
                                                 <div class="col-xs-6 col-md-3" id="icon-container">
                                                         <i class="fa fa-sign-in fa-5x" style="color: #67b168"> </i> <br>
                                                         Join
@@ -635,8 +638,7 @@ $csrfToken = new Token( $csrfSecret );
                                                         Succeed
                                                 </div>
 
-
-                                                </p> <br> <br> <br><br>
+                                                </div>
 
                                                 <div style="bottom: 0; padding-top: 50px">
                                                         <button class="btn btn-primary btn-lg" href="#" role="button">Be a Student</button>
