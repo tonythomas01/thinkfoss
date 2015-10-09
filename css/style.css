@@ -788,7 +788,7 @@ blockquote {
     font-family: Georgia, serif;
     font-size: 18px;
     font-style: italic;
-    width: 800px;
+    width: 100%;
     margin: 0.25em 0;
     padding: 0.35em 40px;
     line-height: 1.45;
@@ -802,9 +802,20 @@ blockquote:before {
     content: "\201C";
     font-size: 80px;
     position: absolute;
-    left: -20px;
+    left: 0;
     top: -20px;
     color: #ffffff;
+}
+
+blockquote:after {
+	display: block;
+	padding-right: 10px;
+	content: "\201D";
+	font-size: 80px;
+	position: absolute;
+	right: 0;
+	top: -20px;
+	color: #ffffff;
 }
 
 blockquote cite {
@@ -818,3 +829,7 @@ blockquote cite:before {
     content: "\2014 \2009";
 }
 
+#icon-container {
+	text-align: center;
+	width: 100px;
+}

@@ -543,11 +543,11 @@ $csrfToken = new Token( $csrfSecret );
                                         <div id="testimonial" class="owl-carousel owl-theme">
                                                 <div class="item">
                                                         <blockquote>
-                                                        <h3>I requested for an App - to be used on a tablet for obtaining sign ups during Amrita University's International Tours.
-                                                        My sincere thanks to ThinkFOSS for providing me with the App within two days of request. A simple, yet neat App was provided
+                                                        <h3>I requested for an app - to be used on a tablet for obtaining sign ups during Amrita University's International tours.
+                                                        My sincere thanks to ThinkFOSS for providing me with the app within two days of request. A simple, yet neat app was provided
                                                         with the basic necessary features. Got emails and answers to all questions within minutes. Keep up the great work ThinkFOSS!
                                                         Thanks a lot for your help and effort. Will keep you posted on the actual usage. Looking forward to extended support in case
-                                                        of future issues / request for upgrade.</h3>
+                                                        of future issues/request for upgrade.</h3>
 
                                                                 <p><strong>Sujatha</strong>,Co-ordinator, Amrita Center for International Programs.</p>
                                                         </blockquote>
@@ -563,112 +563,90 @@ $csrfToken = new Token( $csrfSecret );
 <div id="tf-mentor" >
         <div class="container">
                 <div class="row">
-
                         <div class="col-md-6" style="background-color:gold; padding-top: 10px">
-                                <div class="section-title">
-                                        <h2>Be a  <strong>Mentor</strong></h2>
-                                        <hr>
-                                        <div class="clearfix"></div>
+                                <div class="jumbotron">
+                                        <h1 style="text-align: center">Be a mentor! </h1><br>
+                                        <p>Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
+                                                aims at providing the best mentoring available to the needy in a complete transparent transaction.</p>
+                                        <p> <br>
+                                        <div class="col-xs-6 col-md-3" id="icon-container">
+                                        <i class="fa fa-sign-in fa-5x" style="color: #67b168"> </i> <br>
+                                        Join
+                                        </div>
+
+                                        <div class="col-xs-6 col-md-3" id="icon-container">
+                                                <i class="fa fa-plus fa-5x" style="color: #c1e2b3"> </i> <br>
+                                                Add
+                                        </div>
+
+                                        <div class="col-xs-6 col-md-3" id="icon-container">
+                                                <i class="fa fa-clock-o fa-5x" style="color: #46b8da"> </i><br>
+                                                Confirm
+                                        </div>
+
+                                        <div class="col-xs-6 col-md-3" id="icon-container">
+                                                <i class="fa fa-mortar-board fa-5x" style="color: #fcac45"></i><br>
+                                                Teach
+                                        </div>
+
+                                        <div class="col-xs-6 col-md-3" id="icon-container">
+                                                <i class="fa fa-dollar fa-5x" style="color: #03a9f4"></i> <br>
+                                                Earn
+                                        </div>
+
+
+                                        </p> <br> <br> <br><br>
+
+                                        <div style="bottom: 0; padding-top: 50px">
+                                                <button class="btn btn-primary btn-lg" href="#" role="button">Be a Mentor</button>
+                                        </div>
                                 </div>
-                                <p class="intro"> Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
-                                        aims at providing the best mentoring available to the needy in a complete transparent transaction.
-                                </p> <br>
-                                <h2>How it Works ?</h2> <br>
-
-                                <div class="row">
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
-                                                        <i class="fa fa-hand-o-right fa-5x"> </i>
-                                                        <div class="caption"><h2>Sign</h2>Up</div>
-                                                </a>
-                                        </div>
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: red">
-                                                        <i class="fa fa-plus fa-5x"> </i>
-                                                        <div class="caption"><h2>Add</h2>course</div>
-                                                </a>
-                                        </div>
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: green">
-                                                                <i class="fa fa-clock-o fa-5x"> </i>
-                                                                <div class="caption" ><h2>Wait</h2>confirmation</div>
-                                                </a>
-                                        </div>
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
-                                                                <i class="fa fa-mortar-board fa-5x"> </i>
-                                                                <div class="caption" ><h2>Teach</h2>course</div>
-                                                </a>
-                                        </div>
-                                        <br>
-
-                                        <div class="col-xs-6 col-md-3 col-md-offset-4 ">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: gold">
-                                                                <i class="fa fa-dollar fa-5x"> </i>
-                                                                <div class="caption" ><h2>Earn</h2>instantly</div>
-                                                </a>
-                                        </div>
-
-                                </div>
-                                <a href="signup.php"><button type="button" class="btn btn-success">MENTOR</button></a>
 
                         </div>
 
                         <div class="col-md-6" id="student" style="background-color: silver;  padding-top: 10px">
-                                <div class="section-title">
-                                        <h2>Be a <strong>Student</strong></h2>
-                                        <hr>
-                                        <div class="clearfix"></div>
-                                </div>
-                                <p class="intro"> ThinkFOSS helps in connecting people with skills to people in need, and
-                                        makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.
-                                </p> <br>
-                                <h2>How it Works ?</h2> <br>
+                                        <div class="jumbotron">
+                                                <h1 style="text-align: center">Be a student! </h1><br>
+                                                <p> ThinkFOSS helps in connecting people with skills to people in need, and
+                                                        makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.</p>
+                                                <p> <br>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-sign-in fa-5x" style="color: #67b168"> </i> <br>
+                                                        Join
+                                                </div>
 
-                                <div class="row">
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
-                                                        <i class="fa fa-sign-in fa-5x"> </i>
-                                                        <div class="caption"><h2>Sign</h2>Up</div>
-                                                </a>
-                                        </div>
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: red">
-                                                        <i class="fa fa-search fa-5x"> </i>
-                                                        <div class="caption"><h2>View</h2>course</div>
-                                                </a>
-                                        </div>
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#"  class="thumbnail" style="text-align: center; color: green">
-                                                        <i class="fa fa-cutlery fa-5x"> </i>
-                                                        <div class="caption" ><h2>Enroll</h2>course</div></a>
-                                        </div>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-search fa-5x" style="color: #c1e2b3"> </i> <br>
+                                                        View
+                                                </div>
 
-                                        <div class="col-xs-6 col-md-3">
-                                                <a href="#" class="thumbnail" style="text-align: center; color: blue">
-                                                                <i class="fa fa-street-view fa-5x"> </i>
-                                                                <div class="caption" ><h2>Learn</h2>course</div>
-                                               </a>
-                                        </div>
-                                        <br>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-cutlery fa-5x" style="color: #46b8da"> </i><br>
+                                                        Enroll
+                                                </div>
 
-                                        <div class="col-xs-6 col-md-3 col-md-offset-4 ">
-	                                        <a href="#"class="thumbnail" style="text-align: center; color: gold">
-                                                                <i class="fa fa-trophy fa-5x"> </i>
-                                                                <div class="caption" ><h2>Win</h2>skills</div>
-                                                       </a>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-street-view fa-5x" style="color: #fcac45"> </i><br>
+                                                        Learn
+                                                </div>
+
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-trophy fa-5x" style="color: #03a9f4"> </i> <br>
+                                                        Succeed
+                                                </div>
+
+
+                                                </p> <br> <br> <br><br>
+
+                                                <div style="bottom: 0; padding-top: 50px">
+                                                        <button class="btn btn-primary btn-lg" href="#" role="button">Be a Student</button>
+                                                </div>
                                         </div>
 
                                 </div>
-                                <a href="signup.php"><button type="button" class="btn btn-success">LEARN</button></a>
 
 
                         </div>
-
-
-
-
-                </div>
         </div>
 </div>
 
@@ -677,7 +655,7 @@ $csrfToken = new Token( $csrfSecret );
 <div id="tf-contact" class="text-center" style="background-color: seashell">
         <div class="container">
                 <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-8 col-md-offset-2 well">
 
                                 <div class="section-title center">
                                         <h2>Feel free to <strong>contact us</strong></h2>
@@ -711,7 +689,11 @@ $csrfToken = new Token( $csrfSecret );
                                                                 <textarea class="form-control" rows="3" name="message" id="message" placeholder="Your message" ></textarea>
                                                         </div>
                                                 </div>
-                                                <button type="submit" class="btn tf-btn btn-right">Submit</button>
+                                                <div class="form-group" >
+                                                        <div class="input-group" >
+                                                                <button type="submit" class="btn tf-btn btn-lg btn-right">Submit</button>
+                                                        </div>
+                                                </div>
                                         </form>
 
                         </div>
@@ -729,7 +711,6 @@ $csrfToken = new Token( $csrfSecret );
 <script type="text/javascript" src="js/jquery.isotope.js"></script>
 
 <script src="js/owl.carousel.js"></script>
-
 <!-- Javascripts
 ================================================== -->
 <script type="text/javascript" src="js/main.js"></script>
