@@ -83,6 +83,7 @@ $csrfToken = new Token( $csrfSecret );
                                 <li><a href="#tf-team" class="page-scroll">Team</a></li>
                                 <li><a href="#tf-services" class="page-scroll">Services</a></li>
                                 <li><a href="#tf-mentor" class="page-scroll">Involve</a></li>
+                                <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
                                 <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
                                 <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">BLOG</a></li>
                                 <?php
@@ -528,29 +529,30 @@ $csrfToken = new Token( $csrfSecret );
 
 <!-- Testimonials Section
 ==========================================-->
-<div id="tf-partners" class="text-center">
+<div id="tf-testimonials" class="text-center">
         <div class="overlay">
                 <div class="container">
                         <div class="section-title center">
-                                <h2><strong>Testimonials</strong></h2>
+                                <h2><strong>Our clients’</strong> testimonials</h2>
                                 <div class="line">
                                         <hr>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                        <div id="partner" class="owl-carousel owl-theme" >
+                                        <div id="testimonial" class="owl-carousel owl-theme">
                                                 <div class="item">
                                                         <blockquote>
-	                                                        I requested for an App - to be used on a tablet for obtaining sign ups during Amrita University's International Tours.
-	                                                        My sincere thanks to ThinkFOSS for providing me with the App within two days of request. A simple, yet neat App was provided
-	                                                        with the basic necessary features. Got emails and answers to all questions within minutes. Keep up the great work ThinkFOSS!
-	                                                        Thanks a lot for your help and effort. Will keep you posted on the actual usage. Looking forward to extended support in case
-	                                                        of future issues / request for upgrade.<cite>Sujatha , Amrita Center for International Programs</cite>
+                                                        <h3>I requested for an App - to be used on a tablet for obtaining sign ups during Amrita University's International Tours.
+                                                        My sincere thanks to ThinkFOSS for providing me with the App within two days of request. A simple, yet neat App was provided
+                                                        with the basic necessary features. Got emails and answers to all questions within minutes. Keep up the great work ThinkFOSS!
+                                                        Thanks a lot for your help and effort. Will keep you posted on the actual usage. Looking forward to extended support in case
+                                                        of future issues / request for upgrade.</h3>
+
+                                                                <p><strong>Sujatha</strong>,Co-ordinator, Amrita Center for International Programs.</p>
                                                         </blockquote>
                                                 </div>
-                                                <div class="item">
-                                                </div>
+
                                         </div>
                                 </div>
                         </div>
