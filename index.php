@@ -532,38 +532,24 @@ $csrfToken = new Token( $csrfSecret );
         <div class="overlay">
                 <div class="container">
                         <div class="section-title center">
-                                <h2>Our <strong> Partners</strong></h2>
+                                <h2><strong>Testimonials</strong></h2>
                                 <div class="line">
                                         <hr>
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                        <div id="partner" class="owl-carousel owl-theme">
+                                        <div id="partner" class="owl-carousel owl-theme" >
                                                 <div class="item">
-                                                        <a href="http://amritafoss.in" target="_blank">
-                                                                <img src="img/partners/fosswhite.png">
-                                                                <h3>FOSS@Amrita</h3>
-                                                        </a>
+                                                        <blockquote>
+	                                                        I requested for an App - to be used on a tablet for obtaining sign ups during Amrita University's International Tours.
+	                                                        My sincere thanks to ThinkFOSS for providing me with the App within two days of request. A simple, yet neat App was provided
+	                                                        with the basic necessary features. Got emails and answers to all questions within minutes. Keep up the great work ThinkFOSS!
+	                                                        Thanks a lot for your help and effort. Will keep you posted on the actual usage. Looking forward to extended support in case
+	                                                        of future issues / request for upgrade.<cite>Sujatha , Amrita Center for International Programs</cite>
+                                                        </blockquote>
                                                 </div>
                                                 <div class="item">
-                                                        <a href="http://init-labs.org/" target="_blank">
-                                                                <img src="img/partners/initlabs.png">
-                                                                <h3>Init-Labs</h3>
-                                                        </a>
-                                                </div>
-                                                <div class="item">
-                                                        <a href="http://amrita.edu" target="_blank">
-                                                                <img src="img/partners/amrita.png">
-                                                                <h3>Amrita Vishwa Vidyapeetham</h3>
-                                                        </a>
-                                                </div>
-
-                                                <div class="item">
-                                                        <a href="http://nodeschool.io/kerala" target="_blank">
-                                                                <img src="img/partners/nodeschool.png">
-                                                                <h3>NodeSchool Kerala</h3>
-                                                        </a>
                                                 </div>
                                         </div>
                                 </div>
