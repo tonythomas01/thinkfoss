@@ -166,39 +166,89 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6 well well">
-					<h2>Course</h2> <br>
-					<h5>Language </h5><?php echo $course->getValue('course_lang') ?>
-					<h5>Difficulty </h5><?php echo $course->getValue('course_difficulty') ?>
-					<h5>Fee </h5><?php echo $course->getValue('course_fees') ?>
-					<h5>Description </h5><?php echo $course->getValue('course_bio') ?>
-					<h5>From: <?php echo $course->getValue('course_date_from') . ' : ' . $course->getValue('course_time_from'); ?></h5>
-					<h5>To: <?php echo $course->getValue('course_date_to' ) . ' : ' . $course->getValue('course_time_to'); ?></h5>
-					<h5>Reviews </h5>
-					<hr>
-					<?php
-						if ( !empty( $reviews ) ) {
-							foreach( $reviews as $review ) {
-								$revuser = User::newFromUserId( $review['user_id'], $conn );
-								echo 'Recommended :' . $review['recommend'] .
-									'<span style="text-align:right; float : right;"> User: ' . $revuser->getValue('user_first_name')  .' ' . $revuser->getValue('user_last_name') . ' </span>';
-								echo '<h5>Review : </h5>' . $review['general_review'];
-								echo '<hr>';
+				<div class="col-md-8 well">
+					<div class="panel panel-default panel-default">
+					<div class="panel-heading" style="text-align: center">
+						<div class="panel-title">
+							<p style="font-size: large"><?php echo $course->getValue('course_bio') ?></p>
+						</div>
+					</div>
+					<div class="panel-body">
+						<table class="table table-bordered">
+						   <tr>
+							   <td>Language</td>
+							   <td><?php echo $course->getValue('course_lang') ?></td>
+						   </tr>
+						<tr>
+							<td>Difficulty</td>
+							<td><?php echo $course->getValue('course_difficulty') ?></td>
+						</tr>
+						<tr>
+							<td>Fee</td>
+							<td><?php echo $course->getValue('course_fees') ?></td>
 
-							}
-						} else {
-							echo 'No reviews yet.';
-						}
-					?>
+						</tr>
+						<tr>
+							<td>From</td>
+							<td><?php echo $course->getValue('course_date_from') . ' : ' . $course->getValue('course_time_from'); ?></td>
+						</tr>
+							<tr>
+								<td>To</td>
+								<td><?php echo $course->getValue('course_date_to' ) . ' : ' . $course->getValue('course_time_to'); ?></td>
+							</tr>
+						</table>
+						<div class="panel-footer panel-primary">
+							<h5>Reviews </h5>
+							<hr>
+							<?php
+								if ( !empty( $reviews ) ) {
+									foreach( $reviews as $review ) {
+										$revuser = User::newFromUserId( $review['user_id'], $conn );
+										echo 'Recommended :' . $review['recommend'] .
+											'<span style="text-align:right; float : right;"> User: ' . $revuser->getValue('user_first_name')  .' ' . $revuser->getValue('user_last_name') . ' </span>';
+										echo '<h5>Review : </h5>' . $review['general_review'];
+										echo '<hr>';
+
+									}
+								} else {
+									echo 'No reviews yet.';
+								}
+							?>
+							</div>
+						</div>
+						</div>
 
 				</div>
-				<div class="col-md-6">
-					<h2>Mentor</h2> <br>
-					<h5>Name </h5><?php echo $mentor->getValue('user_first_name') . ' ' . $mentor->getValue('user_last_name'); ?>
-					<h5>Github </h5> <i class="fa fa-github"></i> <?php echo $mentor->getValue( 'user_github'); ?>
-					<h5>Linkedin </h5> <i class="fa fa-linkedin"></i> <?php echo $mentor->getValue( 'user_linkedin'); ?>
-					<h5>Bio </h5> <?php echo $mentor->getValue( 'user_about'); ?>
-					<h5>Nationality</h5> <?php echo $mentor->getValue( 'user_nation'); ?>
+				<div class="col-md-3">
+
+					<div class="panel panel-default panel-primary">
+						<div class="panel-heading" style="text-align: center">
+							<div class="panel-title">
+								<h2>MENTOR</h2> <br>
+								<i class="fa fa-user fa-4x"></i> <br>
+								<?php echo $mentor->getValue('user_first_name') . ' ' . $mentor->getValue('user_last_name'); ?>
+
+							</div>
+						</div>
+						<div class="panel-body">
+							<table class="table table-bordered">
+								<tr>
+									<td><i class="fa fa-github"></i> Github</td>
+									<td><?php echo $mentor->getValue( 'user_github'); ?></td>
+								</tr>
+								<tr>
+									<td><i class="fa fa-linkedin"></i>  Linkedin</td>
+									<td><?php echo $mentor->getValue( 'user_linkedin'); ?></td>
+								</tr>
+								<tr>
+									<td><i class="fa fa-globe"></i>  Nationality</td>
+									<td><?php echo $mentor->getValue( 'user_nation'); ?></td>
+								</tr>
+							</table>
+						</div>
+						<div class="panel-footer"><p style="color: black"><?php echo $mentor->getValue( 'user_about'); ?></p></div>
+
+					</div>
 				</div>
 
 			</div>
