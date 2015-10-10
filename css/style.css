@@ -833,3 +833,7 @@ blockquote cite:before {
 	text-align: center;
 	width: 100px;
 }
+
+#mentor-table {
+	word-break: break-all;
+}

@@ -220,7 +220,6 @@
 
 				</div>
 				<div class="col-md-3">
-
 					<div class="panel panel-default panel-primary">
 						<div class="panel-heading" style="text-align: center">
 							<div class="panel-title">
@@ -231,7 +230,7 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<table class="table table-bordered">
+							<table class="table table-bordered" id="mentor-table">
 								<tr>
 									<td><i class="fa fa-github"></i> Github</td>
 									<td><?php echo $mentor->getValue( 'user_github'); ?></td>
