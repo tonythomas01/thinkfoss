@@ -138,7 +138,7 @@ include 'navigationstudent.php'
 						echo '
 						 <ul class="external-right">
 						 <li>
-						<form action="../../assets/php/doEnrollCourse.php" method="post">
+						<form action="../../assets/php/doEnrollCourse.php" method="get">
 						<input type="hidden" name="CSRFToken" value="';
 						echo $csrfToken->getCSRFToken();
 						echo '"/>
@@ -161,20 +161,19 @@ include 'navigationstudent.php'
 			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
 				                                        <figcaption class="mask" style="text-align:center; ">
-				                                        <form action="viewMoreInfoCourses.php" method="post">
-						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+				                                        <form action="course.php" method="get">
+										<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
 				                                                <button style="position: relative; top: 20px; float:center; width: 100px; height: 100px; border-radius: 50px; opacity: 0.8; padding: 10px 16px; font-size: 24px;" type="submit" class="btn btn-info" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-search-plus"></i></button>
 				                                        </form>
 				                                        </figcaption>
 
 						                        <h3><span style ="position: absolute; bottom : 40px; right: 40px;" class="label label-primary"><i class="fa fa-user"> </i> Enrolled :
-						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo'
+						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo '
 						                        </span></h3>
 
 				                                <ul class="external">
 								<li>
-								<form action="viewMoreInfoCourses.php" method="post">
-						                        <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
+								<form action="course.php" method="get">
 								<button type="submit" class="btn btn-success btn-lg" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-folder-open" style="color:white"></i></button>
 								</form>
 								</li>

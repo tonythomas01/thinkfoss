@@ -4,7 +4,7 @@
 		header( 'Location: ../../signup.php');
 	}
 
-	if ( !$_SERVER['REQUEST_METHOD'] == 'POST' ) {
+	if ( !$_SERVER['REQUEST_METHOD'] == 'GET' ) {
 		header( 'Location: viewAllCourses.php');
 		return false;
 	}
@@ -14,19 +14,11 @@
 
 
 	require_once('../../assets/php/Statement.php');
-	$preparedPost = new Statement( $_POST );
+	$preparedPost = new Statement( $_GET );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
 		header('Location: ' . '../student/viewAllCourses.php');
 		return;
-	}
-	require_once('../../assets/php/Token.php');
-	require_once('../../assets/php/access/accessTokens.php');
-	$csrfToken = new Token( $csrfSecret );
-	if( ! $csrfToken->validateCSRFToken( $preparedPost->getValue('CSRFToken') ) ) {
-		$_SESSION['error'] = "Error: Invalid CSRF Token. Please contact one of the admins, or try againsss";
-		header( 'Location: '.'../portal/cart/viewCart.php');
-		return false;
 	}
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
