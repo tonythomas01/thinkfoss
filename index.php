@@ -599,7 +599,7 @@ $csrfToken = new Token( $csrfSecret );
                                         </div>
 
                                         <div style="bottom: 0; padding-top: 50px">
-                                                <button class="btn btn-primary btn-lg" href="#" role="button">Be a Mentor</button>
+                                                <button class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Mentor</button>
                                         </div>
                                 </div>
 
@@ -641,7 +641,7 @@ $csrfToken = new Token( $csrfSecret );
                                                 </div>
 
                                                 <div style="bottom: 0; padding-top: 50px">
-                                                        <button class="btn btn-primary btn-lg" href="#" role="button">Be a Student</button>
+                                                        <button class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Student</button>
                                                 </div>
                                         </div>
 

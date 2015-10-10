@@ -11,7 +11,7 @@ function main() {
 
    /* ==============================================
   	Testimonial Slider
-  	=============================================== */ 
+  	=============================================== */
 
   	$('a.page-scroll').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -38,7 +38,7 @@ function main() {
         }
     });
 
-    $('body').scrollspy({ 
+    $('body').scrollspy({
         target: '.navbar-default',
         offset: 80
     });
@@ -49,7 +49,7 @@ function main() {
 
 
         $(".course_remove").click( function() {
-            $.post( '/php/doRemoveCoursefromCart.php' , {
+            $.post( '/assets/php/doRemoveCoursefromCart.php' , {
                 course_id : this.value,
                 csrf_token : this.name
             });
@@ -57,7 +57,7 @@ function main() {
         });
 
   	  $("#team").owlCarousel({
-  	 
+
   	      navigation : false, // Show next and prev buttons
   	      slideSpeed : 300,
   	      paginationSpeed : 400,
@@ -75,7 +75,7 @@ function main() {
   	  });
 
   	  $("#clients").owlCarousel({
-  	 
+
   	      navigation : false, // Show next and prev buttons
   	      slideSpeed : 300,
   	      paginationSpeed : 400,
