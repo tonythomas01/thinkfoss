@@ -138,7 +138,7 @@ include 'navigationstudent.php'
 						echo '
 						 <ul class="external-right">
 						 <li>
-						<form action="../../assets/php/doEnrollCourse.php" method="get">
+						<form action="../../assets/php/doEnrollCourse.php" method="post">
 						<input type="hidden" name="CSRFToken" value="';
 						echo $csrfToken->getCSRFToken();
 						echo '"/>
@@ -174,6 +174,7 @@ include 'navigationstudent.php'
 				                                <ul class="external">
 								<li>
 								<form action="course.php" method="get">
+								<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
 								<button type="submit" class="btn btn-success btn-lg" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-folder-open" style="color:white"></i></button>
 								</form>
 								</li>
