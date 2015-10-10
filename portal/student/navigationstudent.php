@@ -47,7 +47,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                if ( $user ) {
+                if ( isset( $user ) ) {
                     if ( $user->checkIfPrivelaged( $conn ) ) {
                         echo '<li><a href="../admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
                     }
@@ -64,7 +64,7 @@
                                         <form action='../../assets/php/doSignOut.php' method='post'>";
                                                 $csrfToken = new Token( $csrfSecret );
                                                 echo "
-                                                <input type='hidden' name='CSRFToken' value="; echo $csrfToken->getCSRFToken(); echo "/>
+                                                <input type='hidden' name='CSRFToken' value="; echo $csrfToken->getCSRFToken(); echo "></input>
                                                 <button type='submit' class='btn btn-danger btn-block'>Sign Out</button>
                                         </form>
                                 </li>

@@ -151,12 +151,12 @@
 
 
             <?php
-            if ( $_SESSION['message'] ) {
+            if ( isset( $_SESSION['message'] ) ) {
 	                $message = $_SESSION['message'];
 	                echo "<p class='alert-success' style='text-align: center'> $message</p>";
 	                unset( $_SESSION['message'] );
             }
-            if ( $_SESSION['error'] ) {
+            if ( isset( $_SESSION['error'] ) ) {
 	                $errorMessage = $_SESSION['error'];
 	                echo "<p class='alert-warning' style='text-align: center' > $errorMessage </p>";
 	                unset( $_SESSION['error'] );
