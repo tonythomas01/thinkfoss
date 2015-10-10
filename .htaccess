@@ -13,7 +13,3 @@ ExpiresByType application/x-shockwave-flash "access plus 1 month"
 ExpiresByType image/x-icon "access plus 1 year"
 ExpiresDefault "access plus 2 days"
 </IfModule>
-
-RewriteEngine On
-RewriteCond %{QUERY_STRING}  (.*)(?:^|&)course=(?:[^&]*)((?:&|$).*)
-RewriteRule (.*) %2/$1?%1%3 [R=307]

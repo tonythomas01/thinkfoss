@@ -1,19 +1,14 @@
 <?php
 	session_start();
-	if ( !isset( $_SESSION['loggedin_user'] ) ) {
-		header( 'Location: ../../signup.php');
-	}
-
 	if ( !$_SERVER['REQUEST_METHOD'] == 'GET' ) {
 		header( 'Location: viewAllCourses.php');
 		return false;
 	}
+
 	require_once('../../assets/php/access/accessDB.php');
 	require_once('../../assets/php/User.php');
-	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-
-
 	require_once('../../assets/php/Statement.php');
+
 	$preparedPost = new Statement( $_GET );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
@@ -21,7 +16,23 @@
 		return;
 	}
 
-	$loggedInUser = $_SESSION['loggedin_user_id'];
+	if ( isset( $_SESSION['loggedin_user'] ) ) {
+		$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+		$loggedInUser = $_SESSION['loggedin_user_id'];
+	}
+
+	require_once('../../assets/php/Course.php');
+	require_once('../../assets/php/User.php');
+
+	$preparedPost->sanitize();
+
+	$courseName = $preparedPost->getValue( 'course' );
+	$courseRaw = explode( '-', $courseName );
+	$course = Course::newFromId( $conn, $courseRaw[1] );
+	$mentorId =  $course->getValue( 'course_mentor' );
+	$mentor = User::newFromUserId( $mentorId, $conn );
+	$mentor->getExtra( $conn );
+	$reviews = $course->getReviews( $conn );
 
 ?>
 <!DOCTYPE html>
@@ -79,32 +90,19 @@
 	<!--[endif]-->
 </head>
 <body >
-<?php
-	require_once('../../assets/php/Course.php');
-	require_once('../../assets/php/User.php');
-	$preparedPost->sanitize();
-	$courseName = $preparedPost->getValue( 'course' );
-	$courseRaw = explode( '-', $courseName );
-	$course = Course::newFromId( $conn, $courseRaw[1] );
-	$mentorId =  $course->getValue( 'course_mentor' );
-	$mentor = User::newFromUserId( $mentorId, $conn );
-	$mentor->getExtra( $conn );
-	$reviews = $course->getReviews( $conn );
-?>
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationstudent.php' ?>
-
 
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
 		<div class="portal" >
 			<?php
-			if ( $_SESSION['message'] ) {
+			if ( isset( $_SESSION['message'] ) ) {
 				$message = $_SESSION['message'];
 				echo "<p class='alert-success' style='text-align: center'> $message</p>";
 				unset( $_SESSION['message'] );
-			} else if ( $_SESSION['error'] ) {
+			} else if ( isset ( $_SESSION['error'] ) ) {
 				$errorMessage = $_SESSION['error'];
 				echo "<p class='alert-warning' style='text-align: center'> $errorMessage </p>";
 				unset( $_SESSION['error'] );
@@ -115,32 +113,51 @@
 				<h2><?php $courseIdTag = 'course-' . $course->getCourseId();
 
 					echo $course->getCourseName(). " <small>Active : <i class='fa fa-check' ></i>";
-					if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
-						echo " Enrolled : <span style='color: green; font-weight: bold'> Yes</span> </small>";
-						echo '<small><span style="text-align: right; float: right;">
-							 <form action="writeReview.php" method="post">
-							<input type="hidden" name="CSRFToken" value="';
-						echo $csrfToken->getCSRFToken();
-						echo '"/>
-						<button class="btn btn-info" type="submit" name="course-review"
-						id="review"   value="'; echo $courseIdTag; echo '"><i class="fa fa-pencil-square" > Review</i></button>
-							</form>
-						</span></small></h2>';
-
-
-					} else if ( $course->needsCheckout( $loggedInUser, $conn ) ) {
-						echo " Enrolled : <span style='color: red; font-weight: bold'> NEEDS CHECKOUT</span> </small>";
-						echo '<small><span style="text-align: right; float: right;">
-							<a href="../cart/viewCart.php"> <button type="button"  class="btn btn-danger" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Checkout </button></a>
+					if ( isset( $user ) ) {
+						if ($course->isEnrolled($loggedInUser, $conn)) {
+							echo " Enrolled : <span style='color: green; font-weight: bold'> Yes</span> </small>";
+							echo '<small><span style="text-align: right; float: right;">
+								 <form action="writeReview.php" method="post">
+								<input type="hidden" name="CSRFToken" value="';
+							echo $csrfToken->getCSRFToken();
+							echo '"/>
+							<button class="btn btn-info" type="submit" name="course-review"
+							id="review"   value="';
+							echo $courseIdTag;
+							echo '"><i class="fa fa-pencil-square" > Review</i></button>
+								</form>
 							</span></small></h2>';
-					} else{
+
+
+						} else if ($course->needsCheckout($loggedInUser, $conn)) {
+							echo " Enrolled : <span style='color: red; font-weight: bold'> NEEDS CHECKOUT</span> </small>";
+							echo '<small><span style="text-align: right; float: right;">
+								<a href="../cart/viewCart.php"> <button type="button"  class="btn btn-danger" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-star" style="color:gold" ></i> Checkout </button></a>
+								</span></small></h2>';
+						} else {
+							echo " Enrolled : <span style='color: red; font-weight: bold'> No</span> </small>";
+							echo '<small><span style="text-align: right; float: right;">
+								<form action="../../assets/php/doEnrollCourse.php" method="post">
+								<input type="hidden" name="CSRFToken" value="';
+							echo $csrfToken->getCSRFToken();
+							echo '"/>
+								<button class="btn btn-success" type="submit" name="course" value="';
+							echo $courseIdTag;
+							echo '">Add <i class="fa fa-shopping-cart"></i></button>
+								</form>
+							</span></small></h2>';
+						}
+					} else {
 						echo " Enrolled : <span style='color: red; font-weight: bold'> No</span> </small>";
 						echo '<small><span style="text-align: right; float: right;">
-							<form action="../../assets/php/doEnrollCourse.php" method="post">
-							<input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-							<button class="btn btn-success" type="submit" name="course" value="'; echo $courseIdTag; echo '">Add <i class="fa fa-shopping-cart"></i></button>
-							</form>
-						</span></small></h2>';
+								<form action="../../assets/php/doEnrollCourse.php" method="post">
+								<input type="hidden" name="CSRFToken" value="';
+						echo '"/>
+								<button class="btn btn-success" type="submit" name="course" value="';
+						echo $courseIdTag;
+						echo '">Add <i class="fa fa-shopping-cart"></i></button>
+								</form>
+							</span></small></h2>';
 					}
 
 					?>
