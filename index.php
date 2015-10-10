@@ -85,7 +85,6 @@ $csrfToken = new Token( $csrfSecret );
                                 <li><a href="#tf-mentor" class="page-scroll">Involve</a></li>
                                 <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
                                 <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
-                                <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">BLOG</a></li>
                                 <?php
                                 if ( isset( $_SESSION['loggedin_user'] ) ) {
                                         $loggedinUser = $_SESSION['loggedin_user'];
@@ -258,6 +257,8 @@ $csrfToken = new Token( $csrfSecret );
 	                                        </li>
                                         </ul>
                                 </div>
+
+                                <a type="button" target="_blank" href="http://blog.thinkfoss.com" class="btn btn-lg btn-success">Visit Blog</a>
                         </div>
                 </div>
         </div>
