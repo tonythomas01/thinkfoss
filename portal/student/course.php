@@ -43,9 +43,9 @@
 	<meta charset="utf-8">
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ThinkFOSS - code | train | grow</title>
+	<title><?php echo $course->getCourseName(); ?> - ThinkFOSS</title>
 	<meta name="msvalidate.01" content="AACA4869B9C746F7F151D39BF5D19CB2" />
-	<meta name="description" content=" ThinkFOSS aims at providing Open Source training and solutions to Individuals, Schools, Universities and Industries in need. ThinkFOSS is a collection of Open Source enthusiasts and entrepreneurs who are ready to spend their time spreading FOSS technologies">
+	<meta name="description" content="<?php echo $course->getValue('course_bio'); ?> - ThinkFOSS ThinkFOSS aims at providing Open Source training and solutions to Individuals, Schools, Universities and Industries in need. ThinkFOSS is a collection of Open Source enthusiasts and entrepreneurs who are ready to spend their time spreading FOSS technologies">
 	<meta name="keywords" content="thinkfoss, fossatamrita, training, open source, open source solutions">
 	<meta name="author" content="thinkfoss.com">
 

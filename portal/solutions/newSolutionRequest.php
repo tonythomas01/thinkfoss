@@ -57,11 +57,11 @@
 <body>
 <?php
         session_start();
-        require_once('../../php/access/accessDB.php');
-        require_once('../../php/User.php');
+        require_once('../../assets/php/access/accessDB.php');
+        require_once('../../assets/php/User.php');
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-        require_once('../../php/access/accessTokens.php');
-        require_once('../../php/Token.php');
+        require_once('../../assets/php/access/accessTokens.php');
+        require_once('../../assets/php/Token.php');
         $csrfToken = new Token( $csrfSecret );
 ?>
 <?php include 'navigationSolutions.php' ?>
