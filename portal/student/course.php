@@ -83,7 +83,7 @@
 	require_once('../../assets/php/Course.php');
 	require_once('../../assets/php/User.php');
 	$preparedPost->sanitize();
-	$courseName = mysqli_real_escape_string( $conn, $preparedPost->getValue( 'course' ) );
+	$courseName = $preparedPost->getValue( 'course' );
 	$courseRaw = explode( '-', $courseName );
 	$course = Course::newFromId( $conn, $courseRaw[1] );
 	$mentorId =  $course->getValue( 'course_mentor' );
