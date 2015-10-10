@@ -197,7 +197,7 @@
 								<td><?php echo $course->getValue('course_date_to' ) . ' : ' . $course->getValue('course_time_to'); ?></td>
 							</tr>
 						</table>
-						<div class="panel-footer panel-primary">
+						<div class="panel-footer panel-default">
 							<h5>Reviews </h5>
 							<hr>
 							<?php
