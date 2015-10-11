@@ -196,7 +196,7 @@ require_once('assets/php/access/accessDB.php');
                         </div>
 
                         <div class="container">
-                        <div id="owl-home" class="owl-carousel owl-theme">
+                        <div id="owl-home" class="owl-carousel owl-theme" style="display:block; opacity: 1; clear: both">
                                         <?php
                                         $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
                                         if ( $res = $conn->query( $statement ) ) {
