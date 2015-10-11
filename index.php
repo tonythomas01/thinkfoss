@@ -217,11 +217,6 @@ require_once('assets/php/access/accessDB.php');
                                         ?>
 
                         </div>
-
-                        <div class="customNavigation">
-                                <a class="btn prev " style="padding: 4px;"><i style="color: white" class="fa fa-arrow-circle-left fa-2x"></i> </a>
-                                <a class="btn next " style="padding: 4px;"><i style="color: white" class="fa fa-arrow-circle-right fa-2x"></i> </a>
-                        </div>
                         </div>
 
                 </div>
@@ -706,6 +701,11 @@ require_once('assets/php/access/accessDB.php');
                                 }
                                 ?>
 
+                        </div>
+
+                        <div class="customNavigation">
+                                <a class="btn prev " style="padding: 4px;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+                                <a class="btn next " style="padding: 4px;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
                         </div>
                         </div>
 
