@@ -195,28 +195,54 @@ require_once('assets/php/access/accessDB.php');
                                         <button class="btn tf-btn btn-primary btn-lg" ><strong>I want skills</strong></button></a>
                         </div>
 
+                        <div class="container">
+                        <div id="owl-home" class="owl-carousel owl-theme">
+                                        <?php
+                                        $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
+                                        if ( $res = $conn->query( $statement ) ) {
+                                                foreach( $res as $row ) {
+                                                        $courseName = $row['course_name'];
+                                                        $courseId = $row['course_id'];
+                                                        echo "
+                                                <div class='panel' id='course-panel-home'>
+                                                <div class='panel-heading'>
+                                                <div class='panel-title'>
+                                                <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
+                                                target='_blank' style='color: white;'> <h2 style='text-transform: capitalize'>$courseName</h2></a>
+                                                </div></div>
+                                                </div>";
 
+                                                }
+                                        }
+                                        ?>
 
-                        <nav style="padding-top: 15px; " class="navbar navbar-fixed-bottom" >
-                                <div class="container">
-                                        <div class="pull-left fnav">
-                                                <p>NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
-                                        </div>
-                                        <div class="pull-right fnav">
-                                                <ul class="footer-social">
-                                                        <li><a href="http://www.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
-                                                        <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                        <li><a href="https://plus.google.com/102089872995784319229/about" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                                        <li><a href="https://twitter.com/thinkfoss" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                </ul>
-                                        </div>
-                                </div>
-                        </nav>
+                        </div>
+
+                        <div class="customNavigation">
+                                <a class="btn prev " style="padding: 4px;"><i style="color: white" class="fa fa-arrow-circle-left fa-2x"></i> </a>
+                                <a class="btn next " style="padding: 4px;"><i style="color: white" class="fa fa-arrow-circle-right fa-2x"></i> </a>
+                        </div>
+                        </div>
 
                 </div>
         </div>
 </div>
 
+<nav style="padding-top: 15px; " class="navbar navbar-fixed-bottom" >
+        <div class="container">
+                <div class="pull-left fnav">
+                        <p style="color: white">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
+                </div>
+                <div class="pull-right fnav">
+                        <ul class="footer-social">
+                                <li><a href="http://www.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                                <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://plus.google.com/102089872995784319229/about" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://twitter.com/thinkfoss" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        </ul>
+                </div>
+        </div>
+</nav>
 
 
 <!-- About Us Page
@@ -665,7 +691,7 @@ require_once('assets/php/access/accessDB.php');
                                                 $coruseBio = $row['course_bio'];
 
                                                 echo "
-                                                <div class='panel panel-primary' id='course-panel-home'>
+                                                <div class='panel panel-primary' id='course-panel-mentor'>
                                                 <div class='panel-heading'>
                                                 <div class='panel-title'>
                                                 <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
@@ -677,10 +703,8 @@ require_once('assets/php/access/accessDB.php');
                                                 </div>";
 
                                         }
-
                                 }
                                 ?>
-
 
                         </div>
 
