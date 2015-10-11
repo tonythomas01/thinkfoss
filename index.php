@@ -3,6 +3,7 @@ session_start();
 require_once('assets/php/Token.php');
 require_once('assets/php/access/accessTokens.php');
 $csrfToken = new Token( $csrfSecret );
+require_once('assets/php/access/accessDB.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -646,7 +647,32 @@ $csrfToken = new Token( $csrfSecret );
                                                 </div>
                                         </div>
 
-                                </div>
+                        </div>
+
+                        <div class="container well">
+                                <div class="section-title center">
+                                <h2 style="text-align: center" > <strong>Trending</strong> on ThinkFOSS</h2>
+                                        </div>
+                        <div id="owl-demo" class="owl-carousel owl-theme">
+                                <?php
+                                $statement = "SELECT `course_name`, `course_id` FROM `course_details` WHERE `course_approved` = true";
+                                if ( $res = $conn->query( $statement ) ) {
+                                        foreach( $res as $row ) {
+                                                $courseName = $row['course_name'];
+                                                $courseId = $row['course_id'];
+                                                echo "<div class='item'><a style='text-decoration: none; color: white' target='_blank' href='portal/student/course.php?name=$courseName&course=course-$courseId'><h1>$courseName</h1></div></a>";
+                                        }
+
+                                }
+                                ?>
+
+                        </div>
+
+                        <div class="customNavigation">
+                                <a class="btn prev " style="padding: 4px;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+                                <a class="btn next " style="padding: 4px;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
+                        </div>
+                        </div>
 
 
                         </div>

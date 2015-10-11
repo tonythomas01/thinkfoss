@@ -837,3 +837,26 @@ blockquote cite:before {
 #mentor-table {
 	word-break: break-all;
 }
+
+#owl-demo .item{
+    background: #42bdc2;
+	padding: 30px 0px;
+	margin: 10px;
+    color: #FFF;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-align: center;
+    height: 200px;
+}
+.customNavigation{
+	text-align: center;
+}
+.customNavigation a{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
