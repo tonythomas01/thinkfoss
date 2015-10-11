@@ -248,7 +248,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <form action="http://formspree.io/tony@thinkfoss.com" method="POST" >
+                        <form action="http://formspree.io/admin@thinkfoss.com" method="POST" >
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Your name</label>
                                 <div class="col-sm-10">

@@ -732,7 +732,7 @@ require_once('assets/php/access/accessDB.php');
                                         <small><em>Please drop in a mail to hire us for your need</em></small>
                                 </div>
 
-                                <form action="http://formspree.io/tony@thinkfoss.com" method="POST" >
+                                <form action="http://formspree.io/admin@thinkfoss.com" method="POST" >
                                         <form class="form-inline">
                                                 <div class="form-group">
                                                         <label class="sr-only" for="exampleInputAmount">Your Name</label>
