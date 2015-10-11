@@ -654,17 +654,30 @@ require_once('assets/php/access/accessDB.php');
                                 <h2 style="text-align: center" > <strong>Trending</strong> on ThinkFOSS</h2>
                                         </div>
                         <div id="owl-demo" class="owl-carousel owl-theme">
+
+
                                 <?php
-                                $statement = "SELECT `course_name`, `course_id` FROM `course_details` WHERE `course_approved` = true";
+                                $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
                                 if ( $res = $conn->query( $statement ) ) {
                                         foreach( $res as $row ) {
                                                 $courseName = $row['course_name'];
                                                 $courseId = $row['course_id'];
-                                                echo "<div class='item'><a style='text-decoration: none; color: white' target='_blank' href='portal/student/course.php?name=$courseName&course=course-$courseId'><h1>$courseName</h1></div></a>";
+                                                $coruseBio = $row['course_bio'];
+
+                                                echo "
+                                                <div class='panel panel-primary' id='course-panel-home'>
+                                                <div class='panel-heading'>
+                                                <div class='panel-title'><h2>$courseName</h2> </div></div>
+
+                                                <div class='panel-body'> <p>$coruseBio</p></div>
+
+                                                </div>";
+
                                         }
 
                                 }
                                 ?>
+
 
                         </div>
 

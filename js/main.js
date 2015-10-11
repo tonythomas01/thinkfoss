@@ -152,9 +152,7 @@ function main() {
                 itemsTablet: [600,2], //2 items between 600 and 0
                 itemsMobile : false // itemsMobile disabled - inherit from itemsTablet option
             });
-
-
-
+            
             // Custom Navigation Events
             $(".next").click(function(){
                 owl.trigger('owl.next');
