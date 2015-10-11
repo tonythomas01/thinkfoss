@@ -866,22 +866,21 @@ blockquote cite:before {
 
 #course-panel-home {
     background-color: #4285f4;
-}
-
-#course-panel-home .panel-heading {
     height: 150px;
-    text-align: center;
-    overflow: auto;
-    align-items: center;
-    display: flex;
-}
-#course-panel-home .panel-heading h2 {
-    line-height: 90%;
-    text-overflow: clip;
-    padding-top: 15px;
 }
 #course-panel-home .panel-body {
+
+    height: 150px;
     overflow: auto;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+#course-panel-home .panel-body h2{
+    padding-top: 10px;
+    overflow: hidden;
+    line-height: 85%;
+    text-overflow: ellipsis;
 }
 
 .owl-wrapper-outer {

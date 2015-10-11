@@ -205,11 +205,13 @@ require_once('assets/php/access/accessDB.php');
                                                         $courseId = $row['course_id'];
                                                         echo "
                                                 <div class='panel' id='course-panel-home'>
-                                                <div class='panel-heading'>
-                                                <div class='panel-title' style='text-align: center'> <i style='color: gold; position: fixed; top:5px; left:80px; right: 80px; margin: 5% auto' class='fa fa-rocket fa-2x'></i><br>
+                                                <div class='panel-heading' style='text-align: center' >
+                                                 <i style='color: gold; position: fixed; right :80px; left: 80px;' class='fa fa-rocket fa-2x'></i>
+                                                </div>
+                                                <div class='panel-body'>
                                                 <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
                                                 target='_blank' style='color: white;'> <h2 style='text-transform: capitalize'>$courseName</h2></a>
-                                                </div></div>
+                                                </div>
                                                 </div>";
 
                                                 }
