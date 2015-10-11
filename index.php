@@ -667,7 +667,10 @@ require_once('assets/php/access/accessDB.php');
                                                 echo "
                                                 <div class='panel panel-primary' id='course-panel-home'>
                                                 <div class='panel-heading'>
-                                                <div class='panel-title'><h2>$courseName</h2> </div></div>
+                                                <div class='panel-title'>
+                                                <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
+                                                target='_blank' style='color: white'> <h2>$courseName</h2></a>
+                                                </div></div>
 
                                                 <div class='panel-body'> <p>$coruseBio</p></div>
 
