@@ -866,14 +866,16 @@ blockquote cite:before {
 
 #course-panel-home {
     background-color: #4285f4;
-    height: 150px;
+    height: 170px;
 }
 #course-panel-home .panel-body {
-    height: 170px;
+    padding-top: 10px;
+    height: 150px;
     overflow: auto;
     text-align: center;
     align-items: center;
     padding-bottom: 10px;
+    display: flex;
 }
 #course-panel-home .panel-body h2{
     padding-top: 10px;
