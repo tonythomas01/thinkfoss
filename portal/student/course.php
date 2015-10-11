@@ -195,7 +195,7 @@
 							<td><?php echo $course->getValue('course_difficulty') ?></td>
 						</tr>
 						<tr>
-							<td>Fee</td>
+							<td>Fee ( <i class='fa fa-rupee'></i> )</td>
 							<td><?php echo $course->getValue('course_fees') ?></td>
 
 						</tr>
