@@ -172,7 +172,7 @@ require_once('assets/php/access/accessDB.php');
 ==========================================-->
 <div id="tf-home" class="text-center">
         <div class="overlay">
-                <div class="row">
+                <div class="row" style="padding : 5% 10% 40% 10%">
                         <div class ="col-md-6" >
                                 <div class="content" style="padding-top: 50%;">
                                         <p class="lead" style="color: white; padding-bottom: 40px; font-size: x-large">Platform for enthusiasts to share<br> and gain open source
