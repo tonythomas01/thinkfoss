@@ -58,13 +58,14 @@ require_once('assets/php/access/accessDB.php');
                 ga('send', 'pageview');
 
         </script>
-        <link href="css/material/material-wfont.min.css" rel="stylesheet">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.2/angular-material.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="overflow: hidden">
 <!-- Navigation
 ==========================================-->
-<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top" >
+        <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -73,19 +74,26 @@ require_once('assets/php/access/accessDB.php');
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
+                        <a class="navbar-brand" href="index.php" style="font-size: 30px">Think<span class="color">FOSS</span></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#tf-home" class="page-scroll">Home</a></li>
-                                <li><a href="#tf-about" class="page-scroll">About</a></li>
-                                <li><a href="#tf-team" class="page-scroll">Team</a></li>
                                 <li><a href="#tf-services" class="page-scroll">Services</a></li>
-                                <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
+                                <li><a href="#tf-courses" class="page-scroll">Courses</a></li>
                                 <li><a href="#tf-mentor" class="page-scroll">Involve</a></li>
-                                <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
+                                <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
+                                <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                                <li><a href="#tf-about">About Us</a></li>
+                                                <li><a href="#tf-team">Team</a></li>
+                                                <li><a href="http://blog.thinkfoss.com">Blog</a></li>
+                                                <li><a href="#tf-contact">Contact</a></li>
+
+                                        </ul>
+                                </li>
                                 <?php
                                 if ( isset( $_SESSION['loggedin_user'] ) ) {
                                         $loggedinUser = $_SESSION['loggedin_user'];
@@ -101,12 +109,8 @@ require_once('assets/php/access/accessDB.php');
                                         </form>
                                 </li>";
                                         } else {
-	                                        echo "<li>
-
-                                                <div>
-                                                <button type='button' class='btn btn-raised' data-toggle='modal' data-target='#login-modal' style='background-color: gold; color: black; padding-right: 10px; padding-left: 10px'>Login</button>
-                                                <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
-                                                </div>
+	                                        echo "<li >
+                                                <a type='button' class='btn btn-raised' data-toggle='modal' data-target='#login-modal' style='background-color: #fcac45; color: black; padding-right: 10px; padding-left: 10px'>Login</a>
 
                                                 </li>
                             ";
@@ -170,78 +174,33 @@ require_once('assets/php/access/accessDB.php');
 ==========================================-->
 <div id="tf-home" class="text-center">
         <div class="overlay">
-                <div class="content">
-                        <h1>Welcome to <strong>Think<span class="color">FOSS</span></strong></h1>
-                        <p class="lead"><strong>< code | train | grow ></strong></p>
-                </div>
                 <div class="row">
-                        <div class="col-md-4">
-                                <i style="font-size: 500%; color: seashell" class="fa fa-graduation-cap"></i>
-                                <h3> I got skills & want to earn<br> some <span style="color: gold"><i class="fa fa-rupee"></i> </span>  out of it!</h3>
-                                <a href="#tf-mentor" class="page-scroll">
-                                        <button class="btn tf-btn btn-primary btn-lg" ><strong>I got skills</strong></button></a>
+                        <div class ="col-md-6" >
+                                <div class="content" style="padding-top: 50%;">
+                                        <p class="lead" style="color: white; padding-bottom: 40px; font-size: x-large">Platform for enthusiasts to share<br> and gain open source
+                                        knowledge</p>
+                                        <a class="btn btn-lg" href="#tf-mentor" style="background-color: grey; color: white; font-size: xx-large">
+                                                <i class="fa fa-graduation-cap fa-2x pull-left page-scroll" style="color: #fcac45"></i> <strong style="display: flex; padding-top: 10px" >Mentor</strong> </a>
+
+
+                                        <a class="btn btn-lg btn-danger" href="#tf-mentor" style="background-color: #fcac45; font-size: xx-large">
+                                                <i class="fa fa-laptop fa-2x pull-left page-scroll" style="color: grey"></i><strong  style="display: flex; padding-top: 10px">Learn</strong></a>
+                                </div>
 
                         </div>
-                        <div class="col-md-4" style="border: dashed gold; padding: 1%">
-                                <i style="font-size: 500%; color: gold" class="fa fa-star"></i>
-                                <h3> I am looking for solutions!<br> Build me one</h3>
-                                <a href="#tf-task" class="page-scroll">
-                                        <button class="btn tf-btn btn-primary btn-lg" style="background-color: gold" ><strong><span style="color: black";>Solutions</span></strong></button></a>
-                        </div>
-                        <div class="col-md-4" >
-                                <i style="font-size: 500%; color: seashell" class="fa fa-child"></i>
-                                <h3> I am looking for skills!<br> Help me find them</h3>
-                                <a href="#student" class="page-scroll">
-                                        <button class="btn tf-btn btn-primary btn-lg" ><strong>I want skills</strong></button></a>
-                        </div>
 
-                        <div class="container">
-                        <div id="owl-home" class="owl-carousel owl-theme" style="display:block; opacity: 1; clear: both">
-                                        <?php
-                                        $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
-                                        if ( $res = $conn->query( $statement ) ) {
-                                                foreach( $res as $row ) {
-                                                        $courseName = $row['course_name'];
-                                                        $courseId = $row['course_id'];
-                                                        echo "
-                                                <div class='panel' id='course-panel-home'>
-                                                <div class='panel-heading' style='text-align: center' >
-                                                 <i style='color: gold; position: fixed; right :80px; left: 80px;' class='fa fa-rocket fa-2x'></i>
-                                                </div>
-                                                <div class='panel-body'>
-                                                <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
-                                                target='_blank' style='color: white;'> <h2 style='text-transform: capitalize'>$courseName</h2></a>
-                                                </div>
-                                                </div>";
+                        <div class ="col-md-6">
+                                        <div class="content" style="padding-top: 30%">
+                                        <p style="font-size: xx-large">< code | <span class="color">share</span>  | grow ></p>
+                                        </div>
 
-                                                }
-                                        }
-                                        ?>
-
+                                <p style="padding-top: 10%;  font-size: x-large"><i class="fa fa-cogs fa-5x"></i> <br>Build Your <br><a href="#tf-task" class="label page-scroll" style="background-color:#fcac45 " >Applications</a> with Us!</p>
                         </div>
-                        </div>
-
                 </div>
+
+
         </div>
 </div>
-
-<nav style="padding-top: 15px; " class="navbar navbar-fixed-bottom" >
-        <div class="container">
-                <div class="pull-left fnav">
-                        <p style="color: white">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
-                </div>
-                <div class="pull-right fnav">
-                        <ul class="footer-social">
-                                <li><a href="http://www.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
-                                <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://plus.google.com/102089872995784319229/about" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://twitter.com/thinkfoss" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        </ul>
-                </div>
-        </div>
-</nav>
-
-
 <!-- About Us Page
 ==========================================-->
 <div id="tf-about">
@@ -568,11 +527,11 @@ require_once('assets/php/access/accessDB.php');
                                         <div id="testimonial" class="owl-carousel owl-theme">
                                                 <div class="item">
                                                         <blockquote>
-                                                        <h3>I requested for an app - to be used on a tablet for obtaining sign ups during Amrita University's International tours.
+                                                        <p>I requested for an app - to be used on a tablet for obtaining sign ups during Amrita University's International tours.
                                                         My sincere thanks to ThinkFOSS for providing me with the app within two days of request. A simple, yet neat app was provided
                                                         with the basic necessary features. Got emails and answers to all questions within minutes. Keep up the great work ThinkFOSS!
                                                         Thanks a lot for your help and effort. Will keep you posted on the actual usage. Looking forward to extended support in case
-                                                        of future issues/request for upgrade.</h3>
+                                                        of future issues/request for upgrade.</p>
 
                                                                 <p><strong>Sujatha</strong>,Co-ordinator, Amrita Center for International Programs.</p>
                                                         </blockquote>
@@ -590,35 +549,30 @@ require_once('assets/php/access/accessDB.php');
                 <div class="row">
                         <div class="col-md-6" style="background-color:gold; padding-top: 10px">
                                 <div class="jumbotron">
-                                        <h1 style="text-align: center">Be a mentor! </h1><br>
+                                        <h2 style="text-align: center">Mentor! </h2><br>
                                         <p>Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
                                                 aims at providing the best mentoring available to the needy in a complete transparent transaction.</p>
                                         <br>
-                                        <div style="text-align: center" class="row">
-                                        <div class="col-xs-6 col-md-3" id="icon-container">
-                                        <i class="fa fa-sign-in fa-5x" style="color: #67b168"> </i> <br>
-                                        Join
-                                        </div>
+                                        <div style="text-align: justify" class="row">
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-plus fa-5x" style="color: #c1e2b3"> </i> <br>
+                                                        Add
+                                                </div>
 
-                                        <div class="col-xs-6 col-md-3" id="icon-container">
-                                                <i class="fa fa-plus fa-5x" style="color: #c1e2b3"> </i> <br>
-                                                Add
-                                        </div>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-clock-o fa-5x" style="color: #46b8da"> </i><br>
+                                                        Confirm
+                                                </div>
 
-                                        <div class="col-xs-6 col-md-3" id="icon-container">
-                                                <i class="fa fa-clock-o fa-5x" style="color: #46b8da"> </i><br>
-                                                Confirm
-                                        </div>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-mortar-board fa-5x" style="color: #fcac45"></i><br>
+                                                        Teach
+                                                </div>
 
-                                        <div class="col-xs-6 col-md-3" id="icon-container">
-                                                <i class="fa fa-mortar-board fa-5x" style="color: #fcac45"></i><br>
-                                                Teach
-                                        </div>
-
-                                        <div class="col-xs-6 col-md-3" id="icon-container">
-                                                <i class="fa fa-dollar fa-5x" style="color: #03a9f4"></i> <br>
-                                                Earn
-                                        </div>
+                                                <div class="col-xs-6 col-md-3" id="icon-container">
+                                                        <i class="fa fa-dollar fa-5x" style="color: #03a9f4"></i> <br>
+                                                        Earn
+                                                </div>
 
 
                                         </div>
@@ -633,15 +587,11 @@ require_once('assets/php/access/accessDB.php');
 
                         <div class="col-md-6" id="student" style="background-color: silver;  padding-top: 10px">
                                         <div class="jumbotron">
-                                                <h1 style="text-align: center">Be a student! </h1><br>
+                                                <h2 style="text-align: center">Learn! </h2><br>
                                                 <p> ThinkFOSS helps in connecting people with skills to people in need, and
                                                         makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.</p>
                                                 <br>
                                                 <div class="row" style="text-align: center">
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-sign-in fa-5x" style="color: #67b168"> </i> <br>
-                                                        Join
-                                                </div>
 
                                                 <div class="col-xs-6 col-md-3" id="icon-container">
                                                         <i class="fa fa-search fa-5x" style="color: #c1e2b3"> </i> <br>
@@ -669,13 +619,21 @@ require_once('assets/php/access/accessDB.php');
                                                         <button class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Student</button>
                                                 </div>
                                         </div>
+                                </div>
 
                         </div>
+        </div>
+</div>
 
-                        <div class="container well">
-                                <div class="section-title center">
-                                <h2 style="text-align: center" > <strong>Trending</strong> on ThinkFOSS</h2>
-                                        </div>
+
+<!-- Courses Section
+==========================================-->
+<div id="tf-courses">
+        <div class="overlay">
+                <div class="container">
+                        <div class="section-title center">
+                                <h2 style="text-align: center" > <strong>Courses</strong> on ThinkFOSS</h2>
+                        </div>
                         <div id="owl-demo" class="owl-carousel owl-theme">
 
 
@@ -692,7 +650,7 @@ require_once('assets/php/access/accessDB.php');
                                                 <div class='panel-heading'>
                                                 <div class='panel-title'>
                                                 <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
-                                                target='_blank' style='color: white'> <h2>$courseName</h2></a>
+                                                target='_blank' style='color: white'> <h3>$courseName</h3></a>
                                                 </div></div>
 
                                                 <div class='panel-body'> <p>$coruseBio</p></div>
@@ -706,14 +664,12 @@ require_once('assets/php/access/accessDB.php');
                         </div>
 
                         <div class="customNavigation">
-                                <a class="btn prev " style="padding: 4px;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
-                                <a class="btn next " style="padding: 4px;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
+                                <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+                                <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
                         </div>
-                        </div>
-
-
-                        </div>
+                </div>
         </div>
+
 </div>
 
 <!-- Contact Section
@@ -767,7 +723,23 @@ require_once('assets/php/access/accessDB.php');
 
         </div>
 </div>
-
+<footer style="bottom :0">
+<nav style="padding-top: 15px; " class="navbar navbar-default" >
+        <div class="container">
+                <div class="pull-left fnav">
+                        <p style="color: white">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
+                </div>
+                <div class="pull-right fnav">
+                        <ul class="footer-social">
+                                <li><a href="http://www.thinkfoss.com/index.php#tf-contact" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                                <li><a href="http://facebook.com/thinkfoss" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://plus.google.com/102089872995784319229/about" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://twitter.com/thinkfoss" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        </ul>
+                </div>
+        </div>
+</nav>
+</footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script>

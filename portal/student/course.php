@@ -98,6 +98,9 @@
 
 	</script>
 
+	<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
 	<!--[endif]-->
 </head>
 <body >
@@ -179,7 +182,7 @@
 			<div class="row">
 				<div class="col-md-8 well">
 					<div class="panel panel-default panel-default">
-					<div class="panel-heading" style="text-align: center">
+					<div class="panel-heading" style="text-align: justify">
 						<div class="panel-title">
 							<p style="font-size: large"><?php echo $course->getValue('course_bio') ?></p>
 						</div>
