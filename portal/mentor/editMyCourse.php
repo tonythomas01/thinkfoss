@@ -102,10 +102,6 @@
 
 	<link href="../../css/material/flipper.css" rel="stylesheet">
 	<link href="../../css/material/material-wfont.min.css" rel="stylesheet">
-
-	<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
-
 	<!--[endif]-->
 </head>
 <body >
