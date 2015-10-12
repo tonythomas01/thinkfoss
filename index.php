@@ -576,7 +576,7 @@ require_once('assets/php/access/accessDB.php');
                                         </div>
 
                                         <div style="bottom: 0; padding-top: 50px">
-                                                <button class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Mentor</button>
+                                                <a class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Mentor</a>
                                         </div>
                                 </div>
 
@@ -614,7 +614,7 @@ require_once('assets/php/access/accessDB.php');
                                                 </div>
 
                                                 <div style="bottom: 0; padding-top: 50px">
-                                                        <button class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Student</button>
+                                                        <a class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Student</a>
                                                 </div>
                                         </div>
                                 </div>

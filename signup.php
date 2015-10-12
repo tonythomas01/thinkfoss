@@ -169,7 +169,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
-		<div class="container content">
+		<div class="container" style="padding-top: 10%">
 			<div class="row">
 		<?php
 		if ( $_SESSION['message'] ) {
