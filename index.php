@@ -58,8 +58,6 @@ require_once('assets/php/access/accessDB.php');
                 ga('send', 'pageview');
 
         </script>
-
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.2/angular-material.min.css" rel="stylesheet">
 </head>
 <body style="overflow: hidden">
 <!-- Navigation
