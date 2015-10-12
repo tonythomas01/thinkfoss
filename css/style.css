@@ -920,3 +920,24 @@ blockquote cite:before {
 	background-attachment: fixed;
 	padding: 80px 0;
 }
+
+.tf-btn {
+	background-color:#fcac45;
+	color: white;
+}
+.tf-btn-grey {
+	background-color:grey;
+	color: white;
+}
+.tf-btn:hover{
+	color: black;
+}
+
+.dropdown-menu {
+    padding-bottom: 0;
+}
+
+.dropdown-menu li{
+    height: 40px;
+    font-size: larger;
+}

@@ -79,16 +79,24 @@ require_once('assets/php/access/accessDB.php');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#tf-services" class="page-scroll">Services</a></li>
-                                <li><a href="#tf-courses" class="page-scroll">Courses</a></li>
-                                <li><a href="#tf-mentor" class="page-scroll">Involve</a></li>
                                 <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
+                                <li><a href="#tf-courses" class="page-scroll">Courses</a></li>
+                                <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Involve <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                                <li><a href="#tf-courses" class="page-scroll">Learn</a></li>
+                                                <li><a href="#tf-mentor" class="page-scroll">Mentor</a></li>
+
+                                        </ul>
+                                </li>
+
                                 <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
-                                                <li><a href="#tf-about">About Us</a></li>
-                                                <li><a href="#tf-team">Team</a></li>
-                                                <li><a href="http://blog.thinkfoss.com">Blog</a></li>
-                                                <li><a href="#tf-contact">Contact</a></li>
+                                                <li><a href="#tf-team" class="page-scroll">Team</a></li>
+                                                <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">Blog</a></li>
+                                                <li><a href="#tf-about" class="page-scroll">About Us</a></li>
+                                                <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
 
                                         </ul>
                                 </li>
@@ -127,7 +135,7 @@ require_once('assets/php/access/accessDB.php');
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <div class="section-title" style="text-align: center">
                                                 <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
-                                        <p style="text-align: center"> code | train | grow</p>
+                                        <p style="text-align: center"> < code | train | grow ></p>
 
                                 </div>
                                         <div class="panel-body">
@@ -143,20 +151,20 @@ require_once('assets/php/access/accessDB.php');
                                                                 <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
                                                                 <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
                                                         </div>
-                                                        <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                                                        <button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
+                                                        <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/><br>
+
+                                                        <button type="submit" class="btn tf-btn-grey btn-raised btn-block btn-lg">Sign in <i class="fa fa-arrow-circle-right"></i></button>
 
                                                 </div>
                                         </form>
                                         </div>
                                         <div class="panel-footer">
                                 <p style="text-align: center;">
-                                        <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
+                                        <a href='signup.php'> <button  class='btn btn-raised tf-btn' style='padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP <i class="fa fa-arrow-circle-right"></i> </button></a>
                                         or login using
 
-                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
-
+                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn tf-btn btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn tf-btn btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
                                                 </p>
                                 </div>
 
@@ -177,19 +185,19 @@ require_once('assets/php/access/accessDB.php');
                                 <div class="content" style="padding-top: 50%;">
                                         <p class="lead" style="color: white; padding-bottom: 40px; font-size: x-large">Platform for enthusiasts to share<br> and gain open source
                                         knowledge</p>
-                                        <a class="btn btn-lg" href="#tf-mentor" style="background-color: grey; color: white; font-size: xx-large">
-                                                <i class="fa fa-graduation-cap fa-2x pull-left page-scroll" style="color: #fcac45"></i> <strong style="display: flex; padding-top: 10px" >Mentor</strong> </a>
+                                        <a type="button" class="btn btn-lg tf-btn page-scroll" href="#tf-mentor" style="background-color: grey; color: white; font-size: xx-large">
+                                                <i class="fa fa-graduation-cap fa-2x pull-left " style="color: #fcac45"></i> <strong style="display: flex; padding-top: 10px" >Mentor</strong> </a>
 
 
-                                        <a class="btn btn-lg btn-danger" href="#tf-mentor" style="background-color: #fcac45; font-size: xx-large">
-                                                <i class="fa fa-laptop fa-2x pull-left page-scroll" style="color: grey"></i><strong  style="display: flex; padding-top: 10px">Learn</strong></a>
+                                        <a type="button"  class="btn btn-lg tf-btn page-scroll" href="#tf-courses" style="background-color: #fcac45; font-size: xx-large">
+                                                <i class="fa fa-laptop fa-2x pull-left " style="color: grey"></i><strong  style="display: flex; padding-top: 10px">Learn</strong></a>
                                 </div>
 
                         </div>
 
                         <div class ="col-md-6">
                                         <div class="content" style="padding-top: 30%">
-                                        <p style="font-size: xx-large">< code | <span class="color">share</span>  | grow ></p>
+                                        <p style="font-size: xx-large">< code | <span class="color">train</span>  | grow ></p>
                                         </div>
 
                                 <p style="padding-top: 10%;  font-size: x-large"><i class="fa fa-cogs fa-5x"></i> <br>Build Your <br><a href="#tf-task" class="label page-scroll" style="background-color:#fcac45 " >Applications</a> with Us!</p>
@@ -237,108 +245,94 @@ require_once('assets/php/access/accessDB.php');
 		                                        <strong>Vision</strong> - <em>Make India Open Source</em>
 	                                        </li>
                                         </ul>
-                                </div>
-
-                                <a type="button" target="_blank" href="http://blog.thinkfoss.com" class="btn btn-lg btn-success">Visit Blog</a>
+                                </div> <br>
+                                <button type="button" target="_blank" href="http://blog.thinkfoss.com"
+                                        class="btn tf-btn btn-lg">Visit Blog  <i class="fa fa-arrow-circle-o-right"></i></button>
                         </div>
                 </div>
         </div>
 </div>
 
-<!-- Team Page
+<!-- Courses Section
 ==========================================-->
-<div id="tf-team" class="text-center">
+<div id="tf-courses">
         <div class="overlay">
                 <div class="container">
+                        <div class="row">
+                                <div class="section-title center" style="text-align: center">
+                                        <h2><strong>Learn </strong>Like a Pro</h2>
+                                        <div class="line">
+                                                <hr>
+                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="jumbotron" style="color: black">
+                                                <p> ThinkFOSS helps in connecting people with skills to people in need, and
+                                                        makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.</p>
+                                                <br>
+                                                <div class="row" style="text-align: center">
+                                                        <a class="btn tf-btn" href="portal/student/viewAllCourses.php">
+                                                                <i class="fa fa-search  fa-2x pull-left"></i>Search</a>
+
+                                                        <a class="btn tf-btn-grey" target="_blank" href="portal/student/viewAllCourses.php">
+                                                                <i class="fa fa-cutlery  fa-2x pull-left"></i>Enroll</a>
+                                                        <a class="btn tf-btn" target="_blank" href="portal/student/viewAllCourses.php">
+                                                                <i class="fa fa-street-view  fa-2x pull-left"></i>Learn</a>
+                                                        <a class="btn tf-btn-grey" target="_blank" href="portal/student/viewAllCourses.php">
+                                                                <i class="fa fa-trophy  fa-2x pull-left"></i>Succeed</a>
+
+                                                </div>
+
+                                                <div style="bottom: 0; padding-top: 50px; text-align: center">
+                                                        <a class="btn tf-btn tf-btn-grey btn-lg" href="portal/portal.php" role="button">View Courses <i class="fa fa-arrow-circle-o-right"></i></a>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-6">
                         <div class="section-title center">
-                                <h2>Meet <strong>our team</strong></h2>
-                                <div class="line">
-                                        <hr>
-                                </div>
+                                <h2 style="text-align: center" > now<strong> LIVE</strong></h2>
                         </div>
-
-                        <div id="team" class="owl-carousel owl-theme row">
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/Tony_Thomas.jpg" alt="Tony Thomas" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Tony Thomas</h3>
-                                                        <p>CTO & Co-Founder</p>
-                                                        <p>Random Open Source guy and Wikimedian who thinks<br> FOSS is the best</p>
-                                                        <p>
-                                                        <a href="https://in.linkedin.com/in/tonythomas01" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
-                                                        <a href="https://github.com/tonythomas01" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
-                                                        <a href="http://blog.tttwrites.in" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
-                                                        <a href="https://twitter.com/01tonythomas" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
-                                                        <a href="https://www.facebook.com/01tonythomas" target="_blank"> <i class="fa fa-facebook"></i></a>
-                                                        </p>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/tinaj.jpg" alt="Tina Johnson" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Tina Johnson</h3>
-                                                        <p>Co-Founder</p>
-                                                        <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
-                                                        <p>
-                                                                <a href="https://in.linkedin.com/pub/tina-johnson/70/22b/14b" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
-                                                                <a href="https://github.com/tinajohnson" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
-                                                                <a href="http://tinaj1234.wordpress.com" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
-                                                                <a href="https://twitter.com/tinajohnson1234" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
-                                                        </p>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/bithin_alangot.jpg" alt="Bithin Alangot" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Bithin Alangot</h3>
-                                                        <p>Advisor</p>
-                                                        <p>PhD research scholar in Cyber Security Systems & Networks and <br> Mentor of <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>  </p>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/vipinp.jpg" alt="Vipin Pavithran" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Vipin Pavithran</h3>
-                                                        <p>Chief Mentor, <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a></p>
-                                                        <p>Assistant professor at Amrita Cyber Security with 10+ years experience in Software Industry</p>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="item">
-                                        <div class="thumbnail">
-                                                <img src="img/team/sakshi.jpg" alt="Sakshi Bansal" class="img-circle team-img">
-                                                <div class="caption">
-                                                        <h3>Sakshi Bansal</h3>
-                                                        <p>Systems and Operations</p>
-                                                        <p><a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a> student, currently spending her time working with various upstream projects</p>
-	                                                <p>
-		                                                <a href="https://in.linkedin.com/in/sakshi-bansal" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
-		                                                <a href="https://github.com/sakshi-bansal" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
-		                                                <a href="http://sakshiii.wordpress.com/" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
-		                                                <a href="https://twitter.com/sakshibansall" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
-	                                                </p>
-                                                </div>
-                                        </div>
-                                </div>
+                        <div id="owl-demo" class="owl-carousel owl-theme">
 
 
+                                <?php
+                                $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
+                                if ( $res = $conn->query( $statement ) ) {
+                                        foreach( $res as $row ) {
+                                                $courseName = $row['course_name'];
+                                                $courseId = $row['course_id'];
+                                                $coruseBio = $row['course_bio'];
+
+                                                echo "
+                                                <div class='panel panel-primary' id='course-panel-mentor'>
+                                                <div class='panel-heading'>
+                                                <div class='panel-title'>
+                                                <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
+                                                target='_blank' style='color: white'> <h3>$courseName</h3></a>
+                                                </div></div>
+
+                                                <div class='panel-body'> <p>$coruseBio</p></div>
+
+                                                </div>";
+
+                                        }
+                                }
+                                ?>
 
                         </div>
 
+                        <div class="customNavigation">
+                                <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+                                <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
+                        </div>
+
+                        </div>
+                        </div>
                 </div>
         </div>
+
 </div>
+
 
 <!-- Services Section
 ==========================================-->
@@ -500,7 +494,7 @@ require_once('assets/php/access/accessDB.php');
                                                 </li>
 
                                         </ol> <br>
-                                        <a href="portal/portal.php" class="page-scroll"><button class="btn tf-btn btn-center" >Create Request</button></a>
+                                        <a href="portal/portal.php" class="page-scroll"><button class="btn tf-btn btn-lg" >Create Request <i class="fa fa-arrow-circle-o-right"></i></button></a>
                                         <br>
                                 </div>
                         </div>
@@ -545,130 +539,153 @@ require_once('assets/php/access/accessDB.php');
 <div id="tf-mentor" >
         <div class="container">
                 <div class="row">
-                        <div class="col-md-6" style="background-color:gold; padding-top: 10px">
-                                <div class="jumbotron">
-                                        <h2 style="text-align: center">Mentor! </h2><br>
-                                        <p>Mentoring is one of the key process in Open Source Software development, and ThinkFOSS
-                                                aims at providing the best mentoring available to the needy in a complete transparent transaction.</p>
-                                        <br>
-                                        <div style="text-align: justify" class="row">
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-plus fa-5x" style="color: #c1e2b3"> </i> <br>
-                                                        Add
-                                                </div>
+                        <div class="section-title center" style="text-align: center">
+                                <h2>Be a <strong>Mentor</strong></h2>
+                                <div class="line">
+                                        <hr>
+                                </div>
+                        </div>
+                        <div class="col-md-6" style="padding-top: 2%">
+                                <div class="panel panel-default panel-primary">
+                                        <!-- Default panel contents -->
+                                        <div class="panel-heading" style="text-align: center"><i class="fa fa-user fa-4x"></i><br> <h4>Mentor Checklist</h4> </div>
+                                        <div class="panel-body" style="text-align: center">
 
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-clock-o fa-5x" style="color: #46b8da"> </i><br>
-                                                        Confirm
-                                                </div>
+                                        <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Update your profile</p></li>
+                                        <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Add proper description of course</p></li>
+                                        <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Mention course date and time clearly </p></li>
+                                        <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Keep Google Hangouts/Skype ready </p></li>
+                                        <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Check your inbox! </p></li>
 
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-mortar-board fa-5x" style="color: #fcac45"></i><br>
-                                                        Teach
-                                                </div>
+                                        </div>
+                                        <div class="panel panel-footer" style="text-align: center">
+                                                Final decision with approving/rejecting your course remains with ThinkFOSS.
+                                        </div>
 
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-dollar fa-5x" style="color: #03a9f4"></i> <br>
-                                                        Earn
-                                                </div>
+                                </div>
+                        </div>
 
+                        <div class="col-md-6">
+                                <div class="jumbotron" style="color: black">
+                                        <p>Mentoring is one of the key process in Open Source Software development, and
+                                                ThinkFOSS aims at providing the best mentoring available to the needy in a complete transparent transaction.</p><br>
+                                        <div class="row" style="text-align: center">
+                                                <a class="btn tf-btn" target="_blank" href="portal/mentor/addCourse.php">
+                                                        <i class="fa fa-plus  fa-2x pull-left"></i>Add</a>
+
+                                                <a class="btn tf-btn-grey" href="portal/portal.php" target="_blank">
+                                                        <i class="fa fa-clock-o  fa-2x pull-left"></i>Confirm</a>
+                                                <a class="btn tf-btn" href="portal/portal.php" target="_blank">
+                                                        <i class="fa fa-mortar-board   fa-2x pull-left"></i>Teach</a>
+                                                <a class="btn tf-btn-grey" href="portal/portal.php">
+                                                        <i class="fa fa-dollar  fa-2x pull-left"></i>Earn</a>
 
                                         </div>
 
-                                        <div style="bottom: 0; padding-top: 50px">
-                                                <a class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Mentor</a>
+                                        <div style="bottom: 0; padding-top: 50px; text-align: center">
+                                                <a class="btn tf-btn tf-btn-grey btn-lg" href="portal/mentor/addCourse.php" target="_blank" role="button">Add a Course <i class="fa fa-arrow-circle-o-right"></i></a>
                                         </div>
                                 </div>
-
-
-                        </div>
-
-                        <div class="col-md-6" id="student" style="background-color: silver;  padding-top: 10px">
-                                        <div class="jumbotron">
-                                                <h2 style="text-align: center">Learn! </h2><br>
-                                                <p> ThinkFOSS helps in connecting people with skills to people in need, and
-                                                        makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.</p>
-                                                <br>
-                                                <div class="row" style="text-align: center">
-
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-search fa-5x" style="color: #c1e2b3"> </i> <br>
-                                                        View
-                                                </div>
-
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-cutlery fa-5x" style="color: #46b8da"> </i><br>
-                                                        Enroll
-                                                </div>
-
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-street-view fa-5x" style="color: #fcac45"> </i><br>
-                                                        Learn
-                                                </div>
-
-                                                <div class="col-xs-6 col-md-3" id="icon-container">
-                                                        <i class="fa fa-trophy fa-5x" style="color: #03a9f4"> </i> <br>
-                                                        Succeed
-                                                </div>
-
-                                                </div>
-
-                                                <div style="bottom: 0; padding-top: 50px">
-                                                        <a class="btn btn-primary btn-lg" href="portal/portal.php" role="button">Be a Student</a>
-                                                </div>
-                                        </div>
-                                </div>
-
-                        </div>
-        </div>
-</div>
-
-
-<!-- Courses Section
-==========================================-->
-<div id="tf-courses">
-        <div class="overlay">
-                <div class="container">
-                        <div class="section-title center">
-                                <h2 style="text-align: center" > <strong>Courses</strong> on ThinkFOSS</h2>
-                        </div>
-                        <div id="owl-demo" class="owl-carousel owl-theme">
-
-
-                                <?php
-                                $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
-                                if ( $res = $conn->query( $statement ) ) {
-                                        foreach( $res as $row ) {
-                                                $courseName = $row['course_name'];
-                                                $courseId = $row['course_id'];
-                                                $coruseBio = $row['course_bio'];
-
-                                                echo "
-                                                <div class='panel panel-primary' id='course-panel-mentor'>
-                                                <div class='panel-heading'>
-                                                <div class='panel-title'>
-                                                <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
-                                                target='_blank' style='color: white'> <h3>$courseName</h3></a>
-                                                </div></div>
-
-                                                <div class='panel-body'> <p>$coruseBio</p></div>
-
-                                                </div>";
-
-                                        }
-                                }
-                                ?>
-
-                        </div>
-
-                        <div class="customNavigation">
-                                <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
-                                <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
                         </div>
                 </div>
         </div>
-
 </div>
+<!-- Team Page
+==========================================-->
+<div id="tf-team" class="text-center">
+        <div class="overlay">
+                <div class="container">
+                        <div class="section-title center">
+                                <h2>Meet <strong>our team</strong></h2>
+                                <div class="line">
+                                        <hr>
+                                </div>
+                        </div>
+
+                        <div id="team" class="owl-carousel owl-theme row">
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/Tony_Thomas.jpg" alt="Tony Thomas" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Tony Thomas</h3>
+                                                        <p>CTO & Co-Founder</p>
+                                                        <p>Random Open Source guy and Wikimedian who thinks<br> FOSS is the best</p>
+                                                        <p>
+                                                                <a href="https://in.linkedin.com/in/tonythomas01" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+                                                                <a href="https://github.com/tonythomas01" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+                                                                <a href="http://blog.tttwrites.in" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+                                                                <a href="https://twitter.com/01tonythomas" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
+                                                                <a href="https://www.facebook.com/01tonythomas" target="_blank"> <i class="fa fa-facebook"></i></a>
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/tinaj.jpg" alt="Tina Johnson" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Tina Johnson</h3>
+                                                        <p>Co-Founder</p>
+                                                        <p>Google Summer of Code student with various commits to Mediawiki and Linux Kernel</p>
+                                                        <p>
+                                                                <a href="https://in.linkedin.com/pub/tina-johnson/70/22b/14b" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+                                                                <a href="https://github.com/tinajohnson" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+                                                                <a href="http://tinaj1234.wordpress.com" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+                                                                <a href="https://twitter.com/tinajohnson1234" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/bithin_alangot.jpg" alt="Bithin Alangot" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Bithin Alangot</h3>
+                                                        <p>Advisor</p>
+                                                        <p>PhD research scholar in Cyber Security Systems & Networks and <br> Mentor of <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>  </p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/vipinp.jpg" alt="Vipin Pavithran" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Vipin Pavithran</h3>
+                                                        <p>Chief Mentor, <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a></p>
+                                                        <p>Assistant professor at Amrita Cyber Security with 10+ years experience in Software Industry</p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item">
+                                        <div class="thumbnail">
+                                                <img src="img/team/sakshi.jpg" alt="Sakshi Bansal" class="img-circle team-img">
+                                                <div class="caption">
+                                                        <h3>Sakshi Bansal</h3>
+                                                        <p>Systems and Operations</p>
+                                                        <p><a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a> student, currently spending her time working with various upstream projects</p>
+                                                        <p>
+                                                                <a href="https://in.linkedin.com/in/sakshi-bansal" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp
+                                                                <a href="https://github.com/sakshi-bansal" target="_blank"><i class="fa fa-github"></i></a>  &nbsp
+                                                                <a href="http://sakshiii.wordpress.com/" target="_blank"> <i class="fa fa-rss"></i></a> &nbsp
+                                                                <a href="https://twitter.com/sakshibansall" target="_blank"> <i class="fa fa-twitter"></i></a> &nbsp
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+                        </div>
+
+                </div>
+        </div>
+</div>
+
+
 
 <!-- Contact Section
 ==========================================-->
@@ -711,7 +728,7 @@ require_once('assets/php/access/accessDB.php');
                                                 </div>
                                                 <div class="form-group" >
                                                         <div class="input-group" >
-                                                                <button type="submit" class="btn tf-btn btn-lg btn-right">Submit</button>
+                                                                <button type="submit" class="btn tf-btn btn-lg">Submit <i class="fa fa-arrow-circle-o-right"></i></button>
                                                         </div>
                                                 </div>
                                         </form>
