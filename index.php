@@ -78,9 +78,7 @@ require_once('assets/php/access/accessDB.php');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#tf-services" class="page-scroll">Services</a></li>
                                 <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
-                                <li><a href="#tf-courses" class="page-scroll">Courses</a></li>
                                 <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Involve <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
@@ -94,6 +92,7 @@ require_once('assets/php/access/accessDB.php');
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
                                                 <li><a href="#tf-team" class="page-scroll">Team</a></li>
+                                                <li><a href="#tf-services" class="page-scroll">Services</a></li>
                                                 <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">Blog</a></li>
                                                 <li><a href="#tf-about" class="page-scroll">About Us</a></li>
                                                 <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
@@ -110,6 +109,7 @@ require_once('assets/php/access/accessDB.php');
                                                     <span class="fa fa-caret-down"></span></a>
                                                   <ul class="dropdown-menu">
                                                     <li><a href="portal/portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
+                                                    <li><a href="portal/profile/myProfile.php" ><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
                                                     <li class="divider"></li>
                                                      <form action = "assets/php/doSignOut.php" method="post">
                                                      <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
@@ -282,7 +282,7 @@ require_once('assets/php/access/accessDB.php');
                                                         makes sure that you get the maximum out of it. Topics available to learn ranges from 'Beginner' to 'Advanced' level.</p>
                                                 <br>
                                                 <div class="row" style="text-align: center">
-                                                        <a class="btn tf-btn" href="portal/student/viewAllCourses.php">
+                                                        <a class="btn tf-btn" target="_blank" href="portal/student/viewAllCourses.php">
                                                                 <i class="fa fa-search  fa-2x pull-left"></i>Search</a>
 
                                                         <a class="btn tf-btn-grey" target="_blank" href="portal/student/viewAllCourses.php">
@@ -295,7 +295,7 @@ require_once('assets/php/access/accessDB.php');
                                                 </div>
 
                                                 <div style="bottom: 0; padding-top: 50px; text-align: center">
-                                                        <a class="btn tf-btn tf-btn-grey btn-lg" href="portal/portal.php" role="button">View Courses <i class="fa fa-arrow-circle-o-right"></i></a>
+                                                        <a class="btn tf-btn tf-btn-grey btn-lg" target="_blank" href="portal/student/viewAllCourses.php" role="button">View Courses <i class="fa fa-arrow-circle-o-right"></i></a>
                                                 </div>
                                         </div>
                                 </div>
