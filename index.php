@@ -196,12 +196,12 @@ require_once('assets/php/access/accessDB.php');
                                 <div class="content" style="padding-top: 50%;">
                                         <p class="lead" style="color: white; padding-bottom: 40px; font-size: x-large">Platform for enthusiasts to share<br> and gain open source
                                         knowledge</p>
-                                        <a type="button" class="btn btn-lg tf-btn page-scroll" href="#tf-mentor" style="background-color: grey; color: white; font-size: xx-large">
-                                                <i class="fa fa-graduation-cap fa-2x pull-left " style="color: #fcac45"></i> <strong style="display: flex; padding-top: 10px" >Mentor</strong> </a>
+                                        <a href="#tf-mentor"><button type="button" class="btn btn-lg tf-btn page-scroll" style="background-color: grey; color: white; font-size: xx-large">
+                                                <i class="fa fa-graduation-cap fa-2x pull-left " style="color: #fcac45"></i> <strong style="padding-top: 10px" >Mentor</strong> </button></a>
 
 
                                         <a type="button"  class="btn btn-lg tf-btn page-scroll" href="#tf-courses" style="background-color: #fcac45; font-size: xx-large">
-                                                <i class="fa fa-laptop fa-2x pull-left " style="color: grey"></i><strong  style="display: flex; padding-top: 10px">Learn</strong></a>
+                                                <i class="fa fa-laptop fa-2x pull-left " style="color: grey"></i><strong  style="padding-top: 10px">Learn</strong></a>
                                 </div>
 
                         </div>
