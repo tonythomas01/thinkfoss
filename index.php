@@ -103,23 +103,34 @@ require_once('assets/php/access/accessDB.php');
                                 <?php
                                 if ( isset( $_SESSION['loggedin_user'] ) ) {
                                         $loggedinUser = $_SESSION['loggedin_user'];
-                                        echo "
-                                            <li><a> Hi <span style=' font-weight: bold'>$loggedinUser</span></a></li>
-                                            <li>
-                                            <form class='form-inline' action = 'assets/php/doSignOut.php' method = 'post' >
-                                            <div class='form-group'>
-                                                <a href='portal/portal.php'><button style='padding: 10px 10px 10px 10px;' type = 'button'  id = 'member-portal' class='btn btn-primary btn-success' ><i class='fa fa-laptop' ></i > Portal</button ></a>
-                                                <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
-                                                <button type = 'submit' id = 'member-logout' style='padding: 10px 10px 10px 10px; margin-right: 10px' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
-                                            </div>
-                                        </form>
-                                </li>";
+                                        echo '<li style="padding-top: 1.5%;">
+                                        <div class="btn-group">
+                                        <div class="btn tf-btn-grey" href="portal/profile/myProfile.php"><i class="fa fa-user fa-fw"></i>'; echo  $loggedinUser; echo '</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="portal/portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
+                                                    <li class="divider"></li>
+                                                     <form action = "assets/php/doSignOut.php" method="post">
+                                                     <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
+                                                        <li><button class="btn btn-link btn-block" type="submit" style="text-decoration: none" href="#" ><i class="fa fa-sign-out fa-fw"></i> Sign Out</button></li>
+                                                     </form>
+                                                  </ul>
+                                        </div></li>
+                                        ';
                                         } else {
-	                                        echo "<li >
-                                                <a type='button' class='btn btn-raised' data-toggle='modal' data-target='#login-modal' style='background-color: #fcac45; color: black; padding-right: 10px; padding-left: 10px'>Login</a>
 
-                                                </li>
-                            ";
+                                        echo'<li style="padding-top: 1.5%;">
+                                        <div class="btn-group">
+                                                  <div class="btn tf-btn-grey" data-toggle="modal" data-target="#login-modal" href="#"><i class="fa fa-user fa-fw"></i> Login</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#"  data-toggle="modal" data-target="#login-modal" ><i class="fa fa-sign-in fa-fw"></i> Login</a></li>
+                                                    <li><a href="signup.php"><i class="fa fa-user-plus fa-fw"></i> Sign Up</a></li>
+                                                  </ul>
+                                                </div></li>
+                                        ';
                                 }
                                 ?>
                         </ul>
@@ -291,8 +302,14 @@ require_once('assets/php/access/accessDB.php');
                                 <div class="col-md-6">
                         <div class="section-title center">
                                 <h2 style="text-align: center" > now<strong> LIVE</strong></h2>
+
                         </div>
+                                        <div class="customNavigation">
+                                                <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+                                                <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
+                                        </div>
                         <div id="owl-demo" class="owl-carousel owl-theme">
+
 
 
                                 <?php
@@ -304,7 +321,7 @@ require_once('assets/php/access/accessDB.php');
                                                 $coruseBio = $row['course_bio'];
 
                                                 echo "
-                                                <div class='panel panel-primary' id='course-panel-mentor'>
+                                                <div class='panel panel-primary' style='color: gray' id='course-panel-mentor'>
                                                 <div class='panel-heading'>
                                                 <div class='panel-title'>
                                                 <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
@@ -319,11 +336,6 @@ require_once('assets/php/access/accessDB.php');
                                 }
                                 ?>
 
-                        </div>
-
-                        <div class="customNavigation">
-                                <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
-                                <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
                         </div>
 
                         </div>
@@ -549,7 +561,7 @@ require_once('assets/php/access/accessDB.php');
                                 <div class="panel panel-default panel-primary">
                                         <!-- Default panel contents -->
                                         <div class="panel-heading" style="text-align: center"><i class="fa fa-user fa-4x"></i><br> <h4>Mentor Checklist</h4> </div>
-                                        <div class="panel-body" style="text-align: center">
+                                        <div class="panel-body" style="text-align: left">
 
                                         <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Update your profile</p></li>
                                         <li style="display: block"><p style="font-size: large"> <i class="fa fa-check-square"></i> Add proper description of course</p></li>
