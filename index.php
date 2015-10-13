@@ -59,7 +59,7 @@ require_once('assets/php/access/accessDB.php');
 
         </script>
 </head>
-<body style="overflow: hidden">
+<body style="overflow-x: hidden">
 <!-- Navigation
 ==========================================-->
 <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top" >
