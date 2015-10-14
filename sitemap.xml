@@ -7,11 +7,60 @@
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>http://thinkfoss.com/</loc>
-  <lastmod>2015-08-17T18:41:40+00:00</lastmod>
+  <loc>http://www.thinkfoss.com/</loc>
 </url>
 <url>
-  <loc>http://thinkfoss.com/index.html</loc>
-  <lastmod>2015-08-17T18:41:40+00:00</lastmod>
+  <loc>http://www.thinkfoss.com/index.php</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/../../signup.php</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Learn%20C++%20the%20easy%20way.&amp;course=course-47</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/../student/../../signup.php</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=How%20to%20make%20an%20impressive%20website&amp;course=course-50</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Run%20College%20Run-The%20greedy%20game&amp;course=course-51</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Android%20101&amp;course=course-52</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Learn%20Git%20the%20easy%20way&amp;course=course-55</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Data%20Structures&amp;course=course-57</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Be%20a%20better%20programmer:%20Learn%20Git&amp;course=course-65</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Do%20your%20first%20Open%20Source%20Contribution&amp;course=course-66</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Embedded%20linux&amp;course=course-67</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Do%20your%20first%20contribution%20to%20Linux%20Kernel&amp;course=course-68</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Learn%20Javascript%20through%20Node.js,%20first%20steps%20to%20js%20awesomeness!&amp;course=course-70</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/student/course.php?name=Docker%20101&amp;course=course-71</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/../signup.php</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/mentor/../../signup.php</loc>
+</url>
+<url>
+  <loc>http://www.thinkfoss.com/portal/solutions/../../signup.php</loc>
 </url>
 </urlset>
