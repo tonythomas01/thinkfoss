@@ -111,13 +111,13 @@ require_once('../../assets/php/access/accessTokens.php');
                                    <p><strong>Desc</strong> : ' . substr($row['solution_bio'], 0, 70) . '... ' . '</p>
                                    <form action="editMySolutions.php" method="post">
                                                     <input type="hidden" name="CSRFToken" value="'; echo $csrfToken->getCSRFToken(); echo '"/>
-                                        <button style="position: absolute; left:20px; bottom:20px;" type="submit" class="btn btn-success" name="solution"  value="solution-' . $row['solution_id'] . '" ><i class = "fa fa-pencil"></i> Edit</button>
+                                        <button style="position: absolute; left:20px; bottom:25px;" type="submit" class="btn btn-success" name="solution"  value="solution-' . $row['solution_id'] . '" ><i class = "fa fa-pencil"></i> Edit</button>
                                         </form>
 
 
 		      <form action="../../assets/php/actions/doDeleteSolution.php" method="post">
 		            <input type="hidden" name="CSRFToken" value="';echo $csrfToken->getCSRFToken(); echo '"/>
-		            <button type="submit" style="position: absolute; right:20px; bottom:20px;" class="btn btn-danger" name="solution" value="solution-'.$row['solution_id'].'" >Delete</button></form></td>
+		            <button type="submit" style="position: absolute; right:20px; bottom:25px;" class="btn btn-danger" name="solution" value="solution-'.$row['solution_id'].'" >Delete</button></form></td>
 
 		                                </div>
                             </div>

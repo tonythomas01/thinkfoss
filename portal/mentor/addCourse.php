@@ -54,7 +54,7 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
+<body>
 <?php
         session_start();
         require_once('../../assets/php/access/accessDB.php');
@@ -70,7 +70,7 @@
     <div class="overlay">
         <div class="portal">
 
-            <div class='col-xs-6'>
+            <div class='col-md-8'>
                 <br>
                 <form class='form-inline' action='../../assets/php/doCreateCourse.php' method='post'>
                     <div class='form-group well'>
@@ -103,7 +103,11 @@
                                 <option>Advanced</option>
                                 </select>
                             </div>
-                        <br><br>
+                        <label class='sr-only' for='course_amount'>Amount</label>
+                        <div class='input-group'>
+                            <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
+                            <input required type='number' class='form-control' id='course_amount'  name='course_amount' placeholder='Charge'>
+                        </div> <br> <br>
 
                         <label class='sr-only' for='course_date_to'>Date from</label>
                         <div class='input-group'>
@@ -128,23 +132,19 @@
                             <div class='input-group-addon'><i class='fa fa-clock-o'></i></div>
                             <input required type='time'  class='form-control' id='course_time_to' name='course_time_to' placeholder='Available Time'>
                         </div> <br><br>
-                        <label class='sr-only' for='course_amount'>Amount</label>
-                        <div class='input-group'>
-                            <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
-                            <input required type='number' class='form-control' id='course_amount'  name='course_amount' placeholder='Charge'>
-                        </div>
+
                         <script src='https://www.google.com/recaptcha/api.js'></script>
                         <div class='input-group'>
                             <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
-                        </div> <br><br>
+                        </div>
                         <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                        <button type='submit' class='btn btn-primary  btn-block'>Create</button>
+                        <button type='submit' class='btn tf-btn-grey btn-lg'>Create <i class="fa fa-arrow-circle-right"></i> </button>
                     </div>
                 </form>
 
             </div>
 
-            <div class='col-xs-6'>
+            <div class='col-md-4'>
                 <h1 class="section-title"> Add a course</h1>
                 <p class='intro'> Great! Add in the details of your new course, and we will make it avialable for the public in few minutes. Make sure you give
                     a catchy title so that it attracts. <br><br>

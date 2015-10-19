@@ -2,9 +2,9 @@
 	require_once('../../assets/php/Token.php');
 	require_once('../../assets/php/access/accessTokens.php');
 	require_once('../../assets/php/User.php');
+        $csrfToken = new Token( $csrfSecret );
 
 ?>
-<link href="../../css/material/material-wfont.min.css" rel="stylesheet">
 <!-- Navigation
 ==========================================-->
 <nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">
@@ -49,30 +49,55 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                if ( $user->checkIfPrivelaged( $conn ) ) {
-                    echo '<li><a href="../admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
+                if ( isset( $_SESSION['loggedin_user'] ) ) {
+                    $loggedinUser = $_SESSION['loggedin_user'];
+                    if ( $user->checkIfPrivelaged( $conn ) ) {
+                        echo '<li><a href="../admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
+                    }
+                    echo '
+			<li style="padding-top: 1.5%; padding-right: 10px">
+                    <div class="btn-group">
+                        <div class="btn tf-btn"  data-toggle="dropdown" href="cart/viewCart.php"><i class="fa fa-shopping-cart fa-fw"></i> Cart</div>
+                        <a class="btn tf-btn-grey dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="badge">'; echo $user->getEnrolledCourses( $conn ); echo '</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../cart/viewCart.php"   ><i class="fa fa-cart-arrow-down fa-fw"></i> View</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+		<li style="padding-top: 1.5%; padding-right: 10px">
+                                        <div class="btn-group">
+                                        <div class="btn tf-btn-grey" data-toggle="dropdown" href="portal/profile/myProfile.php"><i class="fa fa-user fa-fw"></i>'; echo  $loggedinUser; echo '</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="../portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
+                                                    <li><a href="../profile/myProfile.php" ><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+                                                    <li><a href="#" data-toggle="modal" data-target="#myModal"  ><i class="fa fa-phone fa-fw"></i> Contact</a></li>
+                                                    <li class="divider"></li>
+                                                     <form action = "../../assets/php/doSignOut.php" method="post">
+                                                     <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
+                                                        <li><button class="btn btn-link btn-block" type="submit" style="text-decoration: none" href="#" ><i class="fa fa-sign-out fa-fw"></i> Sign Out</button></li>
+                                                     </form>
+                                                  </ul>
+                                        </div></li>
+                                        ';
+                } else {
+
+                    echo'<li style="padding-top: 4%; padding-right: 10px">
+                                        <div class="btn-group">
+                                                  <div class="btn tf-btn-grey" data-toggle="modal" data-target="#login-modal" href="#"><i class="fa fa-user fa-fw"></i> Login</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#"  data-toggle="modal" data-target="#login-modal" ><i class="fa fa-sign-in fa-fw"></i> Login</a></li>
+                                                    <li><a href="../../signup.php"><i class="fa fa-user-plus fa-fw"></i> Sign Up</a></li>
+                                                  </ul>
+                                                </div></li>
+                                        ';
                 }
                 ?>
-                <li><a href="../cart/viewCart.php"><i class="fa fa-shopping-cart"><span class="badge"><?php echo $user->getEnrolledCourses( $conn ); ?> </span></i></a> </li>
-                <li><a href="../portal.php"><i class="fa fa-laptop"></i> Portal</a> </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['loggedin_user'] ?> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../profile/myProfile.php">Edit Profile</a></li>
-                        <li><a href="#">Recommend</a></li>
-                        <li role="separator" class="divider"></li>
-	                    <li>
-
-		                    <form action="../../assets/php/doSignOut.php" method="post">
-			                    <?php
-			                    $csrfToken = new Token( $csrfSecret );
-			                    ?>
-			                    <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-			                    <button type="submit" class="btn btn-danger btn-block">Sign Out</button>
-		                    </form>
-	                    </li>
-                    </ul>
-                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

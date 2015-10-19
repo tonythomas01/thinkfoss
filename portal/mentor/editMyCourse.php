@@ -97,11 +97,6 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="../../js/bootstrap.min.js"></script>
-
-	<link href="../../css/material/ripples.min.css" rel="stylesheet">
-
-	<link href="../../css/material/flipper.css" rel="stylesheet">
-	<link href="../../css/material/material-wfont.min.css" rel="stylesheet">
 	<!--[endif]-->
 </head>
 <body >
@@ -203,14 +198,13 @@
 								<input required type='number' class='form-control' id='course_amount'  name='course_amount' placeholder='Charge' value="<?php echo $course->getValue('course_fees'); ?>">
 							</>
 							</div>
-							<br><br>
 							<script src='https://www.google.com/recaptcha/api.js'></script>
 							<div class='input-group'>
 								<div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
-							</div> <br><br>
+							</div>
 							<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 							<input type='hidden' name='course_id' value='<?php echo base64_encode( $course->getValue('course_id' ) )?>'/>
-							<button type='submit' class='btn btn-primary  btn-lg'>Update</button>
+							<button type='submit' class='btn tf-btn-grey  btn-lg'>Update <i class="fa fa-arrow-circle-right"></i> </button>
 						</div>
 					</form>
 

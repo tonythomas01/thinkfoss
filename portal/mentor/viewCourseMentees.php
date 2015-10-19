@@ -12,7 +12,7 @@
 
 	$loggedInUser = $_SESSION['loggedin_user_id'];
 
-	require_once('../../php/Statement.php');
+	require_once('../../assets/php/Statement.php');
 	$preparedPost = new Statement( $_POST );
 	if ( $preparedPost->checkIfEmptyPost() ) {
 		$_SESSION['error'] = "Please make sure you add in all required details";
@@ -20,8 +20,8 @@
 		return;
 	}
 
-	require_once('../../php/Token.php');
-	require_once('../../php/access/accessTokens.php');
+	require_once('../../assets/php/Token.php');
+	require_once('../../assets/php/access/accessTokens.php');
 
 
 	$postInputRow = $preparedPost->getValue( 'courseid_token' );
@@ -35,9 +35,9 @@
 		return false;
 	}
 
-	require_once('../../php/access/accessDB.php');
-	require_once('../../php/User.php');
-	require_once('../../php/Course.php');
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	require_once('../../assets/php/Course.php');
 
 
 ?>

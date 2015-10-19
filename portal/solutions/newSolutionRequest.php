@@ -71,7 +71,7 @@
             <div class="container" style="padding-top: 7%; text-align: left; padding-bottom: 5%">
             <div class="row">
 
-            <div class='col-md-6'>
+            <div class='col-md-8'>
                 <form class='form-inline' action='../../assets/php/actions/doCreateSolution.php' method='post'>
                     <div class='form-group well'>
 
@@ -80,8 +80,7 @@
                             <div class='input-group-addon'> I want</div>
                             <input required  type='text' size='100%' class='form-control' id='solution_name' name='solution_name' placeholder=' Give a name for your solution'>
                         </div>
-                        <hr>
-                        <h4>Platform</h4>
+                        <h3 style="color: black">Platform</h3>
 
                         <div class='input-group'>
                             <div class='input-group-addon' ><i class='fa fa-bomb'></i></div>
@@ -101,9 +100,7 @@
                             <div class='input-group-addon'><i class="fa fa-phone"></i> </div>
                             <input required type='text' class='form-control' id='solution_contact' name='solution_contact' placeholder='Contact Number'>
                         </div>
-
-                        <hr>
-                        <h4>Delivery</h4>
+                        <h3 style="color: black">Delivery</h3>
 
                         <label class='sr-only' for='solution_deadline_estimated'>Estimated Delivery</label>
                         <div class='input-group'>
@@ -116,8 +113,7 @@
                             <div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
                             <input required type='number' class='form-control' id='solution_amount'  name='solution_amount' placeholder='Expected budget'>
                         </div>
-                        <hr>
-                        <h4>Description</h4>
+                        <h3 style="color: black">Description</h3>
 
                         <label class='sr-only' for='solution_bio'> Short Bio</label>
                         <div class='input-group'>
@@ -131,14 +127,14 @@
                             <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
                         </div>
                         <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                        <button type='submit' class='btn btn-primary  btn-lg'>Create</button>
+                        <button type='submit' class='btn tf-btn-grey  btn-lg'>Create <i class="fa fa-arrow-circle-right"></i></button>
                     </div>
                 </form>
 
 
             </div>
 
-            <div class='col-md-6'>
+            <div class='col-md-4'>
                 <h1 class="section-title"> Add a solution</h1>
                 <p class='intro'> Great! Add in the details of your new solution, and we will contact you in the latest with a quote. If
                     some fields looks greek to you, just leave it and submit<br><br>
