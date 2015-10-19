@@ -104,7 +104,7 @@ require_once('assets/php/access/accessDB.php');
                                         $loggedinUser = $_SESSION['loggedin_user'];
                                         echo '<li style="padding-top: 1.5%;">
                                         <div class="btn-group">
-                                        <div class="btn tf-btn-grey" href="portal/profile/myProfile.php"><i class="fa fa-user fa-fw"></i>'; echo  $loggedinUser; echo '</div>
+                                        <div class="btn tf-btn-grey" href="portal/profile/myProfile.php" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>'; echo  $loggedinUser; echo '</div>
                                                   <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                     <span class="fa fa-caret-down"></span></a>
                                                   <ul class="dropdown-menu">
@@ -750,9 +750,9 @@ require_once('assets/php/access/accessDB.php');
 
         </div>
 </div>
-<footer style="bottom :0">
-<nav style="padding-top: 15px; " class="navbar navbar-default" >
-        <div class="container">
+<footer>
+<nav  class="navbar navbar-default" >
+        <div class="container" style="padding-top: 10px; ">
                 <div class="pull-left fnav">
                         <p style="color: white">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
                 </div>

@@ -3,12 +3,12 @@
 	if ( !isset( $_SESSION['loggedin_user_id'] ) ) {
 		header( 'Location: ../signup.php');
 	}
-
         require_once('../assets/php/access/accessDB.php');
         require_once('../assets/php/User.php');
         require_once('../assets/php/Token.php');
         require_once('../assets/php/access/accessTokens.php');
         $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+        $csrfToken = new Token( $csrfSecret );
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,6 @@
     <link rel="stylesheet" type="text/css"  href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
 
-    <link href="../css/material/material-wfont.min.css" rel="stylesheet">
     <script type="text/javascript" src="../js/modernizr.custom.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -69,13 +68,19 @@
 
     </script>
 
+	<!-- Important Owl stylesheet -->
+	<link rel="stylesheet" href="../css/owl.carousel.css">
+
+	<!-- Default Theme -->
+	<link rel="stylesheet" href="../css/owl.theme.css">
+
 
     <!--[endif]-->
 </head>
 <body>
 <!-- Navigation
 ==========================================-->
-<nav id='tf-menu' class="navbar navbar-default navbar-fixed-top">
+<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -109,47 +114,68 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="solutions/newSolutionRequest.php">New Request</a></li>
-                        <li><a href="student/viewAllCourses.php">My Requests</a></li>
+                        <li><a href="solutions/mySolutionRequests.php">My Requests</a></li>
                     </ul>
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <?php
-                    if ( $user->checkIfPrivelaged( $conn ) ) {
-                        echo '<li><a href="admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
-                    }
-                ?>
+	        <ul class="nav navbar-nav navbar-right">
+		        <?php
+		        if ( isset( $_SESSION['loggedin_user'] ) ) {
+			        $loggedinUser = $_SESSION['loggedin_user'];
+			        if ( $user->checkIfPrivelaged( $conn ) ) {
+				        echo '<li><a href="admin/adminPanel.php"><i class="fa fa-diamond"></i> Admin</a> </li>';
+			        }
+			        echo '
+			<li style="padding-top: 1.5%; padding-right: 10px">
+                    <div class="btn-group">
+                        <div class="btn tf-btn" data-toggle="dropdown"  href="cart/viewCart.php"><i class="fa fa-shopping-cart fa-fw"></i> Cart</div>
+                        <a class="btn tf-btn-grey dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="badge">'; echo $user->getEnrolledCourses( $conn ); echo '</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cart/viewCart.php"   ><i class="fa fa-cart-arrow-down fa-fw"></i> View</a></li>
+                        </ul>
+                    </div>
 
-                <li><a href="cart/viewCart.php"><i class="fa fa-shopping-cart"><span class="badge"><?php echo $user->getEnrolledCourses( $conn ); ?> </span></i></a> </li>
-                <li><a href="portal.php"><i class="fa fa-laptop"></i> Portal</a> </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['loggedin_user'] ?> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="profile/myProfile.php">Edit Profile</a></li>
-                        <li><a href="#">Recommend</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-
-                            <form action="../assets/php/doSignOut.php" method="post">
-                                <?php
-                                    $csrfToken = new Token( $csrfSecret );
-                                ?>
-                                <input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                                <button type="submit" class="btn btn-danger btn-block">Sign Out</button>
-                            </form>
-                        </li>
-
-                    </ul>
                 </li>
-            </ul>
+		<li style="padding-top: 1.5%; padding-right: 10px">
+                                        <div class="btn-group">
+                                        <div class="btn tf-btn-grey" data-toggle="dropdown" href="portal/profile/myProfile.php"><i class="fa fa-user fa-fw"></i>'; echo  $loggedinUser; echo '</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="../portal/portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
+                                                    <li><a href="../portal/profile/myProfile.php" ><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+                                                    <li><a href="#" data-toggle="modal" data-target="#myModal"  ><i class="fa fa-phone fa-fw"></i> Contact</a></li>
+                                                    <li class="divider"></li>
+                                                     <form action = "../assets/php/doSignOut.php" method="post">
+                                                     <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
+                                                        <li><button class="btn btn-link btn-block" type="submit" style="text-decoration: none" href="#" ><i class="fa fa-sign-out fa-fw"></i> Sign Out</button></li>
+                                                     </form>
+                                                  </ul>
+                                        </div></li>
+                                        ';
+		        } else {
+
+			        echo'<li style="padding-top: 4%; padding-right: 10px">
+                                        <div class="btn-group">
+                                                  <div class="btn tf-btn-grey" data-toggle="modal" data-target="#login-modal" href="#"><i class="fa fa-user fa-fw"></i> Login</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#"  data-toggle="modal" data-target="#login-modal" ><i class="fa fa-sign-in fa-fw"></i> Login</a></li>
+                                                    <li><a href="../signup.php"><i class="fa fa-user-plus fa-fw"></i> Sign Up</a></li>
+                                                  </ul>
+                                                </div></li>
+                                        ';
+		        }
+		        ?>
+	        </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <div id="tf-portal" class="text-center">
     <div class="overlay">
-
-
             <?php
             if ( isset( $_SESSION['message'] ) ) {
 	                $message = $_SESSION['message'];
@@ -165,81 +191,91 @@
             ?>
 
 
-	        <div class="container" style="padding-top: 8%; text-align: left">
-		        <div class="row">
-		            <div class='col-md-6'>
-			            <h1 class="section-title"> Want to Mentor ?</h1>
+            <div class="container" style="padding-top: 50px; text-align: center">
+	            <div class="row">
+		            <h1 class="section-title"> Trending on <b>ThinkFOSS</b></h1>
+		            <div class="customNavigation">
+			            <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+			            <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
+		            </div>
+		            <div id="owl-portal" class="owl-carousel owl-theme">
+		            <?php
+		            $statement = "SELECT `course_name`, `course_id`, `course_bio` FROM `course_details` WHERE `course_approved` = true";
+		            if ( $res = $conn->query( $statement ) ) {
+			            foreach( $res as $row ) {
+				            $courseName = $row['course_name'];
+				            $courseId = $row['course_id'];
+				            $coruseBio = $row['course_bio'];
+				            echo "
+                                                <div class='panel panel-primary'  id='course-panel-portal'>
+                                                <div class='panel-body'>
+                                                <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
+                                                target='_blank' > <h3>$courseName</h3></a>
+					                        <figcaption class='mask' style='text-align:center;'>
+					                                   <form action='student/course.php' method='get' style='margin-left:15%;'>
+										<input type='hidden' name='name' value='$courseName' "; echo ' />
+										<button class="btn tf-btn-grey btn-lg"  name="course" value="course-' . $row['course_id'] . '"  style="opacity: 0.7" href="#">
+		            <i class="fa fa-search-plus fa-2x pull-left"></i>More</button>
+				                                        </form>
+			                                        </figcaption>
+					</div>
 
-		                <p class='intro'> Great! ThinkFOSS is happy to welcome mentors like you. You can add in more course, change your
-		                    personal settings and do a lot more from here. Feel free to use the help button incase you feel stuck <br><br>
-		                <div class="row">
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="mentor/addCourse.php" class="thumbnail" style="text-align: center; color: blue">
-		                            <i class="fa fa-plus fa-5x"> </i>
-		                            <div class="caption"><h2>Add</h2>course</div>
-		                        </a>
-		                    </div>
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="mentor/viewMyCourses.php" class="thumbnail" style="text-align: center; color: red">
-		                            <i class="fa fa-pencil fa-5x"> </i>
-		                            <div class="caption"><h2>Edit</h2> your course</div>
-		                        </a>
-		                    </div>
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
-		                                <i class="fa fa-phone fa-5x"> </i>
-		                                <div class="caption" ><h2>Help</h2>call</div>
-		                        </div></a>
-		                    </div>
-		                </div>
+                                                </div>';
+
+			            }
+		            }
+		            ?>
+			</div>
+		            <div class="col-md-6">
+
+			            <h2 class="section-title" style="padding-bottom: 10px; text-align: center; padding-bottom: 30px"> <b>Mentoring</b></h2>
+
+			            <div class="row" style="text-align: center">
+				            <a class="btn tf-btn btn-lg" target="_blank" href="mentor/addCourse.php">
+					            <i class="fa fa-plus  fa-2x pull-left"></i>Add new<br>Course</a>
+				            <a class="btn tf-btn-grey" href="mentor/viewMyCourses.php" target="_blank">
+					            <i class="fa fa-pencil  fa-2x pull-left"></i>Edit your<br>course</a>
+				            <a class="btn tf-btn btn-lg" href="mentor/viewMyCourses.php" >
+					            <i class="fa fa-mortar-board   fa-2x pull-left"></i>Teach your <br> course</a>
+
+
+			            </div>
 
 		            </div>
 
-		            <div class='col-md-6'>
-		                <h1 class="section-title"> Want to learn ?</h1>
-		                <p class='intro'> Awesome! Looks like you are at the right place. Please use the menu items over here to enroll to a course you like. If you
-		                    feel like, you can even mentor a course.<br><br>
-		                <div class="row">
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:#9c27b0">
-		                            <i class="fa fa-eye fa-5x"> </i>
-		                            <div class="caption"><h2>View</h2>courses</div>
-		                        </a>
-		                    </div>
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="student/viewAllCourses.php" class="thumbnail" style="text-align: center; color:blue">
-		                            <i class="fa fa-thumbs-up fa-5x"> </i>
-		                            <div class="caption"><h2>Enroll</h2>course</div>
-		                        </a>
-		                    </div>
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="student/viewEnrolledCourses.php" class="thumbnail" style="text-align: center; color:red">
-		                            <i class="fa fa-heart fa-5x"> </i>
-		                            <div class="caption"><h2>Review</h2>course</div>
-		                        </a>
-		                    </div>
-		                    <div class="col-xs-6 col-md-3">
-		                        <a href="#" data-toggle="modal" data-target="#myModal" ><div class="thumbnail" style="text-align: center; color: green">
-		                            <i class="fa fa-phone fa-5x"> </i>
-		                            <div class="caption" ><h2>Help</h2>call</div>
-		                        </div></a>
-		                    </div>
-		                </div>
+		            <div class="col-md-6">
+
+			            <h2 class="section-title" style="padding-bottom: 10px;padding-bottom: 30px"><b>LEARNING</b></h2>
+
+			            <div class="row" style="text-align: center">
+				            <a class="btn tf-btn btn-lg" target="_blank" href="student/viewAllCourses.php">
+					            <i class="fa fa-eye  fa-2x pull-left"></i>View our <br> courses</a>
+				            <a class="btn tf-btn-grey" href="student/viewAllCourses.php" target="_blank">
+					            <i class="fa fa-thumbs-up  fa-2x pull-left"></i>Enroll to <br>course</a>
+				            <a class="btn tf-btn btn-lg" href="student/viewEnrolledCourses.php" target="_blank">
+					            <i class="fa fa-heart fa-2x pull-left"></i>Review a<br> course</a>
+			            </div>
+
+
+		            </div>
+
+		            </div>
+
+		            <div style="padding-top: 50px">
+			            <h2 class="section-title" style="padding-bottom: 10px;padding-bottom: 30px"><b>Quick </b>Actions</h2>
+		            <a class="btn btn-lg  tf-btn" href="student/viewAllCourses.php">
+			            <i class="fa fa-lightbulb-o fa-2x pull-left"></i> View all<br>Courses</a>
+
+			            <a class="btn btn-lg tf-btn-grey" href="solutions/newSolutionRequest.php">
+				            <i class="fa fa-cogs fa-2x pull-left"></i> New Solution<br>Request</a>
 		            </div>
 
 
 
-                <h1 style="color: white; text-align: center">Solutions ?</h1>
-                    <div class="col-md-2 col-lg-offset-5">
-                        <a href="solutions/newSolutionRequest.php" class="thumbnail" style="text-align: center; color: limegreen">
-                            <i class="fa fa-gears fa-5x"> </i>
-                                <div class="caption"><h2>Solutions</h2>request</div>
-                        </a>
-                    </div>
-	        </div>
-	        </div>
+    </div>
+</div>
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -247,8 +283,7 @@
                         <h4 class="modal-title" id="myModalLabel" style="color: black">Contact Us</h4>
                     </div>
                     <div class="modal-body">
-
-                        <form action="http://formspree.io/admin@thinkfoss.com" method="POST" >
+                        <form action="http://formspree.io/admin@thinkfoss.com" method="POST" style="padding-bottom: 10px">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Your name</label>
                                 <div class="col-sm-10">
@@ -269,20 +304,20 @@
                             </div>
 
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="padding-top: 10px">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn tf-btn-grey">Send Message <i class="fa fa-arrow-circle-right"></i> </button>
                     </div>
                     </form>
                 </div>
             </div>
         </div>
-
-
-        </div>
-
-    </div>
 <?php include '../footer.html' ?>
 
 </body>
+
+<script src="../js/owl.carousel.js"></script>
+<!-- Javascripts
+================================================== -->
+<script type="text/javascript" src="../js/main.js"></script>
 </html>

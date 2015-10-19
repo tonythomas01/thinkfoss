@@ -713,6 +713,10 @@ figcaption.mask {
 	transition: all 0.4s ease 0s;
     z-index: 10;
 }
+.panel-body:hover figcaption.mask{
+	opacity: 1;
+	bottom: 50px;
+}
 
 .thumbnail:hover figcaption.mask{
     opacity: 1;
@@ -750,8 +754,6 @@ ul.external li, ul.external-right li {
 }
 
 ul.external li button, ul.external-right li button {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #818181;
     display: block;
     padding: 10px 10px 10px;
 
@@ -941,3 +943,36 @@ blockquote cite:before {
     height: 40px;
     font-size: larger;
 }
+
+#owl-portal .item{
+	background: #fcac45;
+	padding: 30px 0px;
+	margin: 10px;
+	color: #FFF;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-align: center;
+}
+.customNavigation{
+	text-align: center;
+}
+.customNavigation a{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#course-panel-portal {
+	background-color: #fcac45;
+	height: 110px;
+
+}
+#course-panel-portal h3{
+	color : white;
+	margin : auto;
+
+}
+

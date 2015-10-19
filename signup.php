@@ -38,7 +38,6 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 	================================================== -->
 	<link rel="stylesheet" type="text/css"  href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-	<link href="css/material/material-wfont.min.css" rel="stylesheet">
 
 	<script type="text/javascript" src="js/modernizr.custom.js"></script>
 
@@ -62,107 +61,131 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 
 </head>
 <body>
-<!-- Navigation
-==========================================-->
-<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
+<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top" >
+	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Think<span class="color">FOSS</span></a>
+			<a class="navbar-brand" href="index.php" style="font-size: 30px">Think<span class="color">FOSS</span></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.php#tf-home" class="page-scroll">Home</a></li>
-				<li><a href="index.php#tf-about" class="page-scroll">About</a></li>
-				<li><a href="index.php#tf-team" class="page-scroll">Team</a></li>
-				<li><a href="index.php#tf-services" class="page-scroll">Services</a></li>
-				<li><a href="index.php#tf-contact" class="page-scroll">Contact</a></li>
-				<li>
-					<?php
-					require_once('assets/php/Token.php');
-					require_once('assets/php/access/accessTokens.php');
+				<li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Involve <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#tf-courses" class="page-scroll">Learn</a></li>
+						<li><a href="#tf-mentor" class="page-scroll">Mentor</a></li>
 
-					if ( isset( $_SESSION['loggedin_user'] ) ) {
-						$loggedinUser = $_SESSION['loggedin_user'];
-						$csrfToken = new Token( $csrfSecret );
-						echo "<li> <a>Hi <span style='color: red; font-weight: bold'>$loggedinUser</span></a></li>
-                            <li>
-                                <form class='form-inline' action = 'assets/php/doSignOut.php' method = 'post' >
-                                <div class='form-group'>
-                                    <input type='hidden' name='CSRFToken' value='"; echo $csrfToken->getCSRFToken(); echo "'/>
-                                    <button type = 'submit' id = 'member-logout' class='btn btn-danger' ><i class='fa fa-sign-out' ></i ></button >
-                                    </div>
-                                </form>
-                            </li>";
-					} else {
-						echo " <li style='padding-right: 10px'>
-				<button type='button' class='btn btn-success btn-lg' data-toggle='modal' data-target='#login-modal'>
-				  Login
-						</button>
-						</li>
-                    ";
-					}
-					?>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#tf-team" class="page-scroll">Team</a></li>
+						<li><a href="#tf-services" class="page-scroll">Services</a></li>
+						<li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">Blog</a></li>
+						<li><a href="#tf-about" class="page-scroll">About Us</a></li>
+						<li><a href="#tf-contact" class="page-scroll">Contact</a></li>
+
+					</ul>
+				</li>
+				<?php
+				if ( isset( $_SESSION['loggedin_user'] ) ) {
+					$loggedinUser = $_SESSION['loggedin_user'];
+					echo '<li style="padding-top: 1.5%;">
+                                        <div class="btn-group">
+                                        <div class="btn tf-btn-grey" href="portal/profile/myProfile.php"><i class="fa fa-user fa-fw"></i>'; echo  $loggedinUser; echo '</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="portal/portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
+                                                    <li><a href="portal/profile/myProfile.php" ><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+                                                    <li class="divider"></li>
+                                                     <form action = "assets/php/doSignOut.php" method="post">
+                                                     <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
+                                                        <li><button class="btn btn-link btn-block" type="submit" style="text-decoration: none" href="#" ><i class="fa fa-sign-out fa-fw"></i> Sign Out</button></li>
+                                                     </form>
+                                                  </ul>
+                                        </div></li>
+                                        ';
+				} else {
+
+					echo'<li style="padding-top: 1.5%;">
+                                        <div class="btn-group">
+                                                  <div class="btn tf-btn-grey" data-toggle="modal" data-target="#login-modal" href="#"><i class="fa fa-user fa-fw"></i> Login</div>
+                                                  <a class="btn tf-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-caret-down"></span></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#"  data-toggle="modal" data-target="#login-modal" ><i class="fa fa-sign-in fa-fw"></i> Login</a></li>
+                                                    <li><a href="signup.php"><i class="fa fa-user-plus fa-fw"></i> Sign Up</a></li>
+                                                  </ul>
+                                                </div></li>
+                                        ';
+				}
+				?>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
 
 <?php
+	require_once( 'assets/php/Token.php' );
+	require_once( 'assets/php/access/accessTokens.php');
 	$csrfToken = new Token( $csrfSecret );
 ?>
 <!-- Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
 	<div class="modal-dialog" role="document"  style="width: 400px">
-                                <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <div class="section-title" style="text-align: center">
-                                                <h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
-                                        <p style="text-align: center"> code | train | grow</p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="section-title" style="text-align: center">
+					<h2><strong>Think<span style="color :orange">FOSS</span></strong></h2></div>
+				<p style="text-align: center"> < code | train | grow ></p>
 
-                                </div>
-                                        <div class="panel-body">
-                                        <form  action = 'assets/php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
-                                                <div class='form-group'>
-                                                        <label class='sr-only' for='username' > Email id </label >
-                                                        <div class='input-group' >
-                                                                <div class='input-group-addon'><i class='fa fa-user'></i ></div >
-                                                                <input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
-                                                        </div> <br>
-                                                        <label class='sr-only' for='password'> Password</label >
-                                                        <div class='input-group'>
-                                                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
-                                                                <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
-                                                        </div>
-                                                        <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-                                                        <button type="submit" class="btn btn-success btn-raised btn-block">Sign in</button>
+			</div>
+			<div class="panel-body">
+				<form  action = 'assets/php/doSignIn.php' method = 'post' style="padding: 10px 10px 0px 10px;" >
+					<div class='form-group'>
+						<label class='sr-only' for='username' > Email id </label >
+						<div class='input-group' >
+							<div class='input-group-addon'><i class='fa fa-user'></i ></div >
+							<input type = 'text' class='form-control' id = 'username' name = 'username' placeholder = ' Email id'>
+						</div> <br>
+						<label class='sr-only' for='password'> Password</label >
+						<div class='input-group'>
+							<div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+							<input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
+						</div>
+						<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/><br>
 
-                                                </div>
-                                        </form>
-                                        </div>
-                                        <div class="panel-footer">
-                                <p style="text-align: center;">
-                                        <a href='signup.php'> <button  class='btn btn-raised' style='background-color: #d0e9c6; padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP </button></a>
-                                        or login using
+						<button type="submit" class="btn tf-btn-grey btn-raised btn-block btn-lg">Sign in <i class="fa fa-arrow-circle-right"></i></button>
 
-                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn btn-material-deeporange btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn btn-material-bluegrey btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
+					</div>
+				</form>
+			</div>
+			<div class="panel-footer">
+				<p style="text-align: center;">
+					<a href='signup.php'> <button  class='btn btn-raised tf-btn' style='padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP <i class="fa fa-arrow-circle-right"></i> </button></a>
+					or login using
 
-                                                </p>
-                                </div>
+					<a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn tf-btn btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
+					<a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn tf-btn btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
+				</p>
+			</div>
 
-                                </div>
+		</div>
 
-	                </div>
+	</div>
 
 </div>
 
@@ -221,7 +244,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 				<div class="clearfix"></div>
 			</div> <br>
 			<div>
-				<form class='form-inline ' action='assets/php/doSignUp.php'  style="text-align: justify" method='post'>
+				<form class='form-inline ' action='assets/php/doSignUp.php'  style="text-align: justify; color: black" method='post'>
 					<div class='form-group well' >
 
 						<label class='sr-only' for='user_first_name'>Your first name</label>
@@ -278,7 +301,7 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 						?>
 						<input type="hidden" name="CSRFToken" value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 
-						<button style='submit' class='btn btn-primary btn-lg'>Sign Up</button>
+						<button style='submit' class='btn tf-btn-grey btn-lg'>Sign Up <i class="fa fa-arrow-circle-right"></i> </button>
 
 					</div>
 
@@ -287,8 +310,8 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 			<div style="text-align: left">
 
 				<h3>or login with </h3>
-				<a href='assets/php/oauth/oauth2callback.php'> <button type='submit' class='btn btn-material-deeporange btn-lg'><i class="fa fa-google-plus"></i> </button></a>
-				<a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn btn-material-bluegrey btn-lg'><i class="fa fa-github"></i> </button></a>
+				<a href='assets/php/oauth/oauth2callback.php'> <button type='submit' class='btn tf-btn-grey btn-lg'><i class="fa fa-google-plus"></i> </button></a>
+				<a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='submit' class='btn tf-btn-grey btn-lg'><i class="fa fa-github"></i> </button></a>
 			</div>
 
 

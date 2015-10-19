@@ -55,10 +55,6 @@ if (!isset($_SESSION['loggedin_user'])) {
 	<!-- Latest compiled JavaScript -->
 	<script src="../../js/bootstrap.min.js"></script>
 
-	<link href="../../css/material/ripples.min.css" rel="stylesheet">
-
-	<link href="../../css/material/flipper.css" rel="stylesheet">
-
 
 	<!--[endif]-->
 </head>
@@ -86,7 +82,7 @@ include 'navigationstudent.php'
 			}
 			?>
 
-			<div>
+			<div style="padding-bottom: 10px; text-align: center">
 				<h2 class="section-title" style="color: white"> Available Courses</h2>
 			</div>
 			<br>
@@ -122,7 +118,7 @@ include 'navigationstudent.php'
 						echo '
 						<ul class ="external-right">
 						<li>
-							<button type="button" disabled title="Enrolled" class="btn btn-warning btn-lg" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-check" style="color:gold" ></i></button>
+							<button type="button" disabled title="Enrolled" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-check" ></i></button>
 						</li>
 						</ul>
 						';
@@ -131,7 +127,7 @@ include 'navigationstudent.php'
 						echo '
 						 <ul class="external-right">
 						 <li>
-						<a href="../cart/viewCart.php"> <button type="button"  class="btn btn-info btn-lg" title="In Cart" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-cart-arrow-down" style="color:gold" ></i> </button></a>
+						<a href="../cart/viewCart.php"> <button type="button"  class="btn tf-btn" title="In Cart" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-cart-arrow-down"  ></i> </button></a>
 						</li></ul>
 						';
 					} else {
@@ -155,19 +151,19 @@ include 'navigationstudent.php'
                                                         <div class="caption">
                                                         <div class="panel panel-default" style="background-color: transparent">
 						 	 <div class="panel-body" style="height: 160px">
-
-
-				                                        <h1>'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h1> </div><div class="panel-footer">
-			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Rate</strong> : '.  $row['course_fees'] .'</span>
+				                                        <h2 style="line-height: 40px">'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h3> </div>
+								<div class="panel-footer tf-btn-grey">
+			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Cost</strong> : <i class="fa fa-rupee"></i>'. ' ' . $row['course_fees'] .'</span>
 			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
 				                                        <figcaption class="mask" style="text-align:center; ">
 				                                        <form action="course.php" method="get">
 										<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
-				                                                <button style="position: relative; top: 20px; float:center; width: 100px; height: 100px; border-radius: 50px; opacity: 0.8; padding: 10px 16px; font-size: 24px;" type="submit" class="btn btn-info" name="course"  value="course-' . $row['course_id'] . '" ><i class="fa fa-search-plus"></i></button>
+										<button class="btn tf-btn-grey btn-lg"  name="course" value="course-' . $row['course_id'] . '"  style="opacity: 0.7" href="#">
+  										<i class="fa fa-search-plus fa-2x pull-left"></i>Know More</button>
 				                                        </form>
 				                                        </figcaption>
 
-						                        <h3><span style ="position: absolute; bottom : 40px; right: 40px;" class="label label-primary"><i class="fa fa-user"> </i> Enrolled :
+						                        <h3><span style ="position: absolute; bottom : 40px; right: 40px;" class="label tf-btn"><i class="fa fa-user"> </i> Enrolled :
 						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo '
 						                        </span></h3>
 
@@ -175,7 +171,7 @@ include 'navigationstudent.php'
 								<li>
 								<form action="course.php" method="get">
 								<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
-								<button type="submit" class="btn btn-success btn-lg" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-folder-open" style="color:white"></i></button>
+								<button type="submit" class="btn tf-btn-grey" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-search-plus fa-lg"></i> More</button>
 								</form>
 								</li>
 

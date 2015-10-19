@@ -85,7 +85,6 @@
 	<link href="../../css/material/ripples.min.css" rel="stylesheet">
 
 	<link href="../../css/material/flipper.css" rel="stylesheet">
-	<link href="../../css/material/material-wfont.min.css" rel="stylesheet">
 
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -135,7 +134,7 @@
 								<input type="hidden" name="CSRFToken" value="';
 							echo $csrfToken->getCSRFToken();
 							echo '"/>
-							<button class="btn btn-info" type="submit" name="course-review"
+							<button class="btn tf-btn" type="submit" name="course-review"
 							id="review"   value="';
 							echo $courseIdTag;
 							echo '"><i class="fa fa-pencil-square" > Review</i></button>
@@ -211,7 +210,7 @@
 								<td><?php echo $course->getValue('course_date_to' ) . ' : ' . $course->getValue('course_time_to'); ?></td>
 							</tr>
 						</table>
-						<div class="panel-footer panel-default">
+						<div class="panel-footer panel-default" style="color: black">
 							<h5>Reviews </h5>
 							<hr>
 							<?php
@@ -233,8 +232,8 @@
 						</div>
 
 				</div>
-				<div class="col-md-3">
-					<div class="panel panel-default panel-primary">
+				<div class="col-md-4">
+					<div class="panel panel-default panel-default">
 						<div class="panel-heading" style="text-align: center">
 							<div class="panel-title">
 								<h2>MENTOR</h2> <br>
@@ -273,8 +272,6 @@
 
 <script src="../../js/material/ripples.min.js"></script>
 <script src="../../js/material/material.min.js"></script>
-
-
 <?php include '../../footer.html' ?>
 </body>
 </html>
