@@ -257,8 +257,8 @@ require_once('assets/php/access/accessDB.php');
 	                                        </li>
                                         </ul>
                                 </div> <br>
-                                <button type="button" target="_blank" href="http://blog.thinkfoss.com"
-                                        class="btn tf-btn btn-lg">Visit Blog  <i class="fa fa-arrow-circle-o-right"></i></button>
+                                <a type="button" target="_blank" href="http://blog.thinkfoss.com"
+                                        class="btn tf-btn btn-lg">Visit Blog  <i class="fa fa-arrow-circle-o-right"></i></a>
                         </div>
                 </div>
         </div>
