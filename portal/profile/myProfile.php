@@ -152,10 +152,9 @@
 			            <div class='input-group'>
 				            <div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
 			            </div>
-			            <br>
 
-			            <div class="g-recaptcha" data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div> <br>
-			            <button type='submit' class='btn btn-block btn-primary'>Update</button>
+
+			            <button type='submit' class='btn btn-lg tf-btn-grey'>Update <i class="fa fa-arrow-circle-right"></i></button>
 
 		            </div>
 	            </form>
