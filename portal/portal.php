@@ -261,7 +261,7 @@
 
 		            </div>
 
-		            <div style="padding-top: 50px">
+		            <div style="padding-top: 50px; padding-bottom: 10px">
 			            <h2 class="section-title" style="padding-bottom: 10px;padding-bottom: 30px"><b>Quick </b>Actions</h2>
 		            <a class="btn btn-lg  tf-btn" href="student/viewAllCourses.php">
 			            <i class="fa fa-lightbulb-o fa-2x pull-left"></i> View all<br>Courses</a>
@@ -312,7 +312,7 @@
                 </div>
             </div>
         </div>
-<?php include '../footer.html' ?>
+        <?php include '../footer.html' ?>
 
 </body>
 

@@ -131,26 +131,14 @@ ul, ol{
 	height: 100vh;
 }
 
-/* Mobile HD */
-@media screen and (min-width: 350px) and (max-width: 760px){
-	#tf-home{
-		height: 100%;
-	}
-	#tf-home .overlay{
-		height: 100%;
-	}
-}
-#tf-home p.lead{
-	color: #e3e3e3;
-}
 #tf-portal{
 	background: url(../img/anotherback.jpg);
 	background-size: cover;
 	background-position: center;
-	background-attachment: scroll;
-	background-repeat: inherit;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 	color: #cfcfcf;
-	height: 100%;
+	height: 100vh;
 }
 
 #tf-portal .overlay{
@@ -161,14 +149,33 @@ ul, ol{
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-	background-attachment: scroll;
-	overflow: auto;
+	background-attachment: fixed;
 	height: 100vh;
+	overflow: hidden;
 }
 #tf-portal p.lead{
 	color: #e3e3e3;
 }
 
+
+/* Mobile HD */
+@media screen and (min-width: 350px) and (max-width: 760px){
+	#tf-home{
+		height: 100%;
+	}
+	#tf-home .overlay{
+		height: 100%;
+	}
+	#tf-portal{
+		height: 100%;
+	}
+	#tf-portal .overlay{
+		height: 100%;
+	}
+}
+#tf-home p.lead{
+	color: #e3e3e3;
+}
 .content{
 	position: relative;
 }
