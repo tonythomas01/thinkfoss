@@ -95,10 +95,15 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="../../js/bootstrap.min.js"></script>
 
-	<link href="../../css/material/ripples.min.css" rel="stylesheet">
+	<script>
+		$(function() {
+			$( "#solution_deadline_estimated" ).datepicker();
 
-	<link href="../../css/material/flipper.css" rel="stylesheet">
-	<link href="../../css/material/material-wfont.min.css" rel="stylesheet">
+		});
+	</script>
+
+	<link rel="stylesheet" href="../../css/jquery-ui.css">
+	<script src="../../js/jquery-ui.js"></script>
 
 	<!--[endif]-->
 </head>
@@ -108,9 +113,11 @@
 <?php include 'navigationSolutions.php' ?>
 
 
-<div id="tf-portal" class="text-center">
+<div id="tf-portal">
 	<div class="overlay">
-		<div class="portal">
+		<div class="container" style="padding-top: 7%; text-align: left; padding-bottom: 5%">
+			<div class="row">
+			<div class='col-md-8'>
 			<?php
 			if ( $_SESSION['message'] ) {
 				$message = $_SESSION['message'];
@@ -123,84 +130,108 @@
 			}
 			?>
 
-				<h2><?php $solutionIdTag = 'solution-' . $solution->getValue('solution_id');
+			<form class='form-inline' action='../../assets/php/actions/doUpdateSolutions.php' method='post'>
+				<div class='form-group well'>
 
-					echo $solution->getValue('solution_name'). " <small>Active : <i class='fa fa-check' ></i>";
-					?>
-					<span style="text-align: right; float: right"><a href="../../index.php#tf-contact"><button type="button" class="btn btn-success"><i class="fa fa-phone"></i> Contact us</button></a> </span>
-
+					<label class='sr-only' for='course_name'>I want</label>
+					<div class='input-group' >
+						<div class='input-group-addon'> I want</div>
+						<input required  type='text' size='70%' class='form-control' id='solution_name' name='solution_name' placeholder=' Give a name for your solution' value="<?php echo $solution->getValue('solution_name'); ?>">
+					</div>
 					<hr>
+					<h4>Platform</h4>
 
-				<form class='form-inline' action='../../assets/php/actions/doUpdateSolutions.php' method='post'>
-					<div class='form-group well'>
-
-						<label class='sr-only' for='course_name'>I want</label>
-						<div class='input-group' >
-							<div class='input-group-addon'> I want</div>
-							<input required  type='text' size='70%' class='form-control' id='solution_name' name='solution_name' placeholder=' Give a name for your solution' value="<?php echo $solution->getValue('solution_name'); ?>">
-						</div>
-						<hr>
-						<h4>Platform</h4>
-
+					<div class='input-group'>
+						<div class='input-group-addon' ><i class='fa fa-bomb'></i></div>
+						<select class="form-control" name="solution_platform">
+							<option <?php if ( $solution->getValue('solution_platform') === 'Web' ) { echo 'selected'; } ?> >Web</option>
+							<option <?php if ( $solution->getValue('solution_platform') === 'Mobile' ) { echo 'selected'; } ?> >Mobile</option>
+							<option <?php if ( $solution->getValue('solution_platform') === "Web + Mobile" ) { echo 'selected'; } ?> >Web + Mobile</option>
+						</select>
+					</div>
+					<label class='sr-only' for='solution_framework'>Backend</label>
+					<div class='input-group'>
+						<div class='input-group-addon'><i class="fa fa-language">*</i> </div>
 						<div class='input-group'>
-							<div class='input-group-addon' ><i class='fa fa-bomb'></i></div>
-							<select class="form-control" name="solution_platform">
-								<option <?php if ( $solution->getValue('solution_platform') === 'Web' ) { echo 'selected'; } ?> >Web</option>
-								<option <?php if ( $solution->getValue('solution_platform') === 'Mobile' ) { echo 'selected'; } ?> >Mobile</option>
-								<option <?php if ( $solution->getValue('solution_platform') === "Web + Mobile" ) { echo 'selected'; } ?> >Web + Mobile</option>
+							<select class="form-control" name="solution_framework" placeholder='Framework'>
+								<option <?php if (  $solution->getValue('solution_framework') === 'PHP') { echo 'selected'; } ?> >PHP</option>
+								<option <?php if (  $solution->getValue('solution_framework') === 'Python-Django') { echo 'selected'; } ?> >Python-Django</option>
+								<option <?php if (  $solution->getValue('solution_framework') === 'Android') { echo 'selected'; } ?> >Android</option>
+								<option <?php if (  $solution->getValue('solution_framework') === 'Node-JS') { echo 'selected'; } ?> >Node-JS</option>
+								<option <?php if (  $solution->getValue('solution_framework') === 'Static-Page') { echo 'selected'; } ?> >Static-Page</option>
+								<option <?php if (  $solution->getValue('solution_framework') === 'Other' ) { echo 'selected'; } ?> >Other</option>
 							</select>
 						</div>
-						<label class='sr-only' for='solution_framework'>Backend</label>
-						<div class='input-group'>
-							<div class='input-group-addon'><i class="fa fa-language">*</i> </div>
-							<input required type='text' class='form-control' id='solution_framework' name='solution_framework' placeholder='Framework' value="<?php echo $solution->getValue('solution_framework'); ?>">
-						</div>
-						<label class='sr-only' for='solution_date_to'>Solution Contact</label>
-						<div class='input-group'>
-							<div class='input-group-addon'><i class="fa fa-phone"></i> </div>
-							<input required type='text' class='form-control' id='solution_contact' name='solution_contact' placeholder='Contact Number'value="<?php echo $solution->getValue('solution_contact'); ?>">
-							</div>
-
-						<hr>
-						<h4>Delivery</h4>
-
-						<label class='sr-only' for='solution_deadline_estimated'>Estimated Delivery</label>
-						<div class='input-group'>
-							<div class='input-group-addon'>Deadline </div>
-							<input required type='date' class='form-control' id='solution_deadline_estimated' name='solution_deadline_estimated' placeholder='Deadline Date' value="<?php echo $solution->getValue('solution_deadline_estimated'); ?>">
-						</div>
-
-						<label class='sr-only' for='solution_amount'>Amount</label>
-						<div class='input-group'>
-							<div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
-							<input required type='number' class='form-control' id='solution_amount'  name='solution_amount' placeholder='Expected budget' value="<?php echo $solution->getValue('solution_amount'); ?>">
-						</div>
-						<hr>
-						<h4>Description</h4>
-
-						<label class='sr-only' for='solution_bio'> Short Bio</label>
-						<div class='input-group'>
-							<div class='input-group-addon'><i class='fa fa-book'></i></div>
-							<textarea required rows='4' cols='70' class='form-control' id='solution_bio'  name='solution_bio' placeholder='Short description on your need.'> <?php echo $solution->getValue('solution_bio'); ?></textarea>
-						</div>
-						<br><br>
-
-						<script src='https://www.google.com/recaptcha/api.js'></script>
-						<div class='input-group'>
-							<div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
-						</div>
-						<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
-						<input type='hidden' name='solution_id' value='<?php echo base64_encode( $solution->getValue('solution_id') ); ?>'/>
-						<button type='submit' class='btn btn-primary  btn-lg'>Update</button>
 					</div>
-				</form>
+					<label class='sr-only' for='solution_date_to'>Solution Contact</label>
+					<div class='input-group'>
+						<div class='input-group-addon'><i class="fa fa-phone"></i> </div>
+						<input required type='text' class='form-control' id='solution_contact' name='solution_contact' placeholder='Contact Number'value="<?php echo $solution->getValue('solution_contact'); ?>">
+						</div>
 
+					<hr>
+					<h4>Delivery</h4>
+
+					<label class='sr-only' for='solution_deadline_estimated'>Estimated Delivery</label>
+					<div class='input-group'>
+						<div class='input-group-addon'>Deadline </div>
+						<input required type='text' class='form-control' id='solution_deadline_estimated' name='solution_deadline_estimated' placeholder='Deadline Date' value="<?php echo $solution->getValue('solution_deadline_estimated'); ?>">
+					</div>
+
+					<label class='sr-only' for='solution_amount'>Amount</label>
+					<div class='input-group'>
+						<div class='input-group-addon'><i class='fa fa-rupee'></i> </div>
+						<input required type='number' class='form-control' id='solution_amount'  name='solution_amount' placeholder='Expected budget' value="<?php echo $solution->getValue('solution_amount'); ?>">
+					</div>
+					<hr>
+					<h4>Description</h4>
+
+					<label class='sr-only' for='solution_bio'> Short Bio</label>
+					<div class='input-group'>
+						<div class='input-group-addon'><i class='fa fa-book'></i></div>
+						<textarea required rows='4' cols='70' class='form-control' id='solution_bio'  name='solution_bio' placeholder='Short description on your need.'> <?php echo $solution->getValue('solution_bio'); ?></textarea>
+					</div>
+					<br><br>
+
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class='input-group'>
+						<div class="g-recaptcha"  data-sitekey="6LcuGAwTAAAAALbkjHwyE3Q9l8vtBDh-rD8P8_aS"></div>
+					</div>
+					<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
+					<input type='hidden' name='solution_id' value='<?php echo base64_encode( $solution->getValue('solution_id') ); ?>'/>
+					<button type='submit' class='btn btn-primary  btn-lg'>Update</button>
+				</div>
+			</form>
+
+			</div>
+
+			<div class='col-md-4'>
+				<h1 class="section-title"> Your solution Request</h1>
+				<p class='intro'> Great! Add in the details of your new solution, and we will contact you in the latest with a quote. If
+					some fields looks greek to you, just leave it and submit<br><br>
+				<h2>Notes</h2>
+				<ul class='mentor-list'>
+					<li>
+						<span class='fa fa-check'></span>
+						<strong>* Framework Specifications : </strong> Eg: PHP, NodeJS, Python, Django, Android etc
+					</li>
+					<li>
+						<span class='fa fa-check'></span>
+						<strong>Wait for confirmation email</strong>
+					</li>
+					<li>
+						<span class='fa fa-phone'></span>
+						<strong>Stuck ? Contact one of us</strong>
+					</li>
+
+				</ul><br>
 			</div>
 
 
 		</div>
 	</div>
 </div>
+	</div>
 
 <script src="../../js/material/ripples.min.js"></script>
 <script src="../../js/material/material.min.js"></script>

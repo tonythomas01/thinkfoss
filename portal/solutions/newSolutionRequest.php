@@ -3,6 +3,13 @@
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: ../../signup.php');
 	}
+
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+	require_once('../../assets/php/access/accessTokens.php');
+	require_once('../../assets/php/Token.php');
+	$csrfToken = new Token( $csrfSecret );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,8 +42,6 @@
     <link rel="stylesheet" type="text/css"  href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 
-    <script type="text/javascript" src="../../js/modernizr.custom.js"></script>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,17 +58,19 @@
     <script src="../../js/bootstrap.min.js"></script>
 
     <!--[endif]-->
+	<script>
+		$(function() {
+			$( "#solution_deadline_estimated" ).datepicker();
+
+		});
+	</script>
+
+	<link rel="stylesheet" href="../../css/jquery-ui.css">
+	<script src="../../js/jquery-ui.js"></script>
+
+
 </head>
 <body>
-<?php
-        session_start();
-        require_once('../../assets/php/access/accessDB.php');
-        require_once('../../assets/php/User.php');
-        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-        require_once('../../assets/php/access/accessTokens.php');
-        require_once('../../assets/php/Token.php');
-        $csrfToken = new Token( $csrfSecret );
-?>
 <?php include 'navigationSolutions.php' ?>
 
 <div id="tf-portal">
@@ -93,7 +100,14 @@
                         <label class='sr-only' for='solution_framework'>Backend</label>
                         <div class='input-group'>
                             <div class='input-group-addon'><i class="fa fa-language">*</i> </div>
-                            <input required type='text' class='form-control' id='solution_framework' name='solution_framework' placeholder='Framework'>
+	                        <select class="form-control" name="solution_framework" placeholder='Framework'>
+		                        <option>PHP</option>
+		                        <option>Python-Django</option>
+		                        <option>Android</option>
+		                        <option>Node-JS</option>
+		                        <option>Static-Page</option>
+		                        <option selected>Other</option>
+	                        </select>
                         </div>
                         <label class='sr-only' for='solution_date_to'>Solution Contact</label>
                         <div class='input-group'>
@@ -105,7 +119,7 @@
                         <label class='sr-only' for='solution_deadline_estimated'>Estimated Delivery</label>
                         <div class='input-group'>
                             <div class='input-group-addon'>Deadline </div>
-                            <input required type='date' class='form-control' id='solution_deadline_estimated' name='solution_deadline_estimated' placeholder='Deadline Date'>
+                            <input required type='text' class='form-control' id='solution_deadline_estimated' name='solution_deadline_estimated' placeholder='Deadline Date'>
                         </div>
 
                         <label class='sr-only' for='solution_amount'>Amount</label>

@@ -39,7 +39,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="../solutions/newSolutionRequest.php">New Request</a></li>
-                        <li><a href="../student/viewAllCourses.php">My Requests</a></li>
+                        <li><a href="../solutions/mySolutionRequests.php">My Requests</a></li>
                     </ul>
                 </li>
             </ul>
