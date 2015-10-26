@@ -102,8 +102,8 @@ class Solution {
 		$userEmailId = $user->getValue( 'user_email' );
 
 		$emailBody = "Hello There,
-		\n Greetings from ThinkFOSS. Thank you for adding in your solution request  $this->solution_name. We will be reviewing the solution details for its quality, and will take it up/drop it in a short time.
-		\n The admins have been notified about the same, and if you dont hear from us in 24 hours - please respond to this email with your concern. You are welcome to add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+		\nGreetings from ThinkFOSS. Thank you for adding in your solution request : $this->solution_name. We will be reviewing the solution details for its quality, and will take it up/drop it in a short time.
+		\nThe admins have been notified about the same, and if you dont hear from us in 24 hours - please respond to this email with your concern.
 		\n Pleased to serve you here.
 		\n With <3 to FOSS, \n The ThinkFOSS Team";
 
