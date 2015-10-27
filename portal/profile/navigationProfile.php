@@ -72,7 +72,7 @@
                                                   <ul class="dropdown-menu">
                                                     <li><a href="../portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
                                                     <li><a href="../profile/myProfile.php" ><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
-                                                    <li><a href="#" data-toggle="modal" data-target="#myModal"  ><i class="fa fa-phone fa-fw"></i> Contact</a></li>
+                                                    <li><a href="#" data-toggle="modal" data-target="#contact"  ><i class="fa fa-phone fa-fw"></i> Contact</a></li>
                                                     <li class="divider"></li>
                                                      <form action = "../../assets/php/doSignOut.php" method="post">
                                                      <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
@@ -100,3 +100,41 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel" style="color: black">Contact Us</h4>
+                        </div>
+                        <div class="modal-body">
+                                <form action="http://formspree.io/admin@thinkfoss.com" method="POST" style="padding-bottom: 10px">
+                                        <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-2 control-label">Your name</label>
+                                                <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="contact-name" readonly value="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" placeholder="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" name="name">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                                <div class="col-sm-10">
+                                                        <input type="email" class="form-control" readonly id="_replyto" value ="<?php echo $user->getValue('user_email'); ?>" placeholder="<?php echo $user->getValue('user_email'); ?>" name="_replyto">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">Message</label>
+                                                <div class="col-sm-10">
+                                                        <textarea class="form-control" rows="3" name="message" id="message" placeholder="Your message" ></textarea>
+                                                </div>
+                                        </div>
+
+                        </div>
+                        <div class="modal-footer" style="padding-top: 10px">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn tf-btn-grey">Send Message <i class="fa fa-arrow-circle-right"></i> </button>
+                        </div>
+                        </form>
+                </div>
+        </div>
+</div>

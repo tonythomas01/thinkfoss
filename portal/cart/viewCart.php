@@ -2,6 +2,10 @@
 session_start();
 if ( !isset( $_SESSION['loggedin_user'] ) ) {
 	header( 'Location: ../../signup.php');
+} else if ( isset( $_SESSION['loggedin_user_id'] ) ) {
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 }
 ?>
 <!DOCTYPE html>
@@ -66,15 +70,9 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 	<!--[endif]-->
 </head>
 <body>
-<?php
-	require_once('../../assets/php/access/accessDB.php');
-	require_once('../../assets/php/User.php');
-	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-?>
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationcart.php' ?>
-
 
 <div id="tf-portal" class="text-center">
 	<div class="overlay">
