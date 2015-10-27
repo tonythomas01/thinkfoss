@@ -211,7 +211,7 @@
                                                 <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
                                                 target='_blank' >
                                                  <div class='panel panel-footer' style='height: 80px; padding-top: 15px'>
-                                                    <h3 style='color: black'>$courseName</h3></a>
+                                                    <h3 style='color: black'>"; echo strlen( $courseName ) > 30 ? substr( $courseName, 0, 30) : $courseName; echo "  </h3></a>
                                                     </div>
 					                        <figcaption class='mask' style='text-align:center;'>
 					                                   <form action='student/course.php' method='get' style='margin-left:15%;'>

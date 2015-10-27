@@ -116,7 +116,7 @@ session_start();
                                    <div class="caption">
                                            <div class="panel panel-default">
                                                    <div class="panel-body" style="height: 160px;">
-                                                   <h1>' . substr( $row['course_name'], 0, 30 ) . '</h1>
+                                                   <h2 style="line-height: 40px">' . substr( $row['course_name'], 0, 30 ) . '</h2>
                                                    </div>
                                            <div class="panel-footer">
 
