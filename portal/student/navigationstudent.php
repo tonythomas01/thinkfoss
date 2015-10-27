@@ -5,7 +5,7 @@
 ?>
 <!-- Navigation
 ==========================================-->
-<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+<nav id="tf-menu" class="navbar navbar-fixed-top navbar-default" style="background-color: white">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -148,7 +148,7 @@
 
 </div>
 
-<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">
         <div class="modal-dialog" role="document">
                 <div class="modal-content">
                         <div class="modal-header">

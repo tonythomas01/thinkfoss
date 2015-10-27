@@ -750,11 +750,11 @@ require_once('assets/php/access/accessDB.php');
 
         </div>
 </div>
-<footer>
+
 <nav  class="navbar navbar-default" >
         <div class="container" style="padding-top: 10px; ">
                 <div class="pull-left fnav">
-                        <p style="color: white">NO RIGHTS RESERVED. GPL v3.0. Designed and Maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
+                        <p style="color: white">NO RIGHTS RESERVED. Designed and maintained by <a href="http://foss.amrita.ac.in" target="_blank">FOSS@Amrita</a>. Bugs ? Please report at our <a href="http://phab.thinkfoss.com" target="_blank">Phabricator</a></p>
                 </div>
                 <div class="pull-right fnav">
                         <ul class="footer-social">
@@ -766,7 +766,6 @@ require_once('assets/php/access/accessDB.php');
                 </div>
         </div>
 </nav>
-</footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script>

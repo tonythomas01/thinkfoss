@@ -1,8 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['loggedin_user'])) {
-	header('Location: ../../signup.php');
-}
+	session_start();
+	if (!isset($_SESSION['loggedin_user'])) {
+		header('Location: ../../signup.php');
+	}
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	$user = User::newFromUserId($_SESSION['loggedin_user_id'], $conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,16 +61,12 @@ if (!isset($_SESSION['loggedin_user'])) {
 
 	<!--[endif]-->
 </head>
-<body>
+<body style="background-color: #f5f5f5">
 <?php
-require_once('../../assets/php/access/accessDB.php');
-require_once('../../assets/php/User.php');
-$user = User::newFromUserId($_SESSION['loggedin_user_id'], $conn);
-include 'navigationstudent.php'
+	include 'navigationstudent.php'
 ?>
 
-
-<div id="tf-portal" class="text-center">
+<div class="tf-portal" class="text-center">
 	<div class="overlay">
 		<div class="portal">
 			<?php
@@ -83,7 +82,7 @@ include 'navigationstudent.php'
 			?>
 
 			<div style="padding-bottom: 10px; text-align: center">
-				<h2 class="section-title" style="color: white"> Available Courses</h2>
+				<h2 class="section-title"> Available Courses</h2>
 			</div>
 			<br>
 
@@ -94,8 +93,8 @@ include 'navigationstudent.php'
 				require_once('../../assets/php/access/accessTokens.php');
 				$loggedInUser = $_SESSION['loggedin_user_id'];
 
-				$sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`, course_details.`course_bio`,
-		          course_details.`course_lang`, course_details.`course_difficulty`, course_details.`course_fees`,
+				$sqlSelect = "SELECT course_details.`course_id`, course_details.`course_name`,
+		          course_details.`course_difficulty`, course_details.`course_fees`,
 		          course_details.`course_approved`, user_details.`user_first_name`,
 		          user_details.`user_last_name` FROM `course_details`
 		          INNER JOIN `course_mentor_map` ON course_details.course_id = course_mentor_map.course_id
@@ -108,12 +107,16 @@ include 'navigationstudent.php'
 			if ($result->num_rows > 0) {
 				while ($row = $result->fetch_assoc()) {
 					$csrfToken = new Token($csrfSecret);
-					echo '
-        				<div class="col-md-4">
-                				<div class="thumbnail" style="height: 280px">
+					$course = Course::newFromId($conn, $row['course_id']);
+					$courseName = $course->getCourseName();
+					$courseId = $course->getCourseId();
+					echo "
+        				<a href='course.php?name=$courseName&course=course-$courseId'>";
+        				echo '
+        				<div class="col-md-3">
+                				<div class="thumbnail" style="height: 270px">
                         				<div style="float: right">';
 
-					$course = Course::newFromId($conn, $row['course_id']);
 					if ($course->isEnrolled($loggedInUser, $conn)) {
 						echo '
 						<ul class ="external-right">
@@ -143,40 +146,49 @@ include 'navigationstudent.php'
 						</form>
 						</li></ul>';
 					}
-					$courseName = $row['course_name'];
+
 
 					echo '
                         				</div>
 
                                                         <div class="caption">
                                                         <div class="panel panel-default" style="background-color: transparent">
-						 	 <div class="panel-body" style="height: 160px">
-				                                        <h2 style="line-height: 40px">'; echo strlen( $courseName ) > 50 ? substr( $courseName, 0, 50 ) . '..'  : $courseName; echo '</h3> </div>
-								<div class="panel-footer tf-btn-grey">
-			                                                <p><strong>Mentor</strong>: '. $row['user_first_name']. ' ' .  $row['user_last_name']. ' <span style ="float: right"><strong>Cost</strong> : <i class="fa fa-rupee"></i>'. ' ' . $row['course_fees'] .'</span>
-			                                                <p><strong>Language</strong>: '.  substr( $row['course_lang'], 0, 10 ) . '  <span style ="float: right"><strong>Difficulty</strong> : '.  $row['course_difficulty'] .'</span></p>
-				                                        <figcaption class="mask" style="text-align:center; ">
+						 	 <div class="panel-body" style="height: 150px">
+				                                        <h3 style="line-height: 40px; text-align: center">'; echo strlen( $courseName ) > 60 ? substr( $courseName, 0, 60 ) . '..'  : $courseName; echo '</h3> </div>
+								<div class="panel-footer" style="height: 90px">
+			                                                <table class="table" id="course-listing-table" >
+			                                                <col width="20px">
+			                                                <tbody>
+											<tr>
+			                                                		<td>
+			                                                		<i class="fa fa-group"></i>
+											</td>
+											<td>
+											'. $row['user_first_name']. ' '  . $row['user_last_name']. '
+											</td>
+											</tr>
+											<tr>
+												<td> <i class="fa fa-rupee"> </td>
+												<td> '.  $row['course_fees'] .'
+												<i class=" fa fa-user" style="float: right;"> '; echo $course->getNumberofStudentsEnrolled( $conn ); echo '</i>
+												</td>
+
+											</tr>
+
+									</tbody>
+
+									</table>
+
+
+
+				                                        <figcaption class="mask" style="text-align:center;">
 				                                        <form action="course.php" method="get">
 										<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
 										<button class="btn tf-btn-grey btn-lg"  name="course" value="course-' . $row['course_id'] . '"  style="opacity: 0.7" href="#">
-  										<i class="fa fa-search-plus fa-2x pull-left"></i>Know More</button>
+  										<i class="fa fa-search-plus fa-2x pull-left"></i>More</button>
 				                                        </form>
 				                                        </figcaption>
 
-						                        <h3><span style ="position: absolute; bottom : 40px; right: 40px;" class="label tf-btn"><i class="fa fa-user"> </i> Enrolled :
-						                        '; echo $course->getNumberofStudentsEnrolled( $conn ); echo '
-						                        </span></h3>
-
-				                                <ul class="external">
-								<li>
-								<form action="course.php" method="get">
-								<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
-								<button type="submit" class="btn tf-btn-grey" name="course"  value="course-' .  $row['course_id'] .'" ><i class="fa fa-search-plus fa-lg"></i> More</button>
-								</form>
-								</li>
-
-
-								</ul>
 							</div>
 
 							</div>
@@ -187,6 +199,7 @@ include 'navigationstudent.php'
 
 
                                         </div>
+                                        </a>
 
 	                        ';
 				}

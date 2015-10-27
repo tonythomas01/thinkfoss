@@ -77,10 +77,10 @@
 
     <!--[endif]-->
 </head>
-<body>
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
-<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top"  style="background-color: white">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -94,7 +94,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mentor <span class="caret"></span></a>
@@ -174,8 +174,7 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div id="tf-portal" class="text-center">
-    <div class="overlay">
+<div class="tf-portal">
             <?php
             if ( isset( $_SESSION['message'] ) ) {
 	                $message = $_SESSION['message'];
@@ -195,8 +194,8 @@
 	            <div class="row">
 		            <h1 class="section-title"> Trending on <b>ThinkFOSS</b></h1>
 		            <div class="customNavigation">
-			            <a class="btn prev " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
-			            <a class="btn next " style="padding: 4px; color: white;"><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
+			            <a class="btn prev " style="padding: 4px; "><i class="fa fa-arrow-circle-left fa-2x"></i> </a>
+			            <a class="btn next " style="padding: 4px; "><i class="fa fa-arrow-circle-right fa-2x"></i> </a>
 		            </div>
 		            <div id="owl-portal" class="owl-carousel owl-theme">
 		            <?php
@@ -210,7 +209,10 @@
                                                 <div class='panel panel-primary'  id='course-panel-portal'>
                                                 <div class='panel-body'>
                                                 <a href='portal/student/course.php?name=$courseName&course=course-$courseId'
-                                                target='_blank' > <h3>$courseName</h3></a>
+                                                target='_blank' >
+                                                 <div class='panel panel-footer' style='height: 80px; padding-top: 15px'>
+                                                    <h3 style='color: black'>$courseName</h3></a>
+                                                    </div>
 					                        <figcaption class='mask' style='text-align:center;'>
 					                                   <form action='student/course.php' method='get' style='margin-left:15%;'>
 										<input type='hidden' name='name' value='$courseName' "; echo ' />
@@ -231,11 +233,11 @@
 			            <h2 class="section-title" style="padding-bottom: 10px; text-align: center; padding-bottom: 30px"> <b>Mentoring</b></h2>
 
 			            <div class="row" style="text-align: center">
-				            <a class="btn tf-btn btn-lg" target="_blank" href="mentor/addCourse.php">
+				            <a class="btn tf-btn-white btn-lg" target="_blank" href="mentor/addCourse.php">
 					            <i class="fa fa-plus  fa-2x pull-left"></i>Add new<br>Course</a>
 				            <a class="btn tf-btn-grey" href="mentor/viewMyCourses.php" target="_blank">
 					            <i class="fa fa-pencil  fa-2x pull-left"></i>Edit your<br>course</a>
-				            <a class="btn tf-btn btn-lg" href="mentor/viewMyCourses.php" >
+				            <a class="btn tf-btn-white btn-lg" href="mentor/viewMyCourses.php" >
 					            <i class="fa fa-mortar-board   fa-2x pull-left"></i>Teach your <br> course</a>
 
 
@@ -248,11 +250,11 @@
 			            <h2 class="section-title" style="padding-bottom: 10px;padding-bottom: 30px"><b>LEARNING</b></h2>
 
 			            <div class="row" style="text-align: center">
-				            <a class="btn tf-btn btn-lg" target="_blank" href="student/viewAllCourses.php">
+				            <a class="btn tf-btn-white btn-lg" target="_blank" href="student/viewAllCourses.php">
 					            <i class="fa fa-eye  fa-2x pull-left"></i>View our <br> courses</a>
 				            <a class="btn tf-btn-grey" href="student/viewAllCourses.php" target="_blank">
 					            <i class="fa fa-thumbs-up  fa-2x pull-left"></i>Enroll to <br>course</a>
-				            <a class="btn tf-btn btn-lg" href="student/viewEnrolledCourses.php" target="_blank">
+				            <a class="btn tf-btn-white btn-lg" href="student/viewEnrolledCourses.php" target="_blank">
 					            <i class="fa fa-heart fa-2x pull-left"></i>Review a<br> course</a>
 			            </div>
 
@@ -263,7 +265,7 @@
 
 		            <div style="padding-top: 50px; padding-bottom: 10px">
 			            <h2 class="section-title" style="padding-bottom: 10px;padding-bottom: 30px"><b>Quick </b>Actions</h2>
-		            <a class="btn btn-lg  tf-btn" href="student/viewAllCourses.php">
+		            <a class="btn btn-lg  tf-btn-white" href="student/viewAllCourses.php">
 			            <i class="fa fa-lightbulb-o fa-2x pull-left"></i> View all<br>Courses</a>
 
 			            <a class="btn btn-lg tf-btn-grey" href="solutions/newSolutionRequest.php">
@@ -272,7 +274,6 @@
 
 
 
-    </div>
 </div>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">

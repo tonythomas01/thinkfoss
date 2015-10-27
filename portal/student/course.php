@@ -99,13 +99,13 @@
 
 	<!--[endif]-->
 </head>
-<body >
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationstudent.php' ?>
 
-<div id="tf-portal" class="text-center">
-	<div class="overlay">
+<div class="tf-portal" class="text-center">
+
 		<div class="portal" >
 			<?php
 			if ( isset( $_SESSION['message'] ) ) {
@@ -230,9 +230,9 @@
 
 				</div>
 				<div class="col-md-4">
-					<div class="panel panel-default panel-default">
+					<div class="panel panel-default panel-default ">
 						<div class="panel-heading" style="text-align: center">
-							<div class="panel-title">
+							<div class="panel-title " >
 								<h2>MENTOR</h2> <br>
 								<i class="fa fa-user fa-4x"></i> <br>
 								<?php echo $mentor->getValue('user_first_name') . ' ' . $mentor->getValue('user_last_name'); ?>
@@ -264,7 +264,7 @@
 
 
 		</div>
-	</div>
+
 </div>
 
 <script src="../../js/material/ripples.min.js"></script>

@@ -1,8 +1,19 @@
 <?php
-session_start();
-if ( !isset( $_SESSION['loggedin_user'] ) ) {
-	header( 'Location: ../../signup.php');
-}
+	session_start();
+	if ( !isset( $_SESSION['loggedin_user'] ) ) {
+		header( 'Location: ../../signup.php');
+	}
+
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	require_once('../../assets/php/Course.php');
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+	include('../../assets/php/Token.php');
+	include('../../assets/php/access/accessTokens.php');
+
+	if ( !$user->checkIfPrivelaged( $conn ) ) {
+		header( 'Location: ../../portal/portal.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,21 +65,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 	<!--[endif]-->
 </head>
-<body>
-
-<?php
-	require_once('../../assets/php/access/accessDB.php');
-	require_once('../../assets/php/User.php');
-	require_once('../../assets/php/Course.php');
-	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-	include('../../assets/php/Token.php');
-	include('../../assets/php/access/accessTokens.php');
-
-        if ( !$user->checkIfPrivelaged( $conn ) ) {
-	        header( 'Location: ../../portal/portal.php');
-        }
-
-?>
+<body style="background-color: #f5f5f5;">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationadmin.php' ?>
@@ -91,7 +88,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 			?>
 
 			<div>
-				<h2 class="section-title">Course Administration</h2>
+				<h2 style="text-align: center" class="section-title">Course Administration</h2>
 			</div>
 			<br>
 			<form action="../../assets/php/doAdminControl.php" method="post">
@@ -148,7 +145,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 			</form>
 			<hr>
-			<h2> Solution Administration </h2> <br>
+			<h2 style="text-align: center"> Solution Administration </h2> <br>
 			<?php
 
 

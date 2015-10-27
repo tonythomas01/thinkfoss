@@ -69,7 +69,7 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 	<!--[endif]-->
 </head>
-<body>
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationcart.php' ?>

@@ -1,8 +1,13 @@
 <?php
-session_start();
-if ( !isset( $_SESSION['loggedin_user'] ) ) {
-	header( 'Location: ../../signup.php');
-}
+	session_start();
+	if ( !isset( $_SESSION['loggedin_user'] ) ) {
+		header( 'Location: ../../signup.php');
+	}
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+	require_once('../../assets/php/Token.php');
+	require_once('../../assets/php/access/accessTokens.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,19 +59,13 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
 	<!--[endif]-->
 </head>
-<body>
-<?php
-require_once('../../assets/php/access/accessDB.php');
-require_once('../../assets/php/User.php');
-$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-require_once('../../assets/php/Token.php');
-require_once('../../assets/php/access/accessTokens.php');
-?>
+<body style="background-color: #f5f5f5">
+
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationSolutions.php' ?>
 
-<div id="tf-portal" class="text-center">
+<div class="tf-portal" class="text-center">
 	<div class="overlay" >
 		<div class="portal">
 			<?php
@@ -85,7 +84,7 @@ require_once('../../assets/php/access/accessTokens.php');
 			?>
 
 			<div>
-				<h2 class="section-title"> My Solution Requests</h2>
+				<h2 class="section-title" style="text-align: center"> My Solution Requests</h2>
 			</div>
 			<br>
 			<div class="row" >

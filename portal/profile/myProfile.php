@@ -3,6 +3,10 @@
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: ../../signup.php');
 	}
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+	$user->getExtra( $conn );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,16 +68,10 @@
 
     <!--[endif]-->
 </head>
-<body>
-<?php
-	require_once('../../assets/php/access/accessDB.php');
-	require_once('../../assets/php/User.php');
-	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-	$user->getExtra( $conn );
-?>
+<body style="background-color: #f5f5f5">
 <?php include 'navigationProfile.php' ?>
 
-<div id="tf-portal" class="text-center">
+<div class="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal">
 	        <?php

@@ -3,6 +3,10 @@
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: ../../signup.php');
 	}
+        require_once('../../assets/php/access/accessDB.php');
+        require_once('../../assets/php/User.php');
+
+        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,18 +63,12 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
-<?php
-        require_once('../../assets/php/access/accessDB.php');
-        require_once('../../assets/php/User.php');
-
-        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-?>
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationstudent.php' ?>
 
-<div id="tf-portal" class="text-center">
+<div class="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal" >
 	        <?php
@@ -87,11 +85,11 @@
 	        ?>
 
 	        <div>
-		        <h2 class="section-title" style="color: white"> Enrolled Courses</h2>
+		        <h2 class="section-title" style="text-align: center"> Enrolled Courses</h2>
 	        </div>
 	        <br>
 
-                <table class="table table-hover table-bordered well" style="color : black">
+                <table class="table table-hover table-bordered well">
                     <thead>
                     <th>Course Name</th>
                     <th>Difficutly</th>

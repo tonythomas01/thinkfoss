@@ -107,9 +107,9 @@
 
     <!--[endif]-->
 </head>
-<body background="black">
+<body style="background-color: #f5f5f5">
 <?php include 'navigationstudent.php' ?>
-<div id="tf-portal" class="text-center">
+<div class="tf-portal" class="text-center">
     <div class="overlay">
         <div class="portal">
 

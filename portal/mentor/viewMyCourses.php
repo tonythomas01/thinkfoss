@@ -1,8 +1,14 @@
 <?php
 session_start();
-if ( !isset( $_SESSION['loggedin_user'] ) ) {
-        header( 'Location: ../../signup.php');
-}
+	if ( !isset( $_SESSION['loggedin_user'] ) ) {
+	        header( 'Location: ../../signup.php');
+	}
+	require_once('../../assets/php/access/accessDB.php');
+	require_once('../../assets/php/User.php');
+	$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+	require_once('../../assets/php/Token.php');
+	require_once('../../assets/php/access/accessTokens.php');
+	require_once('../../assets/php/Course.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,20 +60,12 @@ if ( !isset( $_SESSION['loggedin_user'] ) ) {
 
         <!--[endif]-->
 </head>
-<body>
-<?php
-require_once('../../assets/php/access/accessDB.php');
-require_once('../../assets/php/User.php');
-$user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-require_once('../../assets/php/Token.php');
-require_once('../../assets/php/access/accessTokens.php');
-require_once('../../assets/php/Course.php');
-?>
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationmentor.php' ?>
 
-<div id="tf-portal" class="text-center">
+<div class="tf-portal" class="text-center">
         <div class="overlay" >
                 <div class="portal">
                         <?php
@@ -86,7 +84,7 @@ require_once('../../assets/php/Course.php');
                         ?>
 
                         <div>
-                                <h2 class="section-title"> My Courses</h2>
+                                <h2 class="section-title" style="text-align: center"> My Courses</h2>
                         </div>
                         <br>
                         <div class="row" >
@@ -132,11 +130,11 @@ require_once('../../assets/php/Course.php');
                                         echo '
                                         <form action="editMyCourse.php" method="post">
                                                     <input type="hidden" name="CSRFToken" value="'; echo $csrfTokenForEdits->getCSRFToken(); echo '"/>
-                                                    <button style="position: absolute; left:20px; bottom:23px; padding: 10px" type="submit" class="btn tf-btn-grey" name="course"  value="course-' . $row['course_id'] . '" ><i class = "fa fa-pencil"> Edit</i></button>
+                                                    <button style="position: absolute; left:20px; bottom:23px; padding: 10px" type="submit" class="btn tf-btn-grey" name="course"  value="course-' . $row['course_id'] . '" ><i class = "fa fa-pencil"></i></button>
                                         </form>
 		                        <form action="../../assets/php/doDeleteCourse.php" method="post">
 		                                <input type="hidden" name="CSRFToken" value="';echo $csrfTokenForEdits->getCSRFToken(); echo '"/>
-		                                <button type="submit" style="position: absolute; right:20px; bottom: 23px; padding: 10px" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" ><i class="fa fa-trash"> Remove</i></button>
+		                                <button type="submit" style="position: absolute; right:20px; bottom: 23px; padding: 10px" class="btn btn-danger" name="course" value="course-'.$row['course_id'].'" ><i class="fa fa-trash"> </i></button>
                                         </form>
 
                                 </div>

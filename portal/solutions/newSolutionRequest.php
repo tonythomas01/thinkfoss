@@ -70,10 +70,10 @@
 
 
 </head>
-<body>
+<body style="background-color: #f5f5f5">
 <?php include 'navigationSolutions.php' ?>
 
-<div id="tf-portal">
+<div class="tf-portal">
     <div class="overlay">
             <div class="container" style="padding-top: 7%; text-align: left; padding-bottom: 5%">
             <div class="row">

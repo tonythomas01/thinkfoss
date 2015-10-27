@@ -99,15 +99,14 @@
 	<script src="../../js/bootstrap.min.js"></script>
 	<!--[endif]-->
 </head>
-<body >
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationmentor.php' ?>
 
 
 <div id="tf-portal" class="text-center">
-	<div class="overlay">
-		<div class="portal" >
+		<div class="portal">
 			<?php
 			if ( $_SESSION['message'] ) {
 				$message = $_SESSION['message'];
@@ -120,14 +119,13 @@
 			}
 			?>
 
-			<div>
-				<h2><?php $courseIdTag = 'course-' . $course->getCourseId();
+			<h2 style="text-align: center"><?php $courseIdTag = 'course-' . $course->getCourseId();
 
-					echo $course->getCourseName(). " <small>Active : <i class='fa fa-check' ></i>";
-					?>
+				echo $course->getCourseName(). " <small>Active : <i class='fa fa-check' ></i>";
+				?>
+				</h2>
 
- 				<hr>
-			</div>
+                        <hr>
 
 			<div class="row">
 				<div class="col-md-6">
@@ -210,7 +208,8 @@
 
 				</div>
 
-			</div>
+
+
 
 
 		</div>

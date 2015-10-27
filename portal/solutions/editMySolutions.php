@@ -107,7 +107,7 @@
 
 	<!--[endif]-->
 </head>
-<body >
+<body style="background-color: #f5f5f5">
 <!-- Navigation
 ==========================================-->
 <?php include 'navigationSolutions.php' ?>
@@ -199,7 +199,7 @@
 					</div>
 					<input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/>
 					<input type='hidden' name='solution_id' value='<?php echo base64_encode( $solution->getValue('solution_id') ); ?>'/>
-					<button type='submit' class='btn btn-primary  btn-lg'>Update</button>
+					<button type='submit' class='btn tf-btn-grey  btn-lg'>Update</button>
 				</div>
 			</form>
 

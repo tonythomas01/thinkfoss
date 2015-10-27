@@ -3,6 +3,12 @@
 	if ( !isset( $_SESSION['loggedin_user'] ) ) {
 		header( 'Location: ../../signup.php');
 	}
+        require_once('../../assets/php/access/accessDB.php');
+        require_once('../../assets/php/User.php');
+        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
+        require_once('../../assets/php/access/accessTokens.php');
+        require_once('../../assets/php/Token.php');
+        $csrfToken = new Token( $csrfSecret );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,20 +60,10 @@
 
     <!--[endif]-->
 </head>
-<body>
-<?php
-        session_start();
-        require_once('../../assets/php/access/accessDB.php');
-        require_once('../../assets/php/User.php');
-        $user = User::newFromUserId( $_SESSION['loggedin_user_id'], $conn );
-        require_once('../../assets/php/access/accessTokens.php');
-        require_once('../../assets/php/Token.php');
-        $csrfToken = new Token( $csrfSecret );
-?>
+<body style="background-color: #f5f5f5">
 <?php include 'navigationmentor.php' ?>
 
-<div id="tf-portal" class="text-center">
-    <div class="overlay">
+<div class="tf-portal" class="text-center">
         <div class="portal">
 
             <div class='col-md-8'>
@@ -171,9 +167,6 @@
             </div>
         </div>
 
-            </div>
-
-        </div>
 </div>
 <?php include '../../footer.html' ?>
 </body>
