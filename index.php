@@ -159,7 +159,7 @@ require_once('assets/php/access/accessDB.php');
                                                         </div> <br>
                                                         <label class='sr-only' for='password'> Password</label >
                                                         <div class='input-group'>
-                                                                <div class='input-group-addon' ><i class='fa fa-eye' ></i ></div >
+                                                                <div class='input-group-addon' ><i class='fa fa-lock' ></i ></div >
                                                                 <input type = 'password' class='form-control' id = 'password' name = 'password' placeholder = ' Password'>
                                                         </div>
                                                         <input type='hidden' name='CSRFToken' value='<?php echo $csrfToken->getCSRFToken(); ?>'/><br>
@@ -174,8 +174,8 @@ require_once('assets/php/access/accessDB.php');
                                         <a href='signup.php'> <button  class='btn btn-raised tf-btn' style='padding-right: 10px; color:black; padding-left: 10px; margin-right: 10px'> SIGN UP <i class="fa fa-arrow-circle-right"></i> </button></a>
                                         or login using
 
-                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn tf-btn btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn tf-btn btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; background-color: red" class='btn tf-btn'><i class="fa fa-google-plus fa-2x"></i> </button></a>
+                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;; background-color: black" class='btn tf-btn'><i class="fa fa-github fa-2x"></i> </button></a>
                                                 </p>
                                 </div>
 

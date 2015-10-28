@@ -115,47 +115,18 @@
         				echo '
         				<div class="col-md-3">
                 				<div class="thumbnail" style="height: 270px">
-                        				<div style="float: right">';
-
-					if ($course->isEnrolled($loggedInUser, $conn)) {
-						echo '
-						<ul class ="external-right">
-						<li>
-							<button type="button" disabled title="Enrolled" class="btn btn-success" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-check" ></i></button>
-						</li>
-						</ul>
-						';
-
-					} else if ($course->needsCheckout($loggedInUser, $conn)) {
-						echo '
-						 <ul class="external-right">
-						 <li>
-						<a href="../cart/viewCart.php"> <button type="button"  class="btn tf-btn" title="In Cart" name="course" value="course-' . $row['course_id'] . '" > <i class="fa fa-cart-arrow-down"  ></i> </button></a>
-						</li></ul>
-						';
-					} else {
-						echo '
-						 <ul class="external-right">
-						 <li>
-						<form action="../../assets/php/doEnrollCourse.php" method="post">
-						<input type="hidden" name="CSRFToken" value="';
-						echo $csrfToken->getCSRFToken();
-						echo '"/>
-						<button type="submit" class="btn btn-primary btn-lg" name="course" title="Add to Cart" value="course-' . $row['course_id'] . '" >
-						<i class="fa fa-shopping-cart" style="color:white"></i></button>
-						</form>
-						</li></ul>';
-					}
-
-
-					echo '
-                        				</div>
-
                                                         <div class="caption">
                                                         <div class="panel panel-default" style="background-color: transparent">
-						 	 <div class="panel-body" style="height: 150px">
+						 	 <div class="panel-body" style="height: 150px;">
 				                                        <h3 style="line-height: 40px; text-align: center">'; echo strlen( $courseName ) > 60 ? substr( $courseName, 0, 60 ) . '..'  : $courseName; echo '</h3> </div>
-								<div class="panel-footer" style="height: 90px">
+								';
+					if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
+						echo '<div class="panel-footer" style="height: 90px; background-color: #fcac45">';
+					} else {
+						echo '<div class="panel-footer" style="height: 90px;">';
+					} echo '
+
+
 			                                                <table class="table" id="course-listing-table" >
 			                                                <col width="20px">
 			                                                <tbody>
@@ -164,7 +135,12 @@
 			                                                		<i class="fa fa-group"></i>
 											</td>
 											<td>
-											'. $row['user_first_name']. ' '  . $row['user_last_name']. '
+											'. $row['user_first_name']. ' '  . $row['user_last_name'];
+											if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
+												echo '<span class="label label-success" style="float:right; font-size:13px"><i class="fa fa-check"></i> Enrolled</span>';
+											} else {
+												echo '<span class="label label-primary" style="float:right; font-size:13px"><i class="fa fa-plus"></i>  Buy </span>';
+											} echo '
 											</td>
 											</tr>
 											<tr>
@@ -178,8 +154,6 @@
 									</tbody>
 
 									</table>
-
-
 
 				                                        <figcaption class="mask" style="text-align:center;">
 				                                        <form action="course.php" method="get">
