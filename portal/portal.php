@@ -190,7 +190,7 @@
             ?>
 
 
-            <div class="container" style="padding-top: 50px; text-align: center">
+            <div class="container" style="padding-top: 5%; text-align: center">
 	            <div class="row">
 		            <h1 class="section-title"> Trending on <b>ThinkFOSS</b></h1>
 		            <div class="customNavigation">
