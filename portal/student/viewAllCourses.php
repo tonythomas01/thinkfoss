@@ -117,8 +117,14 @@
                 				<div class="thumbnail" style="height: 270px">
                                                         <div class="caption">
                                                         <div class="panel panel-default" style="background-color: transparent">
-						 	 <div class="panel-body" style="height: 150px;">
-				                                        <h3 style="line-height: 40px; text-align: center">'; echo strlen( $courseName ) > 60 ? substr( $courseName, 0, 60 ) . '..'  : $courseName; echo '</h3> </div>
+						 	 <div class="panel-body" style="height: 150px;">';
+					if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
+						echo '<span class="label label-success" style="float:right; font-size:13px; margin-top: 0"><i class="fa fa-check"></i> Enrolled</span>';
+					} else {
+						echo '<span class="label label-primary" style="float:right; font-size:13px"><i class="fa fa-plus"></i>  Buy </span>';
+					} echo '
+
+					<h3 style="line-height: 40px; text-align: center">'; echo strlen( $courseName ) > 60 ? substr( $courseName, 0, 60 ) . '..'  : $courseName; echo '</h3> </div>
 								';
 					if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
 						echo '<div class="panel-footer" style="height: 90px; background-color: #fcac45">';
@@ -127,44 +133,37 @@
 					} echo '
 
 
-			                                                <table class="table" id="course-listing-table" >
-			                                                <col width="20px">
-			                                                <tbody>
-											<tr>
-			                                                		<td>
-			                                                		<i class="fa fa-group"></i>
-											</td>
-											<td>
-											'. $row['user_first_name']. ' '  . $row['user_last_name'];
-											if ( $course->isEnrolled( $loggedInUser, $conn ) ) {
-												echo '<span class="label label-success" style="float:right; font-size:13px"><i class="fa fa-check"></i> Enrolled</span>';
-											} else {
-												echo '<span class="label label-primary" style="float:right; font-size:13px"><i class="fa fa-plus"></i>  Buy </span>';
-											} echo '
-											</td>
-											</tr>
-											<tr>
-												<td> <i class="fa fa-rupee"> </td>
-												<td> '.  $row['course_fees'] .'
-												<i class=" fa fa-user" style="float: right;"> '; echo $course->getNumberofStudentsEnrolled( $conn ); echo '</i>
-												</td>
+                                        <table class="table" id="course-listing-table" >
+                                        <col width="20px">
+                                        <tbody>
+							<tr>
+                                                        <td>
+                                                        <i class="fa fa-group"></i>
+							</td>
+							<td>
+							'. $row['user_first_name']. ' '  . $row['user_last_name'] .'
+							</td>
+							</tr>
+							<tr>
+								<td> <i class="fa fa-rupee"> </td>
+								<td> '.  $row['course_fees'] .'
+								<i class=" fa fa-user" style="float: right;"> '; echo $course->getNumberofStudentsEnrolled( $conn ); echo '</i>
+								</td>
 
-											</tr>
+							</tr>
 
-									</tbody>
+					</tbody>
 
-									</table>
+					</table>
 
-				                                        <figcaption class="mask" style="text-align:center;">
-				                                        <form action="course.php" method="get">
-										<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
-										<button class="btn tf-btn-grey btn-lg"  name="course" value="course-' . $row['course_id'] . '"  style="opacity: 0.7" href="#">
-  										<i class="fa fa-search-plus fa-2x pull-left"></i>More</button>
-				                                        </form>
-				                                        </figcaption>
-
+                                        <figcaption class="mask" style="text-align:center;">
+                                        <form action="course.php" method="get">
+						<input type="hidden" name="name" value="'; echo $course->getCourseName(); echo '"/>
+						<button class="btn tf-btn-grey btn-lg"  name="course" value="course-' . $row['course_id'] . '"  style="opacity: 0.7" href="#">
+                                                <i class="fa fa-search-plus fa-2x pull-left"></i>More</button>
+                                        </form>
+                                        </figcaption>
 							</div>
-
 							</div>
                                                         </div>
 
