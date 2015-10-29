@@ -74,7 +74,7 @@
                                                   <ul class="dropdown-menu">
                                                     <li><a href="../portal.php" ><i class="fa fa-laptop fa-fw"></i> Portal</a></li>
                                                     <li><a href="../profile/myProfile.php" ><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
-                                                    <li><a href="#" data-toggle="modal" data-target="#contact"  ><i class="fa fa-phone fa-fw"></i> Contact</a></li>
+                                                    <li><a href="#" data-toggle="modal" data-target="#contact-modal"  ><i class="fa fa-phone fa-fw"></i> Contact</a></li>
                                                     <li class="divider"></li>
                                                      <form action = "../../assets/php/doSignOut.php" method="post">
                                                      <input type="hidden" name="CSRFToken" value='; echo $csrfToken->getCSRFToken(); echo '></input>
@@ -103,7 +103,9 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">
+<?php if ( isset( $loggedinUser ) ) {
+        echo '
+<div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="color: black;">
         <div class="modal-dialog" role="document">
                 <div class="modal-content">
                         <div class="modal-header">
@@ -115,13 +117,13 @@
                                         <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-2 control-label">Your name</label>
                                                 <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="contact-name" readonly value="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" placeholder="<?php echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); ?>" name="name">
+                                                        <input type="text" class="form-control" id="contact-name" readonly value="'; echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); echo '" placeholder="'; echo $user->getValue('user_first_name') .' '. $user->getValue('user_last_name'); echo '" name="name">
                                                 </div>
                                         </div>
                                         <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                                 <div class="col-sm-10">
-                                                        <input type="email" class="form-control" readonly id="_replyto" value ="<?php echo $user->getValue('user_email'); ?>" placeholder="<?php echo $user->getValue('user_email'); ?>" name="_replyto">
+                                                        <input type="email" class="form-control" readonly id="_replyto" value ="';  echo $user->getValue('user_email'); echo'" placeholder="'; echo $user->getValue('user_email'); echo '" name="_replyto">
                                                 </div>
                                         </div>
                                         <div class="form-group">
@@ -140,3 +142,7 @@
                 </div>
         </div>
 </div>
+';
+}
+
+?>
