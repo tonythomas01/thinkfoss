@@ -119,7 +119,7 @@
 			}
 			?>
 
-			<div>
+			<div style="background-color: white; padding : 15px 10px 0px 10px;">
 				<h2><?php $courseIdTag = 'course-' . $course->getCourseId();
 
 					echo $course->getCourseName(). " <small>Active : <i class='fa fa-check' ></i>";
@@ -176,14 +176,14 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-8 well">
-					<div class="panel panel-default panel-default">
+				<div class="col-md-8" >
+					<div class="panel" >
 					<div class="panel-heading" style="text-align: justify">
 						<div class="panel-title">
 							<p style="font-size: large"><?php echo $course->getValue('course_bio') ?></p>
 						</div>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body" style="background-color: whitesmoke">
 						<table class="table table-bordered">
 						   <tr>
 							   <td>Language</td>
@@ -207,7 +207,7 @@
 								<td><?php echo $course->getValue('course_date_to' ) . ' : ' . $course->getValue('course_time_to'); ?></td>
 							</tr>
 						</table>
-						<div class="panel-footer panel-default" style="color: black">
+						<div class="panel-footer" style="color: black; background-color: white">
 							<h5>Reviews </h5>
 							<hr>
 							<?php
@@ -230,7 +230,7 @@
 
 				</div>
 				<div class="col-md-4">
-					<div class="panel panel-default panel-default ">
+					<div class="panel ">
 						<div class="panel-heading" style="text-align: center">
 							<div class="panel-title " >
 								<h2>MENTOR</h2> <br>
@@ -239,7 +239,7 @@
 
 							</div>
 						</div>
-						<div class="panel-body">
+						<div class="panel-body panel-default" style="background-color: whitesmoke">
 							<table class="table table-bordered" id="mentor-table">
 								<tr>
 									<td><i class="fa fa-github"></i> Github</td>
@@ -255,7 +255,7 @@
 								</tr>
 							</table>
 						</div>
-						<div class="panel-footer"><p style="color: black"><?php echo $mentor->getValue( 'user_about'); ?></p></div>
+						<div class="panel-footer" style="background-color: white"><p style="color: black"><?php echo $mentor->getValue( 'user_about'); ?></p></div>
 
 					</div>
 				</div>

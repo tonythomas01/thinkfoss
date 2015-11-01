@@ -179,7 +179,8 @@ if( isset( $_SESSION['loggedin_user'] ) ) {
 					or login using
 
 					<a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; " class='btn tf-btn btn-raised'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-					<a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn tf-btn btn-raised'><i class="fa fa-github fa-2x"></i> </button></a>
+					<a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;" class='btn tf-btn btn-raised'><i class="fa fa-github fa-2x"></i> </button></a><br>
+					<a href="forgotPassword.php"> Forgot Passowrd ?</a>
 				</p>
 			</div>
 
