@@ -31,6 +31,24 @@ class User {
 		return false;
 	}
 
+	static function newFromEmailId( $emailId, $conn ) {
+		$selectUser = "SELECT `user_id`,`user_email`, `user_first_name`,`user_last_name`, `user_dob`, `user_gender` FROM `user_details`
+		WHERE `user_email` = '$emailId';";
+		$res = $conn->query( $selectUser );
+		if( $res->num_rows > 0 ) {
+			$user = new User;
+			$userData = $res->fetch_assoc();
+			$user->user_first_name = $userData['user_first_name'];
+			$user->user_last_name =  $userData['user_last_name'];
+			$user->user_email = $userData['user_email'];
+			$user->user_dob = $userData['user_dob'];
+			$user->user_gender = $userData['user_gender'];
+			$user->user_id = $userData['user_id'];
+			return $user;
+		}
+		return false;
+	}
+
 	static function newFromGoogleOauth( $userLogin ) {
 		$oauthUser = new User();
 		$oauthUser->user_first_name = $userLogin['givenName'];
@@ -114,6 +132,14 @@ class User {
 		return false;
 	}
 
+	public function updatePassword( $conn, $passwordHash ) {
+		$sql = "UPDATE `authorization` SET `password_hash` = '$passwordHash' WHERE `email_id` = '$this->user_email';";
+		if ( $conn->query( $sql ) ) {
+			return true;
+		}
+		return false;
+	}
+
 	public function setValue( $conn, $key, $value ) {
 		$sql = "INSERT INTO `user_details` ( '$key' ) VALUES( '$value') WHERE `user_id` = '$this->user_id';";
 		if ( $conn->query( $sql ) ) {
@@ -162,6 +188,26 @@ class User {
 
 		return true;
 
+	}
+
+	public function sendPasswordResetEmail( $password, $mailgunAPIKey, $mailgunDomain ) {
+		$emailBody = "Hello There, \n
+		Someone recently clicked on 'Forogot Password' with your account email. This email contains your new password so that you can login. Please note that you can either use the OAuth Login, or use your email-password combo. \n
+		\n Your ThinkFOSS Password is : $password \n
+		If it wasnt you, immediately reply to this email so that we can investigate.
+		Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+		\n Pleased to serve you here.
+		\n With <3 to FOSS, \n The ThinkFOSS Team";
+
+		$mg = new \Mailgun\Mailgun( $mailgunAPIKey );
+		$mg->sendMessage( $mailgunDomain, array(
+			'from'  => 'ThinkFOSS<admin@thinkfoss.com>',
+			'to'    => $this->user_email,
+			'subject' => 'Your ThinkFOSS account details',
+			'text'  => $emailBody
+		) );
+
+		return true;
 	}
 
 	public function checkIfPrivelaged( $conn ) {

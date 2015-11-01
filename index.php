@@ -175,8 +175,10 @@ require_once('assets/php/access/accessDB.php');
                                         or login using
 
                                         <a href='assets/php/oauth/oauth2callback.php'> <button type='button' style="width: 50px; height:50px; border-radius: 25px;   padding: 10px 16px; background-color: red" class='btn tf-btn'><i class="fa fa-google-plus fa-2x"></i> </button></a>
-                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;; background-color: black" class='btn tf-btn'><i class="fa fa-github fa-2x"></i> </button></a>
-                                                </p>
+                                        <a href='assets/php/oauth/oauth2callbackgithub.php?action=login'> <button type='button' style=" width: 50px; height:50px; border-radius: 25px; padding: 10px 16px;; background-color: black" class='btn tf-btn'><i class="fa fa-github fa-2x"></i> </button></a> <br>
+                                        <a href="forgotPassword.php"> Forgot Passowrd ?</a>
+                                </p>
+
                                 </div>
 
                                 </div>
