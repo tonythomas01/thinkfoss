@@ -193,9 +193,9 @@ class User {
 	public function sendPasswordResetEmail( $password, $mailgunAPIKey, $mailgunDomain ) {
 		$emailBody = "Hello There, \n
 		Someone recently clicked on 'Forogot Password' with your account email. This email contains your new password so that you can login. Please note that you can either use the OAuth Login, or use your email-password combo. \n
-		\n Your ThinkFOSS Password is : $password \n
-		If it wasnt you, immediately reply to this email so that we can investigate.
-		Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
+		\n Your ThinkFOSS Password is : $password
+		\n If it wasnt you, immediately reply to this email so that we can investigate.
+		\n Please add in more courses, or enroll to courses out there so that we can spread the light of FOSS. \n
 		\n Pleased to serve you here.
 		\n With <3 to FOSS, \n The ThinkFOSS Team";
 
