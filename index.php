@@ -91,6 +91,7 @@ require_once('assets/php/access/accessDB.php');
                                 <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
+                                                <li><a href="#tf-clients" class="page-scroll">Expertise</a></li>
                                                 <li><a href="#tf-team" class="page-scroll">Team</a></li>
                                                 <li><a href="#tf-services" class="page-scroll">Services</a></li>
                                                 <li><a href="http://blog.thinkfoss.com" target="_blank" class="page-scroll">Blog</a></li>
@@ -247,16 +248,14 @@ require_once('assets/php/access/accessDB.php');
                                                 </li>
                                                 <li>
                                                         <span class="fa fa-dot-circle-o"></span>
-                                                        <strong>Expertise</strong> - <em>Training, Solutions and Maintenance of Open Source products</em>
+                                                        <strong>Expertise</strong> - <em>Training, Development and Maintenance of Open Source applications and
+                                                        products </em>
                                                 </li>
                                                 <li>
                                                         <span class="fa fa-dot-circle-o"></span>
-                                                        <strong>Clients</strong> - <em>Anybody thinking of taking a step into Open Source Development</em>
+                                                        <strong>Clients</strong> - <em>Professionals seeking application development, Organizations
+                                                        & Institutions seeking training</em>
                                                 </li>
-	                                        <li>
-		                                        <span class="fa fa-dot-circle-o"></span>
-		                                        <strong>Vision</strong> - <em>Make India Open Source</em>
-	                                        </li>
                                         </ul>
                                 </div> <br>
                                 <a type="button" target="_blank" href="http://blog.thinkfoss.com"
@@ -413,12 +412,45 @@ require_once('assets/php/access/accessDB.php');
                 <div class="container">
 
                         <div class="section-title center">
-                                <h2>Upstream <strong>Contributions</strong></h2>
+                                <h2>Our <strong>Expertise</strong> | <small style="color:white">Count on us</small></h2>
                                 <div class="line">
                                         <hr>
+
                                 </div>
                         </div>
                         <div id="clients" class="owl-carousel owl-theme">
+
+                                <div class="item">
+                                        <img src="img/client/django.png">
+                                        <h3>Django</h3>
+                                </div>
+
+                                <div class="item">
+                                        <img src="img/client/2000px-PHP-logo.svg.png">
+                                        <h3>PHP</h3>
+                                </div>
+
+                                <div class="item" style="text-align:center">
+                                        <img src="img/client/android.png">
+                                        <h3>Android</h3>
+                                </div>
+
+                                <div class="item">
+                                        <img src="img/client/bs.png">
+                                        <h3>Bootstrap</h3>
+                                </div>
+                                <div class="item">
+                                        <img src="img/client/1024px-OpenShift-LogoType.svg.png">
+                                        <h3>Openshift</h3>
+                                </div>
+                                <div class="item">
+                                        <img src="img/client/wordpress.png">
+                                        <h3>Wordpress</h3>
+                                </div>
+                                <div class="item">
+                                        <img src="img/client/drupal-logo.png">
+                                        <h3>Drupal</h3>
+                                </div>
                                 <div class="item">
                                         <img src="img/client/01.png">
                                         <div class="caption">
@@ -426,49 +458,12 @@ require_once('assets/php/access/accessDB.php');
                                         </div>
                                 </div>
                                 <div class="item">
-                                        <img src="img/client/02.png">
-                                        <h3>Mozilla Firefox</h3>
+                                        <img src="img/client/Java_Logo.png">
+                                        <div class="caption">
+                                                <h3> Java</h3>
+                                        </div>
                                 </div>
-                                <div class="item">
-                                        <img src="img/client/chromium.png">
-                                        <h3>Chromium</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/drupal-logo.png">
-                                        <h3>Drupal</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/gnome2-logo.png">
-                                        <h3>Gnome</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/Rlogo-3.png">
-                                        <h3>R Language</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/linux-kernel.png">
-                                        <h3>Linux Kernel</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/owasp.png">
-                                        <h3>OWASP</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/kde-logo-plain.png">
-                                        <h3>KDE</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/git-icon-white.png">
-                                        <h3>Git</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/buggie.png">
-                                        <h3>Bugzilla</h3>
-                                </div>
-                                <div class="item">
-                                        <img src="img/client/wordpress.png">
-                                        <h3>Wordpress</h3>
-                                </div>
+
                         </div>
 
                 </div>
